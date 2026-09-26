@@ -7,9 +7,12 @@ goal is understanding you can rebuild from scratch — not a formula sheet.
 
 > **The thesis in one line**
 >
-> Two defining laws — `V_L = L·dI/dt` for the inductor and `I_C = C·dV/dt` for the capacitor —
-> are the whole of it. Buck and boost converters are just those two laws applied to a circuit
-> that switches on and off; the step ratios are *derived* from them, never assumed.
+> Two defining laws are the whole of it — one for the inductor, one for the capacitor:
+
+![V_L = L dI_L/dt](README.assets/eq-inductor-law.svg) &nbsp; and &nbsp; ![I_C = C dV_C/dt](README.assets/eq-capacitor-law.svg)
+
+Buck and boost converters are just those two laws applied to a circuit that switches on and off;
+the step ratios are *derived* from them, never assumed.
 
 ## How to read this tree
 
@@ -32,9 +35,10 @@ Suggested order:
 ## Conventions
 
 Everything here follows [STYLE.md](STYLE.md): a one-line thesis, a numbered Contents, honest
-"what this costs you" callouts, and figures that carry the argument on their own. Maths is
-written three ways depending on the job — display equations, aligned step-by-step derivations,
-and SVG graphs — all explained in the style guide.
+"what this costs you" callouts, and figures that carry the argument on their own. **All maths and
+all diagrams are generated SVGs** — every equation is typeset once by the
+[toolchain](../toolchain/README.md) and embedded as an image, so it renders identically on GitHub,
+GitLab, and any offline viewer, with no dependency on a markdown math plugin.
 
 ## Where this came from
 

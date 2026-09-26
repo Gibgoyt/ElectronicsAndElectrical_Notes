@@ -1,0 +1,23 @@
+# Equation sources for inductor.md — rendered by toolchain/math_to_svg.js into inductor.assets/eq-*.svg
+# Edit here, then run:  node toolchain/build_all.js   (or math_to_svg.js on this file)
+
+name: energy
+tex: E = \tfrac{1}{2}\,L\,I^2
+---
+name: law
+tex: V_L(t) = L\,\frac{dI_L}{dt}
+---
+name: law-rearranged
+tex: \frac{dI_L}{dt} = \frac{V_L}{L}
+---
+name: units-henry
+tex: [L] = \frac{[V]}{[dI/dt]} = \frac{\text{volt}}{\text{ampere}/\text{second}} = \frac{\text{volt}\cdot\text{second}}{\text{ampere}} = 1\ \text{H}
+---
+name: units-check
+tex: \left(\frac{\text{V}\cdot\text{s}}{\text{A}}\right)\times\left(\frac{\text{A}}{\text{s}}\right) = \text{V}
+---
+name: integral
+tex: \int_{0}^{t}\frac{dI_L}{dt'}\,dt' \;=\; \int_{0}^{t}\frac{V_L}{L}\,dt' \quad\Longrightarrow\quad I_L(t) - I_L(0) = \frac{V_L}{L}\,t
+---
+name: ramp-result
+tex: I_L(t) = I_L(0) + \frac{V_L}{L}\,t

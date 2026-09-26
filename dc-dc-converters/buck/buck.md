@@ -28,9 +28,9 @@ This document derives it, then sizes the parts.
 
 ![Buck converter schematic with switch, freewheel diode, inductor, output capacitor and load](buck.assets/fig-01.svg)
 
-_Switch, then inductor, along the top; a freewheel diode from the 🟠 switch node down to ground;
-the capacitor across the 🔵 output. When the switch opens, the diode gives the inductor's current
-a path so it never breaks._
+_Switch, then inductor, along the top; a freewheel diode from the switch node down to ground; the
+capacitor across the output. When the switch opens, the diode gives the inductor's current a path
+so it never breaks._
 
 First, kill an ambiguity that trips everyone up:
 
@@ -38,13 +38,13 @@ First, kill an ambiguity that trips everyone up:
 - **Switch OFF = open** (that path is blocked, like an open gate).
 
 The switch **S1** is driven by a PWM signal at a fixed period `T`. The fraction of each period it
-spends ON is the **duty cycle `D`** (so ON lasts `D·T`, OFF lasts `(1−D)·T`). The 🟠 **switch node**
-is the point right after the switch, where the diode also connects — it is chopped between `V_in`
+spends ON is the **duty cycle `D`** (so ON lasts `D·T`, OFF lasts `(1−D)·T`). The **switch node** is
+the point right after the switch, where the diode also connects — it is chopped between `V_in`
 (switch ON) and roughly 0 V (switch OFF, diode conducting).
 
-> **📝 Note —** If you literally probed the 12 V *supply's own terminals* you'd see a flat 12 V —
-> an ideal source doesn't care what's downstream. The square wave lives at the **switch node**,
-> not at the supply. This is a common labelling slip.
+> **📝 Note —** If you literally probed the 12 V *supply's own terminals* you'd see a flat 12 V — an
+> ideal source doesn't care what's downstream. The square wave lives at the **switch node**, not at
+> the supply. This is a common labelling slip.
 
 ## 2 The two intervals
 
@@ -52,55 +52,52 @@ Because the inductor obeys `V_L = L·dI/dt`, a *constant* voltage across it make
 *straight ramp* (see [../../fundamentals/inductor/inductor.md §3](../../fundamentals/inductor/inductor.md#3-from-the-law-to-the-ramp--the-integral-done-slowly)).
 The buck gives the inductor two constant-voltage intervals per cycle.
 
-**Interval 1 — switch ON, lasting `D·T`.** Current flows `V_in → switch → L → output`. The diode
-is reverse-biased (off). The inductor sees the difference between what pushes on its left end
-(`V_in`) and what pushes back on its right (`V_out`):
+**Interval 1 — switch ON, lasting `D·T`.** Current flows `V_in → switch → L → output`. The diode is
+reverse-biased (off). The inductor sees the difference between what pushes on its left end (`V_in`)
+and what pushes back on its right (`V_out`):
 
-$$V_L = V_{in} - V_{out} \quad(\text{constant, positive})$$
+![V_L equals V_in minus V_out, constant and positive](buck.assets/eq-vl-on.svg)
 
-so the current ramps **up** by
+so the current ramps **up** by:
 
-$$\Delta I_L(\text{rise}) = \frac{(V_{in}-V_{out})\,D\,T}{L}$$
+![delta I_L rise equals V_in minus V_out times D T over L](buck.assets/eq-rise.svg)
 
-**Interval 2 — switch OFF, lasting `(1−D)·T`.** The switch path is gone, so the inductor forces
-the diode to conduct, pinning its left end near ground. Now:
+**Interval 2 — switch OFF, lasting `(1−D)·T`.** The switch path is gone, so the inductor forces the
+diode to conduct, pinning its left end near ground. Now:
 
-$$V_L = 0 - V_{out} = -V_{out} \quad(\text{constant, negative})$$
+![V_L equals minus V_out, constant and negative](buck.assets/eq-vl-off.svg)
 
-so the current ramps **down** by
+so the current ramps **down** by:
 
-$$\Delta I_L(\text{fall}) = \frac{V_{out}\,(1-D)\,T}{L}$$
+![delta I_L fall equals V_out times one minus D times T over L](buck.assets/eq-fall.svg)
 
 ![Buck switch-node square wave above and the resulting triangular inductor current](buck.assets/fig-02.svg)
 
-_The flat-topped square voltage at the 🟠 switch node makes the 🔵 inductor current a straight-sided
+_The flat-topped square voltage at the switch node makes the inductor current a straight-sided
 triangle: up while ON, down while OFF. Each side is one constant-`V_L` ramp from the inductor law._
 
 ## 3 Volt-second balance — the step-down ratio
 
 Now the key idea. In **steady state** the current waveform repeats identically every cycle — the
 triangle starts each period exactly where it started the last one. For that to be true, whatever
-the current *rose* by in Interval 1 must be *exactly* undone by what it *fell* by in Interval 2.
-If it weren't, the current would creep up (or down) a little every cycle, forever — which is not a
-repeating waveform. So `rise = fall`:
+the current *rose* by in Interval 1 must be *exactly* undone by what it *fell* by in Interval 2. If
+it weren't, the current would creep up (or down) a little every cycle, forever. So `rise = fall`;
+cancelling `T` and `L` from both sides:
 
-```text
-(V_in − V_out)·D·T / L   =   V_out·(1 − D)·T / L      rise = fall  (steady state)
+![V_in minus V_out times D equals V_out times one minus D](buck.assets/eq-balance.svg)
 
-  cancel T and L from both sides:
-     (V_in − V_out)·D     =   V_out·(1 − D)
-     V_in·D − V_out·D     =   V_out − V_out·D
-     V_in·D               =   V_out                    the V_out·D terms cancel
-```
+Expand and simplify — the `V_out·D` terms cancel:
 
-$$\boxed{\,V_{out} = D\,V_{in}\,}$$
+![V_in D minus V_out D equals V_out minus V_out D, so V_in D equals V_out](buck.assets/eq-balance-solve.svg)
 
-That is the entire origin of the buck's step-down ratio — *derived*, not assumed. This equivalently
-says the average inductor voltage over a cycle is zero (**volt-second balance**): the positive
-volt-seconds `(V_in−V_out)·D·T` cancel the negative `V_out·(1−D)·T`.
+![V_out equals D V_in, boxed](buck.assets/eq-result.svg)
 
-> **💡 Tip —** Volt-second balance is the master key for *every* converter in this tree. Write
-> `V_L` for each interval, set the average over one period to zero, and solve. The boost uses the
+That is the entire origin of the buck's step-down ratio — *derived*, not assumed. Equivalently, the
+average inductor voltage over a cycle is zero (**volt-second balance**): the positive volt-seconds
+cancel the negative ones.
+
+> **💡 Tip —** Volt-second balance is the master key for *every* converter in this tree. Write `V_L`
+> for each interval, set the average over one period to zero, and solve. The boost uses the
 > identical move — see [../boost/boost.md §3](../boost/boost.md#3-volt-second-balance--the-step-up-ratio).
 
 ## 4 Sizing the inductor
@@ -108,7 +105,7 @@ volt-seconds `(V_in−V_out)·D·T` cancel the negative `V_out·(1−D)·T`.
 The rise/fall equations already contain `L`, so pick a target ripple `ΔI_L` and solve. A common
 rule of thumb is 20–40 % of the average (load) current. Using the ON-interval rise with `T = 1/f_sw`:
 
-$$L = \frac{(V_{in}-V_{out})\,D\,T}{\Delta I_L} = \frac{(V_{in}-V_{out})\,D}{f_{sw}\,\Delta I_L}$$
+![L equals V_in minus V_out times D T over delta I_L equals V_in minus V_out times D over f_sw delta I_L](buck.assets/eq-inductor-sizing.svg)
 
 Bigger `L` → smaller ripple, but a physically bigger, costlier part with more resistance. That is
 the trade-off `ΔI_L` sets.
@@ -121,44 +118,28 @@ It is a triangle centred on zero, swinging `±ΔI_L/2`.
 
 ![Capacitor current as the difference between triangular inductor current and constant load current](buck.assets/fig-03.svg)
 
-_The 🟣 capacitor current is the inductor triangle minus the flat load line: a triangle centred on
+_The capacitor current is the inductor triangle minus the flat load line: a triangle centred on
 zero. The shaded positive half is the charge `ΔQ` piled onto the cap; that charge over `C` is the
 output voltage ripple._
 
-The charge added during the positive (charging) half-cycle is the **area of that little triangle**.
-Its base is half the period, `T/2`, and its height is `ΔI_L/2`:
+The charge added during the positive (charging) half-cycle is the **area of that little triangle** —
+base `T/2`, height `ΔI_L/2`:
 
-```text
-ΔQ      = ½ · base · height
-        = ½ · (T/2) · (ΔI_L/2)
-        = T·ΔI_L / 8
+![delta Q equals one half times T over 2 times delta I_L over 2 equals T delta I_L over 8](buck.assets/eq-charge-triangle.svg)
 
-ΔV_out  = ΔQ / C                         voltage ripple from that charge (I_C = C·dV/dt, integrated)
-  ⇒  C   = ΔI_L / (8·f_sw·ΔV_out)          solve for C, with T = 1/f_sw
-```
+That charge on a capacitance `C` is a voltage ripple `ΔV_out = ΔQ/C`, so:
 
-$$C = \frac{\Delta I_L}{8\,f_{sw}\,\Delta V_{out}}$$
+![delta V_out equals delta Q over C, so C equals delta I_L over 8 f_sw delta V_out](buck.assets/eq-cap-sizing.svg)
 
 ## 6 Worked numbers — 12 V to 3 V
 
 Take `f_sw = 100 kHz` (so `T = 10 µs`), a 1 A load, a target 20 % current ripple and 1 % output
-voltage ripple. With `V_in = 12 V`, `V_out = 3 V`, the duty cycle is `D = V_out/V_in = 0.25`.
+voltage ripple. With `V_in = 12 V`, `V_out = 3 V`, the duty cycle is `D = V_out/V_in = 0.25`, and
+`ΔI_L = 0.2 A`, `ΔV_out = 0.03 V`:
 
-```text
-ΔI_L  = 20% of 1 A = 0.2 A
+![L equals 12 minus 3 times 0.25 over 100000 times 0.2 equals 112.5 microhenry](buck.assets/eq-worked-L.svg)
 
-L = (V_in − V_out)·D / (f_sw·ΔI_L)
-  = (12 − 3)·0.25 / (100_000 · 0.2)
-  = 2.25 / 20_000
-  = 112.5 µH
-
-ΔV_out = 1% of 3 V = 0.03 V
-
-C = ΔI_L / (8·f_sw·ΔV_out)
-  = 0.2 / (8 · 100_000 · 0.03)
-  = 0.2 / 24_000
-  ≈ 8.3 µF
-```
+![C equals 0.2 over 8 times 100000 times 0.03 equals about 8.3 microfarad](buck.assets/eq-worked-C.svg)
 
 > **📝 Note —** Sanity-check the duty cycle against the result: `V_out = D·V_in = 0.25 × 12 = 3 V`.
 > ✓. And the ripple assumptions are self-consistent — `ΔI_L = 0.2 A` on a 1 A load is 20 %, exactly

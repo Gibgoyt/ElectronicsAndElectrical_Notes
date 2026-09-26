@@ -1,0 +1,34 @@
+# Equation sources for boost.md — rendered into boost.assets/eq-*.svg
+
+name: vl-on
+tex: V_L = V_{in}\quad(\text{constant, positive})
+---
+name: rise
+tex: \Delta I_L(\text{rise}) = \frac{V_{in}\,D\,T}{L}
+---
+name: vl-off
+tex: V_L = V_{in} - V_{out}\quad(\text{constant, negative, since } V_{out} > V_{in})
+---
+name: fall
+tex: \Delta I_L(\text{fall}) = \frac{(V_{out}-V_{in})\,(1-D)\,T}{L}
+---
+name: balance
+tex: V_{in}\,D = (V_{out}-V_{in})\,(1-D)
+---
+name: balance-solve
+tex: V_{in}\,D + V_{in} - V_{in}\,D = V_{out}\,(1-D) \quad\Longrightarrow\quad V_{in} = V_{out}\,(1-D)
+---
+name: result
+tex: \boxed{\,V_{out} = \frac{V_{in}}{1-D}\,}
+---
+name: inductor-sizing
+tex: L = \frac{V_{in}\,D}{f_{sw}\,\Delta I_L}
+---
+name: cap-sizing
+tex: \Delta V_{out} = \frac{I_{load}\,D\,T}{C} \quad\Longrightarrow\quad C = \frac{I_{load}\,D}{f_{sw}\,\Delta V_{out}}
+---
+name: worked-L
+tex: L = \frac{12 \times 0.5}{100{,}000 \times 0.2} = \frac{6}{20{,}000} = 300\ \mu\text{H}
+---
+name: worked-C
+tex: C = \frac{1 \times 0.5}{100{,}000 \times 0.24} = \frac{0.5}{24{,}000} \approx 20.8\ \mu\text{F}

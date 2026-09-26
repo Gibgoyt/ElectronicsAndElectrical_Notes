@@ -25,40 +25,46 @@ equations and graphs carry as much of the argument as the prose.
 - **Sources / cross-links** at the end: link to the sibling documents each mechanism connects
   to (`[[../capacitor/capacitor.md]]`-style relative links).
 
-## 2. Maths — three tools, pick by job
+## 2. Maths — everything is a generated SVG
 
-This tree deliberately uses **three** ways of showing maths. Use the one that fits:
+Markdown math (`$$…$$` / `$…$`) renders differently, or not at all, across GitHub, GitLab, and
+offline viewers, and inline `` `code` `` is not math. So **this tree does not rely on any markdown
+math renderer.** Every equation is baked into an SVG once, by a deterministic tool, and embedded as
+an image — so it looks identical everywhere, forever.
 
-1. **Display and inline equations — KaTeX/LaTeX syntax.** Wrap display maths in `$$…$$` and
-   inline maths in `$…$`. This renders on GitHub, GitLab, and the local Chrome *Markdown Viewer*
-   (with its **mathjax** content option enabled) alike, as well as VS Code and Obsidian. Use it
-   for the *statement* of a law or a final result:
+1. **Every equation and every derivation step is a generated SVG.** Write the LaTeX in a
+   `<doc>.eqns` source file beside the `.md`, then run the toolchain (see
+   [../toolchain/README.md](../toolchain/README.md)). It emits `eq-<name>.svg` into the doc's
+   `<doc>.assets/` directory. Embed with plain image syntax and an italic-free alt describing the
+   equation in words:
 
    ```
-   $$V_L(t) = L\,\frac{dI_L}{dt}$$
+   ![V_L equals L times dI_L by dt](inductor.assets/eq-law.svg)
    ```
 
-   > **📝 Note —** If a viewer does not render `$$…$$`, the raw LaTeX is still readable. Every
-   > equation is also restated in prose or in an ASCII derivation nearby, so no meaning is lost.
+   The `.eqns` record looks like:
 
-2. **Step-by-step derivations — aligned ASCII code fences.** When the point is to show *every
-   algebraic move* (the parts that are easy to get lost in), put the derivation in a plain
-   fenced block with the `=` signs lined up. These read identically in every viewer and match
-   how you write them by hand:
-
-   ```text
-   V_L        = L · dI/dt                  the defining law
-   dI/dt      = V_L / L                    rearranged for the rate
-   ∫ dI       = ∫ (V_L/L) dt               integrate both sides over 0..t
-   I(t)−I(0)  = (V_L/L) · t                V_L, L constant → pull out of the integral
+   ```
+   name: law
+   tex: V_L(t) = L\frac{dI_L}{dt}
+   ---
    ```
 
-3. **Graphs, waveforms, schematics — SVG figures** (see §3–§4).
+   Multi-step derivations are one equation each (or a single `\Longrightarrow`-chained line), so the
+   algebra is typeset, not ASCII art. **Do not** put `$$…$$` or ASCII `=`-aligned blocks in the
+   `.md` — they are the exact things that render inconsistently.
 
-> **⚠️ Watch out —** **Never animate a graph.** Axes-and-curves figures (`V` vs `t`, `I` vs `t`) are always
-> static — motion on a plotted quantity is misleading. Animation is allowed *only* on
-> component diagrams (charge moving through a coil, charge piling on a plate), because there
-> the motion depicts a physical flow, not a measured value.
+2. **Inline symbols stay as inline `` `code` ``.** Short identifiers in prose — `` `V_L` ``,
+   `` `dI/dt` ``, `` `D` `` — are written as inline code, which renders fine on every platform. Only
+   *equations* (a statement with an `=`, a fraction, an integral, a boxed result) become SVGs.
+
+3. **Graphs, waveforms, schematics — generated SVG figures** built by `toolchain/drawing_to_svg.js`
+   (see §3–§4).
+
+> **⚠️ Watch out —** **Never animate a graph.** Axes-and-curves figures (`V` vs `t`, `I` vs `t`) are
+> always static — motion on a plotted quantity is misleading. Animation is allowed *only* on
+> component diagrams (charge moving through a coil, charge piling on a plate), because there the
+> motion depicts a physical flow, not a measured value.
 
 ## 3. The figures — file convention
 
@@ -116,9 +122,8 @@ this tree:
 6. Markdown embed: alt == aria-label, italic caption follows, callout after if there is a
    consequence.
 7. Prose: thesis blockquote, numbered Contents, honest-cost callout, Sources/cross-links.
-8. Every quantity verbatim with units; results shown in a display equation *and* an ASCII
-   derivation.
-9. **Portable everywhere.** Renders correctly on GitHub, GitLab, and the local markdown-it
-   viewer: use emoji-label blockquotes (not `> [!NOTE]`), keep inline `$…$` on one line with no
-   space just inside the delimiters and no backticks inside, and reference figures by relative
-   path so they resolve in every host.
+8. Every quantity verbatim with units; every equation is a generated `eq-*.svg` (no `$$` or ASCII
+   math in the `.md`), and each is regenerated from its `.eqns` source by the toolchain.
+9. **Portable everywhere.** Renders correctly on GitHub, GitLab, and the local viewer with no
+   plugins: all maths and diagrams are SVG images, callouts are emoji-label blockquotes (not
+   `> [!NOTE]`), and every figure is referenced by relative path so it resolves in every host.

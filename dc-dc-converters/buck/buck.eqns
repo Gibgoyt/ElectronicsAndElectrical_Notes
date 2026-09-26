@@ -1,0 +1,37 @@
+# Equation sources for buck.md — rendered into buck.assets/eq-*.svg
+
+name: vl-on
+tex: V_L = V_{in} - V_{out}\quad(\text{constant, positive})
+---
+name: rise
+tex: \Delta I_L(\text{rise}) = \frac{(V_{in}-V_{out})\,D\,T}{L}
+---
+name: vl-off
+tex: V_L = 0 - V_{out} = -V_{out}\quad(\text{constant, negative})
+---
+name: fall
+tex: \Delta I_L(\text{fall}) = \frac{V_{out}\,(1-D)\,T}{L}
+---
+name: balance
+tex: (V_{in}-V_{out})\,D = V_{out}\,(1-D)
+---
+name: balance-solve
+tex: V_{in}\,D - V_{out}\,D = V_{out} - V_{out}\,D \quad\Longrightarrow\quad V_{in}\,D = V_{out}
+---
+name: result
+tex: \boxed{\,V_{out} = D\,V_{in}\,}
+---
+name: inductor-sizing
+tex: L = \frac{(V_{in}-V_{out})\,D\,T}{\Delta I_L} = \frac{(V_{in}-V_{out})\,D}{f_{sw}\,\Delta I_L}
+---
+name: charge-triangle
+tex: \Delta Q = \tfrac{1}{2}\cdot\frac{T}{2}\cdot\frac{\Delta I_L}{2} = \frac{T\,\Delta I_L}{8}
+---
+name: cap-sizing
+tex: \Delta V_{out} = \frac{\Delta Q}{C} \quad\Longrightarrow\quad C = \frac{\Delta I_L}{8\,f_{sw}\,\Delta V_{out}}
+---
+name: worked-L
+tex: L = \frac{(12-3)\,(0.25)}{100{,}000 \times 0.2} = \frac{2.25}{20{,}000} = 112.5\ \mu\text{H}
+---
+name: worked-C
+tex: C = \frac{0.2}{8 \times 100{,}000 \times 0.03} = \frac{0.2}{24{,}000} \approx 8.3\ \mu\text{F}

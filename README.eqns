@@ -1,0 +1,9 @@
+# Equations used in the top README.md — rendered into README.assets/eq-*.svg
+
+name: inductor-law
+display: false
+tex: V_L = L\,\dfrac{dI_L}{dt}
+---
+name: capacitor-law
+display: false
+tex: I_C = C\,\dfrac{dV_C}{dt}

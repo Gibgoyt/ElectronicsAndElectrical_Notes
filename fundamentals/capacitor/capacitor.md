@@ -1,9 +1,9 @@
 # The capacitor — current is proportional to the rate of change of voltage
 
-The capacitor is the exact mirror of the inductor. Its law, `I_C = C·dV/dt`, comes from one
-line of algebra and one line of calculus — but *that* calculus step is the one this whole
-subject trips on. So this document slows all the way down and proves, properly, **why you are
-allowed to differentiate `Q = C·V`**, and what rule makes it legal.
+The capacitor is the exact mirror of the inductor. Its law comes from one line of algebra and one
+line of calculus — but *that* calculus step is the one this whole subject trips on. So this
+document slows all the way down and proves, properly, **why you are allowed to differentiate
+`Q = C·V`**, and what rule makes it legal.
 
 **Contents**
 
@@ -17,28 +17,30 @@ allowed to differentiate `Q = C·V`**, and what rule makes it legal.
 
 > **The thesis in one line**
 >
-> `I_C = C·dV/dt`: the current into a capacitor is proportional to how fast its voltage is
-> changing — the inductor's law with voltage and current swapped.
+> The current into a capacitor is proportional to how fast its voltage is changing — the
+> inductor's law with voltage and current swapped:
+
+![I_C equals C times dV_C by dt](capacitor.assets/eq-law.svg)
 
 ---
 
 ## 1 What a capacitor actually is
 
-A capacitor is **two conducting plates separated by a gap** (an insulator, the dielectric).
-Push charge onto one plate and it repels an equal charge off the facing plate, so one plate ends
-up `+Q` and the other `−Q`. That separated charge sets up an electric field across the gap, and
-*that field* is the stored energy:
+A capacitor is **two conducting plates separated by a gap** (an insulator, the dielectric). Push
+charge onto one plate and it repels an equal charge off the facing plate, so one plate ends up
+`+Q` and the other `−Q`. That separated charge sets up an electric field across the gap, and *that
+field* is the stored energy:
 
-$$E = \tfrac{1}{2}\,C\,V_C^2$$
+![E equals one half C V_C squared](capacitor.assets/eq-energy.svg)
 
 The defining relationship is simply that the stored charge is proportional to the voltage across
 the plates, with the capacitance `C` as the constant of proportionality:
 
-$$Q = C\,V_C$$
+![Q equals C V_C](capacitor.assets/eq-charge.svg)
 
-- **$Q$** — the charge separated onto the plates, in coulombs (C).
-- **$V_C$** — the voltage across the plates, in volts (V).
-- **$C$** — the capacitance, in farads (F): how much charge it stores per volt.
+- **`Q`** — the charge separated onto the plates, in coulombs (C).
+- **`V_C`** — the voltage across the plates, in volts (V).
+- **`C`** — the capacitance, in farads (F): how much charge it stores per volt.
 
 ## 2 The rule you need — when you may differentiate an equation
 
@@ -53,49 +55,30 @@ symbols: if `f(t) = g(t)` for all `t`, then `df/dt = dg/dt`. You are **not** "mu
 equation by an operator." You are applying *the same function* — the derivative — to *two
 expressions that are already the same function*, so the results are still the same function.
 
-Contrast the two moves so the distinction is unmistakable:
+Two moves, so the distinction is unmistakable:
 
-```text
-LEGAL     — differentiate an identity:
-            Q(t) = C·V(t)  holds at every instant t,
-            so  d/dt[ Q(t) ]  =  d/dt[ C·V(t) ]         same operation, both sides
-                                                        (both sides were the same function)
+- **Legal — differentiate an identity.** `Q(t) = C·V(t)` holds at every instant, so applying
+  `d/dt` to both sides is the same operation done to two things that were already equal.
+- **Not a thing — "multiply the equation by `d/dt`".** `d/dt` is an operator, not a number; you do
+  not "multiply both sides" by it the way you'd multiply by 3. "Differentiate both sides" is
+  shorthand for the *legal* move above, and it only works because the two sides are equal as
+  functions.
 
-NOT A THING — "multiply the equation by d/dt":
-            d/dt is an operator, not a number. You do not
-            "multiply both sides" by it the way you'd multiply by 3.
-            The legal move above is what people *mean* when they say
-            "differentiate both sides", and it only works because
-            the two sides are equal as functions.
-```
+Carry out the legal move on `Q = C·V`. The capacitance `C` is a constant, so it comes out front of
+the derivative:
 
-So carry out the legal move on `Q = C·V`. The capacitance `C` is a constant, so it comes out
-front of the derivative:
-
-```text
-Q(t)        = C · V_C(t)                     Eq. 1 — the defining relationship (an identity in t)
-d/dt[Q(t)]  = d/dt[ C · V_C(t) ]             differentiate both sides (rule above)
-dQ/dt       = C · dV_C/dt                    C constant → pulls out of d/dt
-```
+![differentiate both sides of Q equals C V_C to get dQ by dt equals C dV_C by dt](capacitor.assets/eq-differentiate.svg)
 
 Now bring in the **second** fact — the definition of current. Current *is* the rate at which
 charge moves:
 
-```text
-I = dQ/dt                                    Eq. 2 — definition of current
-```
+![I equals dQ by dt](capacitor.assets/eq-current-def.svg)
 
-This is the piece that felt "missing": Eq. 1 relates charge to voltage; Eq. 2 relates charge to
-current. Substitute Eq. 2 into the differentiated Eq. 1 — replace `dQ/dt` with `I` — and the
-capacitor law falls out:
+This is the piece that felt "missing": the charge–voltage relationship relates charge to voltage;
+the definition of current relates charge to current. Substitute the second into the differentiated
+first — replace `dQ/dt` with `I` — and the capacitor law falls out:
 
-```text
-dQ/dt  = C · dV_C/dt                         from Eq. 1, differentiated
-  I    = dQ/dt                               Eq. 2
-  ⇒  I_C = C · dV_C/dt                        substitute: the capacitor's defining law
-```
-
-$$\boxed{\,I_C(t) = C\,\frac{dV_C}{dt}\,}$$
+![I_C equals C times dV_C by dt, boxed](capacitor.assets/eq-law.svg)
 
 > **💡 Tip —** The whole trick is: **an equation between two functions of `t` stays true if you
 > differentiate both sides**, because you are doing the identical thing to two things that are
@@ -110,35 +93,22 @@ $$\boxed{\,I_C(t) = C\,\frac{dV_C}{dt}\,}$$
 
 ## 3 The units of the farad
 
-From `Q = C·V`, a farad is a coulomb per volt. And since current is charge per time (`I = dQ/dt`),
-a coulomb is an ampere-second (`1 C = 1 A·s`). So:
+From `Q = C·V`, a farad is a coulomb per volt. And since current is charge per time, a coulomb is
+an ampere-second (`1 C = 1 A·s`):
 
-```text
-[C] = [Q] / [V]     = coulomb / volt        1 F = 1 C/V
-[Q] = [I] · [t]     = ampere · second       1 C = 1 A·s
-  ⇒  1 F = (A·s) / V
-```
+![one farad equals one coulomb per volt equals ampere second per volt](capacitor.assets/eq-units-farad.svg)
 
-Check it against the law `I_C = C·dV/dt`:
+Check it against the law `I_C = C·dV/dt` — volts and seconds cancel, leaving amps:
 
-```text
-(A·s / V) × (V / s) = A                      volts and seconds cancel → amps. Consistent.
-```
+![A s over V times V over s equals A](capacitor.assets/eq-units-check.svg)
 
 ## 4 From the law to the ramp
 
-Run the mirror of the inductor argument. Suppose the **current is held constant** (exactly what
-a converter's inductor forces into the capacitor for part of each cycle). Then `dV_C/dt = I_C/C`
-is a constant, so the voltage climbs in a straight line:
+Run the mirror of the inductor argument. Suppose the **current is held constant** (exactly what a
+converter's inductor forces into the capacitor for part of each cycle). Then `dV_C/dt = I_C/C` is a
+constant, so the voltage climbs in a straight line from wherever it started:
 
-```text
-dV_C/dt          = I_C / C                   rearrange the law; RHS is constant
-∫₀ᵗ (dV_C/dt') dt' = ∫₀ᵗ (I_C / C) dt'         integrate both sides over 0..t
-V_C(t) − V_C(0)  = (I_C / C) · t             FTC on the left; I_C, C pull out on the right
-```
-
-So a constant current forces the capacitor voltage into a **straight ramp**, starting from
-whatever it already was, `V_C(0)`:
+![V_C of t minus V_C of 0 equals I_C over C times t](capacitor.assets/eq-ramp.svg)
 
 ![Constant current into a capacitor produces a linear voltage ramp](capacitor.assets/fig-01.svg)
 
@@ -179,6 +149,5 @@ capacitor-sizing maths look so alike._
   equation before the `V ↔ I`, `L ↔ C` swap.
 - **Where the ramp is used:** the output-capacitor sizing in
   [../../dc-dc-converters/buck/buck.md §5](../../dc-dc-converters/buck/buck.md#5-sizing-the-output-capacitor)
-  and [../../dc-dc-converters/boost/boost.md §5](../../dc-dc-converters/boost/boost.md#5-sizing-the-output-capacitor),
-  both of which are just `I_C = C·dV/dt` applied over one switching interval.
+  and [../../dc-dc-converters/boost/boost.md §5](../../dc-dc-converters/boost/boost.md#5-sizing-the-output-capacitor).
 - Style and figure conventions: [../../STYLE.md](../../STYLE.md).

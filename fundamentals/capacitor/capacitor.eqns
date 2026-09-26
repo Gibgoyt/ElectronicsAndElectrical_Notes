@@ -1,0 +1,25 @@
+# Equation sources for capacitor.md — rendered into capacitor.assets/eq-*.svg
+
+name: energy
+tex: E = \tfrac{1}{2}\,C\,V_C^2
+---
+name: charge
+tex: Q = C\,V_C
+---
+name: differentiate
+tex: \frac{d}{dt}\big[Q(t)\big] = \frac{d}{dt}\big[C\,V_C(t)\big] \quad\Longrightarrow\quad \frac{dQ}{dt} = C\,\frac{dV_C}{dt}
+---
+name: current-def
+tex: I = \frac{dQ}{dt}
+---
+name: law
+tex: \boxed{\,I_C(t) = C\,\frac{dV_C}{dt}\,}
+---
+name: units-farad
+tex: 1\ \text{F} = \frac{1\ \text{C}}{1\ \text{V}} = \frac{\text{A}\cdot\text{s}}{\text{V}}
+---
+name: units-check
+tex: \left(\frac{\text{A}\cdot\text{s}}{\text{V}}\right)\times\left(\frac{\text{V}}{\text{s}}\right) = \text{A}
+---
+name: ramp
+tex: V_C(t) - V_C(0) = \frac{I_C}{C}\,t
