@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- hand-authored figure - skeleton copied verbatim from Proqmed docs/uSockets fig-01.svg per docs/STYLE.md -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 404" role="img" aria-label="Inductor terminal polarity reverses when the current changes from rising to falling" width="980" height="404">
+<style><![CDATA[
+.h2m-bg{fill:#0d1117}
+*{box-sizing:border-box}
+/* Printing on a dark palette wastes ink and renders badly, so print is always light. */
+body{margin:0;background:#0d1117;color:#c9d1d9;
+  font:15px/1.65 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  padding:38px 22px 90px}
+main{max-width:1080px;margin:0 auto}
+figure{margin:22px 0;background:#161b22;border:1px solid #30363d;
+  border-radius:11px;padding:18px;overflow-x:auto}
+figure svg{display:block;width:100%;height:auto;min-width:680px}
+figcaption{color:#8b949e;font-size:12.5px;margin-top:12px;text-align:center}
+/* ---- SVG theming: every colour resolves through these classes so figures re-theme. */
+svg text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;fill:#c9d1d9}
+svg text.t{font-size:13.5px;font-weight:700;fill:#e6edf3}
+svg text.s{font-size:11px;fill:#8b949e}
+svg text.xs{font-size:9.5px;fill:#8b949e}
+svg text.l{font-size:10.5px;fill:#8b949e}
+svg text.lb{font-size:10.5px;fill:#58a6ff}
+svg text.lg{font-size:10.5px;fill:#3fb950}
+svg text.lr{font-size:10.5px;fill:#f85149}
+svg text.lp{font-size:10.5px;fill:#bc8cff}
+svg text.la{font-size:10.5px;fill:#d29922}
+svg .fx-b{fill:#58a6ff}  svg .fx-g{fill:#3fb950}
+svg .fx-r{fill:#f85149}   svg .fx-a{fill:#d29922}
+svg .fx-p{fill:#bc8cff} svg .fx-n{fill:#8b949e}
+svg .n{fill:#1a2029;stroke:#484f58;stroke-width:1.6}
+svg .nb{fill:#101a2b;stroke:#58a6ff;stroke-width:2px}
+svg .ng{fill:#0f1c14;stroke:#3fb950;stroke-width:2px}
+svg .nr{fill:#201215;stroke:#f85149;stroke-width:2px}
+svg .na{fill:#1e1a10;stroke:#d29922;stroke-width:2px}
+svg .np{fill:#181228;stroke:#bc8cff;stroke-width:2px}
+svg .nd{fill:#15191f;stroke:#3d444d;stroke-width:1.5;stroke-dasharray:5 4}
+svg .grp{fill:none;stroke:#3d444d;stroke-width:1.4;stroke-dasharray:6 5}
+svg .a{stroke:#8b949e;stroke-width:1.8;fill:none;marker-end:url(#ah)}
+svg .ab{stroke:#58a6ff;stroke-width:2;fill:none;marker-end:url(#ahb)}
+svg .ag{stroke:#3fb950;stroke-width:2;fill:none;marker-end:url(#ahg)}
+svg .ar{stroke:#f85149;stroke-width:2;fill:none;marker-end:url(#ahr)}
+svg .ap{stroke:#bc8cff;stroke-width:2;fill:none;marker-end:url(#ahp)}
+svg .aa{stroke:#d29922;stroke-width:2;fill:none;marker-end:url(#aha)}
+svg .wire{stroke:#8b949e;stroke-width:1.8;fill:none}
+svg .wire-r{stroke:#f85149;stroke-width:2.4;fill:none;stroke-linecap:round}
+svg .wire-b{stroke:#58a6ff;stroke-width:2.4;fill:none;stroke-linecap:round}
+svg .wire-a{stroke:#d29922;stroke-width:2.4;fill:none;stroke-linecap:round}
+svg .wire-p{stroke:#bc8cff;stroke-width:2.4;fill:none;stroke-linecap:round}
+svg .wire-g{stroke:#3fb950;stroke-width:2.4;fill:none;stroke-linecap:round}
+svg .axis{stroke:#8b949e;stroke-width:1.5;fill:none}
+svg .grid{stroke:#30363d;stroke-width:1;fill:none;stroke-dasharray:3 4}
+svg .plot-b{stroke:#58a6ff;stroke-width:2.4;fill:none;stroke-linejoin:round}
+svg .plot-a{stroke:#d29922;stroke-width:2.4;fill:none;stroke-linejoin:round}
+svg .plot-g{stroke:#3fb950;stroke-width:2.4;fill:none;stroke-linejoin:round}
+svg .plot-r{stroke:#f85149;stroke-width:2.4;fill:none;stroke-linejoin:round}
+svg .plot-p{stroke:#bc8cff;stroke-width:2.4;fill:none;stroke-linejoin:round}
+svg .fill-a{fill:#d29922;opacity:0.14}
+svg .fill-g{fill:#3fb950;opacity:0.14}
+svg .dash{stroke-dasharray:6 5}
+svg .mk-n{fill:#8b949e}  svg .mk-b{fill:#58a6ff}
+svg .mk-g{fill:#3fb950}  svg .mk-r{fill:#f85149}
+svg .mk-p{fill:#bc8cff} svg .mk-a{fill:#d29922}
+@media (prefers-color-scheme: light){
+body{background:#ffffff;color:#1f2328}
+figure{background:#f6f8fa;border:1px solid #d0d7de}
+figcaption{color:#57606a}
+svg text{fill:#1f2328}
+svg text.t{fill:#010409}
+svg text.s{fill:#57606a}
+svg text.xs{fill:#57606a}
+svg text.l{fill:#57606a}
+svg text.lb{fill:#0550ae}
+svg text.lg{fill:#1a7f37}
+svg text.lr{fill:#cf222e}
+svg text.lp{fill:#8250df}
+svg text.la{fill:#9a6700}
+svg .fx-b{fill:#0550ae}
+svg .fx-g{fill:#1a7f37}
+svg .fx-r{fill:#cf222e}
+svg .fx-a{fill:#9a6700}
+svg .fx-p{fill:#8250df}
+svg .fx-n{fill:#57606a}
+svg .n{fill:#f6f8fa;stroke:#8c959f;stroke-width:1.6}
+svg .nb{fill:#ddf4ff;stroke:#0550ae;stroke-width:2.2px}
+svg .ng{fill:#dafbe1;stroke:#1a7f37;stroke-width:2.2px}
+svg .nr{fill:#ffebe9;stroke:#cf222e;stroke-width:2.2px}
+svg .na{fill:#fff8c5;stroke:#9a6700;stroke-width:2.2px}
+svg .np{fill:#fbefff;stroke:#8250df;stroke-width:2.2px}
+svg .nd{fill:#ffffff;stroke:#afb8c1;stroke-width:1.5;stroke-dasharray:5 4}
+svg .grp{fill:none;stroke:#afb8c1;stroke-width:1.4;stroke-dasharray:6 5}
+svg .a{stroke:#57606a;stroke-width:1.8;fill:none;marker-end:url(#ah)}
+svg .ab{stroke:#0550ae;stroke-width:2;fill:none;marker-end:url(#ahb)}
+svg .ag{stroke:#1a7f37;stroke-width:2;fill:none;marker-end:url(#ahg)}
+svg .ar{stroke:#cf222e;stroke-width:2;fill:none;marker-end:url(#ahr)}
+svg .ap{stroke:#8250df;stroke-width:2;fill:none;marker-end:url(#ahp)}
+svg .aa{stroke:#9a6700;stroke-width:2;fill:none;marker-end:url(#aha)}
+svg .wire{stroke:#57606a}
+svg .wire-r{stroke:#cf222e}
+svg .wire-b{stroke:#0550ae}
+svg .wire-a{stroke:#9a6700}
+svg .wire-p{stroke:#8250df}
+svg .wire-g{stroke:#1a7f37}
+svg .axis{stroke:#57606a}
+svg .grid{stroke:#d0d7de}
+svg .plot-b{stroke:#0550ae}
+svg .plot-a{stroke:#9a6700}
+svg .plot-g{stroke:#1a7f37}
+svg .plot-r{stroke:#cf222e}
+svg .plot-p{stroke:#8250df}
+svg .fill-a{fill:#9a6700;opacity:0.12}
+svg .fill-g{fill:#1a7f37;opacity:0.12}
+svg .mk-n{fill:#57606a}
+svg .mk-b{fill:#0550ae}
+svg .mk-g{fill:#1a7f37}
+svg .mk-r{fill:#cf222e}
+svg .mk-p{fill:#8250df}
+svg .mk-a{fill:#9a6700}
+.h2m-bg{fill:#ffffff}
+}
+@media print{
+body{background:#ffffff;color:#111417}
+figure{background:#ffffff;border:1px solid #c3ccd5}
+figure svg{min-width:0}
+svg text{fill:#111417}
+.h2m-bg{fill:#ffffff}
+}
+]]></style>
+<defs>
+<marker id="ah"  markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" class="mk-n"/></marker>
+<marker id="ahb" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" class="mk-b"/></marker>
+<marker id="ahg" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" class="mk-g"/></marker>
+<marker id="ahr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" class="mk-r"/></marker>
+<marker id="ahp" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" class="mk-p"/></marker>
+<marker id="aha" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" class="mk-a"/></marker>
+</defs>
+<rect class="h2m-bg" x="0" y="0" width="980" height="404" fill="#0d1117"/>
+<text class="t" x="490" y="34" text-anchor="middle">The polarity flips with the sign of dI/dt — this is what powers a boost</text>
+
+<!-- LEFT: current increasing -->
+<rect class="grp" x="20" y="56" width="450" height="300" rx="12"/>
+<text class="t" x="245" y="84" text-anchor="middle">current INCREASING  (dI/dt &gt; 0)</text>
+<text class="lb" x="245" y="106" text-anchor="middle">V_L = L·dI/dt  &gt; 0</text>
+<!-- coil -->
+<path class="wire" d="M90 200 H150 Q165 176 180 200 Q195 224 210 200 Q225 176 240 200 Q255 224 270 200 Q285 176 300 200 H360" />
+<!-- current arrow direction -->
+<path class="ab" d="M110 240 H340"/>
+<text class="lb" x="245" y="262" text-anchor="middle">I flowing A → B, getting bigger</text>
+<!-- polarity marks: entry +, exit - (absorbs power, like a resistor) -->
+<text class="lr" x="86" y="180" text-anchor="middle">+</text>
+<text class="lr" x="364" y="180" text-anchor="middle">−</text>
+<text class="s" x="245" y="300" text-anchor="middle">entry is +, exit is −</text>
+<text class="lr" x="245" y="322" text-anchor="middle">ABSORBS power — behaves like a resistor</text>
+<text class="s" x="245" y="342" text-anchor="middle">(Lenz: back-EMF opposes the rise)</text>
+
+<!-- RIGHT: current decreasing -->
+<rect class="grp" x="510" y="56" width="450" height="300" rx="12"/>
+<text class="t" x="735" y="84" text-anchor="middle">current DECREASING  (dI/dt &lt; 0)</text>
+<text class="lg" x="735" y="106" text-anchor="middle">V_L = L·dI/dt  &lt; 0  (sign flips!)</text>
+<!-- coil -->
+<path class="wire" d="M580 200 H640 Q655 176 670 200 Q685 224 700 200 Q715 176 730 200 Q745 224 760 200 Q775 176 790 200 H850" />
+<!-- current still A->B but shrinking -->
+<path class="ag" d="M600 240 H830"/>
+<text class="lg" x="735" y="262" text-anchor="middle">I still A → B, but shrinking</text>
+<!-- polarity marks reversed: exit +, entry - (delivers power, like a battery) -->
+<text class="lg" x="576" y="180" text-anchor="middle">−</text>
+<text class="lg" x="854" y="180" text-anchor="middle">+</text>
+<text class="s" x="735" y="300" text-anchor="middle">exit is +, entry is −</text>
+<text class="lg" x="735" y="322" text-anchor="middle">DELIVERS power — behaves like a battery</text>
+<text class="s" x="735" y="342" text-anchor="middle">this extra push adds on top of V_in → boost</text>
+
+<text class="la" x="490" y="384" text-anchor="middle">the inductor never chooses a fixed polarity — it takes whatever sign keeps current changing smoothly</text>
+</svg>
