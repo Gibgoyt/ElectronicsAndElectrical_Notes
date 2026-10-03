@@ -1,0 +1,184 @@
+# Equation sources for edges-and-fourier.md — rendered by toolchain/math_to_svg.js into edges-and-fourier.assets/eq-*.svg
+# Edit here, then run:  node toolchain/build_all.js docs/fundamentals/signals --figures toolchain/figures/signals.js
+
+# ---- 1. edges -------------------------------------------------------------------------------
+name: step
+tex: v(t) = V\,u(t), \qquad u(t) = \begin{cases} 0, & t < 0 \\ 1, & t \ge 0 \end{cases}
+---
+name: rc-edge
+tex: v(t) = V\left(1 - e^{-t/\tau}\right), \qquad \tau = RC
+---
+name: rc-slope
+tex: \frac{dv}{dt} = \frac{V}{\tau}\,e^{-t/\tau} \quad\Longrightarrow\quad \left.\frac{dv}{dt}\right|_{t=0} = \frac{V}{\tau}
+---
+name: t10-t90
+tex: V\left(1 - e^{-t_{10}/\tau}\right) = 0.1\,V \;\Longrightarrow\; t_{10} = \tau\ln\tfrac{10}{9}, \qquad V\left(1 - e^{-t_{90}/\tau}\right) = 0.9\,V \;\Longrightarrow\; t_{90} = \tau\ln 10
+---
+name: rise-time
+tex: t_r = t_{90} - t_{10} = \tau\left(\ln 10 - \ln\tfrac{10}{9}\right) = \tau\ln 9 \approx 2.2\,\tau
+---
+name: slew
+tex: \text{SR} = \frac{dv}{dt} \approx \frac{0.9V - 0.1V}{t_r} = \frac{0.8\,V}{t_r}
+---
+name: slew-example
+tex: \text{SR} \approx \frac{0.8 \times 325\,\mathrm{V}}{50\,\mathrm{ns}} = 5.2\,\mathrm{V/ns} = 5200\,\mathrm{V/\mu s}
+---
+name: miller
+tex: t_{sw} \approx \frac{Q_{gd}}{I_g} = \frac{10\,\mathrm{nC}}{1\,\mathrm{A}} = 10\,\mathrm{ns}
+---
+name: cap-limit
+tex: \frac{dv}{dt} = \frac{i}{C_{node}} \quad\Longrightarrow\quad t_r \approx \frac{C_{node}\,V}{I}
+---
+name: cap-current
+tex: i_C = C\,\frac{dv}{dt} = 100\,\mathrm{pF} \times 5.2\,\mathrm{V/ns} = 0.52\,\mathrm{A}
+---
+name: ind-voltage
+tex: v_L = L_{loop}\,\frac{di}{dt} = 20\,\mathrm{nH} \times \frac{10\,\mathrm{A}}{10\,\mathrm{ns}} = 20\,\mathrm{V}
+---
+name: ring
+tex: f_{ring} = \frac{1}{2\pi\sqrt{L_{loop}\,C_{oss}}} = \frac{1}{2\pi\sqrt{20\,\mathrm{nH} \times 1\,\mathrm{nF}}} \approx 35.6\,\mathrm{MHz}
+---
+name: bandwidth
+tex: f_{3\mathrm{dB}} = \frac{1}{2\pi\tau}, \quad t_r = \tau\ln 9 \quad\Longrightarrow\quad t_r\,f_{3\mathrm{dB}} = \frac{\ln 9}{2\pi} \approx 0.35
+---
+
+# ---- 2–3. Fourier series from scratch -------------------------------------------------------
+name: periodic
+tex: f(t + T) = f(t) \quad \text{for all } t, \qquad f_1 = \frac{1}{T}, \qquad \omega_1 = 2\pi f_1 = \frac{2\pi}{T}
+---
+name: series
+tex: f(t) = a_0 + \sum_{n=1}^{\infty}\Big[\,a_n\cos(n\omega_1 t) + b_n\sin(n\omega_1 t)\,\Big]
+---
+name: cos-integral
+tex: \int_0^T \cos(k\omega_1 t)\,dt = \left[\frac{\sin(k\omega_1 t)}{k\omega_1}\right]_0^T = \frac{\sin(2\pi k) - \sin 0}{k\omega_1} = 0 \qquad (k = \pm 1, \pm 2, \dots)
+---
+name: product-to-sum
+tex: \sin A\,\sin B = \tfrac12\big[\cos(A-B) - \cos(A+B)\big], \quad \cos A\,\cos B = \tfrac12\big[\cos(A-B) + \cos(A+B)\big], \quad \sin A\,\cos B = \tfrac12\big[\sin(A-B) + \sin(A+B)\big]
+---
+name: orth-sin
+tex: \int_0^T \sin(m\omega_1 t)\sin(n\omega_1 t)\,dt = \tfrac12\int_0^T \cos\big((m-n)\omega_1 t\big)\,dt - \tfrac12\int_0^T \cos\big((m+n)\omega_1 t\big)\,dt
+---
+name: orth-sin-result
+tex: \int_0^T \sin(m\omega_1 t)\sin(n\omega_1 t)\,dt = \begin{cases} 0, & m \ne n \\ \tfrac12\displaystyle\int_0^T 1\,dt - 0 = \dfrac{T}{2}, & m = n \end{cases}
+---
+name: orth-all
+tex: \int_0^T \cos(m\omega_1 t)\cos(n\omega_1 t)\,dt = \begin{cases} 0, & m \ne n \\ T/2, & m = n \end{cases} \qquad \int_0^T \sin(m\omega_1 t)\cos(n\omega_1 t)\,dt = 0 \ \text{ always}
+---
+name: extract
+tex: \int_0^T f(t)\sin(m\omega_1 t)\,dt = a_0\cdot 0 + \sum_{n} a_n\cdot 0 + \sum_{n} b_n \int_0^T \sin(n\omega_1 t)\sin(m\omega_1 t)\,dt = b_m\,\frac{T}{2}
+---
+name: coeffs
+tex: a_0 = \frac{1}{T}\int_0^T f(t)\,dt, \qquad a_n = \frac{2}{T}\int_0^T f(t)\cos(n\omega_1 t)\,dt, \qquad b_n = \frac{2}{T}\int_0^T f(t)\sin(n\omega_1 t)\,dt
+---
+name: coeffs-angle
+tex: \theta = \omega_1 t, \quad d\theta = \omega_1\,dt = \frac{2\pi}{T}\,dt \quad\Longrightarrow\quad b_n = \frac{1}{\pi}\int_0^{2\pi} f(\theta)\sin(n\theta)\,d\theta
+---
+name: half-wave
+tex: f(\theta + \pi) = -f(\theta) \;\Longrightarrow\; \int_\pi^{2\pi} f(\theta)\sin(n\theta)\,d\theta = \int_0^{\pi} \big(-f(s)\big)\big((-1)^n\sin ns\big)\,ds = (-1)^{n+1}\int_0^{\pi} f(s)\sin(ns)\,ds
+---
+name: half-wave-result
+tex: b_n = \frac{1 + (-1)^{n+1}}{\pi}\int_0^{\pi} f(\theta)\sin(n\theta)\,d\theta = \begin{cases} \dfrac{2}{\pi}\displaystyle\int_0^{\pi} f(\theta)\sin(n\theta)\,d\theta, & n \text{ odd} \\ 0, & n \text{ even} \end{cases}
+---
+
+# ---- 4. the square wave ---------------------------------------------------------------------
+name: square-def
+tex: f(\theta) = \begin{cases} +V, & 0 < \theta < \pi \\ -V, & \pi < \theta < 2\pi \end{cases}
+---
+name: sq-step1
+tex: b_n = \frac{1}{\pi}\left[\int_0^{\pi} V\sin(n\theta)\,d\theta - \int_\pi^{2\pi} V\sin(n\theta)\,d\theta\right]
+---
+name: sq-step2
+tex: \int_0^{\pi}\sin(n\theta)\,d\theta = \left[-\frac{\cos n\theta}{n}\right]_0^{\pi} = \frac{1 - \cos n\pi}{n}, \qquad \int_\pi^{2\pi}\sin(n\theta)\,d\theta = \frac{\cos n\pi - \cos 2n\pi}{n} = \frac{\cos n\pi - 1}{n}
+---
+name: sq-step3
+tex: b_n = \frac{V}{\pi}\cdot\frac{2\,(1 - \cos n\pi)}{n} = \frac{2V}{n\pi}\big(1 - (-1)^n\big) = \begin{cases} \dfrac{4V}{n\pi}, & n \text{ odd} \\ 0, & n \text{ even} \end{cases}
+---
+name: sq-result
+tex: v(t) = \frac{4V}{\pi}\sum_{n=1,3,5,\dots}\frac{\sin(n\omega_1 t)}{n} = \frac{4V}{\pi}\left(\sin\omega_1 t + \tfrac13\sin 3\omega_1 t + \tfrac15\sin 5\omega_1 t + \tfrac17\sin 7\omega_1 t + \cdots\right)
+---
+name: leibniz
+tex: v\!\left(\tfrac{T}{4}\right) = \frac{4V}{\pi}\left(1 - \tfrac13 + \tfrac15 - \tfrac17 + \cdots\right) = \frac{4V}{\pi}\cdot\frac{\pi}{4} = V
+---
+name: gibbs
+tex: \max v_N(t) \;\xrightarrow{N\to\infty}\; \frac{2}{\pi}\operatorname{Si}(\pi)\,V \approx 1.179\,V \qquad (\text{overshoot} \approx 0.179\,V \approx 9\,\% \text{ of the } 2V \text{ jump})
+---
+name: parseval
+tex: \frac{1}{T}\int_0^T f(t)^2\,dt = a_0^2 + \frac12\sum_{n=1}^{\infty}\left(a_n^2 + b_n^2\right)
+---
+name: parseval-square
+tex: V^2 = \frac12\sum_{n\ \text{odd}}\frac{16V^2}{n^2\pi^2} = \frac{8V^2}{\pi^2}\left(1 + \tfrac19 + \tfrac1{25} + \cdots\right) = \frac{8V^2}{\pi^2}\cdot\frac{\pi^2}{8} = V^2
+---
+name: fund-fraction
+tex: \frac{P_1}{P_{total}} = \frac{\tfrac12\left(\tfrac{4V}{\pi}\right)^2}{V^2} = \frac{8}{\pi^2} \approx 0.811
+---
+name: thd-def
+tex: \text{THD} = \frac{\sqrt{V_2^2 + V_3^2 + V_4^2 + \cdots}}{V_1} = \frac{\sqrt{V_{rms}^2 - V_{1,rms}^2}}{V_{1,rms}}
+---
+name: thd-square
+tex: \text{THD}_{\square} = \frac{\sqrt{V^2 - \tfrac{8}{\pi^2}V^2}}{\tfrac{\sqrt 8}{\pi}V} = \sqrt{\frac{\pi^2}{8} - 1} \approx 0.483 = 48.3\,\%
+---
+name: trapezoid
+tex: b_n^{\text{trap}} \approx \frac{4V}{n\pi}\cdot\frac{\sin(n\pi t_r/T)}{n\pi t_r/T} \qquad \text{corner at } f_c = \frac{1}{\pi t_r}
+---
+
+# ---- 5. the H-bridge output as a Fourier series -----------------------------------------------
+name: hb-ideal
+tex: v_{AB}(t) = \frac{4V_{dc}}{\pi}\sum_{n\ \text{odd}}\frac{\sin(n\omega_1 t)}{n}, \qquad \omega_1 = 2\pi\cdot 50\,\mathrm{Hz}
+---
+name: hb-fund
+tex: V_1 = \frac{4}{\pi}V_{dc} \approx 1.273\,V_{dc} \;\overset{V_{dc} = 12\,\mathrm{V}}{=}\; 15.28\,\mathrm{V}\ \text{peak} = 10.80\,\mathrm{V}\ \text{rms}
+---
+name: hb-current
+tex: i(t) = \frac{v_{AB}(t)}{R} = \frac{4V_{dc}}{\pi R}\sum_{n\ \text{odd}}\frac{\sin(n\omega_1 t)}{n}
+---
+name: hb-power-n
+tex: P_n = \frac{V_n^2}{2R} = \frac{1}{2R}\left(\frac{4V_{dc}}{n\pi}\right)^2 = \frac{8\,V_{dc}^2}{n^2\pi^2 R}
+---
+name: hb-power-total
+tex: \sum_{n\ \text{odd}} P_n = \frac{8V_{dc}^2}{\pi^2 R}\left(1 + \tfrac19 + \tfrac1{25} + \cdots\right) = \frac{V_{dc}^2}{R}
+---
+name: hb-power-example
+tex: R = 6\,\Omega,\ V_{dc} = 12\,\mathrm{V}: \quad P_1 = 19.45\,\mathrm{W}, \quad P_3 = 2.16\,\mathrm{W}, \quad P_5 = 0.78\,\mathrm{W}, \quad P_7 = 0.40\,\mathrm{W}, \quad \textstyle\sum P_n = 24\,\mathrm{W}
+---
+name: hb-divider
+tex: i = \frac{V_{dc}}{R + 2R_{ds(on)}} \quad\Longrightarrow\quad v_R = iR = V_{dc}\,\frac{R}{R + 2R_{ds(on)}}
+---
+name: hb-rds-series
+tex: v_R(t) = \frac{4V_{dc}}{\pi}\cdot\frac{R}{R + 2R_{ds(on)}}\sum_{n\ \text{odd}}\frac{\sin(n\omega_1 t)}{n}
+---
+name: hb-rds-example
+tex: \frac{R}{R + 2R_{ds(on)}} = \frac{6}{6 + 0.1} = 0.984, \qquad P_{lamp} = \left(\frac{12}{6.1}\right)^2 6 = 23.2\,\mathrm{W}, \qquad P_{cond} = \left(\frac{12}{6.1}\right)^2 0.1 = 0.39\,\mathrm{W}
+---
+name: qs-def
+tex: v_{AB}(\theta) = \begin{cases} 0, & 0 < \theta < \alpha \\ V_{dc}, & \alpha < \theta < \pi - \alpha \\ 0, & \pi - \alpha < \theta < \pi \end{cases} \qquad v_{AB}(\theta + \pi) = -v_{AB}(\theta)
+---
+name: qs-step
+tex: b_n = \frac{2}{\pi}\int_\alpha^{\pi-\alpha} V_{dc}\sin(n\theta)\,d\theta = \frac{2V_{dc}}{n\pi}\Big[\cos(n\alpha) - \cos(n\pi - n\alpha)\Big]
+---
+name: qs-step2
+tex: \cos(n\pi - n\alpha) = \cos n\pi\,\cos n\alpha + \sin n\pi\,\sin n\alpha = -\cos n\alpha \qquad (n \text{ odd})
+---
+name: qs-result
+tex: b_n = \frac{4V_{dc}}{n\pi}\,\cos(n\alpha) \qquad (n \text{ odd}), \qquad b_n = 0 \quad (n \text{ even})
+---
+name: qs-kill
+tex: b_n = 0 \iff \cos(n\alpha) = 0 \iff n\alpha = 90^\circ \;\Longrightarrow\; \alpha = \frac{90^\circ}{n}: \qquad n = 3 \to \alpha = 30^\circ, \quad n = 5 \to \alpha = 18^\circ
+---
+name: qs-30
+tex: \alpha = 30^\circ: \quad b_1 = \tfrac{4V_{dc}}{\pi}\cos 30^\circ = 1.103\,V_{dc}, \quad b_3 = b_9 = b_{15} = \cdots = 0, \quad b_5 = b_7 = -\tfrac{4V_{dc}}{\pi}\cdot\tfrac{0.866}{n}
+---
+name: qs-rms
+tex: V_{rms} = \sqrt{\frac{1}{\pi}\int_\alpha^{\pi-\alpha} V_{dc}^2\,d\theta} = V_{dc}\sqrt{\frac{\pi - 2\alpha}{\pi}}
+---
+name: qs-thd-30
+tex: \text{THD}(30^\circ) = \frac{\sqrt{\tfrac23 - \left(\tfrac{1.103}{\sqrt2}\right)^2}}{1.103/\sqrt2} = \frac{\sqrt{0.6667 - 0.6079}}{0.7797} \approx 31.1\,\%
+---
+name: full
+tex: v_{lamp}(t) = \sum_{n\ \text{odd}}\;\underbrace{\frac{4V_{dc}}{n\pi}}_{\text{square wave}}\cdot\underbrace{\frac{R}{R + 2R_{ds(on)}}}_{\text{MOSFET divider}}\cdot\underbrace{\cos(n\alpha)}_{\text{zero intervals}}\cdot\underbrace{\frac{\sin(n\pi t_r/T)}{n\pi t_r/T}}_{\text{finite edges}}\cdot\sin(n\omega_1 t)
+---
+name: dead-alpha
+tex: 2\alpha = 360^\circ\cdot\frac{t_d}{T} \;\Longrightarrow\; \alpha = 180^\circ\cdot\frac{t_d}{T}: \qquad t_d = 500\,\mathrm{ns}: \ \ \alpha_{50\,\mathrm{Hz}} = 0.0045^\circ, \quad \alpha_{50\,\mathrm{kHz}} = 4.5^\circ
+---
+name: modified-sine
+tex: \frac{V_{rms}}{V_{pk}} = \sqrt{\frac{\pi - 2\alpha}{\pi}} = \frac{230}{325} = \frac{1}{\sqrt 2} \;\Longrightarrow\; \frac{\pi - 2\alpha}{\pi} = \frac12 \;\Longrightarrow\; \alpha = 45^\circ
+---

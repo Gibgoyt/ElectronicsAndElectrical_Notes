@@ -1,0 +1,89 @@
+# Equation sources for ac-and-rms.md — rendered by toolchain/math_to_svg.js into ac-and-rms.assets/eq-*.svg
+# Edit here, then run:  node toolchain/build_all.js docs/fundamentals/signals --figures toolchain/figures/signals.js
+
+# ---- 1. the sinusoid ------------------------------------------------------------------------
+name: sine
+tex: v(t) = V_{pk}\,\sin(2\pi f t + \varphi) = V_{pk}\,\sin(\omega t + \varphi)
+---
+name: period
+tex: T = \frac{1}{f} = \frac{1}{50\,\mathrm{Hz}} = 20\,\mathrm{ms}, \qquad \omega = 2\pi f = 2\pi \times 50 \approx 314.16\,\mathrm{rad/s}
+---
+name: phase-shift
+tex: \sin(\omega t + \varphi) = \sin\!\big(\omega\,(t + t_\varphi)\big), \qquad t_\varphi = \frac{\varphi}{\omega} = \frac{\varphi}{360^\circ}\,T
+---
+
+# ---- 2. averages ----------------------------------------------------------------------------
+name: mean-def
+tex: \bar v = \frac{1}{T}\int_0^T v(t)\,dt
+---
+name: mean-sine
+tex: \bar v = \frac{1}{T}\int_0^T V_{pk}\sin(\omega t)\,dt = \frac{V_{pk}}{\omega T}\Big[-\cos\omega t\Big]_0^T = \frac{V_{pk}}{2\pi}\big(-\cos 2\pi + \cos 0\big) = 0
+---
+name: mean-abs
+tex: \overline{|v|} = \frac{1}{\pi}\int_0^{\pi} V_{pk}\sin\theta\,d\theta = \frac{V_{pk}}{\pi}\Big[-\cos\theta\Big]_0^{\pi} = \frac{V_{pk}}{\pi}\big(1 + 1\big) = \frac{2}{\pi}V_{pk} \approx 0.637\,V_{pk}
+---
+name: mean-abs-230
+tex: \overline{|v|} = \frac{2}{\pi}\times 325.3\,\mathrm{V} \approx 207.1\,\mathrm{V}
+---
+
+# ---- 3. RMS from equal heating --------------------------------------------------------------
+name: power-inst
+tex: p(t) = v(t)\,i(t) = \frac{v(t)^2}{R}
+---
+name: power-avg
+tex: P = \frac{1}{T}\int_0^T p(t)\,dt = \frac{1}{R}\cdot\frac{1}{T}\int_0^T v(t)^2\,dt
+---
+name: rms-def
+tex: \frac{V_{dc}^2}{R} = \frac{1}{R}\cdot\frac{1}{T}\int_0^T v(t)^2\,dt \quad\Longrightarrow\quad V_{rms} \equiv \sqrt{\frac{1}{T}\int_0^T v(t)^2\,dt}
+---
+name: sin2-identity
+tex: \cos 2\theta = \cos^2\theta - \sin^2\theta = 1 - 2\sin^2\theta \quad\Longrightarrow\quad \sin^2\theta = \frac{1 - \cos 2\theta}{2}
+---
+name: mean-sin2
+tex: \frac{1}{2\pi}\int_0^{2\pi}\sin^2\theta\,d\theta = \frac{1}{2\pi}\int_0^{2\pi}\frac{1 - \cos 2\theta}{2}\,d\theta = \frac{1}{2\pi}\left(\frac{2\pi}{2} - 0\right) = \frac12
+---
+name: rms-sine
+tex: V_{rms} = \sqrt{V_{pk}^2\cdot\tfrac12} = \frac{V_{pk}}{\sqrt 2} \approx 0.707\,V_{pk}
+---
+name: mains-peak
+tex: V_{pk} = \sqrt2\,V_{rms} = 1.4142 \times 230\,\mathrm{V} = 325.3\,\mathrm{V}, \qquad V_{pp} = 2V_{pk} = 650.5\,\mathrm{V}
+---
+name: kettle
+tex: R = \frac{V_{rms}^2}{P} = \frac{230^2}{2000} = 26.45\,\Omega, \qquad p(t) = \frac{V_{pk}^2}{R}\sin^2\omega t = \frac{V_{pk}^2}{2R}\big(1 - \cos 2\omega t\big)
+---
+name: kettle-numbers
+tex: p_{max} = \frac{325.3^2}{26.45} = 4000\,\mathrm{W}, \qquad P = \frac{p_{max}}{2} = 2000\,\mathrm{W}, \qquad \text{pulsing at } 2f = 100\,\mathrm{Hz}
+---
+
+# ---- 4. other waveforms ---------------------------------------------------------------------
+name: rms-square
+tex: v(t)^2 = (\pm V)^2 = V^2 \ \text{ at every instant} \quad\Longrightarrow\quad V_{rms} = \sqrt{V^2} = V
+---
+name: rms-triangle
+tex: v(t) = V\,\frac{4t}{T} \ \ \big(0 \le t \le \tfrac{T}{4}\big): \quad \frac{4}{T}\int_0^{T/4} V^2\,\frac{16t^2}{T^2}\,dt = \frac{64V^2}{T^3}\cdot\frac{(T/4)^3}{3} = \frac{V^2}{3} \;\Longrightarrow\; V_{rms} = \frac{V}{\sqrt3}
+---
+name: crest-form
+tex: \text{CF} = \frac{V_{pk}}{V_{rms}}, \qquad \text{FF} = \frac{V_{rms}}{\overline{|v|}}, \qquad \text{FF}_{\sin} = \frac{V_{pk}/\sqrt2}{2V_{pk}/\pi} = \frac{\pi}{2\sqrt2} \approx 1.111
+---
+name: rms-harmonics
+tex: V_{rms} = \sqrt{V_{1,rms}^2 + V_{3,rms}^2 + V_{5,rms}^2 + \cdots} = V_{1,rms}\sqrt{1 + \text{THD}^2}
+---
+
+# ---- 5. meters ------------------------------------------------------------------------------
+name: meter
+tex: \text{reading}_{avg} = 1.111 \times \overline{|v|}
+---
+name: meter-square
+tex: \text{square wave: } \overline{|v|} = V \;\Longrightarrow\; \text{reading} = 1.111\,V \quad (\text{true } V_{rms} = V,\ 11\,\% \text{ high})
+---
+name: meter-modsine
+tex: \text{modified sine } (V_{pk} = 325\,\mathrm{V},\ \alpha = 45^\circ): \quad \overline{|v|} = 325\cdot\frac{\pi - 2\alpha}{\pi} = 162.6\,\mathrm{V} \;\Longrightarrow\; \text{reading} = 180.6\,\mathrm{V} \ \ (\text{true } 230\,\mathrm{V})
+---
+
+# ---- 6. South African mains -----------------------------------------------------------------
+name: tolerance
+tex: 230\,\mathrm{V} \pm 10\,\% = 207 \ \text{to} \ 253\,\mathrm{V}\ \text{rms} \quad\Longrightarrow\quad V_{pk} = 292.7 \ \text{to} \ 357.8\,\mathrm{V}
+---
+name: generator
+tex: f = \frac{p}{2}\cdot\frac{N_{rpm}}{60} = \frac{2}{2}\cdot\frac{3000}{60} = 50\,\mathrm{Hz} \qquad (p = 2 \text{ poles})
+---
