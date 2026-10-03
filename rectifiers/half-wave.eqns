@@ -1,0 +1,76 @@
+# Equation sources for half-wave.md — rendered into half-wave.assets/eq-*.svg
+
+name: shockley
+tex: I_F = I_S\left(e^{V_F/(n V_T)} - 1\right)
+---
+name: thermal-voltage
+tex: V_T = \frac{kT}{q} = \frac{1.381\times10^{-23}\ \mathrm{J/K}\times 300\ \mathrm{K}}{1.602\times10^{-19}\ \mathrm{C}} \approx 25.9\ \mathrm{mV}
+---
+name: invert-shockley
+tex: V_F = n V_T \ln\!\left(1 + \frac{I_F}{I_S}\right) + I_F\,R_S
+---
+name: per-decade
+tex: \Delta V_F\big|_{I_F \times 10} = n V_T \ln 10 \approx n \times 60\ \mathrm{mV}
+---
+name: conduction-loss
+tex: P_D = V_{F0}\,I_{D,avg} + r_D\,I_{D,rms}^2
+---
+name: rr-charge
+tex: Q_{rr} = \int_{t_0}^{t_0 + t_{rr}} \lvert i_D(t)\rvert\,dt \;\approx\; \tfrac{1}{2}\,I_{RRM}\,t_{rr}
+---
+name: rr-loss
+tex: P_{rr} \approx Q_{rr}\,V_R\,f
+---
+name: rr-worked
+tex: \text{standard: } 1.8\,\mu\mathrm{C}\times 325\,\mathrm{V}\times 50\,\mathrm{kHz} \approx 29\,\mathrm{W} \qquad \text{ultrafast: } 25\,\mathrm{nC}\times 325\,\mathrm{V}\times 50\,\mathrm{kHz} \approx 0.4\,\mathrm{W}
+---
+name: hw-wave
+tex: v_o(\theta) = \begin{cases} V_{pk}\sin\theta, & 0 \le \theta < \pi \\ 0, & \pi \le \theta < 2\pi \end{cases} \qquad \theta = \omega t = 2\pi f t
+---
+name: hw-avg
+tex: V_{avg} = \frac{1}{2\pi}\int_0^{2\pi} v_o\,d\theta = \frac{1}{2\pi}\int_0^{\pi} V_{pk}\sin\theta\,d\theta = \frac{V_{pk}}{2\pi}\Big[-\cos\theta\Big]_0^{\pi} = \frac{V_{pk}}{2\pi}\big(1 + 1\big)
+---
+name: hw-avg-result
+tex: \boxed{\,V_{avg} = \frac{V_{pk}}{\pi} \approx 0.318\,V_{pk}\,}
+---
+name: sin-squared
+tex: \sin^2\theta = \frac{1 - \cos 2\theta}{2} \quad\Longrightarrow\quad \int_0^{\pi}\sin^2\theta\,d\theta = \Big[\frac{\theta}{2} - \frac{\sin 2\theta}{4}\Big]_0^{\pi} = \frac{\pi}{2}
+---
+name: hw-rms
+tex: V_{rms}^2 = \frac{1}{2\pi}\int_0^{2\pi} v_o^2\,d\theta = \frac{V_{pk}^2}{2\pi}\int_0^{\pi}\sin^2\theta\,d\theta = \frac{V_{pk}^2}{2\pi}\cdot\frac{\pi}{2} = \frac{V_{pk}^2}{4}
+---
+name: hw-rms-result
+tex: \boxed{\,V_{rms} = \frac{V_{pk}}{2} = 0.5\,V_{pk}\,}
+---
+name: form-factor
+tex: \text{FF} = \frac{V_{rms}}{V_{avg}} = \frac{V_{pk}/2}{V_{pk}/\pi} = \frac{\pi}{2} \approx 1.571
+---
+name: ripple-factor
+tex: \gamma = \frac{V_{ac,rms}}{V_{avg}} = \sqrt{\left(\frac{V_{rms}}{V_{avg}}\right)^2 - 1} = \sqrt{\frac{\pi^2}{4} - 1} \approx 1.21
+---
+name: ripple-factor-why
+tex: V_{rms}^2 = V_{avg}^2 + V_{ac,rms}^2
+---
+name: efficiency
+tex: \eta = \frac{P_{dc}}{P_{total}} = \frac{V_{avg}^2/R_L}{V_{rms}^2/R_L} = \left(\frac{1/\pi}{1/2}\right)^2 = \frac{4}{\pi^2} \approx 40.5\,\%
+---
+name: hw-fourier
+tex: v_o(t) = \frac{V_{pk}}{\pi} + \frac{V_{pk}}{2}\sin\omega t - \frac{2V_{pk}}{\pi}\sum_{k=1}^{\infty}\frac{\cos 2k\omega t}{4k^2 - 1}
+---
+name: discharge
+tex: C\,\frac{dv_o}{dt} = -I_{load} \quad\Longrightarrow\quad \Delta V = \frac{\Delta Q}{C} = \frac{I_{load}\,\Delta t}{C}
+---
+name: hw-ripple
+tex: \Delta t \approx T = \frac{1}{f} \quad\Longrightarrow\quad \boxed{\,\Delta V \approx \frac{I_{load}}{f\,C}\,}
+---
+name: hw-worked
+tex: \Delta V \approx \frac{1\ \mathrm{A}}{50\ \mathrm{Hz}\times 1000\ \mu\mathrm{F}} = 20\ \mathrm{V} \qquad (\text{simulated: } 18\ \mathrm{V})
+---
+name: hw-piv
+tex: \text{PIV} = v_C - v_s\big|_{\min} = V_{pk} - (-V_{pk}) = 2V_{pk} = 650\ \mathrm{V}\ \ (V_{pk} = 325\ \mathrm{V})
+---
+name: dc-flux
+tex: I_{s,avg} = I_{load} \ne 0 \quad\Longrightarrow\quad B_{dc} = \frac{\mu_0\,\mu_r\,N_s\,I_{s,avg}}{\ell_e}
+---
+name: dc-flux-worked
+tex: B_{dc} = \frac{4\pi\times10^{-7}\times 2000\times 50\times 1\ \mathrm{A}}{0.1\ \mathrm{m}} \approx 1.26\ \mathrm{T} \;\gg\; B_{sat} \approx 0.35\ \mathrm{T}\ \ (\text{ferrite})

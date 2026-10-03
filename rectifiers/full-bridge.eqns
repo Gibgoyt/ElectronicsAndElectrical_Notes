@@ -1,0 +1,106 @@
+# Equation sources for full-bridge.md — rendered into full-bridge.assets/eq-*.svg
+
+name: turns
+tex: \frac{N_s}{N_p} = \frac{V_{s,pk}}{V_{p,pk}} \approx \frac{325\ \mathrm{V} + 2V_F}{12\ \mathrm{V}} \approx 27
+---
+name: ct-wave
+tex: v_o = \lvert V_{pk}\sin\theta\rvert - V_F \qquad (\text{each half of the secondary carries } V_{pk})
+---
+name: fb-wave
+tex: v_o(\theta) = \lvert V_{pk}\sin\theta\rvert - 2V_F
+---
+name: fb-avg
+tex: V_{avg} = \frac{1}{\pi}\int_0^{\pi} V_{pk}\sin\theta\,d\theta = \frac{V_{pk}}{\pi}\Big[-\cos\theta\Big]_0^{\pi} = \frac{2V_{pk}}{\pi}
+---
+name: fb-avg-result
+tex: \boxed{\,V_{avg} = \frac{2V_{pk}}{\pi} \approx 0.637\,V_{pk}\,} \qquad 325\ \mathrm{V} \to 207\ \mathrm{V}
+---
+name: fb-rms
+tex: V_{rms}^2 = \frac{1}{\pi}\int_0^{\pi} V_{pk}^2\sin^2\theta\,d\theta = \frac{V_{pk}^2}{\pi}\cdot\frac{\pi}{2} = \frac{V_{pk}^2}{2}
+---
+name: fb-rms-result
+tex: \boxed{\,V_{rms} = \frac{V_{pk}}{\sqrt{2}} \approx 0.707\,V_{pk}\,}
+---
+name: fb-ratios
+tex: \text{FF} = \frac{\pi}{2\sqrt{2}} \approx 1.11, \qquad \gamma = \sqrt{\frac{\pi^2}{8} - 1} \approx 0.483, \qquad \eta = \frac{8}{\pi^2} \approx 81.1\,\%
+---
+name: fb-fourier
+tex: \lvert\sin\omega t\rvert = \frac{2}{\pi} - \frac{4}{\pi}\sum_{k=1}^{\infty}\frac{\cos 2k\omega t}{4k^2 - 1} = \frac{2}{\pi} - \frac{4}{3\pi}\cos 2\omega t - \frac{4}{15\pi}\cos 4\omega t - \cdots
+---
+name: piv-bridge
+tex: \text{PIV}_{bridge} = V_{pk} \qquad \text{PIV}_{centre\text{-}tap} = 2V_{pk} \qquad \text{PIV}_{half\text{-}wave,\,C} = 2V_{pk}
+---
+name: fb-ripple
+tex: \Delta t \approx \frac{T}{2} = \frac{1}{2f} \quad\Longrightarrow\quad \boxed{\,\Delta V \approx \frac{I_{load}}{2f\,C}\,} \quad\Longleftrightarrow\quad C \approx \frac{I_{load}}{2f\,\Delta V}
+---
+name: worked-50
+tex: f = 50\ \mathrm{Hz}: \quad C = \frac{1\ \mathrm{A}}{2\times 50\ \mathrm{Hz}\times 10\ \mathrm{V}} = 1000\ \mu\mathrm{F}
+---
+name: worked-50k
+tex: f = 50\ \mathrm{kHz}: \quad C = \frac{1\ \mathrm{A}}{2\times 50\,000\ \mathrm{Hz}\times 10\ \mathrm{V}} = 1\ \mu\mathrm{F}
+---
+name: energy-ratio
+tex: E_C = \tfrac{1}{2}CV^2: \quad \tfrac{1}{2}\times 1000\,\mu\mathrm{F}\times(325\,\mathrm{V})^2 \approx 53\ \mathrm{J} \qquad \text{vs.} \qquad \tfrac{1}{2}\times 1\,\mu\mathrm{F}\times(325\,\mathrm{V})^2 \approx 53\ \mathrm{mJ}
+---
+name: cond-start
+tex: V_{pk}\cos\theta_c = V_{pk} - \Delta V \quad\Longrightarrow\quad \theta_c = \arccos\!\left(1 - \frac{\Delta V}{V_{pk}}\right)
+---
+name: cos-approx
+tex: \cos\theta_c \approx 1 - \frac{\theta_c^2}{2} \quad\Longrightarrow\quad \theta_c \approx \sqrt{\frac{2\,\Delta V}{V_{pk}}}
+---
+name: cond-worked
+tex: \theta_c \approx \sqrt{\frac{2\times 10}{325}} = 0.248\ \mathrm{rad} \approx 14.2^\circ \qquad t_c = \frac{\theta_c}{\omega} = \frac{0.248}{2\pi\times 50} \approx 0.79\ \mathrm{ms}
+---
+name: charge-balance
+tex: \bar{i}_{pulse}\,t_c = I_{load}\,\frac{T}{2} \quad\Longrightarrow\quad \bar{i}_{pulse} = I_{load}\,\frac{\pi}{\theta_c} = \frac{1\ \mathrm{A}\times\pi}{0.248} \approx 12.7\ \mathrm{A}
+---
+name: peak-start
+tex: i_D = C\,\frac{dv_s}{dt} + I_{load} \quad\Longrightarrow\quad i_{D,pk} \approx \omega C V_{pk}\sin\theta_c + I_{load} \approx \omega C V_{pk}\,\theta_c + I_{load}
+---
+name: peak-sub
+tex: \omega C V_{pk}\,\theta_c = 2\pi f\cdot\frac{I_{load}}{2f\,\Delta V}\cdot V_{pk}\cdot\sqrt{\frac{2\Delta V}{V_{pk}}} = \pi\,I_{load}\sqrt{\frac{2V_{pk}}{\Delta V}}
+---
+name: peak-result
+tex: \boxed{\,i_{D,pk} \approx I_{load}\left(1 + \pi\sqrt{\frac{2V_{pk}}{\Delta V}}\right)\,} \qquad \frac{V_{pk}}{\Delta V} = 32.5 \;\Rightarrow\; i_{D,pk} \approx 26\,I_{load}
+---
+name: pf-def
+tex: \text{PF} = \frac{P}{V_{rms}\,I_{rms}} = \underbrace{\cos\varphi_1}_{\text{displacement}}\cdot\underbrace{\frac{I_{1,rms}}{I_{rms}}}_{\text{distortion}} = \frac{\cos\varphi_1}{\sqrt{1 + \text{THD}_I^2}}
+---
+name: pf-worked
+tex: \text{PF} = \frac{323\ \mathrm{W}}{230\ \mathrm{V}\times 3.0\ \mathrm{A}} \approx 0.47
+---
+name: cap-rms
+tex: I_{C,rms} = \sqrt{I_{rect,rms}^2 - I_{load}^2} = \sqrt{3.0^2 - 1.0^2} \approx 2.8\ \mathrm{A}\ \ (50\ \mathrm{Hz\ sine}) \qquad \sqrt{1.078^2 - 1.024^2} \approx 0.34\ \mathrm{A}\ \ (\text{square})
+---
+name: square-ripple
+tex: \Delta V \approx \frac{I_{load}\,t_d}{C} = \frac{1\ \mathrm{A}\times 0.5\ \mu\mathrm{s}}{1\ \mu\mathrm{F}} = 0.5\ \mathrm{V}
+---
+name: square-avg
+tex: V_{avg,\,rect.\,square} = V_{pk}\left(1 - \frac{2t_d}{T}\right) \approx V_{pk}
+---
+name: lcrit-ripple
+tex: \hat{i}_{2\omega} \approx \frac{4V_{pk}/(3\pi)}{2\omega L} \qquad I_{dc} = \frac{2V_{pk}/\pi}{R}
+---
+name: lcrit
+tex: \hat{i}_{2\omega} \le I_{dc} \;\Longleftrightarrow\; \frac{4V_{pk}}{3\pi\cdot 2\omega L} \le \frac{2V_{pk}}{\pi R} \;\Longleftrightarrow\; \boxed{\,L \ge L_{crit} = \frac{R}{3\omega}\,}
+---
+name: lcrit-worked
+tex: L_{crit} = \frac{207\ \Omega}{3\times 2\pi\times 50\ \mathrm{Hz}} \approx 0.22\ \mathrm{H} \qquad \text{vs.} \qquad \frac{207\ \Omega}{3\times 2\pi\times 50\ \mathrm{kHz}} \approx 0.22\ \mathrm{mH}
+---
+name: lc-ripple
+tex: \Delta V_{pp} \approx 2\cdot\frac{4V_{pk}/(3\pi)}{(2\omega)^2 LC} = \frac{2\times 138\ \mathrm{V}}{4\times(314\ \mathrm{s^{-1}})^2\times 0.5\ \mathrm{H}\times 1000\ \mu\mathrm{F}} \approx 1.4\ \mathrm{V}
+---
+name: inrush
+tex: i_{pk} \approx \frac{V_{pk} - 2V_F}{R_{src} + R_{NTC} + \text{ESR}} \qquad \frac{323\ \mathrm{V}}{1\ \Omega} \approx 320\ \mathrm{A} \quad\text{vs.}\quad \frac{323\ \mathrm{V}}{11\ \Omega} \approx 29\ \mathrm{A}
+---
+name: charge-loss
+tex: E_R = \int_0^{\infty} i^2 R\,dt = \tfrac{1}{2}\,C\,V^2 \qquad (\text{independent of } R)
+---
+name: diode-loss
+tex: P_{bridge} \approx 2\,V_F\,I_{load} = 2\times 1.2\ \mathrm{V}\times 3.1\ \mathrm{A} \approx 7.4\ \mathrm{W}\ \ (1\ \mathrm{kW\ at\ } 325\ \mathrm{V},\ 0.74\,\%)
+---
+name: esr-loss
+tex: P_{ESR} = I_{C,rms}^2\,\text{ESR}
+---
+name: lifetime
+tex: L = L_0 \cdot 2^{(T_{rated} - T_{core})/10\,\mathrm{K}}
