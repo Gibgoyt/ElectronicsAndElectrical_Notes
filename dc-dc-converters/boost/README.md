@@ -35,3 +35,4 @@ highlights what changes.
   (especially the polarity flip),
   [../../fundamentals/capacitor/capacitor.md](../../fundamentals/capacitor/capacitor.md)
 - Mirror circuit: [../buck/buck.md](../buck/buck.md)
+- Start-up (the 3.png staircase, no-load runaway, settling, real gain limit, efficiency vs ratio): [startup.md](startup.md)

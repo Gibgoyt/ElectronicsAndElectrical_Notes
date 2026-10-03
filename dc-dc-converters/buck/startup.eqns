@@ -1,0 +1,56 @@
+# Equation sources for buck/startup.md — rendered into startup.assets/eq-*.svg
+
+name: first-on
+tex: V_L = V_{in} - v_C \approx V_{in}\quad(\text{first cycles, } v_C \approx 0), \qquad \Delta i_L = \frac{V_{in}\,D\,T}{L} = \frac{12 \times 2.5\,\mu\mathrm{s}}{112.5\,\mu\mathrm{H}} = 0.27\,\mathrm{A}
+---
+name: net-current
+tex: \bar i_L(n+1) - \bar i_L(n) = \frac{T}{L}\,\big(D\,V_{in} - \bar v_C\big) \qquad(\text{net change per cycle})
+---
+name: avg-model
+tex: L\,\frac{d\bar i_L}{dt} = D\,V_{in} - \bar v, \qquad C\,\frac{d\bar v}{dt} = \bar i_L - \frac{\bar v}{R}
+---
+name: second-order
+tex: LC\,\frac{d^2\bar v}{dt^2} + \frac{L}{R}\,\frac{d\bar v}{dt} + \bar v = D\,V_{in}
+---
+name: params
+tex: \omega_0 = \frac{1}{\sqrt{LC}}, \qquad \zeta = \frac{1}{2R}\sqrt{\frac{L}{C}}, \qquad \sigma = \zeta\,\omega_0 = \frac{1}{2RC}, \qquad Z_0 = \sqrt{\frac{L}{C}}
+---
+name: step-response
+tex: \bar v(t) = D\,V_{in}\left[1 - e^{-\sigma t}\left(\cos\omega_d t + \frac{\sigma}{\omega_d}\sin\omega_d t\right)\right], \qquad \omega_d = \omega_0\sqrt{1-\zeta^2}
+---
+name: peak
+tex: \frac{\hat v}{D\,V_{in}} = 1 + e^{-\pi\zeta/\sqrt{1-\zeta^2}} \;\xrightarrow{\;\zeta \to 0\;}\; 2
+---
+name: inrush
+tex: \hat i_L \approx \frac{D\,V_{in}}{Z_0} + I_{load} + \frac{\Delta I_L}{2} \qquad(\text{light damping})
+---
+name: worked
+tex: \omega_0 = \frac{1}{\sqrt{112.5\,\mu\mathrm{H} \times 8.33\,\mu\mathrm{F}}} = 32\,660\,\mathrm{rad/s}\ (5.2\,\mathrm{kHz}), \qquad Z_0 = \sqrt{\frac{112.5\,\mu\mathrm{H}}{8.33\,\mu\mathrm{F}}} = 3.67\,\Omega
+---
+name: worked-loads
+tex: R = 3\,\Omega:\ \zeta = 0.61,\ t_s \approx 8RC = 200\,\mu\mathrm{s} \approx 20\ \text{cycles} \qquad R = 30\,\Omega:\ \zeta = 0.061,\ t_s \approx 2\,\mathrm{ms} \approx 200\ \text{cycles}
+---
+name: settle
+tex: t_s \approx \frac{4}{\sigma} = 8\,RC, \qquad n_s = f_{sw}\,t_s
+---
+name: current-limit
+tex: C\,\frac{d\bar v}{dt} = \bar i_L - \frac{\bar v}{R} \le I_{lim} - I_{load} \quad\Longrightarrow\quad t_{min} \approx \frac{C\,V_{target}}{I_{lim} - I_{load}}
+---
+name: dcm-noload
+tex: \frac{V_{out}}{V_{in}} = \frac{2}{1 + \sqrt{1 + \dfrac{8L}{D^2 R\,T}}} \;\xrightarrow{\;R \to \infty\;}\; 1
+---
+name: min-on
+tex: t_{on} = D\,T = \frac{V_{out}}{V_{in}\,f_{sw}} \ge t_{on,\min} \quad\Longrightarrow\quad \frac{V_{in}}{V_{out}} \le \frac{1}{f_{sw}\,t_{on,\min}}
+---
+name: min-on-worked
+tex: t_{on,\min} = 80\,\mathrm{ns}: \qquad f_{sw} = 100\,\mathrm{kHz} \Rightarrow M \le 125, \qquad f_{sw} = 2\,\mathrm{MHz} \Rightarrow M \le 6.25
+---
+name: diode-eta
+tex: \eta \le \frac{V_{out}\,I_{out}}{V_{out}\,I_{out} + (1-D)\,V_F\,I_{out}} = \frac{V_{out}}{V_{out} + (1-D)\,V_F}
+---
+name: diode-eta-worked
+tex: V_F = 0.5\,\mathrm{V}: \qquad 12 \to 5\,\mathrm{V}:\ \eta \le 94.5\% \qquad 12 \to 1\,\mathrm{V}:\ \eta \le 68.6\%
+---
+name: stress
+tex: S_{buck} = \frac{V_{sw,\max}\,I_{sw}}{P_{out}} = \frac{V_{in}\,I_{out}}{V_{out}\,I_{out}} = \frac{V_{in}}{V_{out}} = M
+---

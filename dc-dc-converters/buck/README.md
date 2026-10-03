@@ -34,3 +34,4 @@ Read [buck.md](buck.md) after the [inductor](../../fundamentals/inductor/inducto
 - The laws it uses: [../../fundamentals/inductor/inductor.md](../../fundamentals/inductor/inductor.md),
   [../../fundamentals/capacitor/capacitor.md](../../fundamentals/capacitor/capacitor.md)
 - Mirror circuit: [../boost/boost.md](../boost/boost.md)
+- Start-up (how it reaches steady state, overshoot, inrush, soft-start, large step-downs): [startup.md](startup.md)
