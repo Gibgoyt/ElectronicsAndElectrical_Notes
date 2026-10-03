@@ -29,7 +29,7 @@ that the slide raises and does not answer:
 > **The thesis in one line**
 >
 > A bridge flips the negative half-cycles up so that every half-cycle refills the capacitor, which
-> then holds the bus near the *peak* <!--m:V_{pk}-->![V_pk](full-bridge.assets/eq-inline/a753175303.svg)<!--/m--> with ripple <!--m:\Delta V \approx I_{load}/(2fC)-->![V I_load/(2fC)](full-bridge.assets/eq-inline/f23ff613e8.svg)<!--/m-->. Rectify at
+> then holds the bus near the *peak* <!--m:V_{pk}-->![V_pk](full-bridge.assets/eq-inline/a753175303.svg)<!--/m--> with ripple <!--m:\Delta V \approx I_{load}/(2fC)-->![Delta V approx I_load/(2fC)](full-bridge.assets/eq-inline/f23ff613e8.svg)<!--/m-->. Rectify at
 > 50 kHz instead of 50 Hz and the capacitor shrinks a thousandfold; rectify a *square* wave and it
 > barely has to work at all. A capacitor alone is the right filter here because the next stage
 > wants a stiff voltage source near the peak, and a square wave's current is already smooth — an
@@ -45,7 +45,7 @@ LC filter → 230 V AC. Slide 6 zooms in on the highlighted box: a diamond of fo
 transformer secondary, and one smoothing capacitor across the load.
 
 The transformer steps the voltage up by its turns ratio. To land the bus at about 325 V — the peak
-of 230 V RMS, <!--m:230\sqrt{2} \approx 325\,\mathrm{V}-->![230 2 325 V](full-bridge.assets/eq-inline/fd5fcca52e.svg)<!--/m-->, so that H-bridge 2 can synthesise a full mains
+of 230 V RMS, <!--m:230\sqrt{2} \approx 325\,\mathrm{V}-->![230 sqrt 2 approx 325 V](full-bridge.assets/eq-inline/fd5fcca52e.svg)<!--/m-->, so that H-bridge 2 can synthesise a full mains
 sine — the ratio must cover the bridge's two diode drops as well:
 
 ![N_s over N_p equals V_s,pk over V_p,pk, approximately 325 volts plus 2 V_F over 12 volts, about 27](full-bridge.assets/eq-turns.svg)
@@ -108,19 +108,19 @@ Three facts fall straight out of the two paths:
 
 ## 4 Average, RMS and the ripple at 2f
 
-With no filter the output is <!--m:\lvert V_{pk}\sin\theta\rvert-->![V_pk](full-bridge.assets/eq-inline/4a57abd98c.svg)<!--/m-->: the half-wave humps with the gaps
-filled in. The waveform now repeats every <!--m:\pi-->![](full-bridge.assets/eq-inline/6ac47b6d73.svg)<!--/m--> radians instead of every <!--m:2\pi-->![2](full-bridge.assets/eq-inline/0833718ca4.svg)<!--/m-->, so one integral
+With no filter the output is <!--m:\lvert V_{pk}\sin\theta\rvert-->![V_pk sin theta](full-bridge.assets/eq-inline/4a57abd98c.svg)<!--/m-->: the half-wave humps with the gaps
+filled in. The waveform now repeats every <!--m:\pi-->![pi](full-bridge.assets/eq-inline/6ac47b6d73.svg)<!--/m--> radians instead of every <!--m:2\pi-->![2 pi](full-bridge.assets/eq-inline/0833718ca4.svg)<!--/m-->, so one integral
 over a single hump is the whole story.
 
-**Average.** Area of one hump over its length <!--m:\pi-->![](full-bridge.assets/eq-inline/6ac47b6d73.svg)<!--/m-->:
+**Average.** Area of one hump over its length <!--m:\pi-->![pi](full-bridge.assets/eq-inline/6ac47b6d73.svg)<!--/m-->:
 
 ![V_avg equals 1 over pi times the integral from 0 to pi of V_pk sin theta, equals V_pk over pi times minus cos theta from 0 to pi, equals 2 V_pk over pi](full-bridge.assets/eq-fb-avg.svg)
 
 ![V_avg equals 2 V_pk over pi, about 0.637 V_pk, boxed; 325 volts gives 207 volts](full-bridge.assets/eq-fb-avg-result.svg)
 
-Exactly twice the half-wave's <!--m:V_{pk}/\pi-->![V_pk/](full-bridge.assets/eq-inline/79c2b285b0.svg)<!--/m-->, as it must be: the same area, twice as often.
+Exactly twice the half-wave's <!--m:V_{pk}/\pi-->![V_pk/pi](full-bridge.assets/eq-inline/79c2b285b0.svg)<!--/m-->, as it must be: the same area, twice as often.
 
-**RMS.** Using the same <!--m:\int_0^\pi \sin^2\theta\,d\theta = \pi/2-->![_0^ ^2 d = /2](full-bridge.assets/eq-inline/cc87c3be37.svg)<!--/m--> proved in
+**RMS.** Using the same <!--m:\int_0^\pi \sin^2\theta\,d\theta = \pi/2-->![integral_0^ pi sin^2 theta d theta = pi/2](full-bridge.assets/eq-inline/cc87c3be37.svg)<!--/m--> proved in
 [half-wave.md §6](half-wave.md#6-the-rms-value-by-integration):
 
 ![V_rms squared equals 1 over pi times the integral of V_pk squared sin squared, equals V_pk squared over 2](full-bridge.assets/eq-fb-rms.svg)
@@ -128,7 +128,7 @@ Exactly twice the half-wave's <!--m:V_{pk}/\pi-->![V_pk/](full-bridge.assets/eq-
 ![V_rms equals V_pk over root 2, about 0.707 V_pk, boxed](full-bridge.assets/eq-fb-rms-result.svg)
 
 This is the same RMS as the unrectified sine — of course: squaring removes the sign, so
-<!--m:\lvert\sin\rvert^2 = \sin^2-->![^2 = ^2](full-bridge.assets/eq-inline/730be3d6cc.svg)<!--/m-->, and a resistor heats identically either way. Only the *average* is
+<!--m:\lvert\sin\rvert^2 = \sin^2-->![sin^2 = sin^2](full-bridge.assets/eq-inline/730be3d6cc.svg)<!--/m-->, and a resistor heats identically either way. Only the *average* is
 changed by rectification.
 
 **Figures of merit**, by the same definitions as [half-wave.md §7](half-wave.md#7-form-factor-ripple-factor-and-efficiency):
@@ -141,7 +141,7 @@ term and *even* harmonics of the source:
 ![magnitude of sin omega t equals 2 over pi minus 4 over pi times the sum of cos 2 k omega t over 4 k squared minus 1, equals 2 over pi minus 4 over 3 pi cos 2 omega t minus 4 over 15 pi cos 4 omega t and so on](full-bridge.assets/eq-fb-fourier.svg)
 
 The half-wave's large component at <!--m:f-->![f](full-bridge.assets/eq-inline/4a0a19218e.svg)<!--/m--> has cancelled. The lowest ripple component sits at <!--m:2f-->![2f](full-bridge.assets/eq-inline/88346ae6e0.svg)<!--/m--> —
-100 Hz on 50 Hz mains, **100 kHz in the inverter** — with amplitude <!--m:4V_{pk}/(3\pi) \approx 0.42\,V_{pk}-->![4V_pk/(3 ) 0.42 V_pk](full-bridge.assets/eq-inline/5b06a93e44.svg)<!--/m-->.
+100 Hz on 50 Hz mains, **100 kHz in the inverter** — with amplitude <!--m:4V_{pk}/(3\pi) \approx 0.42\,V_{pk}-->![4V_pk/(3 pi ) approx 0.42 V_pk](full-bridge.assets/eq-inline/5b06a93e44.svg)<!--/m-->.
 Higher frequency is easier to filter; §5 shows by how much.
 
 ![Half wave versus full wave rectified output on a resistor with their averages, and with the same reservoir capacitor showing half the ripple for full wave](full-bridge.assets/fig-84.svg)
@@ -171,32 +171,32 @@ _Top: the output (blue) hugs the peaks and sags in straight lines between them; 
 the only times the diodes conduct. Bottom: all of the charge the load uses over a 10 ms half-cycle
 is pushed back into the capacitor during those short windows — so the current must be large._
 
-**The ripple, derived.** During the discharge the capacitor loses charge <!--m:\Delta Q = I_{load}\,\Delta t-->![Q = I_load t](full-bridge.assets/eq-inline/ce75e57ab8.svg)<!--/m-->,
-and since <!--m:Q = CV-->![Q = CV](full-bridge.assets/eq-inline/4d85416dd9.svg)<!--/m-->, its voltage falls by <!--m:\Delta V = \Delta Q / C-->![V = Q / C](full-bridge.assets/eq-inline/ffe52503d8.svg)<!--/m-->. The discharge lasts almost
-the whole half-period (the charging window is short), so <!--m:\Delta t \approx T/2 = 1/(2f)-->![t T/2 = 1/(2f)](full-bridge.assets/eq-inline/026bb37b6d.svg)<!--/m-->:
+**The ripple, derived.** During the discharge the capacitor loses charge <!--m:\Delta Q = I_{load}\,\Delta t-->![Delta Q = I_load Delta t](full-bridge.assets/eq-inline/ce75e57ab8.svg)<!--/m-->,
+and since <!--m:Q = CV-->![Q = CV](full-bridge.assets/eq-inline/4d85416dd9.svg)<!--/m-->, its voltage falls by <!--m:\Delta V = \Delta Q / C-->![Delta V = Delta Q/C](full-bridge.assets/eq-inline/ffe52503d8.svg)<!--/m-->. The discharge lasts almost
+the whole half-period (the charging window is short), so <!--m:\Delta t \approx T/2 = 1/(2f)-->![Delta t approx T/2 = 1/(2f)](full-bridge.assets/eq-inline/026bb37b6d.svg)<!--/m-->:
 
 ![delta t approximately T over 2 equals 1 over 2 f, so delta V approximately equals I_load over 2 f C, boxed, equivalently C approximately equals I_load over 2 f delta V](full-bridge.assets/eq-fb-ripple.svg)
 
-Compare the half-wave's <!--m:\Delta V \approx I_{load}/(fC)-->![V I_load/(fC)](full-bridge.assets/eq-inline/5352a13051.svg)<!--/m--> ([half-wave.md §8](half-wave.md#8-adding-a-reservoir-capacitor)):
+Compare the half-wave's <!--m:\Delta V \approx I_{load}/(fC)-->![Delta V approx I_load/(fC)](full-bridge.assets/eq-inline/5352a13051.svg)<!--/m--> ([half-wave.md §8](half-wave.md#8-adding-a-reservoir-capacitor)):
 the factor 2 is simply that the bridge refills the capacitor twice per cycle. The approximation
 slightly overestimates the ripple because it ignores the charging time; it errs on the safe side.
 
 The DC output is then close to the peak, not the average:
 
-- **capacitor input:** <!--m:V_o \approx V_{pk} - 2V_F - \Delta V/2-->![V_o V_pk - 2V_F - V/2](full-bridge.assets/eq-inline/f0ba43c2cc.svg)<!--/m-->, e.g. about 315 V from a 325 V peak at
+- **capacitor input:** <!--m:V_o \approx V_{pk} - 2V_F - \Delta V/2-->![V_o approx V_pk - 2V_F - Delta V/2](full-bridge.assets/eq-inline/f0ba43c2cc.svg)<!--/m-->, e.g. about 315 V from a 325 V peak at
   1 A with 1000 µF.
 
 That is the first half of the answer to "why only a capacitor": a capacitor-input filter delivers
-roughly <!--m:V_{pk}-->![V_pk](full-bridge.assets/eq-inline/a753175303.svg)<!--/m-->, about 57 % more than the average <!--m:2V_{pk}/\pi-->![2V_pk/](full-bridge.assets/eq-inline/9058607ae5.svg)<!--/m--> that an inductor would give (§10).
+roughly <!--m:V_{pk}-->![V_pk](full-bridge.assets/eq-inline/a753175303.svg)<!--/m-->, about 57 % more than the average <!--m:2V_{pk}/\pi-->![2V_pk/pi](full-bridge.assets/eq-inline/9058607ae5.svg)<!--/m--> that an inductor would give (§10).
 
 ## 6 Conduction angle and the tall current pulses
 
 The capacitor gets all its charge during a short window just before each peak. How short, and how
 tall must the current be?
 
-**The conduction angle.** Measure the phase <!--m:\theta-->![](full-bridge.assets/eq-inline/cb005d76f9.svg)<!--/m--> backwards from the peak, so the source near
-the peak is <!--m:V_{pk}\cos\theta-->![V_pk](full-bridge.assets/eq-inline/d6c8a8cd8b.svg)<!--/m-->. Conduction starts when the rising source meets the capacitor at its
-lowest, <!--m:V_{pk} - \Delta V-->![V_pk - V](full-bridge.assets/eq-inline/99ff84be31.svg)<!--/m-->:
+**The conduction angle.** Measure the phase <!--m:\theta-->![theta](full-bridge.assets/eq-inline/cb005d76f9.svg)<!--/m--> backwards from the peak, so the source near
+the peak is <!--m:V_{pk}\cos\theta-->![V_pk cos theta](full-bridge.assets/eq-inline/d6c8a8cd8b.svg)<!--/m-->. Conduction starts when the rising source meets the capacitor at its
+lowest, <!--m:V_{pk} - \Delta V-->![V_pk - Delta V](full-bridge.assets/eq-inline/99ff84be31.svg)<!--/m-->:
 
 ![V_pk cos theta_c equals V_pk minus delta V, so theta_c equals arccos of 1 minus delta V over V_pk](full-bridge.assets/eq-cond-start.svg)
 
@@ -219,8 +219,8 @@ where the source is still rising steeply:
 
 ![i_D equals C dv_s by dt plus I_load, so the peak is about omega C V_pk sin theta_c plus I_load, about omega C V_pk theta_c plus I_load](full-bridge.assets/eq-peak-start.svg)
 
-Substitute the capacitor that sets the ripple, <!--m:C = I_{load}/(2f\Delta V)-->![C = I_load/(2f V)](full-bridge.assets/eq-inline/dd8d608f0c.svg)<!--/m-->, and the angle
-<!--m:\theta_c = \sqrt{2\Delta V/V_{pk}}-->![_c = 2 V/V_pk](full-bridge.assets/eq-inline/e14b8e32f8.svg)<!--/m--> — the <!--m:f-->![f](full-bridge.assets/eq-inline/4a0a19218e.svg)<!--/m--> cancels and so does most of the rest:
+Substitute the capacitor that sets the ripple, <!--m:C = I_{load}/(2f\Delta V)-->![C = I_load/(2f Delta V)](full-bridge.assets/eq-inline/dd8d608f0c.svg)<!--/m-->, and the angle
+<!--m:\theta_c = \sqrt{2\Delta V/V_{pk}}-->![theta_c = sqrt 2 Delta V/V_pk](full-bridge.assets/eq-inline/e14b8e32f8.svg)<!--/m--> — the <!--m:f-->![f](full-bridge.assets/eq-inline/4a0a19218e.svg)<!--/m--> cancels and so does most of the rest:
 
 ![omega C V_pk theta_c equals 2 pi f times I_load over 2 f delta V times V_pk times root 2 delta V over V_pk, equals pi I_load root of 2 V_pk over delta V](full-bridge.assets/eq-peak-sub.svg)
 
@@ -266,7 +266,7 @@ makes the same point for the inductor through <!--m:f_{sw}-->![f_sw](full-bridge
 > **Watch out —** The 1 µF covers the *rectifier's* ripple. The bus also feeds H-bridge 2, which
 > draws power from it in two ways the rectifier knows nothing about: chopped current pulses at the
 > SPWM switching frequency, and a power flow that pulses at 100 Hz because single-phase AC power
-> <!--m:p(t) = P\,(1 - \cos 2\omega t)-->![p(t) = P (1 - 2 t)](full-bridge.assets/eq-inline/d77577eb1e.svg)<!--/m--> swings between zero and twice the average. The bus capacitor
+> <!--m:p(t) = P\,(1 - \cos 2\omega t)-->![p(t) = P (1 - cos 2 omega t)](full-bridge.assets/eq-inline/d77577eb1e.svg)<!--/m--> swings between zero and twice the average. The bus capacitor
 > must source the switching pulses locally (so it needs low ESR and short connections to H-bridge
 > 2), and the 100 Hz pulsation must come either from a large bus capacitor or, as in this
 > unregulated design, straight back through the transformer from the battery. Real inverters
@@ -283,7 +283,7 @@ voltage and RMS current, and it splits into two parts:
 ![PF equals P over V_rms I_rms, equals the displacement factor cos phi_1 times the distortion factor I_1,rms over I_rms, equals cos phi_1 over root of 1 plus THD squared](full-bridge.assets/eq-pf-def.svg)
 
 A capacitor-input rectifier's current pulses are centred on the voltage peaks, so the
-*displacement* factor <!--m:\cos\varphi_1-->![_1](full-bridge.assets/eq-inline/6b95b31792.svg)<!--/m--> is close to 1. The poor power factor comes almost entirely
+*displacement* factor <!--m:\cos\varphi_1-->![cos phi_1](full-bridge.assets/eq-inline/6b95b31792.svg)<!--/m--> is close to 1. The poor power factor comes almost entirely
 from *distortion*: the pulses are rich in odd harmonics (3rd, 5th, 7th … of 50 Hz), which carry
 RMS current but no real power. From the simulation of Figure 85:
 
@@ -353,14 +353,14 @@ With an inductor first, the bridge no longer sees the capacitor directly. The in
 change in current ([../fundamentals/inductor/inductor.md](../fundamentals/inductor/inductor.md)),
 so if it is large enough the current flows *continuously*, all the time, with two diodes always
 conducting. Then the voltage at the bridge output is the full rectified waveform
-<!--m:\lvert V_{pk}\sin\omega t\rvert-->![V_pk t](full-bridge.assets/eq-inline/4e16509145.svg)<!--/m-->, and the LC pair passes its DC term and attenuates the rest. The
+<!--m:\lvert V_{pk}\sin\omega t\rvert-->![V_pk sin omega t](full-bridge.assets/eq-inline/4e16509145.svg)<!--/m-->, and the LC pair passes its DC term and attenuates the rest. The
 output settles at the **average**, not the peak:
 
-- **choke input:** <!--m:V_o \approx 2V_{pk}/\pi - 2V_F-->![V_o 2V_pk/ - 2V_F](full-bridge.assets/eq-inline/82e7ac1144.svg)<!--/m-->, about 205 V from a 325 V peak.
+- **choke input:** <!--m:V_o \approx 2V_{pk}/\pi - 2V_F-->![V_o approx 2V_pk/pi - 2V_F](full-bridge.assets/eq-inline/82e7ac1144.svg)<!--/m-->, about 205 V from a 325 V peak.
 
 The inductor must be large enough to keep the current from falling to zero. Using the Fourier
-series of §4, the dominant ripple at <!--m:2\omega-->![2](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m--> drives a ripple current through the inductor's
-impedance <!--m:2\omega L-->![2 L](full-bridge.assets/eq-inline/ab56dfce6f.svg)<!--/m--> (the capacitor is nearly a short at <!--m:2\omega-->![2](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m-->), while the load draws the DC
+series of §4, the dominant ripple at <!--m:2\omega-->![2 omega](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m--> drives a ripple current through the inductor's
+impedance <!--m:2\omega L-->![2 omega L](full-bridge.assets/eq-inline/ab56dfce6f.svg)<!--/m--> (the capacitor is nearly a short at <!--m:2\omega-->![2 omega](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m-->), while the load draws the DC
 current:
 
 ![peak 2 omega ripple current approximately 4 V_pk over 3 pi over 2 omega L; DC current equals 2 V_pk over pi over R](full-bridge.assets/eq-lcrit-ripple.svg)
@@ -373,7 +373,7 @@ Continuous conduction needs the ripple's peak not to exceed the DC level:
 
 Below <!--m:L_{crit}-->![L_crit](full-bridge.assets/eq-inline/d10ddd8f9a.svg)<!--/m--> the current goes discontinuous and the output climbs back towards the peak in a
 load-dependent way — the worst of both behaviours. Above it, the output ripple is the
-second-harmonic amplitude divided by the LC attenuation at <!--m:2\omega-->![2](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m-->:
+second-harmonic amplitude divided by the LC attenuation at <!--m:2\omega-->![2 omega](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m-->:
 
 ![delta V peak to peak approximately 2 times 4 V_pk over 3 pi over 2 omega squared L C, about 1.4 volts for 0.5 henry and 1000 microfarads](full-bridge.assets/eq-lc-ripple.svg)
 
@@ -387,9 +387,9 @@ gently between 0.55 A and 1.43 A, and the power factor rises from 0.47 to 0.86._
 
 | | Capacitor input (C only) | Choke input (L then C) |
 |---|---|---|
-| DC output | <!--m:\approx V_{pk}-->![V_pk](full-bridge.assets/eq-inline/d965e06526.svg)<!--/m--> (about 312–315 V) | <!--m:\approx 2V_{pk}/\pi-->![2V_pk/](full-bridge.assets/eq-inline/01402a43e1.svg)<!--/m--> (about 205 V) |
+| DC output | <!--m:\approx V_{pk}-->![approx V_pk](full-bridge.assets/eq-inline/d965e06526.svg)<!--/m--> (about 312–315 V) | <!--m:\approx 2V_{pk}/\pi-->![approx 2V_pk/pi](full-bridge.assets/eq-inline/01402a43e1.svg)<!--/m--> (about 205 V) |
 | Output vs. load | droops as load rises (ripple and source drop) | nearly constant once <!--m:L > L_{crit}-->![L > L_crit](full-bridge.assets/eq-inline/3ec53d8330.svg)<!--/m--> |
-| Input current | narrow pulses, peak <!--m:\gg-->![](full-bridge.assets/eq-inline/343ac54946.svg)<!--/m--> average | continuous, near-rectangular |
+| Input current | narrow pulses, peak <!--m:\gg-->![much greater than](full-bridge.assets/eq-inline/343ac54946.svg)<!--/m--> average | continuous, near-rectangular |
 | Mains power factor (50 Hz) | about 0.4–0.6 | about 0.86–0.9 |
 | Diode and transformer stress | high peak and RMS current | low; current form factor near 1 |
 | Capacitor ripple current | high (2.8 A RMS for 1 A load here) | low |
@@ -427,7 +427,7 @@ gently between 0.55 A and 1.43 A, and the power factor rises from 0.47 to 0.86._
 Point 4 is the key, because it explains why other converters that look almost identical do use an
 output inductor. In a **forward converter** or a **phase-shifted full-bridge DC-DC converter**, the
 transformer is driven with a *variable* duty cycle in order to regulate the output. The secondary
-then delivers pulses of <!--m:\pm V_{pk}-->![V_pk](full-bridge.assets/eq-inline/5c1e5ae61c.svg)<!--/m--> separated by long intervals at zero, and the rectified
+then delivers pulses of <!--m:\pm V_{pk}-->![plus-minus V_pk](full-bridge.assets/eq-inline/5c1e5ae61c.svg)<!--/m--> separated by long intervals at zero, and the rectified
 waveform is a pulse train with average <!--m:D\,V_{pk}-->![D V_pk](full-bridge.assets/eq-inline/051e120ad3.svg)<!--/m-->. Smoothing that with a capacitor alone would
 just charge to the peak and lose all regulation. These converters therefore put an LC after the
 rectifier — and that LC is exactly the buck converter's output filter, with the rectifier diodes
@@ -474,7 +474,8 @@ so 53 J lands in the diodes, wiring and NTC in a fraction of a second. The usual
 - **Soft start** where there is an active stage in front of the capacitor. In the inverter, the
   bus is charged *through* H-bridge 1 and the transformer, so the controller can ramp H-bridge 1's
   duty cycle (or frequency) from zero over many cycles, charging the bus gently from the battery —
-  the same slow-climb idea as the converters in [../dc-dc-converters/startup.md](../dc-dc-converters/startup.md).
+  the same slow-climb idea as the converters in [../dc-dc-converters/buck/startup.md](../dc-dc-converters/buck/startup.md)
+  and [../dc-dc-converters/boost/startup.md](../dc-dc-converters/boost/startup.md).
   The small 50 kHz bus capacitor (§7) also helps: 53 mJ instead of 53 J.
 
 ## 12 What this costs you
@@ -511,7 +512,7 @@ so 53 J lands in the diodes, wiring and NTC in a fraction of a second. The usual
   few microfarads are needed, avoid the problem.
 - **Peaky current** with a sine input: peak-to-average around 10–25, poor power factor (about 0.47
   here), harmonics on the mains, high RMS current in every series part.
-- **Inrush.** Without limiting, hundreds of amps at switch-on, and <!--m:\tfrac{1}{2}CV^2-->![12CV^2](full-bridge.assets/eq-inline/2189c00fb4.svg)<!--/m--> dissipated in
+- **Inrush.** Without limiting, hundreds of amps at switch-on, and <!--m:\tfrac{1}{2}CV^2-->![1 over 2 CV^2](full-bridge.assets/eq-inline/2189c00fb4.svg)<!--/m--> dissipated in
   the charging path no matter what.
 - **No regulation.** A capacitor-input bus is only as steady as its input. In the video's design
   the bus is the battery voltage times the turns ratio: a 12 V lead-acid battery that ranges from
@@ -536,7 +537,8 @@ so 53 J lands in the diodes, wiring and NTC in a fraction of a second. The usual
 - The buck filter that forward and full-bridge DC-DC converters put after their rectifier:
   [../dc-dc-converters/buck/buck.md](../dc-dc-converters/buck/buck.md); PFC boost:
   [../dc-dc-converters/boost/](../dc-dc-converters/boost/); soft start:
-  [../dc-dc-converters/startup.md](../dc-dc-converters/startup.md).
+  [../dc-dc-converters/buck/startup.md](../dc-dc-converters/buck/startup.md),
+  [../dc-dc-converters/boost/startup.md](../dc-dc-converters/boost/startup.md).
 - Source video: *DC to AC inverter*, slides at 5:56 (rectify and smooth: the DC bus) and 16:44
   (the full pipeline).
 - Capacitor-input and choke-input filter design, critical inductance: F. E. Terman, *Radio
