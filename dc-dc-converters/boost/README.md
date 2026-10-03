@@ -1,13 +1,13 @@
 # The boost (step-up) converter
 
-Deep treatment of the boost converter: `V_out = V_in/(1−D)`, derived by the same volt-second
+Deep treatment of the boost converter: <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--/m-->, derived by the same volt-second
 balance as the buck, and why its output capacitor has to be bigger. Full argument in
 [boost.md](boost.md).
 
 > **The thesis in one line**
 >
 > Swap the order of the inductor and the switch and the same volt-second balance now *raises* the
-> output above the input — because the inductor's stored energy is dumped on top of `V_in`.
+> output above the input — because the inductor's stored energy is dumped on top of <!--m:V_{in}-->![V_in](README.assets/eq-inline/29f560cdfe.svg)<!--/m-->.
 
 ## Contents
 
@@ -15,7 +15,7 @@ The treatment covers:
 
 1. The circuit — inductor first, switch to ground (fig-01).
 2. The two intervals, with the roles swapped from the buck.
-3. Volt-second balance → `V_out = V_in/(1−D)`.
+3. Volt-second balance → <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--/m-->.
 4. Sizing the inductor.
 5. Sizing the output capacitor — genuinely different from the buck (fig-02).
 6. Worked numbers: 12 V → 24 V, and the ~3× comparison.

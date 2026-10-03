@@ -1,129 +1,179 @@
-# Documentation & figure style guide
+# Documentation & figure standards
 
-How every document in this tree is written. It mirrors the Proqmed `docs/*/STYLE.md`
-guide — the engine-agnostic house style — adapted for an electronics/maths subject where
-equations and graphs carry as much of the argument as the prose.
+The authoritative standard for every document in this tree. It exists because these notes must
+render **identically** on GitLab, GitHub, the local Chrome *Markdown Viewer*, VS Code, and fully
+offline — with no plugin, no toggle, no surprises. The rules below are what guarantee that.
+
+> **The one rule that drives everything**
+>
+> **All mathematics and all diagrams are pre-rendered SVG images.** No markdown math delimiters
+> (`$…$`, `$$…$$`, ``$`…`$``), no ASCII-art equations, no `` `code` ``-as-maths, and no emoji ever
+> appear in a committed `.md`. Every symbol you see is a generated SVG. This is not a preference —
+> it is the only form that renders the same everywhere (see §2 for the evidence).
+
+## Contents
+
+1. [The prose](#1-the-prose)
+2. [Why everything is an SVG — the portability evidence](#2-why-everything-is-an-svg--the-portability-evidence)
+3. [Writing mathematics](#3-writing-mathematics)
+4. [Callouts (no emoji)](#4-callouts-no-emoji)
+5. [Figures — the arXiv standard](#5-figures--the-arxiv-standard)
+6. [The figure colour system](#6-the-figure-colour-system)
+7. [The toolchain and the build](#7-the-toolchain-and-the-build)
+8. [Conformance checklist](#8-conformance-checklist)
+
+---
 
 ## 1. The prose
 
-- **Thesis in one line** — a blockquote near the top stating the single idea the document
-  argues, e.g. "voltage across an inductor is proportional to how fast its current changes;
-  everything else is integration."
-- **Numbered Contents** list linking to sections (`## N Title` → `#n-title`).
-- **Narrative, not spec-sheet.** Sections *explain* — what a thing is, why it exists, what
-  breaks without it — in complete sentences. Bullets carry enumerable facts only.
-- **Numbers are load-bearing.** Constants and results are stated verbatim with units:
-  `112.5 µH`, `f_sw = 100 kHz`, not "large".
-- **Callouts** — a blockquote whose first line is a bold emoji label, so it renders on GitHub,
-  GitLab, and the local markdown-it viewer alike (GitHub's `> [!NOTE]` admonition syntax does
-  **not** render on GitLab or markdown-it, so it is not used here). Three kinds:
-  `> **📝 Note —** context that reframes`, `> **⚠️ Watch out —** footguns and costs`, and
-  `> **💡 Tip —** takeaways and rules to carry forward`.
-- **Honest costs.** Every strong claim gets its price stated ("what this costs you").
-- **Address the confusion.** Where a step is genuinely easy to get wrong (the classic one
-  here: differentiating `Q = C·V`), stop and prove it slowly rather than asserting it.
-- **Sources / cross-links** at the end: link to the sibling documents each mechanism connects
-  to (`[[../capacitor/capacitor.md]]`-style relative links).
+- **Thesis in one line** — a blockquote near the top stating the single idea the document argues.
+- **Numbered Contents** linking to sections (`## N Title` → anchor `#n-title`).
+- **Narrative, not spec-sheet.** Sections *explain* — what a thing is, why it exists, what breaks
+  without it — in full sentences. Bullets carry enumerable facts only.
+- **Numbers are load-bearing.** Constants and results are stated verbatim with units (rendered as
+  maths where they are maths).
+- **Honest costs.** Every strong claim states its price (a "What this costs you" section).
+- **Address the confusion.** Where a step is genuinely easy to get wrong (e.g. differentiating
+  `Q = C·V`), stop and prove it slowly rather than asserting it.
+- **Sources / cross-links** at the end, as relative links to sibling documents.
 
-## 2. Maths — everything is a generated SVG
+## 2. Why everything is an SVG — the portability evidence
 
-Markdown math (`$$…$$` / `$…$`) renders differently, or not at all, across GitHub, GitLab, and
-offline viewers, and inline `` `code` `` is not math. So **this tree does not rely on any markdown
-math renderer.** Every equation is baked into an SVG once, by a deterministic tool, and embedded as
-an image — so it looks identical everywhere, forever.
+Inline maths was tested on the two renderers this project actually targets:
 
-1. **Every equation and every derivation step is a generated SVG.** Write the LaTeX in a
-   `<doc>.eqns` source file beside the `.md`, then run the toolchain (see
-   [../toolchain/README.md](../toolchain/README.md)). It emits `eq-<name>.svg` into the doc's
-   `<doc>.assets/` directory. Embed with plain image syntax and an italic-free alt describing the
-   equation in words:
-
-   ```
-   ![V_L equals L times dI_L by dt](inductor.assets/eq-law.svg)
-   ```
-
-   The `.eqns` record looks like:
-
-   ```
-   name: law
-   tex: V_L(t) = L\frac{dI_L}{dt}
-   ---
-   ```
-
-   Multi-step derivations are one equation each (or a single `\Longrightarrow`-chained line), so the
-   algebra is typeset, not ASCII art. **Do not** put `$$…$$` or ASCII `=`-aligned blocks in the
-   `.md` — they are the exact things that render inconsistently.
-
-2. **Inline symbols stay as inline `` `code` ``.** Short identifiers in prose — `` `V_L` ``,
-   `` `dI/dt` ``, `` `D` `` — are written as inline code, which renders fine on every platform. Only
-   *equations* (a statement with an `=`, a fraction, an integral, a boxed result) become SVGs.
-
-3. **Graphs, waveforms, schematics — generated SVG figures** built by `toolchain/drawing_to_svg.js`
-   (see §3–§4).
-
-> **⚠️ Watch out —** **Never animate a graph.** Axes-and-curves figures (`V` vs `t`, `I` vs `t`) are
-> always static — motion on a plotted quantity is misleading. Animation is allowed *only* on
-> component diagrams (charge moving through a coil, charge piling on a plate), because there the
-> motion depicts a physical flow, not a measured value.
-
-## 3. The figures — file convention
-
-- `<FILE>.md` pairs with a sibling directory `<FILE>.assets/` holding `fig-01.svg`,
-  `fig-02.svg`, … in section order. Topic-level figures live in
-  `<topic>/<topic>.assets/`.
-- Embed as `![<short alt>](<FILE>.assets/fig-NN.svg)` followed immediately by one *italic*
-  caption line — the caption says *why it matters*; the figure itself carries *what it is*.
-  The alt text **equals** the SVG's `aria-label`.
-- Density: roughly a figure per major section. A reader who only looks at the figures should
-  still get the whole story.
-
-## 4. The figures — SVG skeleton (non-negotiable)
-
-Every figure copies the same skeleton (the `<style><![CDATA[ … ]]></style>` block plus the
-six arrowhead `<marker>`s plus the `h2m-bg` rect), taken from the Proqmed
-`uSockets_philosophy.assets/fig-01.svg`. Only three things change per figure: the `viewBox`
-height `H`, the `aria-label`, and the body. This is what makes the figures re-theme themselves
-for dark, light, and print automatically — **never inline a colour in the body; every colour
-resolves through a class.**
-
-Class families (same letter, same hue, same meaning):
-
-| Hue | Node / arrow / label classes | Means, in this tree |
+| Form | GitLab | Chrome *Markdown Viewer* (mathjax on) |
 |---|---|---|
-| blue | `.nb .ab .lb .plot-b .fx-b` | the mechanism under focus; the **output node**; the effect quantity of a ramp (I for an inductor, V for a capacitor) |
-| green | `.ng .ag .lg .plot-g .fx-g` | the correct/favoured side; the boost result; "cap charging" |
-| red | `.nr .ar .lr .plot-r .fx-r` | cost/danger; the ON (low) interval of a boost; "cap discharging feeds load" |
-| amber | `.na .aa .la .plot-a .fx-a` | machinery & accounting; the **switch node**; the constant *drive* on top of a ramp graph; the bottom-line takeaway |
-| purple | `.np .ap .lp .plot-p .fx-p` | data/payload; the capacitor's own current `i_C` |
-| neutral | `.n .a .l .wire .axis .grid` | wires, axes, gridlines, enumerated items |
+| plain `$V_C$` | unreliable (docs favour the backtick form) | renders |
+| backtick ``$`V_C`$`` | renders | **does not render** (its regex forbids backticks inside `$…$`) |
+| **SVG image** `![...](eq-….svg)` | **renders** | **renders** |
 
-Helper classes added for this subject (still theme-driven): `.wire` (schematic wire),
-`.axis` / `.grid` (graph axes and gridlines), `.plot-*` (a plotted curve in the family
-colour), `.fill-g` / `.fill-a` (translucent area fills for "charge = area" arguments).
+The two renderers **conflict** on every markdown math delimiter. The only form that renders on
+both — plus GitHub and offline — is a plain image. GitHub's `> [!NOTE]` admonitions likewise fail
+on GitLab and markdown-it, and emoji render as tofu boxes in the user's font. Hence the one rule:
+**pre-render maths and diagrams to SVG; use no emoji; use bold-label callouts.**
 
-### Emoji net labels
+## 3. Writing mathematics
 
-Borrowed from the onvif breadboard docs: when prose refers to a coloured point in a figure,
-tag it with the matching emoji so the eye can jump between text and picture. The mapping in
-this tree:
+You author maths in readable source; the toolchain converts it to SVG. Three cases:
 
-- 🟠 **switch node** (amber) — the chopped point after the switch
-- 🔵 **output node** (blue) — `V_out`, at the capacitor/load
-- 🟡 **PWM drive** (amber) — the gate signal
-- ⚫ **ground rail** (neutral)
+**a. Display equations** — write them in a `<doc>.eqns` source file beside the `.md`:
 
-## 5. Conformance checklist
+```
+name: law
+tex: V_L(t) = L\frac{dI_L}{dt}
+---
+```
 
-1. Skeleton copied verbatim; only `H`, `aria-label`, body changed; `h2m-bg` height matches `H`.
-2. `xmllint --noout` passes on every SVG; `prefers-color-scheme` present (theming intact).
-3. No inline colours in figure bodies; every colour is a class.
-4. Graphs are static; only component diagrams may animate.
-5. One centred takeaway line near the bottom of each figure (`.la`, at about `y = H − 20`).
-6. Markdown embed: alt == aria-label, italic caption follows, callout after if there is a
-   consequence.
-7. Prose: thesis blockquote, numbered Contents, honest-cost callout, Sources/cross-links.
-8. Every quantity verbatim with units; every equation is a generated `eq-*.svg` (no `$$` or ASCII
-   math in the `.md`), and each is regenerated from its `.eqns` source by the toolchain.
-9. **Portable everywhere.** Renders correctly on GitHub, GitLab, and the local viewer with no
-   plugins: all maths and diagrams are SVG images, callouts are emoji-label blockquotes (not
-   `> [!NOTE]`), and every figure is referenced by relative path so it resolves in every host.
+Running the toolchain emits `eq-<name>.svg` into `<doc>.assets/`. Embed it with a words-only alt:
+
+```
+![V_L equals L times dI_L by dt](inductor.assets/eq-law.svg)
+```
+
+Multi-step derivations are one equation each, or a single `\Longrightarrow`-chained line — the
+algebra is typeset, never ASCII art.
+
+**b. Inline maths in prose** — write it with ordinary `$…$` delimiters directly in the `.md`:
+
+```
+Suppose $V_L$ is held constant, so $dI_L/dt = V_L/L$ is fixed.
+```
+
+The `inline_math.js` pass converts each `$…$` span to an SVG embed, rewriting the line to a
+round-trippable marker form:
+
+```
+Suppose <!--m:V_L-->![V_L](inductor.assets/eq-inline/HASH.svg)<!--/m--> is held constant, …
+```
+
+The HTML comment preserves the LaTeX source so the pass is **idempotent** and you can keep editing
+the maths. Rules for authoring inline maths:
+- Multi-letter subscripts get braces: write `V_{out}`, `f_{sw}`, `I_{load}` (not `V_out`).
+- English words inside maths use `\text{…}` (e.g. `\text{rise} = \text{fall}`).
+- Units use `\mathrm{…}` (e.g. `100\,\mathrm{kHz}`, `112.5\,\mu\mathrm{H}`).
+- Never put maths in a heading — headings stay plain text.
+
+**c. Figures** — see §5. Maths inside a figure is typeset by the same engine via `mathText`.
+
+**Never** commit `$…$`, `$$…$$`, ``$`…`$``, ASCII `=`-aligned blocks, or `` `code` ``-wrapped
+equations. Genuine non-maths inline code (a literal `ON`/`OFF`, a filename) may stay as code.
+
+## 4. Callouts (no emoji)
+
+A callout is a blockquote whose first line is a **bold text label** — no emoji, ever:
+
+```
+> **Note —** context that reframes.
+> **Tip —** a takeaway to carry forward.
+> **Watch out —** a footgun or a cost.
+```
+
+These render identically on every target. Do not use `> [!NOTE]` admonitions (GitLab/markdown-it
+do not render them) and do not use emoji labels (they show as tofu boxes).
+
+## 5. Figures — the arXiv standard
+
+Figures are **generated** by `toolchain/figures/*.js` using the `Fig` builder in
+`toolchain/drawing_to_svg.js`; never hand-authored. They must read like a research paper:
+
+- **Every label is typeset maths** — titles, axis titles, tick labels that are quantities, and all
+  in-plot annotations go through `mathText`/`plot().ticks(...tex...)`. **No monospace plaintext
+  maths, no non-maths-rendered symbols, ever.**
+- **Framed, ticked axes.** A plot has a rectangular frame, real tick marks with typeset numeric
+  labels, a subtle grid, and **axis titles as maths with units** — `$t$`, `$V_L\;(\mathrm{V})$`,
+  `$I_L\;(\mathrm{A})$`. Use `plot({x,y,w,h,xlim,ylim})` and draw in data coordinates.
+- **Caption band.** Every figure ends with `f.caption("Y vs. X — descriptive name")`, which renders
+  a rule line and a bold `Figure N:` prefix. Figure numbers are global and stable across the tree
+  (inductor 1–3, capacitor 4–6, buck 7–9, boost 10–11, comparison 12).
+- **Serif type**, generous margins, dark theme kept.
+- **Embedding in the `.md`**: `![alt](<file>.assets/fig-NN.svg)` where the alt **equals** the SVG's
+  `aria-label`, followed immediately by one *italic* interpretive caption line in the prose (says
+  *why it matters*; the figure itself carries *what it is*).
+- **Animation rule:** never animate a graph — motion on a plotted quantity is misleading. Animation
+  is allowed *only* on component diagrams (charge moving through a coil, charge on a plate), where
+  it depicts a physical flow, not a measured value.
+
+## 6. The figure colour system
+
+Colours are **classes**, never inlined — this is what lets each figure re-theme itself for dark
+(default), light (`prefers-color-scheme: light`), and print. Same hue letter = same meaning:
+
+| Hue | Classes | Means in this tree |
+|---|---|---|
+| blue | `plot-b` `fx-b` `nb` `flow-b` `dotb` | the mechanism under focus; the output node; the effect quantity of a ramp |
+| green | `plot-g` `fx-g` `ng` `flow-g` `fill-g` | the favoured/correct side; the boost result; charging |
+| red | `plot-r` `fx-r` `nr` `flow-r` | cost/danger; the ON (low) interval of a boost; discharging |
+| amber | `plot-a` `fx-a` `na` `flow-a` `fill-a` `dota` | machinery/accounting; the switch node; the constant drive on a ramp |
+| purple | `plot-p` `fx-p` `np` | data/payload; the capacitor's own current (`i_C`) |
+| neutral | `wire` `axis` `grid` `frame` `tickline` `n` | wires, axes, gridlines, frames, enumerated items |
+
+Typeset maths inside a figure inherits colour from `mathText(..., {hue})` (→ `fx-*`) or the default
+`mathfill` class. Both set `color` and `fill` so MathJax's `currentColor` paths resolve per theme.
+
+## 7. The toolchain and the build
+
+All generation is one command — see [../toolchain/README.md](../toolchain/README.md):
+
+```
+node toolchain/build_all.js
+```
+
+It runs three passes in order: display equations (`.eqns` → `eq-*.svg`), inline maths (`$…$` in
+every `.md` → `eq-inline/*.svg` embeds), then figures (`figures/*.js` → `fig-NN.svg`). It is
+deterministic and idempotent — a second run changes nothing. Generation needs `mathjax-full`;
+viewers need nothing (the SVGs are self-contained).
+
+## 8. Conformance checklist
+
+1. No `$…$`/`$$…$$`/``$`…`$``, no ASCII-maths, no `` `code` ``-as-maths, **no emoji** in any `.md`.
+2. Every equation is a generated SVG (`eq-*.svg` display, `eq-inline/*.svg` inline); regenerated
+   from source by the toolchain; `build_all.js` is idempotent.
+3. Callouts are bold-label blockquotes (`> **Note —**`, `> **Tip —**`, `> **Watch out —**`).
+4. Figures: all labels typeset maths; framed ticked axes; maths axis titles with units; a
+   `Figure N: Y vs. X — name` caption; dark theme; no inlined colours; graphs never animate.
+5. `xmllint --noout` passes on every SVG; each contains `prefers-color-scheme` (theming intact).
+6. Figure embed: alt == `aria-label`, one italic caption line follows.
+7. Prose: thesis blockquote, numbered Contents, honest-cost section, Sources/cross-links.
+8. Renders identically on GitLab, GitHub, the local viewer, and offline — verified by rendering
+   through markdown-it with zero literal `$`, zero `[!`, zero emoji outside code blocks, and every
+   `<img>` resolving.

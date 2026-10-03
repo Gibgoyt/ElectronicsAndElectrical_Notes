@@ -8,8 +8,8 @@ switch on and off tens of thousands of times a second.
 > **The thesis in one line**
 >
 > In steady state the average voltage across the inductor over one full cycle must be exactly
-> zero (*volt-second balance*). That single fact derives both step ratios — `V_out = D·V_in` for
-> the buck and `V_out = V_in/(1−D)` for the boost.
+> zero (*volt-second balance*). That single fact derives both step ratios — <!--m:V_{out} = D \cdot V_{in}-->![V_out = D V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> for
+> the buck and <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--/m--> for the boost.
 
 ![Side by side comparison of buck and boost showing the same four parts reordered](dc-dc-converters.assets/fig-01.svg)
 
@@ -21,8 +21,8 @@ a consequence of the derivations, not a coincidence._
 
 | Subtopic | Result | What it covers |
 |---|---|---|
-| [buck/](buck/) | `V_out = D·V_in` | ON/OFF vocabulary, the two switching intervals, volt-second balance derived, inductor sizing, output-capacitor sizing from the triangle-charge argument, worked numbers |
-| [boost/](boost/) | `V_out = V_in/(1−D)` | the same method with the intervals swapped, and the genuinely-different output-capacitor sizing (the cap feeds the load alone while the switch is on) |
+| [buck/](buck/) | <!--m:V_{out} = D \cdot V_{in}-->![V_out = D V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> | ON/OFF vocabulary, the two switching intervals, volt-second balance derived, inductor sizing, output-capacitor sizing from the triangle-charge argument, worked numbers |
+| [boost/](boost/) | <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--/m--> | the same method with the intervals swapped, and the genuinely-different output-capacitor sizing (the cap feeds the load alone while the switch is on) |
 
 ## Reading order
 
@@ -35,5 +35,5 @@ that a constant voltage across an inductor makes a straight current ramp. Then:
 ## Conventions
 
 Follows [../STYLE.md](../STYLE.md). Switch **ON = closed = conducting**; switch **OFF = open**.
-`D` is the duty cycle (the fraction of each period the switch is ON) and `T` is the period of one
-full switching cycle, so `f_sw = 1/T`.
+<!--m:D-->![D](README.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> is the duty cycle (the fraction of each period the switch is ON) and <!--m:T-->![T](README.assets/eq-inline/c2c53d6694.svg)<!--/m--> is the period of one
+full switching cycle, so <!--m:f_{sw} = 1/T-->![f_sw = 1/T](README.assets/eq-inline/cc2c6208db.svg)<!--/m-->.

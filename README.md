@@ -28,9 +28,9 @@ Suggested order:
 
 1. [fundamentals/inductor/](fundamentals/inductor/) — the law, the ramp, the polarity flip.
 2. [fundamentals/capacitor/](fundamentals/capacitor/) — the mirror law, and **the proper
-   proof of why you may differentiate `Q = C·V`** (the step that trips everyone up).
-3. [dc-dc-converters/buck/](dc-dc-converters/buck/) — `V_out = D·V_in`, derived.
-4. [dc-dc-converters/boost/](dc-dc-converters/boost/) — `V_out = V_in/(1−D)`, same method.
+   proof of why you may differentiate <!--m:Q = C \cdot V-->![Q = C V](README.assets/eq-inline/205c11f7c4.svg)<!--/m-->** (the step that trips everyone up).
+3. [dc-dc-converters/buck/](dc-dc-converters/buck/) — <!--m:V_{out} = D \cdot V_{in}-->![V_out = D V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m-->, derived.
+4. [dc-dc-converters/boost/](dc-dc-converters/boost/) — <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--/m-->, same method.
 
 ## Conventions
 
@@ -44,6 +44,6 @@ GitLab, and any offline viewer, with no dependency on a markdown math plugin.
 
 These notes grew out of a long worked conversation and twelve pages of handwritten study
 notes on buck/boost converters. The confusions flagged in those notes — *when* it is legal to
-apply `d/dt` to both sides of an equation, why a constant voltage gives a straight-line
+apply <!--m:d/dt-->![d/dt](README.assets/eq-inline/9560a2e5f1.svg)<!--/m--> to both sides of an equation, why a constant voltage gives a straight-line
 current, what the ramp graphs actually look like — are addressed head-on in the relevant
 sections rather than glossed over.

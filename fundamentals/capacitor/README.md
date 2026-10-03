@@ -1,6 +1,6 @@
 # The capacitor
 
-Deep treatment of the second fundamental law: `I_C = C·dV/dt`. The full argument is in
+Deep treatment of the second fundamental law: <!--m:I_C = C \cdot dV/dt-->![I_C = C dV/dt](README.assets/eq-inline/56baca3b41.svg)<!--/m-->. The full argument is in
 [capacitor.md](capacitor.md), in seven sections with three figures.
 
 > **The thesis in one line**
@@ -13,7 +13,7 @@ Deep treatment of the second fundamental law: `I_C = C·dV/dt`. The full argumen
 The treatment covers:
 
 1. What a capacitor actually is — two plates, storing energy in an electric field.
-2. **The rule you need: when you may differentiate `Q = C·V`, and when you may not.** A proper
+2. **The rule you need: when you may differentiate <!--m:Q = C \cdot V-->![Q = C V](README.assets/eq-inline/205c11f7c4.svg)<!--/m-->, and when you may not.** A proper
    proof, because "just differentiate both sides" is the step that trips everyone up.
 3. The units of the farad.
 4. From the law to the ramp — constant current makes a straight voltage ramp (fig-01).
