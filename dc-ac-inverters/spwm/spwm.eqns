@@ -1,0 +1,79 @@
+# Equation sources for spwm.md — rendered into spwm.assets/eq-*.svg
+
+name: ref
+tex: v_{ref}(t) = m_a \sin(2\pi f_1 t) = m_a \sin\theta, \qquad f_1 = 50\,\mathrm{Hz}
+---
+name: carrier
+tex: v_c(t) = \begin{cases} -1 + \dfrac{4t}{T_c}, & 0 \le t \le \dfrac{T_c}{2} \\[6pt] \;\;\,3 - \dfrac{4t}{T_c}, & \dfrac{T_c}{2} \le t \le T_c \end{cases} \qquad T_c = \frac{1}{f_c}\ \ (\text{repeats})
+---
+name: ratios
+tex: m_a = \frac{\hat V_{ref}}{\hat V_{c}} \quad(\text{amplitude modulation index}), \qquad m_f = \frac{f_c}{f_1} \quad(\text{frequency modulation ratio})
+---
+name: rule
+tex: v_{AB}(t) = \begin{cases} +V_{dc}, & v_{ref}(t) > v_c(t) \quad (Q_1, Q_4 \text{ on}) \\ -V_{dc}, & v_{ref}(t) < v_c(t) \quad (Q_2, Q_3 \text{ on}) \end{cases}
+---
+name: ruler
+tex: \frac{\text{time the triangle spends below } r}{T_c} = \frac{r - (-1)}{1 - (-1)} = \frac{1 + r}{2}
+---
+name: crossing
+tex: v_c(t_1) = -1 + \frac{4t_1}{T_c} = r \quad\Longrightarrow\quad t_1 = \frac{(1+r)\,T_c}{4}, \qquad t_2 = T_c - t_1
+---
+name: ton
+tex: t_{on} = t_1 + (T_c - t_2) = 2\,t_1 = \frac{(1+r)\,T_c}{2} \quad\Longrightarrow\quad D = \frac{t_{on}}{T_c} = \frac{1+r}{2}
+---
+name: dk
+tex: D_k = \frac{1 + m_a \sin\theta_k}{2}, \qquad \theta_k = 2\pi f_1 t_k \ \ (\text{the phase during carrier period } k)
+---
+name: avg
+tex: \overline{v}_k = D_k\,(+V_{dc}) + (1 - D_k)\,(-V_{dc}) = (2D_k - 1)\,V_{dc} = r\,V_{dc}
+---
+name: core
+tex: \boxed{\;\overline{v}_k = m_a\,V_{dc}\,\sin\theta_k\;}
+---
+name: fundamental
+tex: \hat V_1 = m_a\,V_{dc}, \qquad V_{1,\mathrm{rms}} = \frac{m_a\,V_{dc}}{\sqrt{2}} \qquad (0 \le m_a \le 1)
+---
+name: drift
+tex: \Delta\theta = \frac{2\pi}{m_f} \;\Longrightarrow\; \lvert\Delta r\rvert \le m_a\,\frac{2\pi}{m_f}: \qquad m_f = 2: 2.5, \quad m_f = 21: 0.24, \quad m_f = 400: 0.013 \quad (m_a = 0.8)
+---
+name: square
+tex: m_a \to \infty: \quad \hat V_1 = \frac{2}{T_1}\int_0^{T_1} v_{AB}\sin\theta\,dt = \frac{4\,V_{dc}}{\pi} \approx 1.273\,V_{dc}
+---
+name: orders
+tex: n = j\,m_f \pm k, \qquad j + k \ \text{odd} \qquad (j = 1: k = 0, 2, 4, \dots;\quad j = 2: k = 1, 3, \dots)
+---
+name: bessel
+tex: \hat V_{j m_f \pm k} = \frac{4\,V_{dc}}{j\pi}\, J_k\!\left(j\, m_a \frac{\pi}{2}\right) \left\lvert \sin\frac{(j+k)\pi}{2} \right\rvert
+---
+name: bessel-check
+tex: m_a = 0.8: \quad \hat V_{m_f} = \frac{4}{\pi} J_0(0.4\pi)\,V_{dc} = 1.273 \times 0.6425\,V_{dc} = 0.818\,V_{dc}
+---
+name: unipolar
+tex: \overline{v}_{A} = V_{dc}\,\frac{1 + r}{2}, \qquad \overline{v}_{B} = V_{dc}\,\frac{1 - r}{2}, \qquad \overline{v}_{AB} = \overline{v}_{A} - \overline{v}_{B} = r\,V_{dc}
+---
+name: unipolar-orders
+tex: n = 2\,m_f \pm 1,\ 2\,m_f \pm 3,\ \dots,\ 4\,m_f \pm 1, \dots \qquad (\text{only even } j \text{ survive})
+---
+name: user-ma
+tex: \hat V_{out} = \sqrt{2} \times 230\,\mathrm{V} = 325.3\,\mathrm{V} \quad\Longrightarrow\quad m_a = \frac{325.3}{325} = 1.001 \quad(V_{dc} = 325\,\mathrm{V}), \qquad m_a = \frac{325.3}{400} = 0.813 \quad(V_{dc} = 400\,\mathrm{V})
+---
+name: filter
+tex: f_0 = \frac{1}{2\pi\sqrt{2\,\mathrm{mH} \times 10\,\mu\mathrm{F}}} \approx 1.13\,\mathrm{kHz}, \qquad \left(\frac{f_0}{20\,\mathrm{kHz}}\right)^{2} \approx \frac{1}{316}\ (-50\,\mathrm{dB}), \qquad \left(\frac{f_0}{40\,\mathrm{kHz}}\right)^{2} \approx \frac{1}{1264}\ (-62\,\mathrm{dB})
+---
+name: ripple
+tex: \text{bipolar: } \frac{0.818 \times 400\,\mathrm{V}}{316} \approx 1.0\,\mathrm{V}, \qquad \text{unipolar: } \frac{0.314 \times 400\,\mathrm{V}}{1264} \approx 0.10\,\mathrm{V} \qquad (\text{peak, largest carrier harmonic})
+---
+name: lut
+tex: \text{CCR}_k = \operatorname{round}\!\left(\text{ARR}\cdot\frac{1 + m_a \sin(2\pi k/N)}{2}\right), \qquad N = \frac{f_c}{f_1} = 400, \qquad \text{ARR} = \frac{f_{clk}}{2 f_c} = \frac{84\,\mathrm{MHz}}{40\,\mathrm{kHz}} = 2100
+---
+name: dds
+tex: f_{out} = \frac{\text{FREQREG} \times f_{MCLK}}{2^{28}}, \qquad \Delta f = \frac{25\,\mathrm{MHz}}{2^{28}} \approx 0.093\,\mathrm{Hz}
+---
+name: dds-sync
+tex: \text{FREQREG}_1 = 537 \Rightarrow f_1 = 50.012\,\mathrm{Hz}, \qquad \text{FREQREG}_c = 400 \times 537 = 214\,800 \Rightarrow f_c = 20\,004.9\,\mathrm{Hz} = 400\,f_1 \ \text{exactly}
+---
+name: switching-loss
+tex: P_{sw} \approx \tfrac12\, V_{dc}\, \overline{I}\,(t_r + t_f)\, f_c \approx \tfrac12 \times 400 \times 3.9 \times 100\,\mathrm{ns} \times 20\,\mathrm{kHz} \approx 1.6\,\mathrm{W}\ \text{per switch}
+---
+name: deadtime
+tex: \Delta \overline{v} \approx 2\,t_d\, f_c\, V_{dc} = 2 \times 1\,\mu\mathrm{s} \times 20\,\mathrm{kHz} \times 400\,\mathrm{V} = 16\,\mathrm{V} \quad (\approx 5\,\%\ \text{of } 325\,\mathrm{V})

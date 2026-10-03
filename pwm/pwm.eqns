@@ -1,0 +1,61 @@
+# Equation sources for pwm.md — rendered into pwm.assets/eq-*.svg
+
+name: duty
+tex: D = \frac{t_{on}}{T} = t_{on}\,f_{sw}, \qquad T = \frac{1}{f_{sw}}, \qquad 0 \le D \le 1
+---
+name: average-def
+tex: \overline{v} = \frac{1}{T}\int_{0}^{T} v(t)\,dt
+---
+name: average-derive
+tex: \overline{v} = \frac{1}{T}\left(\int_{0}^{DT} V_{in}\,dt + \int_{DT}^{T} 0\,dt\right) = \frac{V_{in}\,D\,T}{T} = D\,V_{in}
+---
+name: average-result
+tex: \boxed{\,\overline{v} = D\,V_{in}\,}
+---
+name: average-bipolar
+tex: \overline{v} = D\,(+V) + (1-D)\,(-V) = (2D-1)\,V
+---
+name: steps
+tex: N = \frac{f_{clk}}{f_{sw}}, \qquad \Delta D = \frac{1}{N}, \qquad \text{bits} = \log_2 N
+---
+name: steps-worked
+tex: N = \frac{84\,\mathrm{MHz}}{50\,\mathrm{kHz}} = 1680 \quad\Longrightarrow\quad \log_2 1680 \approx 10.7\ \text{bits}, \qquad \Delta D = \frac{1}{1680} \approx 0.06\,\%
+---
+name: step-volts
+tex: \Delta \overline{v} = \frac{V_{in}}{N} = \frac{12\,\mathrm{V}}{1680} \approx 7.1\,\mathrm{mV}
+---
+name: tradeoff
+tex: N\,f_{sw} = f_{clk} \quad\Longrightarrow\quad f_{sw} = 100\,\mathrm{kHz} \Rightarrow N = 840, \qquad f_{sw} = 500\,\mathrm{kHz} \Rightarrow N = 168
+---
+name: timer-edge
+tex: f_{sw} = \frac{f_{clk}}{(\text{PSC}+1)(\text{ARR}+1)}, \qquad D = \frac{\text{CCR}}{\text{ARR}+1}
+---
+name: timer-centre
+tex: f_{sw} = \frac{f_{clk}}{2\,(\text{PSC}+1)\,\text{ARR}}, \qquad D = \frac{\text{CCR}}{\text{ARR}}, \qquad N = \frac{f_{clk}}{2 f_{sw}} = 840 \ \text{at}\ 84\,\mathrm{MHz},\ 50\,\mathrm{kHz}
+---
+name: ramp
+tex: v_{tri}(t) = \frac{2V_{pk}}{T}\,t \quad (0 \le t \le T/2), \qquad v_{tri}(t_1) = v_{ctrl} \;\Longrightarrow\; t_1 = \frac{v_{ctrl}}{V_{pk}}\cdot\frac{T}{2}
+---
+name: ramp-duty
+tex: t_{on} = 2\,t_1 = \frac{v_{ctrl}}{V_{pk}}\,T \quad\Longrightarrow\quad \boxed{\,D = \frac{v_{ctrl}}{V_{pk}}\,}
+---
+name: fourier-series
+tex: v(t) = \underbrace{D\,V_{in}}_{\text{DC}} + \sum_{n=1}^{\infty} a_n \cos\!\left(2\pi n f_{sw} t - \varphi_n\right)
+---
+name: fourier-coeff
+tex: c_n = \frac{1}{T}\int_{0}^{DT} V_{in}\,e^{-j2\pi n t/T}\,dt = \frac{V_{in}}{j2\pi n}\left(1 - e^{-j2\pi n D}\right)
+---
+name: fourier-mag
+tex: \left|1 - e^{-j2\pi nD}\right| = 2\,\lvert\sin(\pi n D)\rvert \quad\Longrightarrow\quad a_n = 2\,\lvert c_n\rvert = \frac{2V_{in}}{n\pi}\,\lvert\sin(n\pi D)\rvert
+---
+name: fourier-worked
+tex: D = 0.3,\ V_{in} = 12\,\mathrm{V}: \quad a_0 = 3.6\,\mathrm{V},\quad a_1 = \frac{24}{\pi}\sin(0.3\pi) = 6.18\,\mathrm{V},\quad a_2 = 3.63\,\mathrm{V},\quad a_{10} = 0
+---
+name: lc-atten
+tex: f_0 = \frac{1}{2\pi\sqrt{LC}}, \qquad \lvert H(f)\rvert \approx \left(\frac{f_0}{f}\right)^{2} \quad (f \gg f_0)
+---
+name: lc-worked
+tex: f_0 = \frac{1}{2\pi\sqrt{100\,\mu\mathrm{H}\cdot 10\,\mu\mathrm{F}}} \approx 5.03\,\mathrm{kHz}, \qquad a_1\left(\frac{f_0}{f_{sw}}\right)^{2} = 6.18 \times 0.0101 \approx 63\,\mathrm{mV}\ \text{peak}
+---
+name: deadtime
+tex: \Delta\overline{v} \approx \pm\, t_d\, f_{sw}\, V_{dc} \qquad\text{e.g.}\quad 500\,\mathrm{ns} \times 50\,\mathrm{kHz} \times 12\,\mathrm{V} = 0.3\,\mathrm{V}
