@@ -1,0 +1,203 @@
+# Equation sources for transformer.md — rendered by toolchain/math_to_svg.js into transformer.assets/eq-*.svg
+# Edit here, then run (scoped):
+#   node toolchain/build_all.js docs/fundamentals/transformer --figures toolchain/figures/transformer.js
+
+# --- §2 coupled coils -----------------------------------------------------------------------
+name: faraday
+tex: v = N\,\frac{d\Phi}{dt}
+---
+name: self-inductance
+tex: L = \frac{N\,\Phi}{i} = \frac{N^2}{\mathcal{R}}, \qquad \mathcal{R} = \frac{\ell_e}{\mu\,A_e}
+---
+name: coupled
+tex: v_1 = L_1\,\frac{di_1}{dt} + M\,\frac{di_2}{dt}, \qquad v_2 = M\,\frac{di_1}{dt} + L_2\,\frac{di_2}{dt}
+---
+name: mutual
+tex: M = k\,\sqrt{L_1 L_2}, \qquad 0 \le k \le 1
+---
+name: coupled-ideal
+tex: k = 1:\quad L_1 = \frac{N_1^2}{\mathcal{R}},\ \ L_2 = \frac{N_2^2}{\mathcal{R}},\ \ M = \frac{N_1 N_2}{\mathcal{R}} \quad\Longrightarrow\quad \frac{v_2}{v_1} = \frac{N_2\,\big(N_1\,\tfrac{di_1}{dt} + N_2\,\tfrac{di_2}{dt}\big)}{N_1\,\big(N_1\,\tfrac{di_1}{dt} + N_2\,\tfrac{di_2}{dt}\big)} = \frac{N_2}{N_1}
+---
+
+# --- §3 ideal transformer -------------------------------------------------------------------
+name: faraday-both
+tex: v_p = N_p\,\frac{d\Phi}{dt}, \qquad v_s = N_s\,\frac{d\Phi}{dt}
+---
+name: voltage-ratio
+tex: \frac{d\Phi}{dt} = \frac{v_p}{N_p} = \frac{v_s}{N_s} \quad\Longrightarrow\quad \boxed{\,\frac{v_s}{v_p} = \frac{N_s}{N_p}\,}
+---
+
+# --- §4 currents ----------------------------------------------------------------------------
+name: mmf
+tex: \oint H\,d\ell = N_p\,i_p - N_s\,i_s = \mathcal{R}\,\Phi
+---
+name: mmf-ideal
+tex: \mathcal{R} \to 0 \quad\Longrightarrow\quad N_p\,i_p = N_s\,i_s \quad\Longrightarrow\quad \boxed{\,\frac{i_s}{i_p} = \frac{N_p}{N_s}\,}
+---
+name: power
+tex: p_s = v_s\,i_s = \left(\frac{N_s}{N_p}\,v_p\right)\left(\frac{N_p}{N_s}\,i_p\right) = v_p\,i_p = p_p
+---
+
+# --- §5 impedance reflection ----------------------------------------------------------------
+name: impedance
+tex: Z_p' = \frac{v_p}{i_p} = \frac{(N_p/N_s)\,v_s}{(N_s/N_p)\,i_s} = \left(\frac{N_p}{N_s}\right)^{2}\frac{v_s}{i_s} = \left(\frac{N_p}{N_s}\right)^{2} Z_L
+---
+name: impedance-numbers
+tex: Z_L = \frac{(325\,\text{V})^2}{1000\,\text{W}} = 105.6\,\Omega \quad\Longrightarrow\quad Z_p' = \frac{105.6\,\Omega}{27.1^2} = 0.144\,\Omega, \qquad \frac{(12\,\text{V})^2}{0.144\,\Omega} = 1000\,\text{W}
+---
+
+# --- §7 magnetising -------------------------------------------------------------------------
+name: magnetising
+tex: L_m = A_L\,N_p^2 = \frac{N_p^2}{\mathcal{R}}, \qquad \frac{di_m}{dt} = \frac{v_p}{L_m}
+---
+name: im-peak
+tex: \hat\imath_m = \frac{1}{2}\cdot\frac{V\,(T/2)}{L_m} = \frac{V}{4\,f\,L_m}
+---
+name: im-numbers
+tex: \hat\imath_m = \frac{12\,\text{V}}{4 \times 50\,\text{kHz} \times 20\,\mu\text{H}} = 3\,\text{A} \qquad (\text{vs. } 83\,\text{A of reflected load current: } 3.6\,\%)
+---
+name: ip-sum
+tex: i_p = \frac{N_s}{N_p}\,i_s + i_m
+---
+
+# --- §8 flux is the integral of voltage -----------------------------------------------------
+name: misconception
+tex: \underbrace{\ \frac{dB}{dt} \propto \frac{dv}{dt}\ }_{\text{not the law}} \qquad\text{vs.}\qquad \underbrace{\ v = N A_e\,\frac{dB}{dt}\ }_{\text{Faraday}}
+---
+name: flux-integral
+tex: \frac{d\Phi}{dt} = \frac{v_p(t)}{N_p} \quad\Longrightarrow\quad \Phi(t) = \Phi(0) + \frac{1}{N_p}\int_0^t v_p(t')\,dt'
+---
+name: flux-half
+tex: \Delta\Phi = \frac{1}{N}\int_0^{T/2} V\,dt = \frac{V\,T}{2N} = 2\,\hat\Phi
+---
+name: flux-peak
+tex: \boxed{\,\hat\Phi = \frac{V\,T}{4N} = \frac{V}{4\,N\,f}\,}
+---
+name: b-peak
+tex: \hat B = \frac{\hat\Phi}{A_e} = \frac{V}{4\,f\,N\,A_e} \quad\Longleftrightarrow\quad V = 4.00\,f\,N\,A_e\,\hat B
+---
+name: sine
+tex: v = \hat V\sin\omega t \quad\Longrightarrow\quad \Phi = -\frac{\hat V}{N\omega}\cos\omega t \quad\Longrightarrow\quad \hat\Phi = \frac{\hat V}{2\pi f N}
+---
+name: emf-sine
+tex: V_{rms} = \frac{\hat V}{\sqrt{2}} = \frac{2\pi}{\sqrt{2}}\,f\,N\,A_e\,\hat B = 4.44\,f\,N\,A_e\,\hat B
+---
+name: edge-vs
+tex: \left|\int_{\text{edge}} v\,dt\right| \le V\,t_r = 12\,\text{V} \times 50\,\text{ns} = 0.6\,\mu\text{V}\cdot\text{s} \quad\ll\quad V\,\frac{T}{2} = 12\,\text{V} \times 10\,\mu\text{s} = 120\,\mu\text{V}\cdot\text{s}
+---
+name: energy-stored
+tex: E_m = \tfrac{1}{2}\,L_m\,\hat\imath_m^{\,2} = \tfrac{1}{2} \times 20\,\mu\text{H} \times (3\,\text{A})^2 = 90\,\mu\text{J} \quad\text{vs.}\quad \frac{1000\,\text{W}}{50\,\text{kHz}} = 20\,\text{mJ per cycle}
+---
+
+# --- §9 worked numbers ----------------------------------------------------------------------
+name: nae
+tex: N\,A_e = \frac{V}{4\,f\,\hat B}
+---
+name: nae-50
+tex: f = 50\,\text{Hz}:\quad N A_e = \frac{12}{4 \times 50 \times 0.2} = 0.3\ \text{m}^2 = 3000\ \text{cm}^2\cdot\text{turns}
+---
+name: nae-50k
+tex: f = 50\,\text{kHz}:\quad N A_e = \frac{12}{4 \times 50\,000 \times 0.2} = 3\times 10^{-4}\ \text{m}^2 = 3\ \text{cm}^2\cdot\text{turns}
+---
+name: nae-ratio
+tex: \frac{(N A_e)_{50\,\text{Hz}}}{(N A_e)_{50\,\text{kHz}}} = \frac{50\,000\,\text{Hz}}{50\,\text{Hz}} = 1000
+---
+name: etd49
+tex: N_p = 2,\ \ A_e = 2.11\,\text{cm}^2:\quad \hat B = \frac{12}{4 \times 50\,000 \times 2 \times 2.11\times 10^{-4}} = 0.142\ \text{T}
+---
+name: steel-50
+tex: \hat B = 1.4\,\text{T}:\quad N A_e = \frac{12}{4 \times 50 \times 1.4} = 429\ \text{cm}^2\cdot\text{turns} \quad\Longrightarrow\quad A_e \approx 26\,\text{cm}^2,\ \ N_p = 17
+---
+name: turns-ideal
+tex: \frac{N_s}{N_p} = \frac{325\,\text{V}}{12\,\text{V}} = 27.1
+---
+name: turns-real
+tex: \frac{N_s}{N_p} = \frac{325 + 2\times 1.0 + 1.0}{12 - 0.5 - 0.3 - 0.2} = \frac{328\,\text{V}}{11.0\,\text{V}} \approx 29.8 \quad\Longrightarrow\quad N_p : N_s = 2 : 60
+---
+
+# --- §10 DC -----------------------------------------------------------------------------------
+name: dc-ramp
+tex: v_p = V_{DC}\ \text{(constant)} \quad\Longrightarrow\quad \Phi(t) = \Phi(0) + \frac{V_{DC}}{N_p}\,t \qquad \text{(grows without limit)}
+---
+name: dc-time
+tex: t_{sat} = \frac{N_p\,A_e\,B_{sat}}{V_{DC}} = \frac{2 \times 2.11\times 10^{-4} \times 0.35}{12} \approx 12\ \mu\text{s}
+---
+name: vs-balance-core
+tex: \Phi(T) - \Phi(0) = \frac{1}{N_p}\int_0^T v_p\,dt = 0 \quad\Longleftrightarrow\quad \overline{v_p} = 0
+---
+name: imbalance
+tex: \Delta\Phi_{\text{per period}} = \frac{V\,\Delta t}{N_p} = \frac{12\,\text{V} \times 50\,\text{ns}}{2} = 0.3\ \mu\text{Wb}
+---
+name: dc-equilibrium
+tex: I_{dc} = \frac{\overline{v_p}}{R_{loop}} = \frac{V\,\Delta t\,f}{R_{loop}} = \frac{12\,\text{V} \times 50\,\text{ns} \times 50\,\text{kHz}}{5\,\text{m}\Omega} = 6\ \text{A}
+---
+name: bias-flux
+tex: \Phi_{dc} = \frac{L_m\,I_{dc}}{N_p} = \frac{20\,\mu\text{H} \times 6\,\text{A}}{2} = 60\ \mu\text{Wb} \qquad \text{vs.}\quad \hat\Phi = 30\ \mu\text{Wb},\ \ \Phi_{sat} = 74\ \mu\text{Wb}
+---
+
+# --- §11 B-H ----------------------------------------------------------------------------------
+name: permeability
+tex: B = \mu H = \mu_0\,\mu_r\,H, \qquad L = \frac{\mu_0\,\mu_r\,N^2 A_e}{\ell_e}
+---
+
+# --- §13 copper -------------------------------------------------------------------------------
+name: copper
+tex: P_{cu} = I_p^2\,R_p + I_s^2\,R_s, \qquad R_{ac} = F_R\,R_{dc}\ \ (F_R \ge 1)
+---
+name: skin
+tex: \delta = \sqrt{\frac{\rho}{\pi\,f\,\mu_0}} \quad\Longrightarrow\quad \delta_{Cu}(50\,\text{Hz}) = 9.3\,\text{mm}, \qquad \delta_{Cu}(50\,\text{kHz}) = 0.30\,\text{mm}
+---
+
+# --- §14 leakage ------------------------------------------------------------------------------
+name: leakage
+tex: v_{spike} = L_\ell\,\frac{di}{dt} = 50\,\text{nH} \times \frac{83\,\text{A}}{50\,\text{ns}} \approx 83\ \text{V}
+---
+name: leak-energy
+tex: E_\ell = \tfrac{1}{2}\,L_\ell\,I^2 = \tfrac{1}{2} \times 50\,\text{nH} \times (83\,\text{A})^2 = 0.17\ \text{mJ}, \qquad P_\ell = 2\,f\,E_\ell = 17\ \text{W}
+---
+name: commutation
+tex: t_c = \frac{2\,I\,L_\ell}{V_{in}} = \frac{2 \times 83\,\text{A} \times 50\,\text{nH}}{12\,\text{V}} = 0.69\ \mu\text{s} \qquad (6.9\,\%\ \text{of a } 10\,\mu\text{s half-period})
+---
+name: snubber
+tex: R_{sn} \approx \sqrt{\frac{L_\ell}{C_{par}}}, \qquad P_{sn} = C_{sn}\,\Delta V^2 f = 220\,\text{pF} \times (650\,\text{V})^2 \times 50\,\text{kHz} \approx 4.6\ \text{W}
+---
+
+# --- §15 core loss ----------------------------------------------------------------------------
+name: hysteresis
+tex: P_h = k_h\,f\,\hat B^{\,\beta} \quad (\text{per unit volume; one loop area } \textstyle\oint H\,dB \text{ lost every cycle})
+---
+name: eddy-why
+tex: e_{loop} \propto \frac{dB}{dt} \propto f\,\hat B \quad\Longrightarrow\quad P_e \propto \frac{e_{loop}^2}{R_{loop}} \propto \frac{f^2\,\hat B^2}{\rho}
+---
+name: eddy
+tex: P_e = \frac{\pi^2\,f^2\,\hat B^2\,t^2}{6\,\rho} \quad (\text{per unit volume, laminations of thickness } t)
+---
+name: eddy-numbers
+tex: 50\,\text{Hz},\ 1.5\,\text{T}:\ P_e \approx 0.3\,\text{W/kg} \qquad\qquad 50\,\text{kHz},\ 0.15\,\text{T}:\ P_e \approx 3000\,\text{W/kg}
+---
+name: resistivity
+tex: \rho_{\text{Si steel}} \approx 0.5\ \mu\Omega\cdot\text{m}, \qquad \rho_{\text{MnZn ferrite}} \approx 1\text{–}10\ \Omega\cdot\text{m} \quad (10^{6}\text{–}10^{7}\times \text{ higher})
+---
+name: steinmetz
+tex: P_v = k\,f^{\alpha}\,\hat B^{\beta}, \qquad \alpha \approx 1.1\text{–}1.6,\ \ \beta \approx 2.3\text{–}3 \ \ (\text{ferrite})
+---
+name: switching
+tex: P_{sw} \approx \tfrac{1}{2}\,V\,I\,(t_r + t_f)\,f = \tfrac{1}{2} \times 12\,\text{V} \times 83\,\text{A} \times 100\,\text{ns} \times 50\,\text{kHz} \approx 2.5\ \text{W per switch}
+---
+
+# --- §16 size ---------------------------------------------------------------------------------
+name: ap-faraday
+tex: N_p = \frac{V_p}{4\,f\,A_e\,\hat B}
+---
+name: ap-window
+tex: K_u\,A_w\,J = N_p I_p + N_s I_s = 2\,N_p I_p
+---
+name: ap
+tex: A_p = A_e A_w = \frac{V_p}{4 f \hat B N_p}\cdot\frac{2 N_p I_p}{K_u J} = \boxed{\,\frac{P}{2\,K_u\,J\,f\,\hat B}\,}
+---
+name: ap-numbers
+tex: A_p(50\,\text{Hz},\,1.4\,\text{T}) = \frac{1000}{2 \times 0.4 \times 3.5\times 10^{6} \times 50 \times 1.4} \approx 510\ \text{cm}^4, \qquad A_p(50\,\text{kHz},\,0.15\,\text{T}) \approx 4.8\ \text{cm}^4
+---
+name: ap-scaling
+tex: A_p \propto \ell^4, \quad \text{volume, mass} \propto \ell^3 \propto A_p^{3/4} \quad\Longrightarrow\quad \Big(\tfrac{510}{4.8}\Big)^{3/4} \approx 107^{3/4} \approx 33
+---
