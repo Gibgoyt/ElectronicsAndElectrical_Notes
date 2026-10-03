@@ -1,0 +1,155 @@
+# Equation sources for electromagnetism.md — rendered by toolchain/math_to_svg.js into
+# electromagnetism.assets/eq-*.svg
+# Edit here, then run:
+#   node toolchain/build_all.js docs/fundamentals/electromagnetism --figures toolchain/figures/electromagnetism.js
+
+name: charge-quantum
+tex: e = 1.602\,176\,634\times10^{-19}\ \mathrm{C} \qquad\Longrightarrow\qquad 1\ \mathrm{C} \approx 6.24\times10^{18}\ \text{elementary charges}
+---
+name: current-def
+tex: I = \frac{dQ}{dt} \qquad 1\ \mathrm{A} = 1\ \mathrm{C/s}
+---
+name: coulomb
+tex: F = \frac{1}{4\pi\varepsilon_0}\,\frac{q_1\,q_2}{r^2} \qquad \varepsilon_0 \approx 8.854\times10^{-12}\ \mathrm{F/m}
+---
+name: efield
+tex: \vec{E} = \frac{\vec{F}}{q} \qquad [E] = \frac{\mathrm{N}}{\mathrm{C}} = \frac{\mathrm{V}}{\mathrm{m}}
+---
+name: lorentz
+tex: \vec{F} = q\left(\vec{E} + \vec{v}\times\vec{B}\right)
+---
+name: tesla-units
+tex: 1\ \mathrm{T} = 1\ \frac{\mathrm{N}}{\mathrm{A}\cdot\mathrm{m}} = 1\ \frac{\mathrm{V}\cdot\mathrm{s}}{\mathrm{m}^2} = 1\ \frac{\mathrm{Wb}}{\mathrm{m}^2}
+---
+name: flux-def
+tex: \Phi = \int_S \vec{B}\cdot d\vec{A} \qquad\xrightarrow{\ \text{uniform } B\ }\qquad \Phi = B\,A\cos\theta
+---
+name: weber
+tex: 1\ \mathrm{Wb} = 1\ \mathrm{T}\cdot\mathrm{m}^2 = 1\ \mathrm{V}\cdot\mathrm{s}
+---
+name: linkage
+tex: \lambda = N\,\Phi \qquad (\text{flux linkage, in weber-turns})
+---
+name: biot-savart
+tex: d\vec{B} = \frac{\mu_0}{4\pi}\,\frac{I\,d\vec{l}\times\hat{r}}{r^2}
+---
+name: mu0
+tex: \mu_0 \approx 4\pi\times10^{-7}\ \mathrm{H/m} \approx 1.2566\times10^{-6}\ \mathrm{H/m}
+---
+name: ampere
+tex: \oint_C \vec{B}\cdot d\vec{l} = \mu_0\, I_{enc}
+---
+name: wire-derive
+tex: \oint_C \vec{B}\cdot d\vec{l} = B\,(2\pi r) = \mu_0 I \quad\Longrightarrow\quad B = \frac{\mu_0\, I}{2\pi r}
+---
+name: wire-worked
+tex: B = \frac{(4\pi\times10^{-7})(10)}{2\pi\,(0.01)} = 2\times10^{-4}\ \mathrm{T} = 200\ \mu\mathrm{T}
+---
+name: solenoid-derive
+tex: \oint_C \vec{B}\cdot d\vec{l} = B\,l + 0 + 0 + 0 = \mu_0\,(N I) \quad\Longrightarrow\quad B = \frac{\mu_0\, N\, I}{l}
+---
+name: solenoid-worked
+tex: B = \frac{(4\pi\times10^{-7})(100)(1)}{0.1} \approx 1.26\times10^{-3}\ \mathrm{T} = 1.26\ \mathrm{mT}
+---
+name: h-field
+tex: \oint_C \vec{H}\cdot d\vec{l} = N I \quad\Longrightarrow\quad H = \frac{N I}{l_e}, \qquad B = \mu H = \mu_0\mu_r H
+---
+name: faraday
+tex: v(t) = N\,\frac{d\Phi}{dt} = \frac{d\lambda}{dt}
+---
+name: faraday-emf
+tex: \mathcal{E} = -N\,\frac{d\Phi}{dt}
+---
+name: faraday-integral
+tex: \int_0^t \frac{d\Phi}{dt'}\,dt' = \frac{1}{N}\int_0^t v\,dt' \quad\Longrightarrow\quad \Phi(t) = \Phi(0) + \frac{1}{N}\int_0^t v\,dt'
+---
+name: wrong-law
+tex: B \;\neq\; \frac{dV}{dt} \qquad \left[\frac{dV}{dt}\right] = \frac{\mathrm{V}}{\mathrm{s}} \quad\text{but}\quad [B] = \frac{\mathrm{V}\cdot\mathrm{s}}{\mathrm{m}^2}
+---
+name: right-law-b
+tex: v = N A\,\frac{dB}{dt} \quad\Longleftrightarrow\quad B(t) = B(0) + \frac{1}{N A}\int_0^t v\,dt'
+---
+name: square-step
+tex: \Delta\Phi = \frac{1}{N}\int_0^{T/2} V\,dt = \frac{V\,(T/2)}{N}
+---
+name: square-worked
+tex: \Delta\Phi = \frac{(12\ \mathrm{V})(10\ \mu\mathrm{s})}{4} = 30\ \mu\mathrm{Wb} \quad\Longrightarrow\quad \Phi_{pk} = 15\ \mu\mathrm{Wb},\quad B_{pk} = \frac{15\ \mu\mathrm{Wb}}{76\ \mathrm{mm}^2} \approx 0.20\ \mathrm{T}
+---
+name: sine-flux
+tex: v = V_{pk}\sin\omega t \quad\Longrightarrow\quad \Phi(t) = -\frac{V_{pk}}{N\omega}\cos\omega t
+---
+name: self-l-def
+tex: L = \frac{N\,\Phi}{I} = \frac{\lambda}{I} \qquad 1\ \mathrm{H} = 1\ \frac{\mathrm{Wb}}{\mathrm{A}} = 1\ \frac{\mathrm{V}\cdot\mathrm{s}}{\mathrm{A}}
+---
+name: derive-law
+tex: \lambda(t) = L\,I(t) \quad\Longrightarrow\quad \frac{d\lambda}{dt} = L\,\frac{dI}{dt} \quad\Longrightarrow\quad v_L(t) = L\,\frac{dI_L}{dt}
+---
+name: l-solenoid
+tex: \Phi = B A = \frac{\mu N I A}{l} \quad\Longrightarrow\quad L = \frac{N\Phi}{I} = \frac{\mu\, N^2 A}{l}
+---
+name: l-worked
+tex: L_{air} = \frac{(4\pi\times10^{-7})(100^2)(10^{-4})}{0.1} \approx 12.6\ \mu\mathrm{H} \qquad L_{ferrite} = \mu_r L_{air} \approx 2000 \times 12.6\ \mu\mathrm{H} \approx 25\ \mathrm{mH}
+---
+name: reluctance
+tex: \mathcal{R} = \frac{l}{\mu A}, \qquad \Phi = \frac{N I}{\mathcal{R}}, \qquad L = \frac{N^2}{\mathcal{R}}
+---
+name: energy-derive
+tex: p = v\,i = L\,i\,\frac{di}{dt} \quad\Longrightarrow\quad E = \int_0^{t} p\,dt' = \int_0^{I} L\,i\,di = \tfrac{1}{2}\,L\,I^2
+---
+name: energy-density
+tex: w = \frac{B^2}{2\mu} \qquad (\mathrm{J/m^3})
+---
+name: energy-check
+tex: E = w\,(A\,l) = \frac{1}{2\mu}\left(\frac{\mu N I}{l}\right)^{2} A\,l = \frac{1}{2}\,\frac{\mu N^2 A}{l}\,I^2 = \tfrac{1}{2}\,L\,I^2
+---
+name: energy-worked
+tex: E = \tfrac{1}{2}\,(112.5\ \mu\mathrm{H})\,(1.1\ \mathrm{A})^2 \approx 68\ \mu\mathrm{J}
+---
+name: gap-energy
+tex: w_{gap} = \frac{(0.2)^2}{2\,(4\pi\times10^{-7})} \approx 16\ \mathrm{mJ/cm^3} \qquad w_{ferrite} = \frac{w_{gap}}{\mu_r} \approx 8\ \mu\mathrm{J/cm^3}
+---
+name: mutual-def
+tex: M = \frac{N_2\,\Phi_{21}}{I_1} \quad\Longrightarrow\quad v_2 = M\,\frac{dI_1}{dt}
+---
+name: coupling
+tex: k = \frac{M}{\sqrt{L_1 L_2}}, \qquad 0 \le k \le 1
+---
+name: turns-ratio
+tex: v_1 = N_1\frac{d\Phi}{dt}, \quad v_2 = N_2\frac{d\Phi}{dt} \quad\Longrightarrow\quad \frac{v_2}{v_1} = \frac{N_2}{N_1}
+---
+name: turns-worked
+tex: \frac{N_2}{N_1} = \frac{325\ \mathrm{V}}{12\ \mathrm{V}} \approx 27 \qquad (N_1 = 4 \;\Rightarrow\; N_2 \approx 108)
+---
+name: flux-peak-square
+tex: 2\,\Phi_{pk} = \frac{V}{N}\cdot\frac{T}{2} = \frac{V}{2 N f} \quad\Longrightarrow\quad \Phi_{pk} = \frac{V}{4 N f}, \qquad B_{pk} = \frac{V}{4 N A_e f}
+---
+name: flux-peak-sine
+tex: V_{rms} = \frac{2\pi}{\sqrt{2}}\, f\, N A_e B_{pk} \approx 4.44\, f\, N A_e B_{pk}
+---
+name: freq-worked-50k
+tex: f = 50\ \mathrm{kHz}: \quad B_{pk} = \frac{12}{4\,(4)\,(76\times10^{-6})\,(50\,000)} \approx 0.20\ \mathrm{T} \quad (\text{comfortably below } B_{sat} \approx 0.35\ \mathrm{T})
+---
+name: freq-worked-50
+tex: f = 50\ \mathrm{Hz}: \quad B_{pk} = \frac{12}{4\,(4)\,(76\times10^{-6})\,(50)} \approx 197\ \mathrm{T} \quad (\text{impossible: about } 560\times B_{sat})
+---
+name: freq-turns-50
+tex: N = \frac{V}{4 f A_e B_{pk}} = \frac{12}{4\,(50)\,(76\times10^{-6})\,(0.2)} \approx 3950\ \text{turns}
+---
+name: held-flux
+tex: V = 4\,N f\,\Phi_{pk} \qquad (\text{hold } \Phi_{pk} \text{ fixed and the voltage grows with } f)
+---
+name: ampere-maxwell
+tex: \oint_C \vec{B}\cdot d\vec{l} = \mu_0\left(I_{enc} + \varepsilon_0\,\frac{d\Phi_E}{dt}\right)
+---
+name: displacement
+tex: i_d = \varepsilon_0\,\frac{d\Phi_E}{dt} = \varepsilon_0\,\frac{d}{dt}\!\left(\frac{V}{d}\,A\right) = \frac{\varepsilon_0 A}{d}\,\frac{dV}{dt} = C\,\frac{dV}{dt}
+---
+name: maxwell-gauss-e
+tex: \oint_S \vec{E}\cdot d\vec{A} = \frac{Q_{enc}}{\varepsilon_0}
+---
+name: maxwell-gauss-b
+tex: \oint_S \vec{B}\cdot d\vec{A} = 0
+---
+name: maxwell-faraday
+tex: \oint_C \vec{E}\cdot d\vec{l} = -\frac{d\Phi_B}{dt}
+---
