@@ -1,0 +1,107 @@
+# Equation sources for lc-filter.md — rendered into lc-filter.assets/eq-*.svg
+
+name: law-L
+tex: v_L = L\,\frac{di_L}{dt} \quad\Longrightarrow\quad \left|\frac{di_L}{dt}\right| = \frac{|v_L|}{L} \le \frac{V_{in}}{L}
+---
+name: law-C
+tex: i_C = C\,\frac{dv_C}{dt} \quad\Longrightarrow\quad \left|\frac{dv_C}{dt}\right| = \frac{|i_C|}{C}
+---
+name: slope-L-num
+tex: \frac{V_{in}}{L} = \frac{12\ \mathrm{V}}{1\ \mathrm{mH}} = 12{,}000\ \mathrm{A/s} = 0.012\ \mathrm{A}/\mu\mathrm{s}
+---
+name: kick
+tex: v_L = L\,\frac{\Delta i_L}{\Delta t} = (1\ \mathrm{mH})\,\frac{-0.6\ \mathrm{A}}{10\ \mathrm{ns}} = -60{,}000\ \mathrm{V}
+---
+name: cap-kick
+tex: i_C = C\,\frac{dv_C}{dt}, \quad v_C \text{ jumps } 6\ \mathrm{V} \to 12\ \mathrm{V} \text{ in } \Delta t \to 0 \quad\Longrightarrow\quad i_C \to \infty
+---
+name: avg-def
+tex: \overline{v_s} = \frac{1}{T}\int_0^{T} v_s(t)\,dt = \frac{1}{T}\left(\int_0^{DT} V_{in}\,dt + \int_{DT}^{T} 0\,dt\right) = \frac{V_{in}\,DT}{T} = D\,V_{in}
+---
+name: ode-L
+tex: L\,\frac{di_L}{dt} = v_s(t) - v_{out}(t)
+---
+name: ode-C
+tex: C\,\frac{dv_{out}}{dt} = i_L(t) - \frac{v_{out}(t)}{R}
+---
+name: avg-L
+tex: L\,\frac{d\,\overline{i_L}}{dt} = \overline{v_s} - \overline{v_{out}} = D\,V_{in} - \overline{v_{out}} \quad\xrightarrow{\ \text{steady state}\ }\quad 0 = D\,V_{in} - V_{out}
+---
+name: avg-result
+tex: \boxed{\,V_{out} = D\,V_{in}\,}
+---
+name: divider
+tex: H(s) = \frac{V_{out}(s)}{V_s(s)} = \frac{Z_p}{Z_p + sL}, \qquad Z_p = R \parallel \frac{1}{sC} = \frac{R}{1 + sRC}
+---
+name: tf-derive
+tex: H(s) = \frac{\dfrac{R}{1+sRC}}{\dfrac{R}{1+sRC} + sL} = \frac{R}{R + sL\,(1 + sRC)} = \frac{R}{s^2RLC + sL + R}
+---
+name: tf
+tex: \boxed{\,H(s) = \frac{1}{s^2LC + s\,\dfrac{L}{R} + 1}\,}
+---
+name: tf-standard
+tex: H(s) = \frac{1}{\dfrac{s^2}{\omega_0^2} + \dfrac{s}{Q\,\omega_0} + 1}, \qquad \omega_0 = \frac{1}{\sqrt{LC}}, \qquad Q = R\,\sqrt{\frac{C}{L}}
+---
+name: q-derive
+tex: \frac{1}{\omega_0^2} = LC, \qquad \frac{1}{Q\,\omega_0} = \frac{L}{R} \quad\Longrightarrow\quad Q = \frac{R}{\omega_0 L} = \frac{R\sqrt{LC}}{L} = R\,\sqrt{\frac{C}{L}} = \frac{R}{Z_0}, \quad Z_0 = \sqrt{\frac{L}{C}}
+---
+name: mag
+tex: |H(j\omega)| = \frac{1}{\sqrt{\left(1 - \dfrac{\omega^2}{\omega_0^2}\right)^2 + \left(\dfrac{\omega}{Q\,\omega_0}\right)^2}}
+---
+name: limits
+tex: \omega \ll \omega_0: \ |H| \to 1 \qquad\quad \omega = \omega_0: \ |H| = Q \qquad\quad \omega \gg \omega_0: \ |H| \approx \left(\frac{\omega_0}{\omega}\right)^2
+---
+name: slope
+tex: 20\log_{10}\left(\frac{\omega_0}{\omega}\right)^2 = -40\log_{10}\frac{\omega}{\omega_0}\ \mathrm{dB} \quad\Longrightarrow\quad -40\ \mathrm{dB} \text{ per decade}
+---
+name: design-num
+tex: f_0 = \frac{1}{2\pi\sqrt{(10^{-3})(10^{-5})}} = \frac{1}{2\pi \times 10^{-4}} \approx 1.59\ \mathrm{kHz}, \qquad Z_0 = \sqrt{\frac{10^{-3}}{10^{-5}}} = 10\ \Omega, \qquad Q = \frac{10}{10} = 1
+---
+name: atten-num
+tex: |H(50\ \mathrm{kHz})| \approx \left(\frac{1.59}{50}\right)^2 \approx 1.0 \times 10^{-3}\ (-60\ \mathrm{dB}), \qquad |H(50\ \mathrm{Hz})| \approx 1.001\ (0\ \mathrm{dB})
+---
+name: separation
+tex: f_{signal} \ll f_0 \ll f_{sw}, \qquad f_0 \approx \sqrt{f_{signal}\,f_{sw}} = \sqrt{50 \times 50{,}000} \approx 1.58\ \mathrm{kHz}
+---
+name: ripple-I
+tex: \Delta I_L = \frac{(V_{in} - V_{out})\,DT}{L} = \frac{V_{in}(1-D)\,D}{L\,f_{sw}} = \frac{V_{in}\,D(1-D)}{L\,f_{sw}}
+---
+name: ripple-I-num
+tex: \Delta I_L = \frac{12 \times 0.5 \times 0.5}{10^{-3} \times 50{,}000} = \frac{3}{50} = 0.06\ \mathrm{A}
+---
+name: ripple-V
+tex: \Delta V_C = \frac{\Delta Q}{C} = \frac{T\,\Delta I_L/8}{C} = \frac{\Delta I_L}{8\,C\,f_{sw}}
+---
+name: ripple-V-num
+tex: \Delta V_C = \frac{0.06}{8 \times 10^{-5} \times 50{,}000} = \frac{0.06}{4} = 15\ \mathrm{mV}
+---
+name: ripple-unified
+tex: \Delta V_C = \frac{V_{in}\,D(1-D)}{8\,LC\,f_{sw}^2} = \frac{\pi^2}{2}\,D(1-D)\,V_{in}\left(\frac{f_0}{f_{sw}}\right)^2 \le \frac{\pi^2}{8}\,V_{in}\left(\frac{f_0}{f_{sw}}\right)^2
+---
+name: overshoot
+tex: \text{overshoot} = e^{-\pi/\sqrt{4Q^2-1}}, \qquad \text{decay envelope } e^{-t/\tau}, \quad \tau = \frac{2Q}{\omega_0} = 2RC
+---
+name: overshoot-num
+tex: Q = 1:\ e^{-\pi/\sqrt{3}} \approx 16\,\%,\ \tau = 0.2\ \mathrm{ms} \qquad\quad Q = 4:\ e^{-\pi/\sqrt{63}} \approx 67\,\%,\ \tau = 0.8\ \mathrm{ms}
+---
+name: tracking
+tex: \overline{V_{out}}(s) = H(s)\,V_{in}\,D(s) \quad\Longrightarrow\quad \overline{v_{out}}(t) \approx D(t)\,V_{in} \quad \text{when } D(t) \text{ varies well below } f_0
+---
+name: ramp-lag
+tex: D(t) = k\,t \quad\Longrightarrow\quad \overline{v_{out}}(t) \to k\,V_{in}\left(t - \frac{1}{Q\,\omega_0}\right) = k\,V_{in}\left(t - \frac{L}{R}\right)
+---
+name: phase
+tex: \varphi(f) = -\arctan\frac{(f/f_0)/Q}{1 - (f/f_0)^2}, \qquad \varphi(50\ \mathrm{Hz}) \approx -1.8^\circ, \quad \varphi(f_0) = -90^\circ
+---
+name: sine
+tex: D(t) = 0.5 + 0.4\sin(2\pi\,50\,t) \quad\Longrightarrow\quad v_{out}(t) \approx 6 + 4.8\sin(2\pi\,50\,t)\ \mathrm{V}
+---
+name: unipolar
+tex: 0 \le D(t) \le 1 \quad\Longrightarrow\quad 0 \le \overline{v_{out}}(t) \le V_{in}
+---
+name: bipolar
+tex: v_{AB} \in \{+V_{in},\,-V_{in}\} \quad\Longrightarrow\quad \overline{v_{AB}} = D\,V_{in} - (1-D)\,V_{in} = (2D-1)\,V_{in} \in [-V_{in},\,+V_{in}]
+---
+name: sizing
+tex: L = \frac{Z_0}{\omega_0}, \qquad C = \frac{1}{\omega_0 Z_0} \qquad\Longrightarrow\qquad L = \frac{10}{10^4} = 1\ \mathrm{mH}, \quad C = \frac{1}{10^4 \times 10} = 10\ \mu\mathrm{F}
+---
