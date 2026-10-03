@@ -1,6 +1,6 @@
 # The inductor
 
-Deep treatment of the first of the two fundamental laws: <!--m:V_L = L \cdot dI/dt-->![V_L = L dI/dt](README.assets/eq-inline/4e5d46c427.svg)<!--/m-->. The full argument is
+Deep treatment of the first of the two fundamental laws: <!--m:V_L = L \cdot dI/dt-->![V_L = L times dI/dt](README.assets/eq-inline/4e5d46c427.svg)<!--/m-->. The full argument is
 in [inductor.md](inductor.md), in eight short sections with three figures.
 
 > **The thesis in one line**

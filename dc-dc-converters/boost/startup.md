@@ -82,14 +82,14 @@ triangle:
 
 ![t_d equals L I_pk over V_C minus V_in; Q equals one half I_pk t_d](startup.assets/eq-dump.svg)
 
-That charge raises the capacitor by <!--m:\Delta V_C = Q/C-->![V_C = Q/C](startup.assets/eq-inline/db183d12ff.svg)<!--/m-->. This is the rounded riser of the
+That charge raises the capacitor by <!--m:\Delta V_C = Q/C-->![Delta V_C = Q/C](startup.assets/eq-inline/db183d12ff.svg)<!--/m-->. This is the rounded riser of the
 staircase: it is rounded because the current feeding the capacitor falls linearly. Once the
 current reaches zero the diode blocks it from reversing, and the inductor sits at zero current
 until the next ON interval. This regime, where the inductor current reaches zero inside every
 cycle, is **discontinuous conduction mode (DCM)**. An unloaded boost is always in DCM once it is
 running.
 
-Where did the energy come from? The capacitor received <!--m:V_C \cdot Q-->![V_C Q](startup.assets/eq-inline/f878c884f9.svg)<!--/m-->. Only part of that was the
+Where did the energy come from? The capacitor received <!--m:V_C \cdot Q-->![V_C times Q](startup.assets/eq-inline/f878c884f9.svg)<!--/m-->. Only part of that was the
 inductor's stored energy. The source also kept pushing current *through* the inductor during the
 dump, which is why the output can exceed the input at all:
 
@@ -168,7 +168,7 @@ cycle does not grow as fast, so the two curves must cross.
 ![V_out squared minus V_in V_out minus R V_in squared D squared T over 2 L equals zero, so V_out equals V_in over 2 times 1 plus the square root of 1 plus 2 D squared R T over L](startup.assets/eq-dcm-solve.svg)
 
 Now <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m--> appears in the answer. The lighter the load (larger <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m-->), the higher the output, and as
-<!--m:R \to \infty-->![R](startup.assets/eq-inline/8e1c9c7cab.svg)<!--/m--> the output goes to infinity, which is the runaway of §3. For the worked parts the
+<!--m:R \to \infty-->![R to infinity](startup.assets/eq-inline/8e1c9c7cab.svg)<!--/m--> the output goes to infinity, which is the runaway of §3. For the worked parts the
 converter leaves CCM when the load is lighter than
 
 ![DCM when R exceeds R_crit equals 2 L over T D times one minus D squared, which is 480 ohms](startup.assets/eq-dcm-boundary.svg)
@@ -195,7 +195,7 @@ sitting at <!--m:2V_{in}-->![2V_in](startup.assets/eq-inline/a107fa3e98.svg)<!--
 21.4 V, and the ringing then dies away to <!--m:V_{in}-->![V_in](startup.assets/eq-inline/29f560cdfe.svg)<!--/m--> (Figure 51, shaded region). The current spike
 is the **pre-charge inrush**: 3.2 A through the inductor and diode, *uncontrolled*, because the
 switch is not involved at all. A soft-start cannot reduce it (§8). It is limited only by
-<!--m:\sqrt{L/C}-->![L/C](startup.assets/eq-inline/03508d8f6f.svg)<!--/m-->, by circuit resistance, or by a separate inrush limiter or load switch in front of the
+<!--m:\sqrt{L/C}-->![sqrt L/C](startup.assets/eq-inline/03508d8f6f.svg)<!--/m-->, by circuit resistance, or by a separate inrush limiter or load switch in front of the
 converter.
 
 ![Loaded boost converter start-up simulated: pre-charge through the diode, then hard start versus soft-start](startup.assets/fig-02.svg)
@@ -228,7 +228,7 @@ Everything about its step response follows from the standard second-order parame
 
 ![t_s is about 4 over sigma, which is 8 R C; the cycle count is f_sw times t_s; the fractional overshoot is e to the minus pi zeta over root 1 minus zeta squared](startup.assets/eq-settle.svg)
 
-The last parameter is worth pausing on. The **decay rate of the ringing, <!--m:\sigma = 1/(2RC)-->![= 1/(2RC)](startup.assets/eq-inline/6037dace2d.svg)<!--/m-->, is
+The last parameter is worth pausing on. The **decay rate of the ringing, <!--m:\sigma = 1/(2RC)-->![sigma = 1/(2RC)](startup.assets/eq-inline/6037dace2d.svg)<!--/m-->, is
 set only by the load and the capacitor**. The inductance and the duty cycle both cancel out. This
 holds whenever the response is underdamped, which a boost almost always is. With the worked
 numbers:
@@ -245,7 +245,7 @@ by switching faster, because the LC filter, not the switch, sets the pace.
 
 **Yes, for a boost.** The ratio enters through <!--m:(1-D)-->![(1-D)](startup.assets/eq-inline/453e510d03.svg)<!--/m-->, and it enters in several places at once.
 
-- **Slower ringing, later peak.** <!--m:\omega_0 = (1-D)/\sqrt{LC}-->![_0 = (1-D)/ LC](startup.assets/eq-inline/8ad9aabec5.svg)<!--/m-->. A bigger step-up means a smaller
+- **Slower ringing, later peak.** <!--m:\omega_0 = (1-D)/\sqrt{LC}-->![omega_0 = (1-D)/sqrt LC](startup.assets/eq-inline/8ad9aabec5.svg)<!--/m-->. A bigger step-up means a smaller
   <!--m:(1-D)-->![(1-D)](startup.assets/eq-inline/453e510d03.svg)<!--/m-->, so a larger effective inductance and a slower ring. With the same parts and the same
   24 Ω resistor, the output first reaches its target after 19 cycles at 12 V to 16 V, 30 cycles at
   12 V to 24 V, and 68 cycles at 12 V to 48 V (Figure 53, bottom panel, in the buck document). The

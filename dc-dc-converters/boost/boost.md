@@ -37,7 +37,7 @@ forced to fall, <!--m:V_L-->![V_L](boost.assets/eq-inline/136d4e3fb2.svg)<!--/m-
 
 ## 2 The two intervals
 
-**Interval 1 — switch ON, lasting <!--m:D \cdot T-->![D T](boost.assets/eq-inline/94b24dfcfd.svg)<!--/m-->.** S1 shorts the switch node to ground, so the inductor sits
+**Interval 1 — switch ON, lasting <!--m:D \cdot T-->![D times T](boost.assets/eq-inline/94b24dfcfd.svg)<!--/m-->.** S1 shorts the switch node to ground, so the inductor sits
 straight across the input and the diode is reverse-biased (off). The inductor sees the full input:
 
 ![V_L equals V_in, constant and positive](boost.assets/eq-vl-on.svg)
@@ -46,7 +46,7 @@ so its current ramps **up**, storing energy:
 
 ![delta I_L rise equals V_in times D T over L](boost.assets/eq-rise.svg)
 
-**Interval 2 — switch OFF, lasting <!--m:(1-D) \cdot T-->![(1-D) T](boost.assets/eq-inline/9ee718adde.svg)<!--/m-->.** The switch path vanishes; the inductor's current
+**Interval 2 — switch OFF, lasting <!--m:(1-D) \cdot T-->![(1-D) times T](boost.assets/eq-inline/9ee718adde.svg)<!--/m-->.** The switch path vanishes; the inductor's current
 can't stop, so it forces the diode on and flows into the output. Its voltage flips so the switch-node
 end rises to <!--m:V_{out}-->![V_out](boost.assets/eq-inline/05b247c888.svg)<!--/m--> (above <!--m:V_{in}-->![V_in](boost.assets/eq-inline/29f560cdfe.svg)<!--/m-->). The inductor now sees:
 
@@ -63,18 +63,18 @@ drift forever. Set <!--m:\text{rise} = \text{fall}-->![rise = fall](boost.assets
 
 ![V_in D equals V_out minus V_in times one minus D](boost.assets/eq-balance.svg)
 
-Expand and collect — the <!--m:V_{in} \cdot D-->![V_in D](boost.assets/eq-inline/65f424a0a4.svg)<!--/m--> terms cancel and <!--m:V_{in} \cdot D + V_{in} \cdot (1-D) = V_{in}-->![V_in D + V_in (1-D) = V_in](boost.assets/eq-inline/2ed2189b4b.svg)<!--/m-->:
+Expand and collect — the <!--m:V_{in} \cdot D-->![V_in times D](boost.assets/eq-inline/65f424a0a4.svg)<!--/m--> terms cancel and <!--m:V_{in} \cdot D + V_{in} \cdot (1-D) = V_{in}-->![V_in times D + V_in times (1-D) = V_in](boost.assets/eq-inline/2ed2189b4b.svg)<!--/m-->:
 
 ![V_in D plus V_in minus V_in D equals V_out times one minus D, so V_in equals V_out times one minus D](boost.assets/eq-balance-solve.svg)
 
 ![V_out equals V_in over one minus D, boxed](boost.assets/eq-result.svg)
 
-Since <!--m:1 - D < 1-->![1 - D < 1](boost.assets/eq-inline/97d60899b6.svg)<!--/m-->, the output is always *above* the input — a step-up. As <!--m:D \to 1-->![D 1](boost.assets/eq-inline/31df83f2e2.svg)<!--/m--> the ratio blows up
+Since <!--m:1 - D < 1-->![1 - D < 1](boost.assets/eq-inline/97d60899b6.svg)<!--/m-->, the output is always *above* the input — a step-up. As <!--m:D \to 1-->![D to 1](boost.assets/eq-inline/31df83f2e2.svg)<!--/m--> the ratio blows up
 (in an ideal model), which is why real boosts keep <!--m:D-->![D](boost.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> well below 1.
 
 ## 4 Sizing the inductor
 
-From the ON-interval rise, with a target ripple <!--m:\Delta I_L-->![I_L](boost.assets/eq-inline/c856ab20fc.svg)<!--/m--> and <!--m:T = 1/f_{sw}-->![T = 1/f_sw](boost.assets/eq-inline/2a8cbfbb37.svg)<!--/m-->:
+From the ON-interval rise, with a target ripple <!--m:\Delta I_L-->![Delta I_L](boost.assets/eq-inline/c856ab20fc.svg)<!--/m--> and <!--m:T = 1/f_{sw}-->![T = 1/f_sw](boost.assets/eq-inline/2a8cbfbb37.svg)<!--/m-->:
 
 ![L equals V_in D over f_sw delta I_L](boost.assets/eq-inductor-sizing.svg)
 
@@ -91,21 +91,21 @@ capacitor alone supplies the load; when the switch opens the diode recharges it.
 own" interval is why a boost needs a bigger output capacitor than a buck._
 
 During the ON interval the capacitor discharges at (roughly) the constant load current <!--m:I_{load}-->![I_load](boost.assets/eq-inline/7902e72f89.svg)<!--/m-->.
-Using <!--m:I_C = C \cdot dV/dt-->![I_C = C dV/dt](boost.assets/eq-inline/56baca3b41.svg)<!--/m--> with <!--m:I_C = -I_{load}-->![I_C = -I_load](boost.assets/eq-inline/7f021eedd7.svg)<!--/m--> held over the interval <!--m:D \cdot T-->![D T](boost.assets/eq-inline/94b24dfcfd.svg)<!--/m-->:
+Using <!--m:I_C = C \cdot dV/dt-->![I_C = C times dV/dt](boost.assets/eq-inline/56baca3b41.svg)<!--/m--> with <!--m:I_C = -I_{load}-->![I_C = -I_load](boost.assets/eq-inline/7f021eedd7.svg)<!--/m--> held over the interval <!--m:D \cdot T-->![D times T](boost.assets/eq-inline/94b24dfcfd.svg)<!--/m-->:
 
 ![delta V_out equals I_load D T over C, so C equals I_load D over f_sw delta V_out](boost.assets/eq-cap-sizing.svg)
 
 ## 6 Worked numbers — 12 V to 24 V
 
-Same spec as the buck: <!--m:f_{sw} = 100 \,\mathrm{kHz}-->![f_sw = 100 kHz](boost.assets/eq-inline/b2d8a51533.svg)<!--/m--> (<!--m:T = 10 \mu s-->![T = 10 s](boost.assets/eq-inline/7872cc0fa0.svg)<!--/m-->), 1 A load, 20 % current ripple, 1 % output
+Same spec as the buck: <!--m:f_{sw} = 100 \,\mathrm{kHz}-->![f_sw = 100 kHz](boost.assets/eq-inline/b2d8a51533.svg)<!--/m--> (<!--m:T = 10 \mu s-->![T = 10 mu s](boost.assets/eq-inline/7872cc0fa0.svg)<!--/m-->), 1 A load, 20 % current ripple, 1 % output
 ripple. With <!--m:V_{in} = 12 V-->![V_in = 12 V](boost.assets/eq-inline/1c9e4d0896.svg)<!--/m-->, <!--m:V_{out} = 24 V-->![V_out = 24 V](boost.assets/eq-inline/b3a4c57dab.svg)<!--/m-->: from <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](boost.assets/eq-inline/ff557ad27a.svg)<!--/m-->, <!--m:1 - D = 12/24 = 0.5-->![1 - D = 12/24 = 0.5](boost.assets/eq-inline/950b4b5f54.svg)<!--/m-->, so
-<!--m:D = 0.5-->![D = 0.5](boost.assets/eq-inline/a2406f7d12.svg)<!--/m-->, <!--m:\Delta I_L = 0.2 A-->![I_L = 0.2 A](boost.assets/eq-inline/c1d7cfca6b.svg)<!--/m-->, <!--m:\Delta V_{out} = 0.24 V-->![V_out = 0.24 V](boost.assets/eq-inline/14ebf8ce92.svg)<!--/m-->:
+<!--m:D = 0.5-->![D = 0.5](boost.assets/eq-inline/a2406f7d12.svg)<!--/m-->, <!--m:\Delta I_L = 0.2 A-->![Delta I_L = 0.2 A](boost.assets/eq-inline/c1d7cfca6b.svg)<!--/m-->, <!--m:\Delta V_{out} = 0.24 V-->![Delta V_out = 0.24 V](boost.assets/eq-inline/14ebf8ce92.svg)<!--/m-->:
 
 ![L equals 12 times 0.5 over 100000 times 0.2 equals 300 microhenry](boost.assets/eq-worked-L.svg)
 
 ![C equals 1 times 0.5 over 100000 times 0.24 equals about 20.8 microfarad](boost.assets/eq-worked-C.svg)
 
-Compare with the buck (<!--m:L = 112.5 \mu H-->![L = 112.5 H](boost.assets/eq-inline/ff772b9ad7.svg)<!--/m-->, <!--m:C = 8.3 \mu F-->![C = 8.3 F](boost.assets/eq-inline/a132e220df.svg)<!--/m-->) at a comparable spec:
+Compare with the buck (<!--m:L = 112.5 \mu H-->![L = 112.5 mu H](boost.assets/eq-inline/ff772b9ad7.svg)<!--/m-->, <!--m:C = 8.3 \mu F-->![C = 8.3 mu F](boost.assets/eq-inline/a132e220df.svg)<!--/m-->) at a comparable spec:
 
 | Quantity | Buck (12→3 V) | Boost (12→24 V) | Boost / Buck |
 |---|---|---|---|
@@ -122,7 +122,7 @@ Compare with the buck (<!--m:L = 112.5 \mu H-->![L = 112.5 H](boost.assets/eq-in
   only better capacitor technology (lower ESR, higher capacitance density).
 - **No inherent short-circuit protection.** Unlike a buck, a boost has a direct DC path from input to
   output through the inductor and diode, so it cannot limit output current by turning the switch off.
-- **High duty cycles are dangerous.** As <!--m:D \to 1-->![D 1](boost.assets/eq-inline/31df83f2e2.svg)<!--/m--> the ratio <!--m:1/(1-D)-->![1/(1-D)](boost.assets/eq-inline/a84fc27741.svg)<!--/m--> runs away and peak currents
+- **High duty cycles are dangerous.** As <!--m:D \to 1-->![D to 1](boost.assets/eq-inline/31df83f2e2.svg)<!--/m--> the ratio <!--m:1/(1-D)-->![1/(1-D)](boost.assets/eq-inline/a84fc27741.svg)<!--/m--> runs away and peak currents
   soar; practical boosts avoid very high <!--m:D-->![D](boost.assets/eq-inline/50c9e8d5fc.svg)<!--/m-->.
 - **Same ideal-parts caveat as the buck** (§7 there): diode drop, capacitor ESR, and core losses all
   shift the real numbers.

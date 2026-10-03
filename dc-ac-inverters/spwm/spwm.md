@@ -28,8 +28,8 @@ becomes the sine"), and puts real numbers on the 325 V inverter of the DC-to-AC 
 > **The thesis in one line**
 >
 > Within one carrier period a straight-sided triangle acts as a ruler: the comparator's on-time is
-> proportional to the reference's value, so the switching-cycle average of the <!--m:\pm V_{dc}-->![V_dc](spwm.assets/eq-inline/38ec47d61b.svg)<!--/m--> output is
-> <!--m:m_a V_{dc}\sin\theta-->![m_a V_dc](spwm.assets/eq-inline/ea8a7d58a4.svg)<!--/m--> — a sampled copy of the sine, one sample per carrier period. More carrier
+> proportional to the reference's value, so the switching-cycle average of the <!--m:\pm V_{dc}-->![plus-minus V_dc](spwm.assets/eq-inline/38ec47d61b.svg)<!--/m--> output is
+> <!--m:m_a V_{dc}\sin\theta-->![m_a V_dc sin theta](spwm.assets/eq-inline/ea8a7d58a4.svg)<!--/m--> — a sampled copy of the sine, one sample per carrier period. More carrier
 > periods per sine period means more samples, and a filter turns the samples back into the sine.
 
 ---
@@ -128,7 +128,7 @@ _The shaded triangle is similar to the whole rising edge: its height is <!--m:1 
 total rise of 2, so its width <!--m:t_1-->![t_1](spwm.assets/eq-inline/a90caf2e2b.svg)<!--/m--> is the same fraction of the half-period. Because the edge is a
 straight line, the crossing time is a linear function of the reference._
 
-Since <!--m:r-->![r](spwm.assets/eq-inline/4dc7c9ec43.svg)<!--/m--> is the reference's value during period *k*, write it as <!--m:r = m_a \sin\theta_k-->![r = m_a _k](spwm.assets/eq-inline/e625757aef.svg)<!--/m-->. The
+Since <!--m:r-->![r](spwm.assets/eq-inline/4dc7c9ec43.svg)<!--/m--> is the reference's value during period *k*, write it as <!--m:r = m_a \sin\theta_k-->![r = m_a sin theta_k](spwm.assets/eq-inline/e625757aef.svg)<!--/m-->. The
 duty cycle that the comparator produces, with no computation at all, is:
 
 ![D_k equals 1 plus m_a sine theta_k over 2, where theta_k is 2 pi f_1 t_k, the phase during carrier period k](spwm.assets/eq-dk.svg)
@@ -153,7 +153,7 @@ directly:
 ## 5 Why a faster carrier gets closer to the sine
 
 The derivation assumed the reference is constant over a carrier period. How wrong is that? In one
-carrier period the sine's phase advances by <!--m:2\pi/m_f-->![2 /m_f](spwm.assets/eq-inline/16424cf45c.svg)<!--/m-->, so its value can change by up to:
+carrier period the sine's phase advances by <!--m:2\pi/m_f-->![2 pi/m_f](spwm.assets/eq-inline/16424cf45c.svg)<!--/m-->, so its value can change by up to:
 
 ![delta theta equals 2 pi over m_f, so the change in r is at most m_a times 2 pi over m_f: 2.5 at m_f 2, 0.24 at m_f 21, 0.013 at m_f 400, for m_a 0.8](spwm.assets/eq-drift.svg)
 
@@ -207,7 +207,7 @@ and phase-shifts the output you want) and well below <!--m:f_c-->![f_c](spwm.ass
 ## 7 The modulation index — linear region and overmodulation
 
 The amplitude modulation index <!--m:m_a-->![m_a](spwm.assets/eq-inline/45e7c279a5.svg)<!--/m--> is the ratio of the reference's peak to the carrier's peak.
-For <!--m:m_a \le 1-->![m_a 1](spwm.assets/eq-inline/c51edbb400.svg)<!--/m--> the reference never leaves the triangle's range, every carrier period
+For <!--m:m_a \le 1-->![m_a leq 1](spwm.assets/eq-inline/c51edbb400.svg)<!--/m--> the reference never leaves the triangle's range, every carrier period
 contains two crossings, and the core result holds exactly: the fundamental is <!--m:m_a V_{dc}-->![m_a V_dc](spwm.assets/eq-inline/860cc5cd90.svg)<!--/m-->,
 a straight line through the origin. This is the **linear region**.
 
@@ -215,7 +215,7 @@ Push <!--m:m_a > 1-->![m_a > 1](spwm.assets/eq-inline/572b17bbd8.svg)<!--/m--> a
 those carrier periods there are no crossings: the output stays at <!--m:+V_{dc}-->![+V_dc](spwm.assets/eq-inline/0458144a16.svg)<!--/m--> and pulses go missing
 (*pulse dropping*). The average is clipped at <!--m:V_{dc}-->![V_dc](spwm.assets/eq-inline/1091080009.svg)<!--/m--> while the reference keeps climbing, so the
 fundamental grows more slowly than <!--m:m_a-->![m_a](spwm.assets/eq-inline/45e7c279a5.svg)<!--/m--> and low-order harmonics (3rd, 5th, 7th — close to 50 Hz and
-therefore hard to filter) appear. In the limit the output is a <!--m:\pm V_{dc}-->![V_dc](spwm.assets/eq-inline/38ec47d61b.svg)<!--/m--> square wave, whose
+therefore hard to filter) appear. In the limit the output is a <!--m:\pm V_{dc}-->![plus-minus V_dc](spwm.assets/eq-inline/38ec47d61b.svg)<!--/m--> square wave, whose
 fundamental is:
 
 ![as m_a goes to infinity, V_1 peak equals 2 over T_1 times the integral of v_AB sine theta, equals 4 V_dc over pi, about 1.273 V_dc](spwm.assets/eq-square.svg)
@@ -228,7 +228,7 @@ small kinks are individual pulses dropping out._
 
 So overmodulation buys up to 27 % more output voltage from the same bus, at the cost of distortion
 your filter cannot remove. Designs that need a clean sine stay in the linear region and size the
-bus so that <!--m:m_a \approx 0.8\text{–}0.9-->![m_a 0.8 –0.9](spwm.assets/eq-inline/9cec039f64.svg)<!--/m--> at full output.
+bus so that <!--m:m_a \approx 0.8\text{–}0.9-->![m_a approx 0.8 –0.9](spwm.assets/eq-inline/9cec039f64.svg)<!--/m--> at full output.
 
 ## 8 The frequency ratio and the harmonic spectrum
 
@@ -272,7 +272,7 @@ the formula and the standard textbook table.
 ## 9 Bipolar vs. unipolar switching on an H-bridge
 
 So far the bridge has been switched **bipolar**: one comparator, diagonal pairs swapping, output
-always <!--m:\pm V_{dc}-->![V_dc](spwm.assets/eq-inline/38ec47d61b.svg)<!--/m-->. An [H-bridge](../h-bridge/) has two legs, and each can be switched on its own.
+always <!--m:\pm V_{dc}-->![plus-minus V_dc](spwm.assets/eq-inline/38ec47d61b.svg)<!--/m-->. An [H-bridge](../h-bridge/) has two legs, and each can be switched on its own.
 
 **Unipolar** SPWM gives each leg its own reference: leg A compares <!--m:+v_{ref}-->![+v_ref](spwm.assets/eq-inline/82514c4add.svg)<!--/m--> with the carrier,
 leg B compares <!--m:-v_{ref}-->![-v_ref](spwm.assets/eq-inline/88a57ba7c1.svg)<!--/m--> (the same sine shifted 180°). Each leg output is 0 or <!--m:V_{dc}-->![V_dc](spwm.assets/eq-inline/1091080009.svg)<!--/m-->, and
@@ -308,7 +308,7 @@ each edge falls exactly where they cross. A microcontroller cannot do that — i
 sine — so it uses **regular (sampled) SPWM**: it samples the sine once per carrier period, holds that
 value, and compares the *held* value with the carrier. With the held value constant across the
 period, the §4 derivation becomes exact rather than approximate: <!--m:D_k = (1 + r_k)/2-->![D_k = (1 + r_k)/2](spwm.assets/eq-inline/368db1e28f.svg)<!--/m--> with
-<!--m:r_k = m_a\sin(2\pi k/m_f)-->![r_k = m_a (2 k/m_f)](spwm.assets/eq-inline/beb6fbdd3c.svg)<!--/m-->.
+<!--m:r_k = m_a\sin(2\pi k/m_f)-->![r_k = m_a sin (2 pi k/m_f)](spwm.assets/eq-inline/beb6fbdd3c.svg)<!--/m-->.
 
 ![Natural sampling compares the live sine with the carrier; regular sampling holds the sine sampled once per carrier period, which is what a microcontroller lookup table does](spwm.assets/fig-09.svg)
 
@@ -383,19 +383,19 @@ Honest notes on this analogue chain, none of which the video mentions:
 
 ![V_out peak equals root 2 times 230 V equals 325.3 V, so m_a equals 325.3 over 325 equals 1.001 with V_dc 325 V, and m_a equals 325.3 over 400 equals 0.813 with V_dc 400 V](spwm.assets/eq-user-ma.svg)
 
-The video's 325 V bus requires <!--m:m_a \approx 1.0-->![m_a 1.0](spwm.assets/eq-inline/e17358e92b.svg)<!--/m--> — **zero headroom**. Real losses then push it
+The video's 325 V bus requires <!--m:m_a \approx 1.0-->![m_a approx 1.0](spwm.assets/eq-inline/e17358e92b.svg)<!--/m--> — **zero headroom**. Real losses then push it
 into overmodulation: switch and diode drops, the dead-time error (about 13 V at 325 V with the
 numbers below), the filter inductor's drop at full load, and the bus's own 100 Hz ripple and
 sag under load all subtract from the 325 V. The output would come out low and distorted at load.
 Practical 230 V inverters use a **350–400 V** bus (a slightly higher transformer ratio in the
-first stage) so that full output needs only <!--m:m_a \approx 0.8\text{–}0.9-->![m_a 0.8 –0.9](spwm.assets/eq-inline/9cec039f64.svg)<!--/m-->, leaving room for the
+first stage) so that full output needs only <!--m:m_a \approx 0.8\text{–}0.9-->![m_a approx 0.8 –0.9](spwm.assets/eq-inline/9cec039f64.svg)<!--/m-->, leaving room for the
 regulator to compensate for load and supply changes.
 
 **The carrier.** Typically 10–20 kHz for IGBT or MOSFET bridges at this power: high enough that the
 filter is small and (at the top end) above hearing, low enough to keep switching losses modest. At
 20 kHz, <!--m:m_f = 400-->![m_f = 400](spwm.assets/eq-inline/b682ed8934.svg)<!--/m-->: 400 samples per sine period.
 
-**The filter.** Take <!--m:L = 2\,\mathrm{mH}-->![L = 2 mH](spwm.assets/eq-inline/2bdaa6938b.svg)<!--/m--> and <!--m:C = 10\,\mu\mathrm{F}-->![C = 10 F](spwm.assets/eq-inline/a68d258fbb.svg)<!--/m-->:
+**The filter.** Take <!--m:L = 2\,\mathrm{mH}-->![L = 2 mH](spwm.assets/eq-inline/2bdaa6938b.svg)<!--/m--> and <!--m:C = 10\,\mu\mathrm{F}-->![C = 10 mu F](spwm.assets/eq-inline/a68d258fbb.svg)<!--/m-->:
 
 ![f_0 equals 1 over 2 pi root of 2 mH times 10 microfarad, about 1.13 kHz; f_0 over 20 kHz squared is about 1 over 316, minus 50 dB; f_0 over 40 kHz squared is about 1 over 1264, minus 62 dB](spwm.assets/eq-filter.svg)
 
@@ -407,9 +407,9 @@ is:
 
 About 1 V of 20 kHz ripple on 325 V peak with bipolar switching; about 0.1 V with unipolar — the
 same parts, ten times cleaner. The filter has its own running costs: the capacitor draws
-<!--m:230 \times 2\pi \cdot 50 \times 10\,\mu\mathrm{F} \approx 0.72\,\mathrm{A}-->![230 2 50 10 F 0.72 A](spwm.assets/eq-inline/5266203bc2.svg)<!--/m--> of reactive current
+<!--m:230 \times 2\pi \cdot 50 \times 10\,\mu\mathrm{F} \approx 0.72\,\mathrm{A}-->![230 times 2 pi times 50 times 10 mu F approx 0.72 A](spwm.assets/eq-inline/5266203bc2.svg)<!--/m--> of reactive current
 even with no load, and at 1 kW (4.35 A) the inductor drops
-<!--m:2\pi \cdot 50 \times 2\,\mathrm{mH} \times 4.35\,\mathrm{A} \approx 2.7\,\mathrm{V}-->![2 50 2 mH 4.35 A 2.7 V](spwm.assets/eq-inline/71d226ab95.svg)<!--/m-->.
+<!--m:2\pi \cdot 50 \times 2\,\mathrm{mH} \times 4.35\,\mathrm{A} \approx 2.7\,\mathrm{V}-->![2 pi times 50 times 2 mH times 4.35 A approx 2.7 V](spwm.assets/eq-inline/71d226ab95.svg)<!--/m-->.
 
 ## 13 What this costs you
 
@@ -427,7 +427,7 @@ even with no load, and at 1 kW (4.35 A) the inductor drops
 
   It flattens the sine near every current zero crossing and adds 3rd, 5th and 7th harmonics that the
   filter passes. It grows with <!--m:f_c-->![f_c](spwm.assets/eq-inline/b1071317de.svg)<!--/m-->, so it is another price of a fast carrier; digital controllers
-  compensate by adding <!--m:\pm t_d-->![t_d](spwm.assets/eq-inline/e2ab02aabc.svg)<!--/m--> to each CCR according to the measured current sign.
+  compensate by adding <!--m:\pm t_d-->![plus-minus t_d](spwm.assets/eq-inline/e2ab02aabc.svg)<!--/m--> to each CCR according to the measured current sign.
 - **EMI.** The bridge slews hundreds of volts in tens of nanoseconds, tens of thousands of times a
   second. That couples through stray capacitance to the heatsink and earth (common-mode noise) and
   radiates. Unipolar switching halves the step size; layout, snubbers and an EMI filter do the rest.

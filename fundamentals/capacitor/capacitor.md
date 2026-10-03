@@ -3,7 +3,7 @@
 The capacitor is the exact mirror of the inductor. Its law comes from one line of algebra and one
 line of calculus — but *that* calculus step is the one this whole subject trips on. So this
 document slows all the way down and proves, properly, **why you are allowed to differentiate
-<!--m:Q = C \cdot V-->![Q = C V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m-->**, and what rule makes it legal.
+<!--m:Q = C \cdot V-->![Q = C times V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m-->**, and what rule makes it legal.
 
 **Contents**
 
@@ -57,14 +57,14 @@ expressions that are already the same function*, so the results are still the sa
 
 Two moves, so the distinction is unmistakable:
 
-- **Legal — differentiate an identity.** <!--m:Q(t) = C \cdot V(t)-->![Q(t) = C V(t)](capacitor.assets/eq-inline/69b2d90d54.svg)<!--/m--> holds at every instant, so applying
+- **Legal — differentiate an identity.** <!--m:Q(t) = C \cdot V(t)-->![Q(t) = C times V(t)](capacitor.assets/eq-inline/69b2d90d54.svg)<!--/m--> holds at every instant, so applying
   <!--m:d/dt-->![d/dt](capacitor.assets/eq-inline/9560a2e5f1.svg)<!--/m--> to both sides is the same operation done to two things that were already equal.
 - **Not a thing — "multiply the equation by <!--m:d/dt-->![d/dt](capacitor.assets/eq-inline/9560a2e5f1.svg)<!--/m-->".** <!--m:d/dt-->![d/dt](capacitor.assets/eq-inline/9560a2e5f1.svg)<!--/m--> is an operator, not a number; you do
   not "multiply both sides" by it the way you'd multiply by 3. "Differentiate both sides" is
   shorthand for the *legal* move above, and it only works because the two sides are equal as
   functions.
 
-Carry out the legal move on <!--m:Q = C \cdot V-->![Q = C V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m-->. The capacitance <!--m:C-->![C](capacitor.assets/eq-inline/32096c2e0e.svg)<!--/m--> is a constant, so it comes out front of
+Carry out the legal move on <!--m:Q = C \cdot V-->![Q = C times V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m-->. The capacitance <!--m:C-->![C](capacitor.assets/eq-inline/32096c2e0e.svg)<!--/m--> is a constant, so it comes out front of
 the derivative:
 
 ![differentiate both sides of Q equals C V_C to get dQ by dt equals C dV_C by dt](capacitor.assets/eq-differentiate.svg)
@@ -82,23 +82,23 @@ first — replace <!--m:dQ/dt-->![dQ/dt](capacitor.assets/eq-inline/d399529a90.s
 
 > **Tip —** The whole trick is: **an equation between two functions of <!--m:t-->![t](capacitor.assets/eq-inline/8efd86fb78.svg)<!--/m--> stays true if you
 > differentiate both sides**, because you are doing the identical thing to two things that are
-> already identical. That is the licence to go from <!--m:Q = C \cdot V-->![Q = C V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m--> to <!--m:I_C = C \cdot dV/dt-->![I_C = C dV/dt](capacitor.assets/eq-inline/56baca3b41.svg)<!--/m--> — and, read the
+> already identical. That is the licence to go from <!--m:Q = C \cdot V-->![Q = C times V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m--> to <!--m:I_C = C \cdot dV/dt-->![I_C = C times dV/dt](capacitor.assets/eq-inline/56baca3b41.svg)<!--/m--> — and, read the
 > other way (integration is the inverse), the licence to go from a constant current back to a
 > voltage ramp in §4.
 
 > **Note —** This is the same shape as the inductor, where we integrated the constant-voltage
 > law to get a current ramp ([../inductor/inductor.md §3](../inductor/inductor.md#3-from-the-law-to-the-ramp--the-integral-done-slowly)).
-> Differentiation and integration are inverses, so "differentiate <!--m:Q = C \cdot V-->![Q = C V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m-->" and "integrate
-> <!--m:V_L = L \cdot dI/dt-->![V_L = L dI/dt](capacitor.assets/eq-inline/4e5d46c427.svg)<!--/m-->" are the same manoeuvre run in opposite directions.
+> Differentiation and integration are inverses, so "differentiate <!--m:Q = C \cdot V-->![Q = C times V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m-->" and "integrate
+> <!--m:V_L = L \cdot dI/dt-->![V_L = L times dI/dt](capacitor.assets/eq-inline/4e5d46c427.svg)<!--/m-->" are the same manoeuvre run in opposite directions.
 
 ## 3 The units of the farad
 
-From <!--m:Q = C \cdot V-->![Q = C V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m-->, a farad is a coulomb per volt. And since current is charge per time, a coulomb is
-an ampere-second (<!--m:1 C = 1 A \cdot s-->![1 C = 1 A s](capacitor.assets/eq-inline/ac720afbd6.svg)<!--/m-->):
+From <!--m:Q = C \cdot V-->![Q = C times V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m-->, a farad is a coulomb per volt. And since current is charge per time, a coulomb is
+an ampere-second (<!--m:1 C = 1 A \cdot s-->![1 C = 1 A times s](capacitor.assets/eq-inline/ac720afbd6.svg)<!--/m-->):
 
 ![one farad equals one coulomb per volt equals ampere second per volt](capacitor.assets/eq-units-farad.svg)
 
-Check it against the law <!--m:I_C = C \cdot dV/dt-->![I_C = C dV/dt](capacitor.assets/eq-inline/56baca3b41.svg)<!--/m--> — volts and seconds cancel, leaving amps:
+Check it against the law <!--m:I_C = C \cdot dV/dt-->![I_C = C times dV/dt](capacitor.assets/eq-inline/56baca3b41.svg)<!--/m--> — volts and seconds cancel, leaving amps:
 
 ![A s over V times V over s equals A](capacitor.assets/eq-units-check.svg)
 
@@ -145,7 +145,7 @@ capacitor-sizing maths look so alike._
 
 ## 7 Sources and cross-links
 
-- **Mirror law:** [../inductor/inductor.md](../inductor/inductor.md) — <!--m:V_L = L \cdot dI/dt-->![V_L = L dI/dt](capacitor.assets/eq-inline/4e5d46c427.svg)<!--/m-->, the same
+- **Mirror law:** [../inductor/inductor.md](../inductor/inductor.md) — <!--m:V_L = L \cdot dI/dt-->![V_L = L times dI/dt](capacitor.assets/eq-inline/4e5d46c427.svg)<!--/m-->, the same
   equation before the <!--m:V \leftrightarrow I-->![V I](capacitor.assets/eq-inline/4ebcd6796a.svg)<!--/m-->, <!--m:L \leftrightarrow C-->![L C](capacitor.assets/eq-inline/6cef383173.svg)<!--/m--> swap.
 - **Where the ramp is used:** the output-capacitor sizing in
   [../../dc-dc-converters/buck/buck.md §5](../../dc-dc-converters/buck/buck.md#5-sizing-the-output-capacitor)

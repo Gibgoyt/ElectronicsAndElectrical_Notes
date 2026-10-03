@@ -64,13 +64,13 @@ Find the two crossing times by setting <!--m:v-->![v](edges-and-fourier.assets/e
 
 ![solving for t_10 equals tau ln 10 over 9 and t_90 equals tau ln 10](edges-and-fourier.assets/eq-t10-t90.svg)
 
-Subtract them. The logarithms combine because <!--m:\ln a - \ln b = \ln(a/b)-->![a - b = (a/b)](edges-and-fourier.assets/eq-inline/98f56d6dfe.svg)<!--/m-->:
+Subtract them. The logarithms combine because <!--m:\ln a - \ln b = \ln(a/b)-->![ln a - ln b = ln (a/b)](edges-and-fourier.assets/eq-inline/98f56d6dfe.svg)<!--/m-->:
 
 ![t_r equals t_90 minus t_10 equals tau ln 9, approximately 2.2 tau](edges-and-fourier.assets/eq-rise-time.svg)
 
-So an RC edge's rise time is about <!--m:2.2\,\tau-->![2.2](edges-and-fourier.assets/eq-inline/4bfa788429.svg)<!--/m-->. Differentiating shows the edge is steepest at the
-very start, where its slope is <!--m:V/\tau-->![V/](edges-and-fourier.assets/eq-inline/720e3621cb.svg)<!--/m-->. A straight line at that slope would reach the final value
-after exactly one <!--m:\tau-->![](edges-and-fourier.assets/eq-inline/c9148a5f77.svg)<!--/m-->, and that is the tangent drawn in Figure 20:
+So an RC edge's rise time is about <!--m:2.2\,\tau-->![2.2 tau](edges-and-fourier.assets/eq-inline/4bfa788429.svg)<!--/m-->. Differentiating shows the edge is steepest at the
+very start, where its slope is <!--m:V/\tau-->![V/tau](edges-and-fourier.assets/eq-inline/720e3621cb.svg)<!--/m-->. A straight line at that slope would reach the final value
+after exactly one <!--m:\tau-->![tau](edges-and-fourier.assets/eq-inline/c9148a5f77.svg)<!--/m-->, and that is the tangent drawn in Figure 20:
 
 ![dv by dt equals V over tau times e to the minus t over tau, so the slope at t equals 0 is V over tau](edges-and-fourier.assets/eq-rc-slope.svg)
 
@@ -160,8 +160,8 @@ flows into a capacitance only while the voltage is moving. A flat top draws noth
 edge draws a tall pulse._
 
 **The bandwidth of an edge.** An edge also contains high frequencies, and the rise time tells you
-how high. An RC network passes frequencies up to its −3 dB corner <!--m:f_{3\mathrm{dB}} = 1/(2\pi\tau)-->![f_3 dB = 1/(2 )](edges-and-fourier.assets/eq-inline/7f8aa3ccc5.svg)<!--/m-->.
-Combine that with <!--m:t_r = \tau \ln 9-->![t_r = 9](edges-and-fourier.assets/eq-inline/4fa73506c0.svg)<!--/m--> and you get one of the most used rules of thumb in electronics:
+how high. An RC network passes frequencies up to its −3 dB corner <!--m:f_{3\mathrm{dB}} = 1/(2\pi\tau)-->![f_3 dB = 1/(2 pi tau )](edges-and-fourier.assets/eq-inline/7f8aa3ccc5.svg)<!--/m-->.
+Combine that with <!--m:t_r = \tau \ln 9-->![t_r = tau ln 9](edges-and-fourier.assets/eq-inline/4fa73506c0.svg)<!--/m--> and you get one of the most used rules of thumb in electronics:
 
 ![f_3dB equals 1 over 2 pi tau and t_r equals tau ln 9, so t_r times f_3dB equals ln 9 over 2 pi, about 0.35](edges-and-fourier.assets/eq-bandwidth.svg)
 
@@ -176,8 +176,8 @@ the Fourier series.
 
 ![f of t plus T equals f of t for all t, f_1 equals 1 over T, omega_1 equals 2 pi f_1 equals 2 pi over T](edges-and-fourier.assets/eq-periodic.svg)
 
-The angular frequency <!--m:\omega_1 = 2\pi f_1-->![_1 = 2 f_1](edges-and-fourier.assets/eq-inline/fb69270322.svg)<!--/m--> (in radians per second) just counts one full cycle as
-<!--m:2\pi-->![2](edges-and-fourier.assets/eq-inline/0833718ca4.svg)<!--/m--> radians instead of 1. That makes sine waves tidy: <!--m:\sin(\omega_1 t)-->![( _1 t)](edges-and-fourier.assets/eq-inline/d0650a0829.svg)<!--/m--> completes exactly one
+The angular frequency <!--m:\omega_1 = 2\pi f_1-->![omega_1 = 2 pi f_1](edges-and-fourier.assets/eq-inline/fb69270322.svg)<!--/m--> (in radians per second) just counts one full cycle as
+<!--m:2\pi-->![2 pi](edges-and-fourier.assets/eq-inline/0833718ca4.svg)<!--/m--> radians instead of 1. That makes sine waves tidy: <!--m:\sin(\omega_1 t)-->![sin ( omega_1 t)](edges-and-fourier.assets/eq-inline/d0650a0829.svg)<!--/m--> completes exactly one
 cycle as <!--m:t-->![t](edges-and-fourier.assets/eq-inline/8efd86fb78.svg)<!--/m--> goes from 0 to <!--m:T-->![T](edges-and-fourier.assets/eq-inline/c2c53d6694.svg)<!--/m-->.
 
 **The claim.** Joseph Fourier's claim (1807) was that *any* reasonable periodic function, square,
@@ -200,7 +200,7 @@ Only whole-number multiples can appear, and the reason is simple. Every term mus
 cycles into <!--m:T-->![T](edges-and-fourier.assets/eq-inline/c2c53d6694.svg)<!--/m-->, so it can't be part of the recipe.
 
 **Why sines and not some other building block?** Because sines are the one shape that linear
-circuits leave alone. Differentiate <!--m:\sin\omega t-->![t](edges-and-fourier.assets/eq-inline/22c43934a5.svg)<!--/m--> and you get <!--m:\omega \cos\omega t-->![t](edges-and-fourier.assets/eq-inline/44e70d9fed.svg)<!--/m-->: the same
+circuits leave alone. Differentiate <!--m:\sin\omega t-->![sin omega t](edges-and-fourier.assets/eq-inline/22c43934a5.svg)<!--/m--> and you get <!--m:\omega \cos\omega t-->![omega cos omega t](edges-and-fourier.assets/eq-inline/44e70d9fed.svg)<!--/m-->: the same
 frequency, just scaled and shifted. Integrate it and the same thing happens. Inductors differentiate
 current (<!--m:v = L\,di/dt-->![v = L di/dt](edges-and-fourier.assets/eq-inline/169359fd71.svg)<!--/m-->) and capacitors differentiate voltage (<!--m:i = C\,dv/dt-->![i = C dv/dt](edges-and-fourier.assets/eq-inline/7f5f5ec54b.svg)<!--/m-->). So a sine going into
 any network of R, L and C comes out as **a sine of the same frequency**, only bigger or smaller and
@@ -215,18 +215,18 @@ The series is useless unless we can find the coefficients. The tool is a set of 
 **orthogonality relations**. We derive them from nothing.
 
 **Step 1 — a cosine integrates to zero over whole cycles.** For any non-zero whole number <!--m:k-->![k](edges-and-fourier.assets/eq-inline/13fbd79c3d.svg)<!--/m-->,
-<!--m:\cos(k\omega_1 t)-->![(k _1 t)](edges-and-fourier.assets/eq-inline/c4aff40c35.svg)<!--/m--> fits exactly <!--m:k-->![k](edges-and-fourier.assets/eq-inline/13fbd79c3d.svg)<!--/m--> whole cycles into one period. Its positive humps and negative
+<!--m:\cos(k\omega_1 t)-->![cos (k omega_1 t)](edges-and-fourier.assets/eq-inline/c4aff40c35.svg)<!--/m--> fits exactly <!--m:k-->![k](edges-and-fourier.assets/eq-inline/13fbd79c3d.svg)<!--/m--> whole cycles into one period. Its positive humps and negative
 troughs cancel:
 
 ![integral from 0 to T of cos k omega_1 t dt equals sine over k omega_1 evaluated, which is sin 2 pi k over k omega_1, equals 0](edges-and-fourier.assets/eq-cos-integral.svg)
 
-The last step uses <!--m:\omega_1 T = 2\pi-->![_1 T = 2](edges-and-fourier.assets/eq-inline/119c8f6d73.svg)<!--/m-->, so <!--m:\sin(k\omega_1 T) = \sin(2\pi k) = 0-->![(k _1 T) = (2 k) = 0](edges-and-fourier.assets/eq-inline/28721a7aa8.svg)<!--/m--> for every whole
-number <!--m:k-->![k](edges-and-fourier.assets/eq-inline/13fbd79c3d.svg)<!--/m-->. The same argument shows <!--m:\sin(k\omega_1 t)-->![(k _1 t)](edges-and-fourier.assets/eq-inline/d366841a87.svg)<!--/m--> also integrates to zero over a period.
+The last step uses <!--m:\omega_1 T = 2\pi-->![omega_1 T = 2 pi](edges-and-fourier.assets/eq-inline/119c8f6d73.svg)<!--/m-->, so <!--m:\sin(k\omega_1 T) = \sin(2\pi k) = 0-->![sin (k omega_1 T) = sin (2 pi k) = 0](edges-and-fourier.assets/eq-inline/28721a7aa8.svg)<!--/m--> for every whole
+number <!--m:k-->![k](edges-and-fourier.assets/eq-inline/13fbd79c3d.svg)<!--/m-->. The same argument shows <!--m:\sin(k\omega_1 t)-->![sin (k omega_1 t)](edges-and-fourier.assets/eq-inline/d366841a87.svg)<!--/m--> also integrates to zero over a period.
 
 **Step 2 — turn products into sums.** We will need to integrate *products* of two sinusoids. The
 trigonometric product-to-sum identities turn a product into a sum of single cosines (or sines), each
 of which Step 1 can kill. They come straight from adding and subtracting the angle-sum formulas,
-for example <!--m:\cos(A-B) - \cos(A+B) = 2\sin A \sin B-->![(A-B) - (A+B) = 2 A B](edges-and-fourier.assets/eq-inline/c859e3def0.svg)<!--/m-->:
+for example <!--m:\cos(A-B) - \cos(A+B) = 2\sin A \sin B-->![cos (A-B) - cos (A+B) = 2 sin A sin B](edges-and-fourier.assets/eq-inline/c859e3def0.svg)<!--/m-->:
 
 ![sin A sin B equals one half of cos A minus B minus cos A plus B; cos A cos B equals one half of cos A minus B plus cos A plus B; sin A cos B equals one half of sin A minus B plus sin A plus B](edges-and-fourier.assets/eq-product-to-sum.svg)
 
@@ -236,7 +236,7 @@ numbers). Apply the first identity:
 ![integral of sin m omega_1 t sin n omega_1 t equals one half integral of cos m minus n omega_1 t minus one half integral of cos m plus n omega_1 t](edges-and-fourier.assets/eq-orth-sin.svg)
 
 The second integral always vanishes by Step 1, because <!--m:m + n-->![m + n](edges-and-fourier.assets/eq-inline/3b69d04ea5.svg)<!--/m--> is a non-zero whole number. The first
-vanishes too, *unless* <!--m:m = n-->![m = n](edges-and-fourier.assets/eq-inline/e6ad14b62e.svg)<!--/m-->. Then <!--m:m - n = 0-->![m - n = 0](edges-and-fourier.assets/eq-inline/499e45ffd9.svg)<!--/m-->, the cosine is <!--m:\cos 0 = 1-->![0 = 1](edges-and-fourier.assets/eq-inline/7f28a78900.svg)<!--/m-->, and its integral is
+vanishes too, *unless* <!--m:m = n-->![m = n](edges-and-fourier.assets/eq-inline/e6ad14b62e.svg)<!--/m-->. Then <!--m:m - n = 0-->![m - n = 0](edges-and-fourier.assets/eq-inline/499e45ffd9.svg)<!--/m-->, the cosine is <!--m:\cos 0 = 1-->![cos 0 = 1](edges-and-fourier.assets/eq-inline/7f28a78900.svg)<!--/m-->, and its integral is
 just the length of the interval, <!--m:T-->![T](edges-and-fourier.assets/eq-inline/c2c53d6694.svg)<!--/m-->:
 
 ![the integral is 0 when m differs from n, and T over 2 when m equals n](edges-and-fourier.assets/eq-orth-sin-result.svg)
@@ -257,13 +257,13 @@ exactly. Bottom: a harmonic times itself is a square, never negative, so it aver
 integrates to half the period._
 
 **Step 4 — use it to extract a coefficient.** Now the payoff. Multiply both sides of the series by
-<!--m:\sin(m\omega_1 t)-->![(m _1 t)](edges-and-fourier.assets/eq-inline/6a7a96adf1.svg)<!--/m--> for some chosen <!--m:m-->![m](edges-and-fourier.assets/eq-inline/6b0d31c0d5.svg)<!--/m--> and integrate over one period. On the right-hand side every
+<!--m:\sin(m\omega_1 t)-->![sin (m omega_1 t)](edges-and-fourier.assets/eq-inline/6a7a96adf1.svg)<!--/m--> for some chosen <!--m:m-->![m](edges-and-fourier.assets/eq-inline/6b0d31c0d5.svg)<!--/m--> and integrate over one period. On the right-hand side every
 term is a product of two sinusoids, and orthogonality kills all of them except the single term where
 the harmonic matches:
 
 ![integral of f times sin m omega_1 t equals a_0 times 0 plus sum of a_n times 0 plus sum of b_n times the sine integral, which equals b_m T over 2](edges-and-fourier.assets/eq-extract.svg)
 
-Solve for <!--m:b_m-->![b_m](edges-and-fourier.assets/eq-inline/dc8edb5b1e.svg)<!--/m-->. Repeating the same move with <!--m:\cos(m\omega_1 t)-->![(m _1 t)](edges-and-fourier.assets/eq-inline/88b75bcce5.svg)<!--/m--> gives <!--m:a_m-->![a_m](edges-and-fourier.assets/eq-inline/d5c812e96c.svg)<!--/m-->, and integrating the
+Solve for <!--m:b_m-->![b_m](edges-and-fourier.assets/eq-inline/dc8edb5b1e.svg)<!--/m-->. Repeating the same move with <!--m:\cos(m\omega_1 t)-->![cos (m omega_1 t)](edges-and-fourier.assets/eq-inline/88b75bcce5.svg)<!--/m--> gives <!--m:a_m-->![a_m](edges-and-fourier.assets/eq-inline/d5c812e96c.svg)<!--/m-->, and integrating the
 series by itself (multiplying by 1) gives <!--m:a_0-->![a_0](edges-and-fourier.assets/eq-inline/4a5997da73.svg)<!--/m-->:
 
 ![a_0 equals 1 over T times integral of f; a_n equals 2 over T times integral of f cos n omega_1 t; b_n equals 2 over T times integral of f sin n omega_1 t](edges-and-fourier.assets/eq-coeffs.svg)
@@ -273,21 +273,21 @@ sine at frequency <!--m:n f_1-->![n f_1](edges-and-fourier.assets/eq-inline/ef54
 positive part and the average is non-zero. If it does not, the product swings both ways and averages
 to zero. A Fourier analyser, from a pencil to a spectrum analyser, is doing exactly this.
 
-> **Tip —** It is often neater to measure time in **angle**, <!--m:\theta = \omega_1 t-->![= _1 t](edges-and-fourier.assets/eq-inline/aa02c13138.svg)<!--/m-->, so one period is
-> always <!--m:0-->![0](edges-and-fourier.assets/eq-inline/b6589fc6ab.svg)<!--/m--> to <!--m:2\pi-->![2](edges-and-fourier.assets/eq-inline/0833718ca4.svg)<!--/m--> no matter what <!--m:T-->![T](edges-and-fourier.assets/eq-inline/c2c53d6694.svg)<!--/m--> is. The substitution <!--m:d\theta = (2\pi/T)\,dt-->![d = (2 /T) dt](edges-and-fourier.assets/eq-inline/1b0566e043.svg)<!--/m--> turns the
+> **Tip —** It is often neater to measure time in **angle**, <!--m:\theta = \omega_1 t-->![theta = omega_1 t](edges-and-fourier.assets/eq-inline/aa02c13138.svg)<!--/m-->, so one period is
+> always <!--m:0-->![0](edges-and-fourier.assets/eq-inline/b6589fc6ab.svg)<!--/m--> to <!--m:2\pi-->![2 pi](edges-and-fourier.assets/eq-inline/0833718ca4.svg)<!--/m--> no matter what <!--m:T-->![T](edges-and-fourier.assets/eq-inline/c2c53d6694.svg)<!--/m--> is. The substitution <!--m:d\theta = (2\pi/T)\,dt-->![d theta = (2 pi/T) dt](edges-and-fourier.assets/eq-inline/1b0566e043.svg)<!--/m--> turns the
 > <!--m:b_n-->![b_n](edges-and-fourier.assets/eq-inline/54d608cbef.svg)<!--/m--> formula into:
 
 ![with theta equal to omega_1 t, b_n equals 1 over pi times the integral from 0 to 2 pi of f of theta sin n theta d theta](edges-and-fourier.assets/eq-coeffs-angle.svg)
 
 **Two symmetry shortcuts.** Most power-electronics waveforms have symmetries that halve the work.
 
-- **Odd symmetry**, <!--m:f(-\theta) = -f(\theta)-->![f(- ) = -f( )](edges-and-fourier.assets/eq-inline/a51d2fe445.svg)<!--/m-->. The waveform is a mirror image through the origin, as
-  a sine is. All the <!--m:a_n-->![a_n](edges-and-fourier.assets/eq-inline/278ab95d3a.svg)<!--/m--> (and <!--m:a_0-->![a_0](edges-and-fourier.assets/eq-inline/4a5997da73.svg)<!--/m-->) vanish and only sines remain, because <!--m:f\cos-->![f](edges-and-fourier.assets/eq-inline/624d9d5541.svg)<!--/m--> is then odd and
+- **Odd symmetry**, <!--m:f(-\theta) = -f(\theta)-->![f(- theta ) = -f( theta )](edges-and-fourier.assets/eq-inline/a51d2fe445.svg)<!--/m-->. The waveform is a mirror image through the origin, as
+  a sine is. All the <!--m:a_n-->![a_n](edges-and-fourier.assets/eq-inline/278ab95d3a.svg)<!--/m--> (and <!--m:a_0-->![a_0](edges-and-fourier.assets/eq-inline/4a5997da73.svg)<!--/m-->) vanish and only sines remain, because <!--m:f\cos-->![f cos](edges-and-fourier.assets/eq-inline/624d9d5541.svg)<!--/m--> is then odd and
   integrates to zero over a symmetric interval.
-- **Half-wave symmetry**, <!--m:f(\theta + \pi) = -f(\theta)-->![f( + ) = -f( )](edges-and-fourier.assets/eq-inline/4ed766ba65.svg)<!--/m-->. The second half-cycle is the first one
+- **Half-wave symmetry**, <!--m:f(\theta + \pi) = -f(\theta)-->![f( theta + pi ) = -f( theta )](edges-and-fourier.assets/eq-inline/4ed766ba65.svg)<!--/m-->. The second half-cycle is the first one
   flipped upside down. This is exactly what an H-bridge produces, because it applies <!--m:+V_{dc}-->![+V_dc](edges-and-fourier.assets/eq-inline/0458144a16.svg)<!--/m--> then
-  <!--m:-V_{dc}-->![-V_dc](edges-and-fourier.assets/eq-inline/b2ceae7532.svg)<!--/m--> by symmetric switching. Substitute <!--m:\theta = s + \pi-->![= s +](edges-and-fourier.assets/eq-inline/81df2d694b.svg)<!--/m--> in the second half of the integral,
-  using <!--m:\sin(n(s+\pi)) = (-1)^n \sin ns-->![(n(s+ )) = (-1)^n ns](edges-and-fourier.assets/eq-inline/095ed93610.svg)<!--/m-->:
+  <!--m:-V_{dc}-->![-V_dc](edges-and-fourier.assets/eq-inline/b2ceae7532.svg)<!--/m--> by symmetric switching. Substitute <!--m:\theta = s + \pi-->![theta = s + pi](edges-and-fourier.assets/eq-inline/81df2d694b.svg)<!--/m--> in the second half of the integral,
+  using <!--m:\sin(n(s+\pi)) = (-1)^n \sin ns-->![sin (n(s+ pi )) = (-1)^n sin ns](edges-and-fourier.assets/eq-inline/095ed93610.svg)<!--/m-->:
 
 ![with half-wave symmetry, the integral over the second half equals minus 1 to the n plus 1 times the integral over the first half](edges-and-fourier.assets/eq-half-wave.svg)
 
@@ -299,34 +299,34 @@ interesting numbers below are all 3, 5, 7 and so on.
 
 ## 6 The square wave, derived
 
-Now the waveform from the video. An H-bridge flipping <!--m:\pm V-->![V](edges-and-fourier.assets/eq-inline/4545201178.svg)<!--/m--> across a load, with one period
+Now the waveform from the video. An H-bridge flipping <!--m:\pm V-->![plus-minus V](edges-and-fourier.assets/eq-inline/4545201178.svg)<!--/m--> across a load, with one period
 written in angle:
 
 ![f of theta equals plus V for theta between 0 and pi, and minus V for theta between pi and 2 pi](edges-and-fourier.assets/eq-square-def.svg)
 
 It is odd, so every <!--m:a_n = 0-->![a_n = 0](edges-and-fourier.assets/eq-inline/872e3899b1.svg)<!--/m-->. Its average is zero, so <!--m:a_0 = 0-->![a_0 = 0](edges-and-fourier.assets/eq-inline/f1977494dc.svg)<!--/m-->. Only the <!--m:b_n-->![b_n](edges-and-fourier.assets/eq-inline/54d608cbef.svg)<!--/m--> remain. Split the
-integral at <!--m:\theta = \pi-->![=](edges-and-fourier.assets/eq-inline/42cf7bfb68.svg)<!--/m-->, where the waveform changes sign:
+integral at <!--m:\theta = \pi-->![theta = pi](edges-and-fourier.assets/eq-inline/42cf7bfb68.svg)<!--/m-->, where the waveform changes sign:
 
 ![b_n equals 1 over pi times the integral from 0 to pi of V sin n theta minus the integral from pi to 2 pi of V sin n theta](edges-and-fourier.assets/eq-sq-step1.svg)
 
-Each piece is an elementary integral, since the antiderivative of <!--m:\sin n\theta-->![n](edges-and-fourier.assets/eq-inline/f045facc17.svg)<!--/m--> is
-<!--m:-\cos n\theta / n-->![- n / n](edges-and-fourier.assets/eq-inline/2c58694146.svg)<!--/m-->. Use <!--m:\cos 2n\pi = 1-->![2n = 1](edges-and-fourier.assets/eq-inline/6c3f1e37ea.svg)<!--/m-->:
+Each piece is an elementary integral, since the antiderivative of <!--m:\sin n\theta-->![sin n theta](edges-and-fourier.assets/eq-inline/f045facc17.svg)<!--/m--> is
+<!--m:-\cos n\theta / n-->![- cos n theta/n](edges-and-fourier.assets/eq-inline/2c58694146.svg)<!--/m-->. Use <!--m:\cos 2n\pi = 1-->![cos 2n pi = 1](edges-and-fourier.assets/eq-inline/6c3f1e37ea.svg)<!--/m-->:
 
 ![integral from 0 to pi of sin n theta equals 1 minus cos n pi over n; integral from pi to 2 pi equals cos n pi minus 1 over n](edges-and-fourier.assets/eq-sq-step2.svg)
 
-Subtracting the second from the first gives twice the first. Then <!--m:\cos n\pi-->![n](edges-and-fourier.assets/eq-inline/d0019ff0f1.svg)<!--/m--> is <!--m:+1-->![+1](edges-and-fourier.assets/eq-inline/acb72b9476.svg)<!--/m--> for even <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m-->
+Subtracting the second from the first gives twice the first. Then <!--m:\cos n\pi-->![cos n pi](edges-and-fourier.assets/eq-inline/d0019ff0f1.svg)<!--/m--> is <!--m:+1-->![+1](edges-and-fourier.assets/eq-inline/acb72b9476.svg)<!--/m--> for even <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m-->
 and <!--m:-1-->![-1](edges-and-fourier.assets/eq-inline/7984b0a0e1.svg)<!--/m--> for odd <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m-->, which is written <!--m:(-1)^n-->![(-1)^n](edges-and-fourier.assets/eq-inline/f21498e059.svg)<!--/m-->:
 
 ![b_n equals 2 V over n pi times 1 minus minus 1 to the n, which is 4 V over n pi for odd n and 0 for even n](edges-and-fourier.assets/eq-sq-step3.svg)
 
 Even harmonics vanish, as the half-wave symmetry promised. Odd harmonics have amplitude
-<!--m:4V/(n\pi)-->![4V/(n )](edges-and-fourier.assets/eq-inline/bb802859e2.svg)<!--/m-->, falling as <!--m:1/n-->![1/n](edges-and-fourier.assets/eq-inline/5f556983ad.svg)<!--/m-->. Put the coefficients back into the series:
+<!--m:4V/(n\pi)-->![4V/(n pi )](edges-and-fourier.assets/eq-inline/bb802859e2.svg)<!--/m-->, falling as <!--m:1/n-->![1/n](edges-and-fourier.assets/eq-inline/5f556983ad.svg)<!--/m-->. Put the coefficients back into the series:
 
 ![v of t equals 4 V over pi times the sum over odd n of sin n omega_1 t over n, which is 4 V over pi times sin omega_1 t plus a third sin 3 omega_1 t plus a fifth sin 5 omega_1 t and so on](edges-and-fourier.assets/eq-sq-result.svg)
 
 **Check it.** At a quarter period, <!--m:t = T/4-->![t = T/4](edges-and-fourier.assets/eq-inline/63e6542200.svg)<!--/m-->, the square wave is plainly <!--m:+V-->![+V](edges-and-fourier.assets/eq-inline/d84db4c8f2.svg)<!--/m-->. The series gives
-<!--m:\sin(n\pi/2) = +1, -1, +1, -1, \dots-->![(n /2) = +1, -1, +1, -1,](edges-and-fourier.assets/eq-inline/c153189203.svg)<!--/m--> for <!--m:n = 1, 3, 5, 7, \dots-->![n = 1, 3, 5, 7,](edges-and-fourier.assets/eq-inline/c3167b1d69.svg)<!--/m-->. The bracket becomes Leibniz's
-famous series for <!--m:\pi/4-->![/4](edges-and-fourier.assets/eq-inline/58f2155161.svg)<!--/m-->, and the result is exactly <!--m:V-->![V](edges-and-fourier.assets/eq-inline/c9ee5681d3.svg)<!--/m-->:
+<!--m:\sin(n\pi/2) = +1, -1, +1, -1, \dots-->![sin (n pi/2) = +1, -1, +1, -1,](edges-and-fourier.assets/eq-inline/c153189203.svg)<!--/m--> for <!--m:n = 1, 3, 5, 7, \dots-->![n = 1, 3, 5, 7,](edges-and-fourier.assets/eq-inline/c3167b1d69.svg)<!--/m-->. The bracket becomes Leibniz's
+famous series for <!--m:\pi/4-->![pi/4](edges-and-fourier.assets/eq-inline/58f2155161.svg)<!--/m-->, and the result is exactly <!--m:V-->![V](edges-and-fourier.assets/eq-inline/c9ee5681d3.svg)<!--/m-->:
 
 ![v at T over 4 equals 4 V over pi times 1 minus a third plus a fifth minus a seventh and so on, which is 4 V over pi times pi over 4, equals V](edges-and-fourier.assets/eq-leibniz.svg)
 
@@ -340,20 +340,20 @@ Notice what the edges need. The fundamental alone has a gentle slope. Each highe
 contributes a steeper and steeper wiggle, and it takes the high harmonics to make the jump sharp.
 **A steep edge *is* high-frequency content.** That is the precise sense in which §3's 50 ns edge
 "contains" 7 MHz. Section 8 shows that finite rise time gently rolls off the harmonics above about
-<!--m:1/(\pi t_r)-->![1/( t_r)](edges-and-fourier.assets/eq-inline/65aa0de6e5.svg)<!--/m-->.
+<!--m:1/(\pi t_r)-->![1/( pi t_r)](edges-and-fourier.assets/eq-inline/65aa0de6e5.svg)<!--/m-->.
 
 ## 7 Reading a spectrum — Gibbs, Parseval and THD
 
 **The spectrum.** Plotting each harmonic's amplitude against <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> gives the waveform's **spectrum**.
 It is the same information as the time plot, sorted by frequency instead of by time. For the square
-wave it is a row of bars at odd <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> only, falling as <!--m:4V/(n\pi)-->![4V/(n )](edges-and-fourier.assets/eq-inline/bb802859e2.svg)<!--/m-->:
+wave it is a row of bars at odd <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> only, falling as <!--m:4V/(n\pi)-->![4V/(n pi )](edges-and-fourier.assets/eq-inline/bb802859e2.svg)<!--/m-->:
 
 ![Amplitude spectrum of a plus or minus V square wave with bars at odd harmonics falling as 4 V over n pi](edges-and-fourier.assets/fig-05.svg)
 
 _The fundamental stands taller than the square wave itself, at 1.27 V. The harmonics fall slowly, as
 <!--m:1/n-->![1/n](edges-and-fourier.assets/eq-inline/5f556983ad.svg)<!--/m-->, which is why square waves are "noisy". Their energy reaches far up the frequency axis._
 
-The fundamental's amplitude is <!--m:4/\pi \approx 1.273-->![4/ 1.273](edges-and-fourier.assets/eq-inline/5829bc02d8.svg)<!--/m--> times the square wave's height. That surprises
+The fundamental's amplitude is <!--m:4/\pi \approx 1.273-->![4/pi approx 1.273](edges-and-fourier.assets/eq-inline/5829bc02d8.svg)<!--/m--> times the square wave's height. That surprises
 almost everyone the first time, so it is worth stating plainly: **the best-fitting sine to a ±V
 square wave peaks at about 1.27 V, higher than the square wave ever goes.** The harmonics then pull
 the tops down flat and push the shoulders up.
@@ -364,7 +364,7 @@ shrink as you add terms. It only gets narrower. In the limit it settles at about
 
 ![the maximum of the partial sum tends to 2 over pi times Si of pi times V, about 1.179 V, an overshoot of about 9 percent of the 2 V jump](edges-and-fourier.assets/eq-gibbs.svg)
 
-(<!--m:\operatorname{Si}-->![Si](edges-and-fourier.assets/eq-inline/3c5737d86c.svg)<!--/m--> is the sine integral, <!--m:\operatorname{Si}(x) = \int_0^x \sin u / u \, du-->![Si(x) = _0^x u / u du](edges-and-fourier.assets/eq-inline/146f14e16b.svg)<!--/m-->.) Gibbs
+(<!--m:\operatorname{Si}-->![Si](edges-and-fourier.assets/eq-inline/3c5737d86c.svg)<!--/m--> is the sine integral, <!--m:\operatorname{Si}(x) = \int_0^x \sin u / u \, du-->![Si(x) = integral_0^x sin u/u du](edges-and-fourier.assets/eq-inline/146f14e16b.svg)<!--/m-->.) Gibbs
 overshoot is a real effect, not a maths curiosity. Any time a sharp edge passes through a system that
 cuts off sharply above some frequency (a brick-wall filter, a band-limited amplifier), the edge
 comes out with this ringing overshoot.
@@ -378,7 +378,7 @@ survives is the sum of each harmonic's own mean square:
 This is **Parseval's theorem**. In words: *the total power is the sum of the powers in each
 harmonic*, and harmonics never interfere in their power contribution. For the square wave the mean
 square is obviously <!--m:V^2-->![V^2](edges-and-fourier.assets/eq-inline/13bbb9f936.svg)<!--/m-->, because <!--m:v^2 = V^2-->![v^2 = V^2](edges-and-fourier.assets/eq-inline/1421d0c4d4.svg)<!--/m--> at every instant. Parseval agrees, which needs the sum
-of <!--m:1/n^2-->![1/n^2](edges-and-fourier.assets/eq-inline/dc31304943.svg)<!--/m--> over odd <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m-->, <!--m:\pi^2/8-->![^2/8](edges-and-fourier.assets/eq-inline/504a023cae.svg)<!--/m-->:
+of <!--m:1/n^2-->![1/n^2](edges-and-fourier.assets/eq-inline/dc31304943.svg)<!--/m--> over odd <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m-->, <!--m:\pi^2/8-->![pi^2/8](edges-and-fourier.assets/eq-inline/504a023cae.svg)<!--/m-->:
 
 ![V squared equals one half the sum of 16 V squared over n squared pi squared, which is 8 V squared over pi squared times pi squared over 8, equals V squared](edges-and-fourier.assets/eq-parseval-square.svg)
 
@@ -394,7 +394,7 @@ combined mean square is the total minus the fundamental's:
 
 ![THD equals the square root of V_2 squared plus V_3 squared and so on, over V_1, which equals the square root of V_rms squared minus V_1 rms squared, over V_1 rms](edges-and-fourier.assets/eq-thd-def.svg)
 
-For the square wave, <!--m:V_{rms} = V-->![V_rms = V](edges-and-fourier.assets/eq-inline/e515b7b30c.svg)<!--/m--> and <!--m:V_{1,rms} = (4V/\pi)/\sqrt2-->![V_1,rms = (4V/ )/ 2](edges-and-fourier.assets/eq-inline/ad8fb6ecd1.svg)<!--/m-->, so:
+For the square wave, <!--m:V_{rms} = V-->![V_rms = V](edges-and-fourier.assets/eq-inline/e515b7b30c.svg)<!--/m--> and <!--m:V_{1,rms} = (4V/\pi)/\sqrt2-->![V_1,rms = (4V/pi )/sqrt 2](edges-and-fourier.assets/eq-inline/ad8fb6ecd1.svg)<!--/m-->, so:
 
 ![THD of the square wave equals the square root of V squared minus 8 over pi squared V squared, over root 8 V over pi, equals the square root of pi squared over 8 minus 1, about 48.3 percent](edges-and-fourier.assets/eq-thd-square.svg)
 
@@ -441,7 +441,7 @@ because a sine's mean square is half its peak squared, derived in
 The total is <!--m:V_{dc}^2/R-->![V_dc^2/R](edges-and-fourier.assets/eq-inline/c5cd21d089.svg)<!--/m-->, exactly what a DC supply of <!--m:V_{dc}-->![V_dc](edges-and-fourier.assets/eq-inline/1091080009.svg)<!--/m--> would deliver. A lamp's filament
 cannot tell a ±12 V square wave from 12 V DC, because its glow depends on heating and <!--m:v^2-->![v^2](edges-and-fourier.assets/eq-inline/d96f95b7a2.svg)<!--/m--> is
 <!--m:144\,\mathrm{V}^2-->![144 V^2](edges-and-fourier.assets/eq-inline/a4f1daad66.svg)<!--/m--> at every instant either way. Here are the numbers for a 12 V, 24 W lamp (hot
-resistance <!--m:R = 12^2/24 = 6\,\Omega-->![R = 12^2/24 = 6](edges-and-fourier.assets/eq-inline/7c03b4e57b.svg)<!--/m-->):
+resistance <!--m:R = 12^2/24 = 6\,\Omega-->![R = 12^2/24 = 6 Omega](edges-and-fourier.assets/eq-inline/7c03b4e57b.svg)<!--/m-->):
 
 ![for R equals 6 ohms and V_dc equals 12 V: P_1 equals 19.45 W, P_3 equals 2.16 W, P_5 equals 0.78 W, P_7 equals 0.40 W, total 24 W](edges-and-fourier.assets/eq-hb-power-example.svg)
 
@@ -460,7 +460,7 @@ are unchanged, and only the size shrinks:
 
 ![v_R of t equals 4 V_dc over pi times R over R plus 2 R_ds on times the sum over odd n of sin n omega_1 t over n](edges-and-fourier.assets/eq-hb-rds-series.svg)
 
-With <!--m:R_{ds(on)} = 50\,\mathrm{m}\Omega-->![R_ds(on) = 50 m](edges-and-fourier.assets/eq-inline/db3d76cf57.svg)<!--/m--> and the 6 Ω lamp:
+With <!--m:R_{ds(on)} = 50\,\mathrm{m}\Omega-->![R_ds(on) = 50 m Omega](edges-and-fourier.assets/eq-inline/db3d76cf57.svg)<!--/m--> and the 6 Ω lamp:
 
 ![the divider ratio is 6 over 6.1, which is 0.984; lamp power 23.2 W; conduction loss in the two switches 0.39 W](edges-and-fourier.assets/eq-hb-rds-example.svg)
 
@@ -479,30 +479,30 @@ could briefly conduct together and short the supply. This is shoot-through, cove
 [../../dc-ac-inverters/h-bridge/](../../dc-ac-inverters/h-bridge/). With a resistive lamp, all
 switches off means no current, so the lamp voltage is **zero** during that interval. Some inverters
 also add zero intervals *deliberately*, by turning on both low-side switches, to shape the output.
-Either way the waveform becomes a **quasi-square wave**: zero for an angle <!--m:\alpha-->![](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> on each side of
+Either way the waveform becomes a **quasi-square wave**: zero for an angle <!--m:\alpha-->![alpha](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> on each side of
 every zero crossing.
 
 ![v_AB of theta is 0 for theta between 0 and alpha, V_dc between alpha and pi minus alpha, 0 between pi minus alpha and pi, with half-wave symmetry](edges-and-fourier.assets/eq-qs-def.svg)
 
 It is still odd and half-wave symmetric, so only odd sines survive. Use the half-wave formula from
-§5. The integrand is non-zero only between <!--m:\alpha-->![](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> and <!--m:\pi - \alpha-->![-](edges-and-fourier.assets/eq-inline/13f23193bf.svg)<!--/m-->:
+§5. The integrand is non-zero only between <!--m:\alpha-->![alpha](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> and <!--m:\pi - \alpha-->![pi - alpha](edges-and-fourier.assets/eq-inline/13f23193bf.svg)<!--/m-->:
 
 ![b_n equals 2 over pi times the integral from alpha to pi minus alpha of V_dc sin n theta, which is 2 V_dc over n pi times cos n alpha minus cos of n pi minus n alpha](edges-and-fourier.assets/eq-qs-step.svg)
 
-Expand the second cosine with the angle-difference formula. For odd <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m-->, <!--m:\cos n\pi = -1-->![n = -1](edges-and-fourier.assets/eq-inline/22e9f135cb.svg)<!--/m--> and
-<!--m:\sin n\pi = 0-->![n = 0](edges-and-fourier.assets/eq-inline/d9f9bc06ad.svg)<!--/m-->:
+Expand the second cosine with the angle-difference formula. For odd <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m-->, <!--m:\cos n\pi = -1-->![cos n pi = -1](edges-and-fourier.assets/eq-inline/22e9f135cb.svg)<!--/m--> and
+<!--m:\sin n\pi = 0-->![sin n pi = 0](edges-and-fourier.assets/eq-inline/d9f9bc06ad.svg)<!--/m-->:
 
 ![cos of n pi minus n alpha equals cos n pi cos n alpha plus sin n pi sin n alpha, which is minus cos n alpha for odd n](edges-and-fourier.assets/eq-qs-step2.svg)
 
 ![b_n equals 4 V_dc over n pi times cos n alpha for odd n, and 0 for even n](edges-and-fourier.assets/eq-qs-result.svg)
 
-The square-wave amplitudes are simply multiplied by <!--m:\cos(n\alpha)-->![(n )](edges-and-fourier.assets/eq-inline/770e27da25.svg)<!--/m-->. Setting <!--m:\alpha = 0-->![= 0](edges-and-fourier.assets/eq-inline/08b777d1d0.svg)<!--/m--> recovers
+The square-wave amplitudes are simply multiplied by <!--m:\cos(n\alpha)-->![cos (n alpha )](edges-and-fourier.assets/eq-inline/770e27da25.svg)<!--/m-->. Setting <!--m:\alpha = 0-->![alpha = 0](edges-and-fourier.assets/eq-inline/08b777d1d0.svg)<!--/m--> recovers
 the square wave, as it must. The new factor lets you **choose a harmonic to delete**:
 
 ![b_n equals 0 exactly when cos n alpha equals 0, which is when n alpha equals 90 degrees, so alpha equals 90 degrees over n: alpha 30 degrees removes the 3rd, alpha 18 degrees removes the 5th](edges-and-fourier.assets/eq-qs-kill.svg)
 
-At <!--m:\alpha = 30^\circ-->![= 30^](edges-and-fourier.assets/eq-inline/63580e7f38.svg)<!--/m--> the 3rd harmonic disappears, and with it every harmonic divisible by 3. The
-reason is that <!--m:\cos(3(2k+1) \cdot 30^\circ) = \cos((2k+1) \cdot 90^\circ) = 0-->![(3(2k+1) 30^ ) = ((2k+1) 90^ ) = 0](edges-and-fourier.assets/eq-inline/b10471a0bf.svg)<!--/m-->:
+At <!--m:\alpha = 30^\circ-->![alpha = 30^ deg](edges-and-fourier.assets/eq-inline/63580e7f38.svg)<!--/m--> the 3rd harmonic disappears, and with it every harmonic divisible by 3. The
+reason is that <!--m:\cos(3(2k+1) \cdot 30^\circ) = \cos((2k+1) \cdot 90^\circ) = 0-->![cos (3(2k+1) times 30^ deg ) = cos ((2k+1) times 90^ deg ) = 0](edges-and-fourier.assets/eq-inline/b10471a0bf.svg)<!--/m-->:
 
 ![at alpha equals 30 degrees: b_1 equals 4 V_dc over pi cos 30 degrees equals 1.103 V_dc; b_3, b_9, b_15 are 0; b_5 and b_7 are minus 4 V_dc over pi times 0.866 over n](edges-and-fourier.assets/eq-qs-30.svg)
 
@@ -510,14 +510,14 @@ reason is that <!--m:\cos(3(2k+1) \cdot 30^\circ) = \cos((2k+1) \cdot 90^\circ) 
 
 _Top: the quasi-square wave at 30 degrees and its fundamental. Bottom: each harmonic's amplitude as
 the zero interval widens. Wherever a curve crosses zero, that harmonic is gone from the output. The
-price is a smaller fundamental, which falls as <!--m:\cos\alpha-->![](edges-and-fourier.assets/eq-inline/9f1f363b16.svg)<!--/m-->._
+price is a smaller fundamental, which falls as <!--m:\cos\alpha-->![cos alpha](edges-and-fourier.assets/eq-inline/9f1f363b16.svg)<!--/m-->._
 
-The RMS of a quasi-square wave follows from its definition (the waveform is <!--m:\pm V_{dc}-->![V_dc](edges-and-fourier.assets/eq-inline/38ec47d61b.svg)<!--/m--> for a
-fraction <!--m:(\pi - 2\alpha)/\pi-->![( - 2 )/](edges-and-fourier.assets/eq-inline/14c93c4ed9.svg)<!--/m--> of the time and zero otherwise):
+The RMS of a quasi-square wave follows from its definition (the waveform is <!--m:\pm V_{dc}-->![plus-minus V_dc](edges-and-fourier.assets/eq-inline/38ec47d61b.svg)<!--/m--> for a
+fraction <!--m:(\pi - 2\alpha)/\pi-->![( pi - 2 alpha )/pi](edges-and-fourier.assets/eq-inline/14c93c4ed9.svg)<!--/m--> of the time and zero otherwise):
 
 ![V_rms equals the square root of 1 over pi times the integral from alpha to pi minus alpha of V_dc squared, which is V_dc times the square root of pi minus 2 alpha over pi](edges-and-fourier.assets/eq-qs-rms.svg)
 
-and so its THD at <!--m:\alpha = 30^\circ-->![= 30^](edges-and-fourier.assets/eq-inline/63580e7f38.svg)<!--/m--> is:
+and so its THD at <!--m:\alpha = 30^\circ-->![alpha = 30^ deg](edges-and-fourier.assets/eq-inline/63580e7f38.svg)<!--/m--> is:
 
 ![THD at 30 degrees equals the square root of two thirds minus 1.103 over root 2 squared, over 1.103 over root 2, which is about 31.1 percent](edges-and-fourier.assets/eq-qs-thd-30.svg)
 
@@ -526,31 +526,31 @@ Removing the triplen harmonics cuts THD from 48.3 % to 31.1 %. This is the simpl
 instants to put zeros in the spectrum where you want them.
 
 **The "modified sine wave" inverter.** Cheap inverters sold as "modified sine" are quasi-square
-waves. They choose <!--m:\alpha-->![](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> so that the peak *and* the RMS both match mains, 325 V peak and 230 V RMS:
+waves. They choose <!--m:\alpha-->![alpha](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> so that the peak *and* the RMS both match mains, 325 V peak and 230 V RMS:
 
 ![V_rms over V_pk equals the square root of pi minus 2 alpha over pi, equals 230 over 325, which is 1 over root 2, so alpha equals 45 degrees](edges-and-fourier.assets/eq-modified-sine.svg)
 
-At <!--m:\alpha = 45^\circ-->![= 45^](edges-and-fourier.assets/eq-inline/d888911a73.svg)<!--/m--> the 3rd harmonic is *not* removed (<!--m:\cos 135^\circ = -0.707-->![135^ = -0.707](edges-and-fourier.assets/eq-inline/7c81fd1f8a.svg)<!--/m-->). Working it
+At <!--m:\alpha = 45^\circ-->![alpha = 45^ deg](edges-and-fourier.assets/eq-inline/d888911a73.svg)<!--/m--> the 3rd harmonic is *not* removed (<!--m:\cos 135^\circ = -0.707-->![cos 135^ deg = -0.707](edges-and-fourier.assets/eq-inline/7c81fd1f8a.svg)<!--/m-->). Working it
 through, the THD comes out at 48.3 %, the same as a plain square wave. The modified sine wave fixes
 the peak and the RMS. It does not fix the distortion.
 
 **How big is protective dead time, in angle?** Dead time <!--m:t_d-->![t_d](edges-and-fourier.assets/eq-inline/6c703960eb.svg)<!--/m--> makes a zero interval of width <!--m:t_d-->![t_d](edges-and-fourier.assets/eq-inline/6c703960eb.svg)<!--/m-->
-at each transition. In the notation above that interval is <!--m:2\alpha-->![2](edges-and-fourier.assets/eq-inline/008b07ecdf.svg)<!--/m--> wide:
+at each transition. In the notation above that interval is <!--m:2\alpha-->![2 alpha](edges-and-fourier.assets/eq-inline/008b07ecdf.svg)<!--/m--> wide:
 
 ![2 alpha equals 360 degrees times t_d over T, so alpha equals 180 degrees times t_d over T: for t_d equals 500 ns, alpha is 0.0045 degrees at 50 Hz and 4.5 degrees at 50 kHz](edges-and-fourier.assets/eq-dead-alpha.svg)
 
 At 50 Hz, protective dead time is spectrally invisible. At the 50 kHz switching of the inverter's
-first stage it is a 4.5° zero interval. That trims the fundamental by <!--m:1 - \cos 4.5^\circ \approx 0.3\,\%-->![1 - 4.5^ 0.3 %](edges-and-fourier.assets/eq-inline/eaab2731ca.svg)<!--/m-->
+first stage it is a 4.5° zero interval. That trims the fundamental by <!--m:1 - \cos 4.5^\circ \approx 0.3\,\%-->![1 - cos 4.5^ deg approx 0.3 %](edges-and-fourier.assets/eq-inline/eaab2731ca.svg)<!--/m-->
 and starts reshaping the harmonics, so it matters there.
 
 **Layer 5 — finite edges.** The last idealisation is the vertical edge. A trapezoidal wave with rise
 time <!--m:t_r-->![t_r](edges-and-fourier.assets/eq-inline/a6684eb7a2.svg)<!--/m--> is a square wave smoothed by a moving average of width <!--m:t_r-->![t_r](edges-and-fourier.assets/eq-inline/a6684eb7a2.svg)<!--/m-->. A moving average multiplies
-each harmonic by a <!--m:\sin x / x-->![x / x](edges-and-fourier.assets/eq-inline/6dcfc84d85.svg)<!--/m--> factor. Below the corner <!--m:f_c = 1/(\pi t_r)-->![f_c = 1/( t_r)](edges-and-fourier.assets/eq-inline/913d3b6838.svg)<!--/m--> the factor is about 1.
+each harmonic by a <!--m:\sin x / x-->![sin x/x](edges-and-fourier.assets/eq-inline/6dcfc84d85.svg)<!--/m--> factor. Below the corner <!--m:f_c = 1/(\pi t_r)-->![f_c = 1/( pi t_r)](edges-and-fourier.assets/eq-inline/913d3b6838.svg)<!--/m--> the factor is about 1.
 Above it, the harmonics fall as <!--m:1/n^2-->![1/n^2](edges-and-fourier.assets/eq-inline/dc31304943.svg)<!--/m--> instead of <!--m:1/n-->![1/n](edges-and-fourier.assets/eq-inline/5f556983ad.svg)<!--/m-->:
 
 ![b_n trapezoid is approximately 4 V over n pi times sin of n pi t_r over T, over n pi t_r over T, with a corner at f_c equal to 1 over pi t_r](edges-and-fourier.assets/eq-trapezoid.svg)
 
-For a 50 ns edge, <!--m:f_c \approx 6.4\,\mathrm{MHz}-->![f_c 6.4 MHz](edges-and-fourier.assets/eq-inline/2ee34ef0f4.svg)<!--/m-->, which is roughly the 127 000th harmonic of 50 Hz.
+For a 50 ns edge, <!--m:f_c \approx 6.4\,\mathrm{MHz}-->![f_c approx 6.4 MHz](edges-and-fourier.assets/eq-inline/2ee34ef0f4.svg)<!--/m-->, which is roughly the 127 000th harmonic of 50 Hz.
 It is irrelevant to the lamp and decisive for radio-frequency interference.
 
 **Everything together.** Stacking all five layers gives the H-bridge-into-a-lamp output, with every
@@ -559,7 +559,7 @@ variable visible:
 ![v_lamp of t equals the sum over odd n of: 4 V_dc over n pi (square wave), times R over R plus 2 R_ds on (MOSFET divider), times cos n alpha (zero intervals), times sin of n pi t_r over T over n pi t_r over T (finite edges), times sin n omega_1 t](edges-and-fourier.assets/eq-full.svg)
 
 Each factor is something you can change. Raise <!--m:V_{dc}-->![V_dc](edges-and-fourier.assets/eq-inline/1091080009.svg)<!--/m--> and everything scales. Choose better
-MOSFETs and the divider factor approaches 1. Choose <!--m:\alpha-->![](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> to place zeros. Slow the edges to tame
+MOSFETs and the divider factor approaches 1. Choose <!--m:\alpha-->![alpha](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> to place zeros. Slow the edges to tame
 the radio-frequency tail, at the cost of switching loss.
 
 ## 9 Why the harmonics matter downstream
@@ -573,7 +573,7 @@ inverter chain responds to frequency, so the harmonics of §8 become real costs.
   <!--m:C\,dv/dt-->![C dv/dt](edges-and-fourier.assets/eq-inline/b96b608a56.svg)<!--/m--> current through the interwinding capacitance (§3), straight into the secondary. And a
   transformer cannot pass the DC offset an asymmetric bridge might produce. See
   [../transformer/](../transformer/) and [../electromagnetism/](../electromagnetism/).
-- **Inductive loads (motors, fans).** An inductor's impedance is <!--m:\omega L-->![L](edges-and-fourier.assets/eq-inline/b3beb438d7.svg)<!--/m-->. Harmonic <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> has <!--m:1/n-->![1/n](edges-and-fourier.assets/eq-inline/5f556983ad.svg)<!--/m--> of
+- **Inductive loads (motors, fans).** An inductor's impedance is <!--m:\omega L-->![omega L](edges-and-fourier.assets/eq-inline/b3beb438d7.svg)<!--/m-->. Harmonic <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> has <!--m:1/n-->![1/n](edges-and-fourier.assets/eq-inline/5f556983ad.svg)<!--/m--> of
   the fundamental's voltage and meets <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> times the impedance, so it draws <!--m:1/n^2-->![1/n^2](edges-and-fourier.assets/eq-inline/dc31304943.svg)<!--/m--> of the
   fundamental's current. The harmonic currents are small, but they make torque ripple, buzzing and
   extra copper heating.
@@ -603,10 +603,10 @@ it easily. The Fourier series is the tool that both predicts this and proves it 
   partial sum overshoots by about 9 % no matter how many terms you keep (§7). Don't mistake that
   overshoot for a real voltage spike, and do expect it from any sharply band-limited system.
 - **Ideal zero intervals assume a resistive load.** With an inductive load the current keeps flowing
-  through the body diodes during dead time, and the voltage is <!--m:\pm V_{dc}-->![V_dc](edges-and-fourier.assets/eq-inline/38ec47d61b.svg)<!--/m--> (depending on current
-  direction), not zero. The clean <!--m:\cos(n\alpha)-->![(n )](edges-and-fourier.assets/eq-inline/770e27da25.svg)<!--/m--> result then no longer holds exactly.
-- **Harmonic elimination costs fundamental.** Choosing <!--m:\alpha-->![](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> to kill a harmonic also shrinks
-  the fundamental by <!--m:\cos\alpha-->![](edges-and-fourier.assets/eq-inline/9f1f363b16.svg)<!--/m-->. At <!--m:\alpha = 30^\circ-->![= 30^](edges-and-fourier.assets/eq-inline/63580e7f38.svg)<!--/m--> you lose 13.4 % of the useful output to
+  through the body diodes during dead time, and the voltage is <!--m:\pm V_{dc}-->![plus-minus V_dc](edges-and-fourier.assets/eq-inline/38ec47d61b.svg)<!--/m--> (depending on current
+  direction), not zero. The clean <!--m:\cos(n\alpha)-->![cos (n alpha )](edges-and-fourier.assets/eq-inline/770e27da25.svg)<!--/m--> result then no longer holds exactly.
+- **Harmonic elimination costs fundamental.** Choosing <!--m:\alpha-->![alpha](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> to kill a harmonic also shrinks
+  the fundamental by <!--m:\cos\alpha-->![cos alpha](edges-and-fourier.assets/eq-inline/9f1f363b16.svg)<!--/m-->. At <!--m:\alpha = 30^\circ-->![alpha = 30^ deg](edges-and-fourier.assets/eq-inline/63580e7f38.svg)<!--/m--> you lose 13.4 % of the useful output to
   remove the 3rd.
 
 ## 11 Sources and cross-links
@@ -615,7 +615,7 @@ it easily. The Fourier series is the tool that both predicts this and proves it 
   (<!--m:v = L\,di/dt-->![v = L di/dt](edges-and-fourier.assets/eq-inline/169359fd71.svg)<!--/m-->, the inductive kick) and [../capacitor/capacitor.md](../capacitor/capacitor.md)
   (<!--m:i = C\,dv/dt-->![i = C dv/dt](edges-and-fourier.assets/eq-inline/7f5f5ec54b.svg)<!--/m-->).
 - **The companion document:** [ac-and-rms.md](ac-and-rms.md). It explains sinusoids, averages, why
-  RMS uses <!--m:\sqrt2-->![2](edges-and-fourier.assets/eq-inline/6d0fdf0909.svg)<!--/m-->, and why 230 V mains peaks at 325 V.
+  RMS uses <!--m:\sqrt2-->![sqrt 2](edges-and-fourier.assets/eq-inline/6d0fdf0909.svg)<!--/m-->, and why 230 V mains peaks at 325 V.
 - **The H-bridge itself:** [../../dc-ac-inverters/h-bridge/](../../dc-ac-inverters/h-bridge/). It
   covers switch states, shoot-through, dead time, gate drive and body diodes.
 - **Where the harmonics go next:** [../../pwm/](../../pwm/),

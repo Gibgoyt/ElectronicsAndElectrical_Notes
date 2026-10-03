@@ -20,7 +20,7 @@ The treatment covers:
 3. Why the diode has to be there (the 60 kV inductive kick), and why <!--m:C-->![C](README.assets/eq-inline/32096c2e0e.svg)<!--/m--> cannot come first.
 4. The average of a PWM wave, <!--m:D\,V_{in}-->![D V_in](README.assets/eq-inline/6db2223680.svg)<!--/m-->, derived from the integral (fig-02).
 5. The circuit equations and the averaged model.
-6. The transfer function <!--m:H(s) = 1/(s^2LC + sL/R + 1)-->![H(s) = 1/(s^2LC + sL/R + 1)](README.assets/eq-inline/bb9739c553.svg)<!--/m--> derived; <!--m:\omega_0-->![_0](README.assets/eq-inline/09a7be4d65.svg)<!--/m-->, <!--m:Q-->![Q](README.assets/eq-inline/c3156e00d3.svg)<!--/m-->, <!--m:-40\,\mathrm{dB}-->![-40 dB](README.assets/eq-inline/fefc844ddc.svg)<!--/m-->/decade (fig-05).
+6. The transfer function <!--m:H(s) = 1/(s^2LC + sL/R + 1)-->![H(s) = 1/(s^2LC + sL/R + 1)](README.assets/eq-inline/bb9739c553.svg)<!--/m--> derived; <!--m:\omega_0-->![omega_0](README.assets/eq-inline/09a7be4d65.svg)<!--/m-->, <!--m:Q-->![Q](README.assets/eq-inline/c3156e00d3.svg)<!--/m-->, <!--m:-40\,\mathrm{dB}-->![-40 dB](README.assets/eq-inline/fefc844ddc.svg)<!--/m-->/decade (fig-05).
 7. Choosing <!--m:f_0-->![f_0](README.assets/eq-inline/bdd0794289.svg)<!--/m--> between a 50 Hz signal and 50 kHz switching; the design used throughout.
 8. Ripple maths with worked numbers, confirmed by simulation (fig-03).
 9. Constant, lower and higher duty cycles: flat DC at three levels (fig-04).

@@ -21,7 +21,7 @@ The treatment covers:
 4. Timer counter-compare PWM: CNT, ARR, CCR (fig-02).
 5. Analogue PWM: triangle plus comparator, <!--m:D = v_{ctrl}/V_{pk}-->![D = v_ctrl/V_pk](README.assets/eq-inline/6e14f2e299.svg)<!--/m--> (fig-03).
 6. Edge-aligned vs. centre-aligned.
-7. The spectrum <!--m:a_n = \tfrac{2V_{in}}{n\pi}\lvert\sin n\pi D\rvert-->![a_n = 2V_inn n D](README.assets/eq-inline/e896991b63.svg)<!--/m--> and the LC filter (fig-04).
+7. The spectrum <!--m:a_n = \tfrac{2V_{in}}{n\pi}\lvert\sin n\pi D\rvert-->![a_n = 2V_in over n pi sin n pi D](README.assets/eq-inline/e896991b63.svg)<!--/m--> and the LC filter (fig-04).
 8. Motors, LEDs, converters: who does the averaging.
 9. Complementary outputs, shoot-through and dead time (fig-05).
 10. From constant <!--m:D-->![D](README.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> to a sinusoidal <!--m:D(t)-->![D(t)](README.assets/eq-inline/a6f14a1480.svg)<!--/m--> — the bridge to SPWM.

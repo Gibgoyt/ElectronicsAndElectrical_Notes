@@ -96,7 +96,7 @@ Four on/off switches give <!--m:2^4 = 16-->![2^4 = 16](h-bridge.assets/eq-inline
 high switch on, its low switch on, neither on, or **both** on. Both-on is a dead short from the
 + rail to ground straight through the leg — called **shoot-through** — and it is the one thing an
 H-bridge must never do. Any combination containing Q1 with Q3, or Q2 with Q4, is a shoot-through;
-that is 7 of the 16. The other <!--m:3 \times 3 = 9-->![3 3 = 9](h-bridge.assets/eq-inline/fe58df229b.svg)<!--/m--> are legal:
+that is 7 of the 16. The other <!--m:3 \times 3 = 9-->![3 times 3 = 9](h-bridge.assets/eq-inline/fe58df229b.svg)<!--/m--> are legal:
 
 | Left leg | Right leg | On | <!--m:V_{AB}-->![V_AB](h-bridge.assets/eq-inline/00f921dfb9.svg)<!--/m--> (resistive lamp) | Name / what it is used for |
 |---|---|---|---|---|
@@ -147,7 +147,7 @@ mean is 144:
 
 ![V_rms equals root of the mean of v squared, equals V_dc](h-bridge.assets/eq-rms.svg)
 
-So a 12 V, 60 W lamp (<!--m:R = 2.4\,\Omega-->![R = 2.4](h-bridge.assets/eq-inline/078ffe5f46.svg)<!--/m-->) glows exactly as brightly on the square wave as on the battery:
+So a 12 V, 60 W lamp (<!--m:R = 2.4\,\Omega-->![R = 2.4 Omega](h-bridge.assets/eq-inline/078ffe5f46.svg)<!--/m-->) glows exactly as brightly on the square wave as on the battery:
 
 ![P lamp equals V_rms squared over R equals 60 watts, identical to DC](h-bridge.assets/eq-lamp-power.svg)
 
@@ -155,14 +155,14 @@ The lamp does not care which way the current flows; a filament heats on <!--m:i^
 the square wave is "good enough" for a lamp or a heater — and the reason it is *not* good enough for
 anything that cares about the shape (see below).
 
-**Its fundamental is <!--m:4V_{dc}/\pi-->![4V_dc/](h-bridge.assets/eq-inline/f71d66739d.svg)<!--/m-->.** A square wave is not a sine, but by Fourier's theorem it is a sum of
+**Its fundamental is <!--m:4V_{dc}/\pi-->![4V_dc/pi](h-bridge.assets/eq-inline/f71d66739d.svg)<!--/m-->.** A square wave is not a sine, but by Fourier's theorem it is a sum of
 sines: one at the switching frequency (the *fundamental*) plus all the odd harmonics, each smaller by
 its harmonic number:
 
 ![v_AB of t equals 4 V_dc over pi times the sum over odd n of sin n omega t over n](h-bridge.assets/eq-fourier.svg)
 
-The fundamental's amplitude comes from one integral. Using <!--m:\theta = \omega t-->![= t](h-bridge.assets/eq-inline/95cafb9df1.svg)<!--/m-->, the square wave is
-<!--m:+V_{dc}-->![+V_dc](h-bridge.assets/eq-inline/0458144a16.svg)<!--/m--> on the first half-turn and <!--m:-V_{dc}-->![-V_dc](h-bridge.assets/eq-inline/b2ceae7532.svg)<!--/m--> on the second; on both halves the product with <!--m:\sin\theta-->![](h-bridge.assets/eq-inline/1544b981c1.svg)<!--/m--> is
+The fundamental's amplitude comes from one integral. Using <!--m:\theta = \omega t-->![theta = omega t](h-bridge.assets/eq-inline/95cafb9df1.svg)<!--/m-->, the square wave is
+<!--m:+V_{dc}-->![+V_dc](h-bridge.assets/eq-inline/0458144a16.svg)<!--/m--> on the first half-turn and <!--m:-V_{dc}-->![-V_dc](h-bridge.assets/eq-inline/b2ceae7532.svg)<!--/m--> on the second; on both halves the product with <!--m:\sin\theta-->![sin theta](h-bridge.assets/eq-inline/1544b981c1.svg)<!--/m--> is
 positive, and each half contributes <!--m:2V_{dc}-->![2V_dc](h-bridge.assets/eq-inline/5578b7dfd2.svg)<!--/m-->:
 
 ![b_1 equals one over pi times the integral of v sin theta, equals 4 V_dc over pi](h-bridge.assets/eq-b1.svg)
@@ -261,7 +261,7 @@ rest of this document:
   towards the upper. They never conduct in normal resistive operation; they come alive the moment an
   inductive load's current has nowhere else to go (§9, §10). They are the bridge's free safety
   valve.
-- A diode drops about 0.7–1.2 V while conducting, far more than <!--m:I \cdot R_{DS(on)}-->![I R_DS(on)](h-bridge.assets/eq-inline/a1f4569000.svg)<!--/m--> at modest currents.
+- A diode drops about 0.7–1.2 V while conducting, far more than <!--m:I \cdot R_{DS(on)}-->![I times R_DS(on)](h-bridge.assets/eq-inline/a1f4569000.svg)<!--/m--> at modest currents.
   If the gate is on while reverse current flows, the *channel* conducts in reverse too (a MOSFET
   channel conducts both ways), bypassing the diode — this is "synchronous rectification".
 - When a conducting body diode is suddenly reverse-biased by the opposite switch turning on, it
@@ -278,7 +278,7 @@ rest of this document:
 ## 6 Switching transitions and switching loss
 
 A MOSFET that is fully on has nearly zero voltage across it; one that is fully off has nearly zero
-current through it. Either way <!--m:v \cdot i-->![v i](h-bridge.assets/eq-inline/9e223fdd27.svg)<!--/m--> is tiny. The heat is made **in between** — during the tens of
+current through it. Either way <!--m:v \cdot i-->![v times i](h-bridge.assets/eq-inline/9e223fdd27.svg)<!--/m--> is tiny. The heat is made **in between** — during the tens of
 nanoseconds when the device has both substantial voltage *and* substantial current at the same time.
 
 ![Drain voltage and drain current overlapping during turn on and turn off, and the resulting triangles of instantaneous power loss](h-bridge.assets/fig-04.svg)
@@ -322,7 +322,7 @@ Each switch goes through one turn-on and one turn-off per switching period, and 
 **Worked numbers, 325 V bridge at 20 kHz.** At 1 kW into 230 V the load current is
 <!--m:4.35\,\mathrm{A}-->![4.35 A](h-bridge.assets/eq-inline/d16230b79b.svg)<!--/m--> RMS, a sine of peak <!--m:6.15\,\mathrm{A}-->![6.15 A](h-bridge.assets/eq-inline/fb367a9d0b.svg)<!--/m-->. Each switching event happens at whatever the current is at
 that instant, so the right current to use is the average of <!--m:\lvert i \rvert-->![i](h-bridge.assets/eq-inline/4fa60317d2.svg)<!--/m--> over the sine,
-<!--m:(2/\pi) \times 6.15 = 3.92\,\mathrm{A}-->![(2/ ) 6.15 = 3.92 A](h-bridge.assets/eq-inline/062b31e3d3.svg)<!--/m-->:
+<!--m:(2/\pi) \times 6.15 = 3.92\,\mathrm{A}-->![(2/pi ) times 6.15 = 3.92 A](h-bridge.assets/eq-inline/062b31e3d3.svg)<!--/m-->:
 
 ![P_sw about one half times 325 volts times 3.92 amps times 100 nanoseconds times 20 kilohertz equals 1.27 watts per MOSFET, 5.1 watts total](h-bridge.assets/eq-psw-325.svg)
 
@@ -395,7 +395,7 @@ The trick is a capacitor whose bottom plate is connected to the switch node <!--
 switch's source). It works in two phases:
 
 1. **Low side on, charge.** The switch node is at ground. The bootstrap capacitor <!--m:C_{bs}-->![C_bs](h-bridge.assets/eq-inline/3e85fd5f67.svg)<!--/m--> charges
-   from the 12 V supply through the bootstrap diode <!--m:D_{bs}-->![D_bs](h-bridge.assets/eq-inline/8086a55a14.svg)<!--/m-->, to <!--m:V_{CC} - V_F \approx 11.3\,\mathrm{V}-->![V_CC - V_F 11.3 V](h-bridge.assets/eq-inline/b4c7c88f69.svg)<!--/m-->.
+   from the 12 V supply through the bootstrap diode <!--m:D_{bs}-->![D_bs](h-bridge.assets/eq-inline/8086a55a14.svg)<!--/m-->, to <!--m:V_{CC} - V_F \approx 11.3\,\mathrm{V}-->![V_CC - V_F approx 11.3 V](h-bridge.assets/eq-inline/b4c7c88f69.svg)<!--/m-->.
 2. **High side on, float.** The driver's high-side section — which is itself powered *from* the
    capacitor, between pins VB and VS — connects VB to the gate. The gate rises, the MOSFET turns on,
    and the switch node climbs to the rail. The capacitor's bottom plate climbs with it, so its top
@@ -497,7 +497,7 @@ is a small square wave in step with the load current — subtracted from the int
 distorts the output most near the current's zero crossings ("crossover distortion") and adds low
 odd harmonics. Good inverter controllers measure the current direction and add back <!--m:V_{dc}\,t_d\,f_{sw}-->![V_dc t_d f_sw](h-bridge.assets/eq-inline/117d085c57.svg)<!--/m-->
 (**dead-time compensation**). On the 12 V square-wave bridge the same arithmetic is simply a 2 %
-shorter pulse each half-cycle (<!--m:2 \times 200\,\mathrm{ns}/20\,\mu\mathrm{s}-->![2 200 ns/20 s](h-bridge.assets/eq-inline/6d2dc5ff89.svg)<!--/m-->), which the transformer does not mind.
+shorter pulse each half-cycle (<!--m:2 \times 200\,\mathrm{ns}/20\,\mu\mathrm{s}-->![2 times 200 ns/20 mu s](h-bridge.assets/eq-inline/6d2dc5ff89.svg)<!--/m-->), which the transformer does not mind.
 
 ## 10 Inductive loads, freewheeling, spikes and snubbers
 
@@ -526,7 +526,7 @@ second bridge's supply is a capacitor fed by a rectifier that cannot accept reve
 ([../../rectifiers/](../../rectifiers/)), so returned energy pumps the bus capacitor's voltage up. This
 is why bus capacitors are sized for more than ripple, and why motor drives have "brake choppers".
 Alternatively, the controller can turn on a *zero state* (Q1+Q2, or Q3+Q4) instead of all-off: then
-the current circulates through the load and the two switches, <!--m:V_{AB} \approx 0-->![V_AB 0](h-bridge.assets/eq-inline/32993fce3c.svg)<!--/m-->, and it decays
+the current circulates through the load and the two switches, <!--m:V_{AB} \approx 0-->![V_AB approx 0](h-bridge.assets/eq-inline/32993fce3c.svg)<!--/m-->, and it decays
 slowly rather than being driven back into the supply. That choice — fast decay versus slow decay — is
 one of the main knobs in motor control.
 
@@ -610,7 +610,7 @@ average ([../../filters/lc-filter/](../../filters/lc-filter/)). The cost: the ou
 <!--m:2V_{dc}-->![2V_dc](h-bridge.assets/eq-inline/5578b7dfd2.svg)<!--/m--> on every edge, and all four switches switch at the carrier frequency.
 
 **(c) Unipolar PWM.** Each leg gets its own modulated duty: leg A from the sine reference, leg B from
-the inverted reference. Each leg's average is <!--m:D \cdot V_{dc}-->![D V_dc](h-bridge.assets/eq-inline/a637b1dbc3.svg)<!--/m-->, and the load sees the difference:
+the inverted reference. Each leg's average is <!--m:D \cdot V_{dc}-->![D times V_dc](h-bridge.assets/eq-inline/a637b1dbc3.svg)<!--/m-->, and the load sees the difference:
 
 ![Average V_AB equals D_A minus D_B times V_dc; with D_B equal to one minus D_A it is 2 D_A minus 1 times V_dc](h-bridge.assets/eq-unipolar-avg.svg)
 
@@ -645,7 +645,7 @@ different jobs:
 
 Add the switching estimate from §6 (10 W for four hard-switched devices; in practice the
 transformer's leakage inductance and magnetising current often give near-zero-voltage turn-on and
-much less) and gate drive (<!--m:4 \times 0.18 \approx 0.7\,\mathrm{W}-->![4 0.18 0.7 W](h-bridge.assets/eq-inline/342a0e24e7.svg)<!--/m-->):
+much less) and gate drive (<!--m:4 \times 0.18 \approx 0.7\,\mathrm{W}-->![4 times 0.18 approx 0.7 W](h-bridge.assets/eq-inline/342a0e24e7.svg)<!--/m-->):
 
 ![eta 1 about 1000 over 1000 plus 27.8 plus 10 plus 0.7 equals 96.3 percent](h-bridge.assets/eq-eff-12.svg)
 

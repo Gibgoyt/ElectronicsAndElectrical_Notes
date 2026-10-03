@@ -1,6 +1,6 @@
 # The buck (step-down) converter
 
-Deep treatment of the buck converter: how <!--m:V_{out} = D \cdot V_{in}-->![V_out = D V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> is *derived* from volt-second balance,
+Deep treatment of the buck converter: how <!--m:V_{out} = D \cdot V_{in}-->![V_out = D times V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> is *derived* from volt-second balance,
 and how to size the inductor and output capacitor. Full argument in [buck.md](buck.md).
 
 > **The thesis in one line**
@@ -14,7 +14,7 @@ The treatment covers:
 
 1. The circuit, and the ON/OFF vocabulary (closed = ON).
 2. The two switching intervals and the inductor voltage in each (fig-01).
-3. Volt-second balance → <!--m:V_{out} = D \cdot V_{in}-->![V_out = D V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> (fig-02).
+3. Volt-second balance → <!--m:V_{out} = D \cdot V_{in}-->![V_out = D times V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> (fig-02).
 4. Sizing the inductor from a target current ripple.
 5. Sizing the output capacitor from the triangle-charge argument (fig-03).
 6. Worked numbers: 12 V → 3 V.

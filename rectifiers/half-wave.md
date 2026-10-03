@@ -25,7 +25,7 @@ built on these results.
 > **The thesis in one line**
 >
 > A diode passes current only one way. Put one in series with an AC source and you keep one half
-> of every cycle: the average is <!--m:V_{pk}/\pi-->![V_pk/](half-wave.assets/eq-inline/79c2b285b0.svg)<!--/m-->, the ripple repeats at the source frequency <!--m:f-->![f](half-wave.assets/eq-inline/4a0a19218e.svg)<!--/m-->, and
+> of every cycle: the average is <!--m:V_{pk}/\pi-->![V_pk/pi](half-wave.assets/eq-inline/79c2b285b0.svg)<!--/m-->, the ripple repeats at the source frequency <!--m:f-->![f](half-wave.assets/eq-inline/4a0a19218e.svg)<!--/m-->, and
 > the winding feeding it carries a DC current it was never designed for. That is why real power
 > supplies, including the inverter's DC bus, use the full bridge instead.
 
@@ -164,14 +164,14 @@ The fix is to choose a diode built for it:
 
 ## 4 The half-wave rectifier circuit
 
-Put one diode in series between an AC source <!--m:v_s = V_{pk}\sin\omega t-->![v_s = V_pk t](half-wave.assets/eq-inline/1f9c16c4a0.svg)<!--/m--> and a load resistor <!--m:R_L-->![R_L](half-wave.assets/eq-inline/9640655061.svg)<!--/m-->.
+Put one diode in series between an AC source <!--m:v_s = V_{pk}\sin\omega t-->![v_s = V_pk sin omega t](half-wave.assets/eq-inline/1f9c16c4a0.svg)<!--/m--> and a load resistor <!--m:R_L-->![R_L](half-wave.assets/eq-inline/9640655061.svg)<!--/m-->.
 
 - During the **positive half-cycle** the anode is above the cathode, the diode conducts, and the
-  load sees the source minus one forward drop, <!--m:v_o \approx v_s - V_F-->![v_o v_s - V_F](half-wave.assets/eq-inline/cf9777a3e2.svg)<!--/m-->.
+  load sees the source minus one forward drop, <!--m:v_o \approx v_s - V_F-->![v_o approx v_s - V_F](half-wave.assets/eq-inline/cf9777a3e2.svg)<!--/m-->.
 - During the **negative half-cycle** the diode is reverse-biased; no current flows and <!--m:v_o = 0-->![v_o = 0](half-wave.assets/eq-inline/e543903b34.svg)<!--/m-->.
   The whole source voltage appears across the diode instead.
 
-Ignoring the drop for the moment, and writing the phase <!--m:\theta = \omega t-->![= t](half-wave.assets/eq-inline/95cafb9df1.svg)<!--/m-->:
+Ignoring the drop for the moment, and writing the phase <!--m:\theta = \omega t-->![theta = omega t](half-wave.assets/eq-inline/95cafb9df1.svg)<!--/m-->:
 
 ![v_o of theta equals V_pk sin theta for theta from 0 to pi, and 0 for theta from pi to 2 pi](half-wave.assets/eq-hw-wave.svg)
 
@@ -187,13 +187,13 @@ describe how much "DC" it contains we need two numbers: the average and the RMS.
 ## 5 The average value, by integration
 
 The average (DC) value of any periodic waveform is its area over one period divided by the period.
-In terms of phase, one period is <!--m:2\pi-->![2](half-wave.assets/eq-inline/0833718ca4.svg)<!--/m--> radians. The integrand is zero for the second half, so only
+In terms of phase, one period is <!--m:2\pi-->![2 pi](half-wave.assets/eq-inline/0833718ca4.svg)<!--/m--> radians. The integrand is zero for the second half, so only
 the first half contributes:
 
 ![V_avg equals 1 over 2 pi times the integral from 0 to 2 pi of v_o, which equals V_pk over 2 pi times minus cos theta from 0 to pi, equals V_pk over 2 pi times 1 plus 1](half-wave.assets/eq-hw-avg.svg)
 
-The evaluation is where sign slips happen, so slowly: <!--m:-\cos\pi = -(-1) = +1-->![- = -(-1) = +1](half-wave.assets/eq-inline/5e0c819083.svg)<!--/m--> and
-<!--m:-\cos 0 = -1-->![- 0 = -1](half-wave.assets/eq-inline/bff4efa712.svg)<!--/m-->, so the bracket is <!--m:(+1) - (-1) = 2-->![(+1) - (-1) = 2](half-wave.assets/eq-inline/004ebd3535.svg)<!--/m-->. Therefore:
+The evaluation is where sign slips happen, so slowly: <!--m:-\cos\pi = -(-1) = +1-->![- cos pi = -(-1) = +1](half-wave.assets/eq-inline/5e0c819083.svg)<!--/m--> and
+<!--m:-\cos 0 = -1-->![- cos 0 = -1](half-wave.assets/eq-inline/bff4efa712.svg)<!--/m-->, so the bracket is <!--m:(+1) - (-1) = 2-->![(+1) - (-1) = 2](half-wave.assets/eq-inline/004ebd3535.svg)<!--/m-->. Therefore:
 
 ![V_avg equals V_pk over pi, about 0.318 V_pk, boxed](half-wave.assets/eq-hw-avg-result.svg)
 
@@ -204,19 +204,19 @@ on the output would read this number.
 
 RMS ("root mean square") is the value of DC that would heat a resistor equally. Square the
 waveform, average the square, take the root. Squaring needs the identity that turns
-<!--m:\sin^2-->![^2](half-wave.assets/eq-inline/9343065c8e.svg)<!--/m--> into something integrable:
+<!--m:\sin^2-->![sin^2](half-wave.assets/eq-inline/9343065c8e.svg)<!--/m--> into something integrable:
 
 ![sin squared theta equals one minus cos 2 theta over 2, so the integral of sin squared from 0 to pi is pi over 2](half-wave.assets/eq-sin-squared.svg)
 
-(The <!--m:\sin 2\theta-->![2](half-wave.assets/eq-inline/963ce7f77d.svg)<!--/m--> term vanishes at both <!--m:0-->![0](half-wave.assets/eq-inline/b6589fc6ab.svg)<!--/m--> and <!--m:\pi-->![](half-wave.assets/eq-inline/6ac47b6d73.svg)<!--/m-->, leaving <!--m:\pi/2-->![/2](half-wave.assets/eq-inline/9a0abc6cd5.svg)<!--/m-->.) Now the mean square:
+(The <!--m:\sin 2\theta-->![sin 2 theta](half-wave.assets/eq-inline/963ce7f77d.svg)<!--/m--> term vanishes at both <!--m:0-->![0](half-wave.assets/eq-inline/b6589fc6ab.svg)<!--/m--> and <!--m:\pi-->![pi](half-wave.assets/eq-inline/6ac47b6d73.svg)<!--/m-->, leaving <!--m:\pi/2-->![pi/2](half-wave.assets/eq-inline/9a0abc6cd5.svg)<!--/m-->.) Now the mean square:
 
 ![V_rms squared equals 1 over 2 pi times the integral of v_o squared, equals V_pk squared over 2 pi times pi over 2, equals V_pk squared over 4](half-wave.assets/eq-hw-rms.svg)
 
 ![V_rms equals V_pk over 2, boxed](half-wave.assets/eq-hw-rms-result.svg)
 
-Compare the full sine wave, whose RMS is <!--m:V_{pk}/\sqrt{2}-->![V_pk/ 2](half-wave.assets/eq-inline/09ea721e14.svg)<!--/m-->. Throwing away half the wave halves
+Compare the full sine wave, whose RMS is <!--m:V_{pk}/\sqrt{2}-->![V_pk/sqrt 2](half-wave.assets/eq-inline/09ea721e14.svg)<!--/m-->. Throwing away half the wave halves
 the *power* (the mean square goes from <!--m:V_{pk}^2/2-->![V_pk^2/2](half-wave.assets/eq-inline/acaf470de9.svg)<!--/m--> to <!--m:V_{pk}^2/4-->![V_pk^2/4](half-wave.assets/eq-inline/4bb5a543d0.svg)<!--/m-->), so the RMS falls by
-<!--m:\sqrt{2}-->![2](half-wave.assets/eq-inline/bfe16f27eb.svg)<!--/m-->, not by 2. The signals background for RMS is in
+<!--m:\sqrt{2}-->![sqrt 2](half-wave.assets/eq-inline/bfe16f27eb.svg)<!--/m-->, not by 2. The signals background for RMS is in
 [../fundamentals/signals/](../fundamentals/signals/).
 
 ## 7 Form factor, ripple factor and efficiency
@@ -246,7 +246,7 @@ a large component *at the source frequency itself*, and even harmonics:
 
 ![v_o of t equals V_pk over pi plus V_pk over 2 sin omega t minus 2 V_pk over pi times the sum of cos 2 k omega t over 4 k squared minus 1](half-wave.assets/eq-hw-fourier.svg)
 
-That <!--m:\tfrac{1}{2}V_{pk}\sin\omega t-->![12V_pk t](half-wave.assets/eq-inline/f02708aaa3.svg)<!--/m--> term is the half-wave rectifier's signature: the strongest
+That <!--m:\tfrac{1}{2}V_{pk}\sin\omega t-->![1 over 2 V_pk sin omega t](half-wave.assets/eq-inline/f02708aaa3.svg)<!--/m--> term is the half-wave rectifier's signature: the strongest
 ripple sits at <!--m:f-->![f](half-wave.assets/eq-inline/4a0a19218e.svg)<!--/m-->, the lowest frequency available, which is the hardest to filter. The full bridge
 cancels it exactly ([full-bridge.md §4](full-bridge.md#4-average-rms-and-the-ripple-at-2f)).
 
@@ -313,7 +313,7 @@ for half-wave against about 0.81 for the bridge.
 
 ## 10 What this costs you
 
-- **Only half the input is used.** Average <!--m:V_{pk}/\pi-->![V_pk/](half-wave.assets/eq-inline/79c2b285b0.svg)<!--/m-->, efficiency 40.5 %, ripple factor 1.21.
+- **Only half the input is used.** Average <!--m:V_{pk}/\pi-->![V_pk/pi](half-wave.assets/eq-inline/79c2b285b0.svg)<!--/m-->, efficiency 40.5 %, ripple factor 1.21.
 - **Ripple at <!--m:f-->![f](half-wave.assets/eq-inline/4a0a19218e.svg)<!--/m-->, not <!--m:2f-->![2f](half-wave.assets/eq-inline/88346ae6e0.svg)<!--/m-->.** For the same ripple the capacitor must be twice as large as a
   full-wave design's.
 - **PIV of <!--m:2V_{pk}-->![2V_pk](half-wave.assets/eq-inline/a88e400c7b.svg)<!--/m-->** with a reservoir capacitor: 650 V on a 325 V peak, before ringing — a

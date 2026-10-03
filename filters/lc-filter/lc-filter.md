@@ -86,7 +86,7 @@ With the numbers used throughout this document (<!--m:V_{in} = 12\,\mathrm{V}-->
 
 ![V_in over L equals 12 volts over 1 millihenry equals 12000 amps per second, 0.012 amps per microsecond](lc-filter.assets/eq-slope-L-num.svg)
 
-In one <!--m:20\,\mu\mathrm{s}-->![20 s](lc-filter.assets/eq-inline/f0d5326bb0.svg)<!--/m--> switching period the current can move by at most a quarter of an amp, no
+In one <!--m:20\,\mu\mathrm{s}-->![20 mu s](lc-filter.assets/eq-inline/f0d5326bb0.svg)<!--/m--> switching period the current can move by at most a quarter of an amp, no
 matter how violently the voltage across it jumps. That is what "an inductor smooths the current"
 means precisely: **a voltage jump becomes a current slope**. The square wave on its left becomes a
 gentle triangle of current through it (Fig. 58).
@@ -103,16 +103,16 @@ Then notice *where* each part is placed, because placement is what makes each la
 
 - **The inductor is in series** — in the path of the current. A series element controls what
   *flows through* it, so a part that refuses fast changes of current, placed in series, makes the
-  current delivered downstream smooth. At high frequency its impedance <!--m:|Z_L| = \omega L-->![|Z_L| = L](lc-filter.assets/eq-inline/3a906b535f.svg)<!--/m--> is large:
+  current delivered downstream smooth. At high frequency its impedance <!--m:|Z_L| = \omega L-->![|Z_L| = omega L](lc-filter.assets/eq-inline/3a906b535f.svg)<!--/m--> is large:
   it *blocks* the switching frequency.
 - **The capacitor is in parallel** — across the output. A shunt element controls the voltage
   *across* it, so a part that refuses fast changes of voltage, placed in shunt, holds the output
-  voltage steady. At high frequency its impedance <!--m:|Z_C| = 1/(\omega C)-->![|Z_C| = 1/( C)](lc-filter.assets/eq-inline/bafe731c11.svg)<!--/m--> is small: it *shorts* what
+  voltage steady. At high frequency its impedance <!--m:|Z_C| = 1/(\omega C)-->![|Z_C| = 1/( omega C)](lc-filter.assets/eq-inline/bafe731c11.svg)<!--/m--> is small: it *shorts* what
   is left of the switching frequency to ground.
 
 The pair works as a two-stage voltage divider whose ratio collapses at high frequency from both
 ends at once — the inductor's impedance rises while the capacitor's falls. Each contributes a factor
-of <!--m:\omega-->![](lc-filter.assets/eq-inline/73b077a63e.svg)<!--/m-->, which is where the <!--m:-40\,\mathrm{dB}-->![-40 dB](lc-filter.assets/eq-inline/fefc844ddc.svg)<!--/m--> per decade of §6 comes from.
+of <!--m:\omega-->![omega](lc-filter.assets/eq-inline/73b077a63e.svg)<!--/m-->, which is where the <!--m:-40\,\mathrm{dB}-->![-40 dB](lc-filter.assets/eq-inline/fefc844ddc.svg)<!--/m--> per decade of §6 comes from.
 
 > **Tip —** This duality is the same table as in the
 > [capacitor document §6](../../fundamentals/capacitor/capacitor.md#6-the-duality--one-table-read-both-ways):
@@ -162,7 +162,7 @@ waveform divided by the period:
 
 ![v_s bar equals 1 over T times the integral from 0 to T of v_s dt, which splits into V_in over 0 to DT plus zero over DT to T, giving D V_in](lc-filter.assets/eq-avg-def.svg)
 
-The integral of a rectangle is its area. Only the ON part has any area, <!--m:V_{in} \times DT-->![V_in DT](lc-filter.assets/eq-inline/05ce01dfde.svg)<!--/m-->, and
+The integral of a rectangle is its area. Only the ON part has any area, <!--m:V_{in} \times DT-->![V_in times DT](lc-filter.assets/eq-inline/05ce01dfde.svg)<!--/m-->, and
 spreading that area over the whole period <!--m:T-->![T](lc-filter.assets/eq-inline/c2c53d6694.svg)<!--/m--> gives a level of <!--m:D\,V_{in}-->![D V_in](lc-filter.assets/eq-inline/6db2223680.svg)<!--/m-->. Geometrically: the tall
 thin rectangle and the short wide one in Fig. 57 have the same area.
 
@@ -222,15 +222,15 @@ Divide top and bottom by <!--m:R-->![R](lc-filter.assets/eq-inline/06576556d1.sv
 ![H of s equals 1 over s squared LC plus s L over R plus 1, boxed](lc-filter.assets/eq-tf.svg)
 
 This is the standard second-order low-pass. Matching it term by term against the textbook form names
-its two parameters — the natural (corner) frequency <!--m:\omega_0-->![_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m--> and the quality factor <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m-->:
+its two parameters — the natural (corner) frequency <!--m:\omega_0-->![omega_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m--> and the quality factor <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m-->:
 
 ![H of s equals 1 over s squared over omega_0 squared plus s over Q omega_0 plus 1, with omega_0 equal to 1 over root LC and Q equal to R root C over L](lc-filter.assets/eq-tf-standard.svg)
 
 ![1 over omega_0 squared equals LC, 1 over Q omega_0 equals L over R, so Q equals R over omega_0 L equals R root C over L equals R over Z_0, with Z_0 equal to root L over C](lc-filter.assets/eq-q-derive.svg)
 
-<!--m:Z_0 = \sqrt{L/C}-->![Z_0 = L/C](lc-filter.assets/eq-inline/2ac38c12fb.svg)<!--/m--> is the filter's *characteristic impedance*. <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m--> is simply the load resistance
+<!--m:Z_0 = \sqrt{L/C}-->![Z_0 = sqrt L/C](lc-filter.assets/eq-inline/2ac38c12fb.svg)<!--/m--> is the filter's *characteristic impedance*. <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m--> is simply the load resistance
 measured in units of <!--m:Z_0-->![Z_0](lc-filter.assets/eq-inline/964f1c3f3e.svg)<!--/m-->: a heavy load (small <!--m:R-->![R](lc-filter.assets/eq-inline/06576556d1.svg)<!--/m-->) gives a small <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m-->, a light load (large <!--m:R-->![R](lc-filter.assets/eq-inline/06576556d1.svg)<!--/m-->) a
-large one. Put <!--m:s = j\omega-->![s = j](lc-filter.assets/eq-inline/52dfb07b61.svg)<!--/m--> to get the magnitude response:
+large one. Put <!--m:s = j\omega-->![s = j omega](lc-filter.assets/eq-inline/52dfb07b61.svg)<!--/m--> to get the magnitude response:
 
 ![magnitude of H of j omega equals 1 over the square root of 1 minus omega squared over omega_0 squared, squared, plus omega over Q omega_0, squared](lc-filter.assets/eq-mag.svg)
 
@@ -238,11 +238,11 @@ Three regimes tell you everything:
 
 ![for omega much less than omega_0, H tends to 1; at omega_0, H equals Q; for omega much greater than omega_0, H is about omega_0 over omega squared](lc-filter.assets/eq-limits.svg)
 
-- **Far below <!--m:\omega_0-->![_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m-->** the gain is 1: slow things pass untouched. DC — the average — is the
+- **Far below <!--m:\omega_0-->![omega_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m-->** the gain is 1: slow things pass untouched. DC — the average — is the
   slowest thing there is (<!--m:H(0) = 1-->![H(0) = 1](lc-filter.assets/eq-inline/6d972adbf1.svg)<!--/m--> exactly).
-- **At <!--m:\omega_0-->![_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m-->** the gain is <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m-->. For <!--m:Q > 1-->![Q > 1](lc-filter.assets/eq-inline/2fa298f53d.svg)<!--/m--> the filter *amplifies* signals near its resonance —
+- **At <!--m:\omega_0-->![omega_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m-->** the gain is <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m-->. For <!--m:Q > 1-->![Q > 1](lc-filter.assets/eq-inline/2fa298f53d.svg)<!--/m--> the filter *amplifies* signals near its resonance —
   the peak in Fig. 60.
-- **Far above <!--m:\omega_0-->![_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m-->** the gain falls as the square of frequency. In decibels:
+- **Far above <!--m:\omega_0-->![omega_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m-->** the gain falls as the square of frequency. In decibels:
 
 ![20 log of omega_0 over omega squared equals minus 40 log of omega over omega_0 dB, so minus 40 dB per decade](lc-filter.assets/eq-slope.svg)
 
@@ -269,7 +269,7 @@ half decades) each way. The design used for every figure in this document does e
 
 ![f_0 equals 1 over 2 pi root of 10 to the minus 3 times 10 to the minus 5, about 1.59 kHz; Z_0 equals 10 ohms; Q equals 1](lc-filter.assets/eq-design-num.svg)
 
-with <!--m:V_{in} = 12\,\mathrm{V}-->![V_in = 12 V](lc-filter.assets/eq-inline/9a063a8f8e.svg)<!--/m-->, <!--m:L = 1\,\mathrm{mH}-->![L = 1 mH](lc-filter.assets/eq-inline/5367ea2324.svg)<!--/m-->, <!--m:C = 10\,\mu\mathrm{F}-->![C = 10 F](lc-filter.assets/eq-inline/a68d258fbb.svg)<!--/m-->, <!--m:R = 10\,\Omega-->![R = 10](lc-filter.assets/eq-inline/0b1b42866f.svg)<!--/m-->. Reading the
+with <!--m:V_{in} = 12\,\mathrm{V}-->![V_in = 12 V](lc-filter.assets/eq-inline/9a063a8f8e.svg)<!--/m-->, <!--m:L = 1\,\mathrm{mH}-->![L = 1 mH](lc-filter.assets/eq-inline/5367ea2324.svg)<!--/m-->, <!--m:C = 10\,\mu\mathrm{F}-->![C = 10 mu F](lc-filter.assets/eq-inline/a68d258fbb.svg)<!--/m-->, <!--m:R = 10\,\Omega-->![R = 10 Omega](lc-filter.assets/eq-inline/0b1b42866f.svg)<!--/m-->. Reading the
 Bode plot at the two frequencies that matter:
 
 ![H at 50 kHz is about 1.59 over 50 squared, about 1.0 times 10 to the minus 3, minus 60 dB; H at 50 Hz is about 1.001, 0 dB](lc-filter.assets/eq-atten-num.svg)
@@ -294,7 +294,7 @@ for a time <!--m:DT-->![DT](lc-filter.assets/eq-inline/f91a09d081.svg)<!--/m-->,
 running example is the worst case.
 
 **Capacitor voltage ripple.** The load takes the average current; the capacitor absorbs the triangle's
-deviation from it, a triangle centred on zero. The charge in its positive half is <!--m:T\,\Delta I_L/8-->![T I_L/8](lc-filter.assets/eq-inline/a5793fda45.svg)<!--/m--> (the
+deviation from it, a triangle centred on zero. The charge in its positive half is <!--m:T\,\Delta I_L/8-->![T Delta I_L/8](lc-filter.assets/eq-inline/a5793fda45.svg)<!--/m--> (the
 same triangle-area argument as the
 [buck document §5](../../dc-dc-converters/buck/buck.md#5-sizing-the-output-capacitor)), so:
 
@@ -302,7 +302,7 @@ same triangle-area argument as the
 
 ![delta V_C equals 0.06 over 8 times 10 to the minus 5 times 50000, equals 0.06 over 4, equals 15 mV](lc-filter.assets/eq-ripple-V-num.svg)
 
-Fifteen millivolts on six volts — a quarter of a percent. Substituting <!--m:\Delta I_L-->![I_L](lc-filter.assets/eq-inline/c856ab20fc.svg)<!--/m--> shows the ripple is
+Fifteen millivolts on six volts — a quarter of a percent. Substituting <!--m:\Delta I_L-->![Delta I_L](lc-filter.assets/eq-inline/c856ab20fc.svg)<!--/m--> shows the ripple is
 the filter-attenuation story in disguise:
 
 ![delta V_C equals V_in D times 1 minus D over 8 LC f_sw squared, equals pi squared over 2 times D times 1 minus D times V_in times f_0 over f_sw squared, at most pi squared over 8 V_in f_0 over f_sw squared](lc-filter.assets/eq-ripple-unified.svg)
@@ -363,7 +363,7 @@ Three things to take from it:
   (*discontinuous conduction*), which damps the oscillation. The simulator models this; an idealised
   linear analysis would not.
 
-The practical upshot: the filter needs a few resonant periods (<!--m:1/f_0 \approx 0.63\,\mathrm{ms}-->![1/f_0 0.63 ms](lc-filter.assets/eq-inline/8f40f108bf.svg)<!--/m--> each) to
+The practical upshot: the filter needs a few resonant periods (<!--m:1/f_0 \approx 0.63\,\mathrm{ms}-->![1/f_0 approx 0.63 ms](lc-filter.assets/eq-inline/8f40f108bf.svg)<!--/m--> each) to
 follow a sudden change. It is not instantaneous — and that is the speed limit of §12.
 
 ## 11 The big idea — vary D cycle by cycle
@@ -407,7 +407,7 @@ switching periods per output cycle:
 
 ![Simulated 50 Hz output synthesised from 50 kHz PWM, compared with the bipolar sine an AC load needs](lc-filter.assets/fig-09.svg)
 
-_Top: two <!--m:200\,\mu\mathrm{s}-->![200 s](lc-filter.assets/eq-inline/3633d1d3b3.svg)<!--/m--> windows of the switch node — wide pulses near the crest, slivers near the
+_Top: two <!--m:200\,\mu\mathrm{s}-->![200 mu s](lc-filter.assets/eq-inline/3633d1d3b3.svg)<!--/m--> windows of the switch node — wide pulses near the crest, slivers near the
 trough. Bottom: the simulated output (blue) lies on top of <!--m:D(t)\,V_{in}-->![D(t) V_in](lc-filter.assets/eq-inline/dfb6a6490e.svg)<!--/m--> (dashed amber); with three
 decades between the signal and the switching, the ripple and lag are invisible. But it is a sine around
 <!--m:6\,\mathrm{V}-->![6 V](lc-filter.assets/eq-inline/8ed5af7660.svg)<!--/m-->, not around zero (red: what an AC load needs)._
@@ -433,13 +433,13 @@ _The same duty-cycle sine at three speeds. At a tenth of <!--m:f_0-->![f_0](lc-f
 a quarter-cycle late (and, with a lighter load, would also be <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m--> times too big). At three times <!--m:f_0-->![f_0](lc-filter.assets/eq-inline/bdd0794289.svg)<!--/m--> the
 filter treats the wanted signal as ripple and removes almost all of it._
 
-So there are two separate conditions for <!--m:v_{out}(t) \approx D(t)\,V_{in}-->![v_out(t) D(t) V_in](lc-filter.assets/eq-inline/5cc5b56e89.svg)<!--/m-->:
+So there are two separate conditions for <!--m:v_{out}(t) \approx D(t)\,V_{in}-->![v_out(t) approx D(t) V_in](lc-filter.assets/eq-inline/5cc5b56e89.svg)<!--/m-->:
 
 1. **<!--m:D-->![D](lc-filter.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> must change slowly compared with <!--m:f_{sw}-->![f_sw](lc-filter.assets/eq-inline/4ac287231a.svg)<!--/m-->** — many switching periods per feature of the waveform —
    or there is no meaningful "local average" to follow.
 2. **The waveform's frequency content must sit well below <!--m:f_0-->![f_0](lc-filter.assets/eq-inline/bdd0794289.svg)<!--/m-->** — or the filter itself distorts it.
 
-Both are the same separation, <!--m:f_{signal} \ll f_0 \ll f_{sw}-->![f_signal f_0 f_sw](lc-filter.assets/eq-inline/a6c0685add.svg)<!--/m-->, read from the two ends.
+Both are the same separation, <!--m:f_{signal} \ll f_0 \ll f_{sw}-->![f_signal much less than f_0 much less than f_sw](lc-filter.assets/eq-inline/a6c0685add.svg)<!--/m-->, read from the two ends.
 
 ## 13 One switch, one polarity — the road to the inverter
 
@@ -470,13 +470,13 @@ three ideas of this document: PWM average, LC filtering, and a duty cycle that m
   full load. At low switching frequency they are big; the <!--m:(f_0/f_{sw})^2-->![(f_0/f_sw)^2](lc-filter.assets/eq-inline/77fc370b8f.svg)<!--/m--> ripple law is why designers
   chase higher <!--m:f_{sw}-->![f_sw](lc-filter.assets/eq-inline/4ac287231a.svg)<!--/m--> — which in turn costs switching loss in the transistor and diode.
 - **Sizing is a two-number choice.** <!--m:f_0-->![f_0](lc-filter.assets/eq-inline/bdd0794289.svg)<!--/m--> fixes the product <!--m:LC-->![LC](lc-filter.assets/eq-inline/3b0e58d439.svg)<!--/m-->; the split between them is set by
-  <!--m:Z_0 = \sqrt{L/C}-->![Z_0 = L/C](lc-filter.assets/eq-inline/2ac38c12fb.svg)<!--/m-->, which should be comparable to the load so that <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m--> lands near 1. Given <!--m:f_0-->![f_0](lc-filter.assets/eq-inline/bdd0794289.svg)<!--/m--> and
+  <!--m:Z_0 = \sqrt{L/C}-->![Z_0 = sqrt L/C](lc-filter.assets/eq-inline/2ac38c12fb.svg)<!--/m-->, which should be comparable to the load so that <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m--> lands near 1. Given <!--m:f_0-->![f_0](lc-filter.assets/eq-inline/bdd0794289.svg)<!--/m--> and
   <!--m:Z_0-->![Z_0](lc-filter.assets/eq-inline/964f1c3f3e.svg)<!--/m-->:
 
   ![L equals Z_0 over omega_0 and C equals 1 over omega_0 Z_0, which with Z_0 of 10 ohms and omega_0 of 10 to the 4 gives 1 mH and 10 microfarads](lc-filter.assets/eq-sizing.svg)
 
-  This is how the running example was chosen: <!--m:\omega_0 = 10^4\,\mathrm{rad/s}-->![_0 = 10^4 rad/s](lc-filter.assets/eq-inline/76fc228490.svg)<!--/m--> (<!--m:f_0 \approx 1.59\,\mathrm{kHz}-->![f_0 1.59 kHz](lc-filter.assets/eq-inline/71874cd5e1.svg)<!--/m-->,
-  the geometric mean of <!--m:50\,\mathrm{Hz}-->![50 Hz](lc-filter.assets/eq-inline/01368b7b9b.svg)<!--/m--> and <!--m:50\,\mathrm{kHz}-->![50 kHz](lc-filter.assets/eq-inline/c61affb2d7.svg)<!--/m-->) and <!--m:Z_0 = R = 10\,\Omega-->![Z_0 = R = 10](lc-filter.assets/eq-inline/3d9818d8a6.svg)<!--/m--> for <!--m:Q = 1-->![Q = 1](lc-filter.assets/eq-inline/24fdb68929.svg)<!--/m-->.
+  This is how the running example was chosen: <!--m:\omega_0 = 10^4\,\mathrm{rad/s}-->![omega_0 = 10^4 rad/s](lc-filter.assets/eq-inline/76fc228490.svg)<!--/m--> (<!--m:f_0 \approx 1.59\,\mathrm{kHz}-->![f_0 approx 1.59 kHz](lc-filter.assets/eq-inline/71874cd5e1.svg)<!--/m-->,
+  the geometric mean of <!--m:50\,\mathrm{Hz}-->![50 Hz](lc-filter.assets/eq-inline/01368b7b9b.svg)<!--/m--> and <!--m:50\,\mathrm{kHz}-->![50 kHz](lc-filter.assets/eq-inline/c61affb2d7.svg)<!--/m-->) and <!--m:Z_0 = R = 10\,\Omega-->![Z_0 = R = 10 Omega](lc-filter.assets/eq-inline/3d9818d8a6.svg)<!--/m--> for <!--m:Q = 1-->![Q = 1](lc-filter.assets/eq-inline/24fdb68929.svg)<!--/m-->.
   A bigger <!--m:L-->![L](lc-filter.assets/eq-inline/d160e0986a.svg)<!--/m--> with a smaller <!--m:C-->![C](lc-filter.assets/eq-inline/32096c2e0e.svg)<!--/m--> lowers the ripple current but makes the filter softer (output sags more
   under sudden load steps); the reverse needs a capacitor that can carry more ripple current.
 - **Resonance and load dependence.** <!--m:Q = R/Z_0-->![Q = R/Z_0](lc-filter.assets/eq-inline/73b00947fa.svg)<!--/m--> depends on the load, which the designer does not

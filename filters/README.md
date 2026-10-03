@@ -15,7 +15,7 @@ inverter in this tree relies on.
 
 | Subtopic | Result | What it covers |
 |---|---|---|
-| [lc-filter/](lc-filter/) | <!--m:H(s) = 1/(s^2LC + sL/R + 1)-->![H(s) = 1/(s^2LC + sL/R + 1)](README.assets/eq-inline/bb9739c553.svg)<!--/m--> | the LC filter as the buck converter; series <!--m:L-->![L](README.assets/eq-inline/d160e0986a.svg)<!--/m--> smooths current, shunt <!--m:C-->![C](README.assets/eq-inline/32096c2e0e.svg)<!--/m--> smooths voltage; the freewheel diode; PWM average derived; transfer function, <!--m:\omega_0-->![_0](README.assets/eq-inline/09a7be4d65.svg)<!--/m--> and <!--m:Q-->![Q](README.assets/eq-inline/c3156e00d3.svg)<!--/m-->; ripple maths; step response and damping; cycle-by-cycle duty control synthesising ramps and sines; why one switch cannot make AC |
+| [lc-filter/](lc-filter/) | <!--m:H(s) = 1/(s^2LC + sL/R + 1)-->![H(s) = 1/(s^2LC + sL/R + 1)](README.assets/eq-inline/bb9739c553.svg)<!--/m--> | the LC filter as the buck converter; series <!--m:L-->![L](README.assets/eq-inline/d160e0986a.svg)<!--/m--> smooths current, shunt <!--m:C-->![C](README.assets/eq-inline/32096c2e0e.svg)<!--/m--> smooths voltage; the freewheel diode; PWM average derived; transfer function, <!--m:\omega_0-->![omega_0](README.assets/eq-inline/09a7be4d65.svg)<!--/m--> and <!--m:Q-->![Q](README.assets/eq-inline/c3156e00d3.svg)<!--/m-->; ripple maths; step response and damping; cycle-by-cycle duty control synthesising ramps and sines; why one switch cannot make AC |
 
 ## Reading order
 

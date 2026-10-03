@@ -91,7 +91,7 @@ Two things worth pinning down, because both are common sticking points:
   about. The left side evaluates to <!--m:I_L(t) - I_L(0)-->![I_L(t) - I_L(0)](inductor.assets/eq-inline/5249bbc77d.svg)<!--/m--> by the Fundamental Theorem of Calculus —
   full stop. Nobody is secretly assuming a constant of integration is zero.
 - **<!--m:I_L(0)-->![I_L(0)](inductor.assets/eq-inline/4da7c0360b.svg)<!--/m--> is the initial condition** — whatever current was already flowing when you started
-  the clock. If you start from zero current it simplifies to <!--m:I_L(t) = (V_L/L) \cdot t-->![I_L(t) = (V_L/L) t](inductor.assets/eq-inline/b966658ffb.svg)<!--/m-->, but that is a
+  the clock. If you start from zero current it simplifies to <!--m:I_L(t) = (V_L/L) \cdot t-->![I_L(t) = (V_L/L) times t](inductor.assets/eq-inline/b966658ffb.svg)<!--/m-->, but that is a
   *choice of scenario*, not something baked into the maths. Inside a converter in steady state,
   <!--m:I_L(0)-->![I_L(0)](inductor.assets/eq-inline/4da7c0360b.svg)<!--/m--> is genuinely non-zero. The full result is:
 
@@ -105,8 +105,8 @@ With <!--m:V_L-->![V_L](inductor.assets/eq-inline/136d4e3fb2.svg)<!--/m--> const
 _The flat cause (<!--m:V_L-->![V_L](inductor.assets/eq-inline/136d4e3fb2.svg)<!--/m--> on top) sets the slope of the straight-line effect (<!--m:I_L-->![I_L](inductor.assets/eq-inline/aab68a829a.svg)<!--/m--> below): double the
 voltage and the ramp gets twice as steep. This is <!--m:dI_L/dt = V_L/L-->![dI_L/dt = V_L/L](inductor.assets/eq-inline/64f54db2ce.svg)<!--/m--> made visible._
 
-> **Watch out —** If <!--m:V_L-->![V_L](inductor.assets/eq-inline/136d4e3fb2.svg)<!--/m--> is **not** constant — say it ramps, <!--m:V_L = k \cdot t-->![V_L = k t](inductor.assets/eq-inline/f284d45471.svg)<!--/m--> — then
-> <!--m:dI_L/dt = k \cdot t/L-->![dI_L/dt = k t/L](inductor.assets/eq-inline/c30d8cdcdd.svg)<!--/m-->, and integrating gives <!--m:I_L \propto t^{2}-->![I_L t^2](inductor.assets/eq-inline/19d640e093.svg)<!--/m-->, a curve. A straight-line current requires a
+> **Watch out —** If <!--m:V_L-->![V_L](inductor.assets/eq-inline/136d4e3fb2.svg)<!--/m--> is **not** constant — say it ramps, <!--m:V_L = k \cdot t-->![V_L = k times t](inductor.assets/eq-inline/f284d45471.svg)<!--/m--> — then
+> <!--m:dI_L/dt = k \cdot t/L-->![dI_L/dt = k times t/L](inductor.assets/eq-inline/c30d8cdcdd.svg)<!--/m-->, and integrating gives <!--m:I_L \propto t^{2}-->![I_L proportional to t^2](inductor.assets/eq-inline/19d640e093.svg)<!--/m-->, a curve. A straight-line current requires a
 > *flat* voltage. And constant current (<!--m:dI/dt = 0-->![dI/dt = 0](inductor.assets/eq-inline/8ec73c5ed0.svg)<!--/m-->) requires <!--m:V_L = 0-->![V_L = 0](inductor.assets/eq-inline/23267682eb.svg)<!--/m--> — zero volts across the
 > inductor, not a steady voltage. Getting this backwards is the most common inductor mistake.
 
@@ -175,7 +175,7 @@ and exactly why every relay or motor driven by a transistor needs a *flyback dio
 ## 8 Sources and cross-links
 
 - **Mirror law:** [../capacitor/capacitor.md](../capacitor/capacitor.md) — the capacitor obeys
-  <!--m:I_C = C \cdot dV/dt-->![I_C = C dV/dt](inductor.assets/eq-inline/56baca3b41.svg)<!--/m-->, the same equation with <!--m:V \leftrightarrow I-->![V I](inductor.assets/eq-inline/4ebcd6796a.svg)<!--/m--> and <!--m:L \leftrightarrow C-->![L C](inductor.assets/eq-inline/6cef383173.svg)<!--/m--> swapped.
+  <!--m:I_C = C \cdot dV/dt-->![I_C = C times dV/dt](inductor.assets/eq-inline/56baca3b41.svg)<!--/m-->, the same equation with <!--m:V \leftrightarrow I-->![V I](inductor.assets/eq-inline/4ebcd6796a.svg)<!--/m--> and <!--m:L \leftrightarrow C-->![L C](inductor.assets/eq-inline/6cef383173.svg)<!--/m--> swapped.
 - **Where the ramp is used:**
   [../../dc-dc-converters/buck/buck.md](../../dc-dc-converters/buck/buck.md) and
   [../../dc-dc-converters/boost/boost.md](../../dc-dc-converters/boost/boost.md) — each switching

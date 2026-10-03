@@ -25,7 +25,7 @@ video (3.png).
 > A buck reaches <!--m:D\,V_{in}-->![D V_in](startup.assets/eq-inline/6db2223680.svg)<!--/m--> through an LC filter, so its start-up is the step response of a
 > second-order system. It settles in about <!--m:8RC-->![8RC](startup.assets/eq-inline/cc601f6633.svg)<!--/m--> whatever the step-down ratio. Without soft-start
 > it overshoots, up to nearly twice the target at light load, and it pulls an inrush current set
-> by <!--m:\sqrt{L/C}-->![L/C](startup.assets/eq-inline/03508d8f6f.svg)<!--/m-->. A deep step-down is not slower. It is less efficient, and its on-time gets
+> by <!--m:\sqrt{L/C}-->![sqrt L/C](startup.assets/eq-inline/03508d8f6f.svg)<!--/m-->. A deep step-down is not slower. It is less efficient, and its on-time gets
 > uncomfortably short.
 
 ---
@@ -57,7 +57,7 @@ At power-on the capacitor is at 0 V. During the first ON intervals, the inductor
 
 ![V_L equals V_in minus v_C, which is about V_in in the first cycles; the current rises by V_in D T over L, 0.27 A per cycle](startup.assets/eq-first-on.svg)
 
-During OFF it sees only <!--m:-v_C \approx 0-->![-v_C 0](startup.assets/eq-inline/ae225e3207.svg)<!--/m-->, so the current hardly falls. The current therefore
+During OFF it sees only <!--m:-v_C \approx 0-->![-v_C approx 0](startup.assets/eq-inline/ae225e3207.svg)<!--/m-->, so the current hardly falls. The current therefore
 **ratchets upward cycle after cycle**. This is the buck's version of the staircase, but in the
 *current*, not the voltage. Per cycle, the average current changes by
 
@@ -105,7 +105,7 @@ The peak of that response is
 
 ![The peak over D V_in equals 1 plus e to the minus pi zeta over root 1 minus zeta squared, which tends to 2 as zeta tends to zero](startup.assets/eq-peak.svg)
 
-With light damping (a light load, so a large <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m--> and a small <!--m:\zeta-->![](startup.assets/eq-inline/08fe2529d0.svg)<!--/m-->) **the output overshoots
+With light damping (a light load, so a large <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m--> and a small <!--m:\zeta-->![zeta](startup.assets/eq-inline/08fe2529d0.svg)<!--/m-->) **the output overshoots
 to almost twice its target**. The LC stores the surplus current as magnetic energy and hands it to
 the capacitor, exactly as an undamped spring released from rest overshoots its equilibrium by its
 full displacement. The peak inductor current while it does so is set by the characteristic
@@ -143,7 +143,7 @@ Put in the parts of [buck.md §6](buck.md#6-worked-numbers--12-v-to-3-v):
 
 ![omega_0 equals 32,660 radians per second, 5.2 kHz; Z_0 equals 3.67 ohms](startup.assets/eq-worked.svg)
 
-The ringing envelope decays at <!--m:\sigma = 1/(2RC)-->![= 1/(2RC)](startup.assets/eq-inline/6037dace2d.svg)<!--/m-->, so it settles to within about 2 % in roughly
+The ringing envelope decays at <!--m:\sigma = 1/(2RC)-->![sigma = 1/(2RC)](startup.assets/eq-inline/6037dace2d.svg)<!--/m-->, so it settles to within about 2 % in roughly
 four time constants:
 
 ![t_s is about 4 over sigma, which equals 8 R C; the number of cycles is f_sw times t_s](startup.assets/eq-settle.svg)
@@ -151,7 +151,7 @@ four time constants:
 ![R equals 3 ohms: zeta 0.61, t_s about 200 microseconds, about 20 cycles; R equals 30 ohms: zeta 0.061, t_s about 2 ms, about 200 cycles](startup.assets/eq-worked-loads.svg)
 
 The simulation agrees: 18 cycles at full load and 193 cycles at light load to settle within 2 %.
-The light-load peak of 5.49 V matches the formula (<!--m:3 \times 1.83-->![3 1.83](startup.assets/eq-inline/51ec1fa1c5.svg)<!--/m-->), and so does the inrush
+The light-load peak of 5.49 V matches the formula (<!--m:3 \times 1.83-->![3 times 1.83](startup.assets/eq-inline/51ec1fa1c5.svg)<!--/m-->), and so does the inrush
 estimate (about 1.0 A predicted, 0.94 A simulated). Compare this with the boost's roughly 320
 cycles ([../boost/startup.md §6](../boost/startup.md#6-how-many-cycles--the-averaged-model)). The
 buck is quicker for two reasons: it has a smaller capacitor, and there is no <!--m:(1-D)^2-->![(1-D)^2](startup.assets/eq-inline/3b43cf6fe5.svg)<!--/m--> inflating
@@ -160,7 +160,7 @@ its effective inductance.
 ## 6 Does it depend on the step-down ratio?
 
 **For the timing, essentially no.** Look at the averaged model again. The duty cycle enters only
-through the size of the input step, <!--m:D\,V_{in}-->![D V_in](startup.assets/eq-inline/6db2223680.svg)<!--/m-->. The dynamics, <!--m:\omega_0-->![_0](startup.assets/eq-inline/09a7be4d65.svg)<!--/m-->, <!--m:\zeta-->![](startup.assets/eq-inline/08fe2529d0.svg)<!--/m--> and <!--m:\sigma-->![](startup.assets/eq-inline/69c15416b6.svg)<!--/m-->,
+through the size of the input step, <!--m:D\,V_{in}-->![D V_in](startup.assets/eq-inline/6db2223680.svg)<!--/m-->. The dynamics, <!--m:\omega_0-->![omega_0](startup.assets/eq-inline/09a7be4d65.svg)<!--/m-->, <!--m:\zeta-->![zeta](startup.assets/eq-inline/08fe2529d0.svg)<!--/m--> and <!--m:\sigma-->![sigma](startup.assets/eq-inline/69c15416b6.svg)<!--/m-->,
 depend on <!--m:L-->![L](startup.assets/eq-inline/d160e0986a.svg)<!--/m-->, <!--m:C-->![C](startup.assets/eq-inline/32096c2e0e.svg)<!--/m--> and <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m--> alone. The system is linear, so a smaller target gives a
 proportionally smaller response *with exactly the same shape and timing*. The overshoot as a
 fraction of the target is the same at every ratio.
@@ -226,14 +226,14 @@ pulses and the output ripple grows. This is why a 48 V to 1 V rail is usually bu
 stages (48 V to 12 V, then 12 V to 1 V) or at a lower frequency.
 
 **2. The freewheel diode's drop becomes a large fraction of the output.** In a deep step-down the
-diode conducts for almost the whole cycle, <!--m:(1-D) \approx 1-->![(1-D) 1](startup.assets/eq-inline/ab1ffdd7c7.svg)<!--/m-->, carrying the full output current.
+diode conducts for almost the whole cycle, <!--m:(1-D) \approx 1-->![(1-D) approx 1](startup.assets/eq-inline/ab1ffdd7c7.svg)<!--/m-->, carrying the full output current.
 Its drop alone caps the efficiency:
 
 ![eta is at most V_out over V_out plus one minus D times V_F](startup.assets/eq-diode-eta.svg)
 
 ![With V_F of 0.5 V: 12 to 5 V gives at most 94.5 percent; 12 to 1 V gives at most 68.6 percent](startup.assets/eq-diode-eta-worked.svg)
 
-A synchronous buck replaces the diode with a MOSFET whose drop is only <!--m:I \cdot R_{on}-->![I R_on](startup.assets/eq-inline/8e9b7cf532.svg)<!--/m-->. That is why
+A synchronous buck replaces the diode with a MOSFET whose drop is only <!--m:I \cdot R_{on}-->![I times R_on](startup.assets/eq-inline/8e9b7cf532.svg)<!--/m-->. That is why
 every low-voltage processor rail is synchronous.
 
 **3. The switch stress grows with the ratio.** The switch must block the full <!--m:V_{in}-->![V_in](startup.assets/eq-inline/29f560cdfe.svg)<!--/m--> while it
