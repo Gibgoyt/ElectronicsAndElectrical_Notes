@@ -41,11 +41,11 @@ does switching the H-bridge at 50 kHz let the step-up transformer be so small?*
 ## 1 Where the transformer sits in the inverter
 
 The inverter in the video turns a 12 V battery into 230 V AC mains. Mains of 230 V RMS has a peak
-of <!--m:230\sqrt{2} \approx 325\,\mathrm{V}-->![230 2 325 V](transformer.assets/eq-inline/fd5fcca52e.svg)<!--/m--> (the RMS derivation is in [../signals/](../signals/)),
+of <!--m:230\sqrt{2} \approx 325\,\mathrm{V}-->![230 sqrt 2 approx 325 V](transformer.assets/eq-inline/fd5fcca52e.svg)<!--/m--> (the RMS derivation is in [../signals/](../signals/)),
 so somewhere in the chain the voltage has to be multiplied by about 27. The video does it in the
 front end, like this:
 
-![Inverter chain: 12 volt battery, 50 kilohertz H-bridge, step-up transformer, bridge rectifier and capacitor forming the 325 volt DC bus, followed by the second H-bridge and LC filter](transformer.assets/fig-39.svg)
+![Inverter chain: 12 volt battery, 50 kilohertz H-bridge, step-up transformer, bridge rectifier and capacitor forming the 325 volt DC bus, followed by the second H-bridge and LC filter](transformer.assets/fig-10.svg)
 
 _The transformer is the only part of the chain that changes the voltage level. Everything before
 it chops DC into AC so the transformer can work at all; everything after it turns the high-voltage
@@ -74,7 +74,7 @@ that a transformer only works on *changing* voltage — which is why the first H
 ## 2 Two coils, one flux — mutual inductance
 
 Start from the single inductor ([../inductor/inductor.md](../inductor/inductor.md)). A current
-<!--m:i-->![i](transformer.assets/eq-inline/042dc4512f.svg)<!--/m--> through <!--m:N-->![N](transformer.assets/eq-inline/b51a60734d.svg)<!--/m--> turns drives a flux <!--m:\Phi-->![](transformer.assets/eq-inline/b51f9a1a7f.svg)<!--/m--> around the core, and Faraday's law says that a changing
+<!--m:i-->![i](transformer.assets/eq-inline/042dc4512f.svg)<!--/m--> through <!--m:N-->![N](transformer.assets/eq-inline/b51a60734d.svg)<!--/m--> turns drives a flux <!--m:\Phi-->![Phi](transformer.assets/eq-inline/b51f9a1a7f.svg)<!--/m--> around the core, and Faraday's law says that a changing
 flux induces a voltage in every turn it passes through. The electromagnetism behind both halves of
 that sentence — Ampère for "current makes flux", Faraday for "changing flux makes voltage" — is in
 [../electromagnetism/](../electromagnetism/). Here we only need the result. For a winding of <!--m:N-->![N](transformer.assets/eq-inline/b51a60734d.svg)<!--/m-->
@@ -83,8 +83,8 @@ turns, all linked by the same flux:
 ![v equals N times d Phi by dt](transformer.assets/eq-faraday.svg)
 
 The inductance is how much flux-linkage you get per amp. The core's **reluctance** <!--m:\mathcal{R}-->![R](transformer.assets/eq-inline/637f8b930a.svg)<!--/m-->
-plays the role of a resistance to flux: a long magnetic path <!--m:\ell_e-->![_e](transformer.assets/eq-inline/14536390e8.svg)<!--/m--> raises it, while a wide
-cross-section <!--m:A_e-->![A_e](transformer.assets/eq-inline/67c3ce8c21.svg)<!--/m--> or a high permeability <!--m:\mu-->![](transformer.assets/eq-inline/3a4e56595d.svg)<!--/m--> lowers it:
+plays the role of a resistance to flux: a long magnetic path <!--m:\ell_e-->![l_e](transformer.assets/eq-inline/14536390e8.svg)<!--/m--> raises it, while a wide
+cross-section <!--m:A_e-->![A_e](transformer.assets/eq-inline/67c3ce8c21.svg)<!--/m--> or a high permeability <!--m:\mu-->![mu](transformer.assets/eq-inline/3a4e56595d.svg)<!--/m--> lowers it:
 
 ![L equals N Phi over i equals N squared over R, with R equal to l_e over mu A_e](transformer.assets/eq-self-inductance.svg)
 
@@ -101,11 +101,11 @@ How much flux the coils actually share is captured by the **coupling coefficient
 
 - <!--m:k = 0-->![k = 0](transformer.assets/eq-inline/1ab7405987.svg)<!--/m--> means the coils share no flux — two separate inductors.
 - <!--m:k = 1-->![k = 1](transformer.assets/eq-inline/8f0dfd2fea.svg)<!--/m--> means every line of flux from one coil threads every turn of the other.
-- A gapped flyback transformer might reach <!--m:k \approx 0.95-->![k 0.95](transformer.assets/eq-inline/d26f1057ed.svg)<!--/m-->. A well-wound ferrite power
+- A gapped flyback transformer might reach <!--m:k \approx 0.95-->![k approx 0.95](transformer.assets/eq-inline/d26f1057ed.svg)<!--/m-->. A well-wound ferrite power
   transformer reaches <!--m:k = 0.99-->![k = 0.99](transformer.assets/eq-inline/96e2bb71ef.svg)<!--/m--> to <!--m:0.999-->![0.999](transformer.assets/eq-inline/339ddeaa35.svg)<!--/m-->. The tiny missing fraction is the **leakage flux**, and
   section 14 shows why it matters more than its size suggests.
 
-![Two windings on one closed core share the mutual flux, while leakage flux links only one winding](transformer.assets/fig-30.svg)
+![Two windings on one closed core share the mutual flux, while leakage flux links only one winding](transformer.assets/fig-01.svg)
 
 _The high-permeability core gives the flux an easy closed path, so almost all of it (blue) links
 both windings. A little (red, dashed) closes through the air around one winding only. That
@@ -123,12 +123,12 @@ source pushes. That is the ideal transformer, and the next section derives it ag
 ## 3 The ideal transformer, derived from Faraday
 
 Make three idealisations: the coupling is perfect (<!--m:k = 1-->![k = 1](transformer.assets/eq-inline/8f0dfd2fea.svg)<!--/m-->), the windings have no resistance, and
-the core has infinite permeability with no loss. One flux <!--m:\Phi(t)-->![(t)](transformer.assets/eq-inline/c4988def68.svg)<!--/m--> then threads every turn of
+the core has infinite permeability with no loss. One flux <!--m:\Phi(t)-->![Phi (t)](transformer.assets/eq-inline/c4988def68.svg)<!--/m--> then threads every turn of
 both windings. Apply Faraday's law to each winding separately:
 
 ![v_p equals N_p d Phi by dt, and v_s equals N_s d Phi by dt](transformer.assets/eq-faraday-both.svg)
 
-Both equations contain the **same** <!--m:d\Phi/dt-->![d /dt](transformer.assets/eq-inline/6e8f210cea.svg)<!--/m-->, because it is the same flux. Solve each one for it
+Both equations contain the **same** <!--m:d\Phi/dt-->![d Phi/dt](transformer.assets/eq-inline/6e8f210cea.svg)<!--/m-->, because it is the same flux. Solve each one for it
 and set them equal:
 
 ![d Phi by dt equals v_p over N_p equals v_s over N_s, so v_s over v_p equals N_s over N_p](transformer.assets/eq-voltage-ratio.svg)
@@ -138,10 +138,10 @@ That is the turns-ratio law. Two points about it are easy to miss.
 - **It holds instant by instant**, not just for RMS values. At every moment <!--m:v_s(t)-->![v_s(t)](transformer.assets/eq-inline/5c9ddb0d34.svg)<!--/m--> is
   <!--m:N_s/N_p-->![N_s/N_p](transformer.assets/eq-inline/cf0e34b2b5.svg)<!--/m--> times <!--m:v_p(t)-->![v_p(t)](transformer.assets/eq-inline/9b528e363f.svg)<!--/m-->. So the transformer reproduces the *shape* of the primary voltage —
   sine in, sine out; square in, square out (section 12).
-- **It is about volts per turn.** The rate <!--m:d\Phi/dt-->![d /dt](transformer.assets/eq-inline/6e8f210cea.svg)<!--/m--> is the "volts per turn" of the core: every
+- **It is about volts per turn.** The rate <!--m:d\Phi/dt-->![d Phi/dt](transformer.assets/eq-inline/6e8f210cea.svg)<!--/m--> is the "volts per turn" of the core: every
   turn on it, primary or secondary, has exactly <!--m:v_p/N_p-->![v_p/N_p](transformer.assets/eq-inline/700fc267d9.svg)<!--/m--> volts induced across it. With 12 V
   across 2 primary turns, each turn carries 6 V, so a 60-turn secondary delivers
-  <!--m:60 \times 6 = 360\,\mathrm{V}-->![60 6 = 360 V](transformer.assets/eq-inline/8e90a0e6ff.svg)<!--/m-->. Thinking in volts per turn makes multi-winding transformers easy.
+  <!--m:60 \times 6 = 360\,\mathrm{V}-->![60 times 6 = 360 V](transformer.assets/eq-inline/8e90a0e6ff.svg)<!--/m-->. Thinking in volts per turn makes multi-winding transformers easy.
 
 > **Note —** Nothing in this derivation mentions frequency. An ideal transformer works the same at
 > 1 Hz as at 1 MHz. Frequency enters only once you ask how large the flux gets (section 8) and
@@ -158,7 +158,7 @@ flowing *out* of its winding into the load, it opposes the primary's ampere-turn
 
 ![closed integral of H dl equals N_p i_p minus N_s i_s equals R Phi](transformer.assets/eq-mmf.svg)
 
-In the ideal transformer the core has infinite permeability, so <!--m:\mathcal{R} \to 0-->![R 0](transformer.assets/eq-inline/32e58cf75d.svg)<!--/m-->. A finite flux
+In the ideal transformer the core has infinite permeability, so <!--m:\mathcal{R} \to 0-->![R to 0](transformer.assets/eq-inline/32e58cf75d.svg)<!--/m-->. A finite flux
 then needs *zero* net ampere-turns:
 
 ![R tends to 0, so N_p i_p equals N_s i_s, so i_s over i_p equals N_p over N_s](transformer.assets/eq-mmf-ideal.svg)
@@ -174,8 +174,8 @@ out at every instant. Multiply the two ratios:
 ![p_s equals v_s i_s equals v_p i_p equals p_p](transformer.assets/eq-power.svg)
 
 The voltage goes up by <!--m:N_s/N_p-->![N_s/N_p](transformer.assets/eq-inline/cf0e34b2b5.svg)<!--/m--> and the current comes down by the same factor. For the inverter
-at 1 kW: the secondary carries <!--m:1000/325 \approx 3.1\,\mathrm{A}-->![1000/325 3.1 A](transformer.assets/eq-inline/c100155e42.svg)<!--/m-->, while the primary carries
-<!--m:1000/12 \approx 83\,\mathrm{A}-->![1000/12 83 A](transformer.assets/eq-inline/71daf197b1.svg)<!--/m-->. A step-up transformer is also a step-*down* current transformer.
+at 1 kW: the secondary carries <!--m:1000/325 \approx 3.1\,\mathrm{A}-->![1000/325 approx 3.1 A](transformer.assets/eq-inline/c100155e42.svg)<!--/m-->, while the primary carries
+<!--m:1000/12 \approx 83\,\mathrm{A}-->![1000/12 approx 83 A](transformer.assets/eq-inline/71daf197b1.svg)<!--/m-->. A step-up transformer is also a step-*down* current transformer.
 This is why the 12 V side of an inverter needs thick copper and the 325 V side does not.
 
 ## 5 Impedance reflection
@@ -199,7 +199,7 @@ before anything else is counted.
 
 > **Tip —** Impedance reflection is a two-way street. A short circuit on the 325 V side reflects
 > as a short on the 12 V side, and a stray capacitance on the secondary reflects to the primary
-> multiplied by <!--m:(N_s/N_p)^2 \approx 730-->![(N_s/N_p)^2 730](transformer.assets/eq-inline/07ef91367d.svg)<!--/m-->. A 100 pF winding capacitance on the secondary looks like
+> multiplied by <!--m:(N_s/N_p)^2 \approx 730-->![(N_s/N_p)^2 approx 730](transformer.assets/eq-inline/07ef91367d.svg)<!--/m-->. A 100 pF winding capacitance on the secondary looks like
 > about 73 nF to the H-bridge, and the bridge must charge it on every edge.
 
 ## 6 The dot convention
@@ -240,12 +240,12 @@ often specified through the core's <!--m:A_L-->![A_L](transformer.assets/eq-inli
 
 With a ±V square wave on the primary, <!--m:i_m-->![i_m](transformer.assets/eq-inline/71acc08428.svg)<!--/m--> is a triangle, exactly like the inductor ramp in
 [../inductor/inductor.md §3](../inductor/inductor.md#3-from-the-law-to-the-ramp--the-integral-done-slowly).
-During each half-period <!--m:T/2-->![T/2](transformer.assets/eq-inline/12bfe0f94c.svg)<!--/m--> it ramps through <!--m:V (T/2)/L_m-->![V (T/2)/L_m](transformer.assets/eq-inline/b79907f73a.svg)<!--/m-->, from <!--m:-\hat\imath_m-->![- _m](transformer.assets/eq-inline/77f2551cb7.svg)<!--/m--> to <!--m:+\hat\imath_m-->![+ _m](transformer.assets/eq-inline/84a601b1be.svg)<!--/m-->:
+During each half-period <!--m:T/2-->![T/2](transformer.assets/eq-inline/12bfe0f94c.svg)<!--/m--> it ramps through <!--m:V (T/2)/L_m-->![V (T/2)/L_m](transformer.assets/eq-inline/b79907f73a.svg)<!--/m-->, from <!--m:-\hat\imath_m-->![-_m](transformer.assets/eq-inline/77f2551cb7.svg)<!--/m--> to <!--m:+\hat\imath_m-->![+_m](transformer.assets/eq-inline/84a601b1be.svg)<!--/m-->:
 
 ![i_m peak equals V over 4 f L_m](transformer.assets/eq-im-peak.svg)
 
 For the 50 kHz design worked out in section 9 (2 primary turns on an ETD49 ferrite core, with
-<!--m:A_L-->![A_L](transformer.assets/eq-inline/3bc52579cc.svg)<!--/m--> of order 5 μH per turn squared for an ungapped set, so <!--m:L_m \approx 20\,\mu\mathrm{H}-->![L_m 20 H](transformer.assets/eq-inline/e3a9989a02.svg)<!--/m-->):
+<!--m:A_L-->![A_L](transformer.assets/eq-inline/3bc52579cc.svg)<!--/m--> of order 5 μH per turn squared for an ungapped set, so <!--m:L_m \approx 20\,\mu\mathrm{H}-->![L_m approx 20 mu H](transformer.assets/eq-inline/e3a9989a02.svg)<!--/m-->):
 
 ![i_m peak equals 12 V over 4 times 50 kHz times 20 microhenry equals 3 A](transformer.assets/eq-im-numbers.svg)
 
@@ -259,7 +259,7 @@ Three facts follow.
 - **The magnetising current is reactive.** It stores energy in the core during one quarter of the
   cycle and returns it during the next; through the H-bridge's body diodes it goes back to the
   battery. It costs conduction loss in the MOSFETs and copper, but it is not "used up".
-- **It is the flux in disguise.** Since <!--m:i_m = N_p \Phi / L_m-->![i_m = N_p / L_m](transformer.assets/eq-inline/3fcff99256.svg)<!--/m-->, the magnetising current is
+- **It is the flux in disguise.** Since <!--m:i_m = N_p \Phi / L_m-->![i_m = N_p Phi/L_m](transformer.assets/eq-inline/3fcff99256.svg)<!--/m-->, the magnetising current is
   proportional to the core flux. When the flux heads towards saturation, <!--m:i_m-->![i_m](transformer.assets/eq-inline/71acc08428.svg)<!--/m--> is what you see
   blowing up on a current probe (Figure 33).
 - **A bigger** <!--m:L_m-->![L_m](transformer.assets/eq-inline/48ef75732e.svg)<!--/m--> **means less magnetising current**, which is why power transformer cores have
@@ -298,13 +298,13 @@ the area under it is negligible compared with the area under a flat top:
 ![integral over an edge is at most 0.6 microvolt-seconds, much less than 120 microvolt-seconds for a flat top](transformer.assets/eq-edge-vs.svg)
 
 An edge only *reverses the direction* in which the flux is ramping. Steep edges are not what moves
-energy through a transformer. Energy moves as <!--m:v \cdot i-->![v i](transformer.assets/eq-inline/9e223fdd27.svg)<!--/m--> during the flat tops, while the flux
+energy through a transformer. Energy moves as <!--m:v \cdot i-->![v times i](transformer.assets/eq-inline/9e223fdd27.svg)<!--/m--> during the flat tops, while the flux
 ramps; making the edges steeper changes nothing about that, and mostly just makes noise
 (section 14).
 
 **Correction 2: higher frequency gives a *smaller* peak flux, not a larger one.** Take a
 symmetric ±V square wave of period <!--m:T = 1/f-->![T = 1/f](transformer.assets/eq-inline/75216c41f9.svg)<!--/m-->. In steady state the flux swings symmetrically between
-<!--m:-\hat\Phi-->![-](transformer.assets/eq-inline/3fab08c197.svg)<!--/m--> and <!--m:+\hat\Phi-->![+](transformer.assets/eq-inline/3fa3d7d736.svg)<!--/m-->. During one positive half-period it climbs the full swing <!--m:2\hat\Phi-->![2](transformer.assets/eq-inline/3a8913a77b.svg)<!--/m-->:
+<!--m:-\hat\Phi-->![- Phi](transformer.assets/eq-inline/3fab08c197.svg)<!--/m--> and <!--m:+\hat\Phi-->![+ Phi](transformer.assets/eq-inline/3fa3d7d736.svg)<!--/m-->. During one positive half-period it climbs the full swing <!--m:2\hat\Phi-->![2 Phi](transformer.assets/eq-inline/3a8913a77b.svg)<!--/m-->:
 
 ![Delta Phi equals 1 over N times the integral from 0 to T over 2 of V dt equals V T over 2N equals 2 Phi peak](transformer.assets/eq-flux-half.svg)
 
@@ -316,14 +316,14 @@ Frequency sits in the **denominator**. Doubling <!--m:f-->![f](transformer.asset
 flux gets only half as far before the voltage reverses and sends it back. Higher frequency means
 *fewer volt-seconds per half-cycle*, which means *less* peak flux:
 
-![The same 12 volt square wave at two frequencies, and the triangular core flux each produces on the same axes](transformer.assets/fig-31.svg)
+![The same 12 volt square wave at two frequencies, and the triangular core flux each produces on the same axes](transformer.assets/fig-02.svg)
 
 _Both square waves have identical 12 V levels and identical edges, so both flux triangles climb at
 the identical slope <!--m:V/N-->![V/N](transformer.assets/eq-inline/f37dc399ac.svg)<!--/m-->. The faster one simply turns around four times sooner and peaks at a
 quarter of the height. At 50 kHz versus 50 Hz the same picture holds with a factor of 1000._
 
 Why does a smaller peak flux mean a smaller transformer? Because what limits a core is its **flux
-density** <!--m:B = \Phi/A_e-->![B = /A_e](transformer.assets/eq-inline/9eb5d3720f.svg)<!--/m-->: every core material saturates above some <!--m:B_{sat}-->![B_sat](transformer.assets/eq-inline/099fa25d1c.svg)<!--/m--> (section 11). Divide
+density** <!--m:B = \Phi/A_e-->![B = Phi/A_e](transformer.assets/eq-inline/9eb5d3720f.svg)<!--/m-->: every core material saturates above some <!--m:B_{sat}-->![B_sat](transformer.assets/eq-inline/099fa25d1c.svg)<!--/m--> (section 11). Divide
 the peak flux by the core's cross-section:
 
 ![B peak equals V over 4 f N A_e, equivalently V equals 4.00 f N A_e B peak](transformer.assets/eq-b-peak.svg)
@@ -425,7 +425,7 @@ constant voltage it never stops ramping:
 ![constant V_DC gives Phi of t equals Phi of 0 plus V_DC over N_p times t, growing without limit](transformer.assets/eq-dc-ramp.svg)
 
 There is no steady state. On the 2-turn ETD49 design, 12 V DC drives the core from zero into
-saturation (taking <!--m:B_{sat} \approx 0.35\,\mathrm{T}-->![B_sat 0.35 T](transformer.assets/eq-inline/a18eead819.svg)<!--/m-->) in about twelve microseconds:
+saturation (taking <!--m:B_{sat} \approx 0.35\,\mathrm{T}-->![B_sat approx 0.35 T](transformer.assets/eq-inline/a18eead819.svg)<!--/m-->) in about twelve microseconds:
 
 ![t_sat equals N_p A_e B_sat over V_DC, about 12 microseconds](transformer.assets/eq-dc-time.svg)
 
@@ -449,7 +449,7 @@ every period:
 
 ![Delta Phi per period equals 12 V times 50 ns over 2 equals 0.3 microweber](transformer.assets/eq-imbalance.svg)
 
-![A slightly unequal square wave ratchets the core flux upward each period until it saturates and the magnetising current spikes](transformer.assets/fig-33.svg)
+![A slightly unequal square wave ratchets the core flux upward each period until it saturates and the magnetising current spikes](transformer.assets/fig-04.svg)
 
 _Each period the flux climbs a little more than it falls, so its centre drifts upward until the
 peaks reach saturation. The magnetising current then stops being a gentle triangle and spikes —
@@ -485,15 +485,15 @@ produces. The field strength <!--m:H-->![H](transformer.assets/eq-inline/7cf184f
 
 ![B equals mu H equals mu_0 mu_r H, and L equals mu_0 mu_r N squared A_e over l_e](transformer.assets/eq-permeability.svg)
 
-Ferrite has <!--m:\mu_r-->![_r](transformer.assets/eq-inline/de4a3aca4d.svg)<!--/m--> of 2000 to 3000, and grain-oriented silicon steel tens of thousands. A core
+Ferrite has <!--m:\mu_r-->![mu_r](transformer.assets/eq-inline/de4a3aca4d.svg)<!--/m--> of 2000 to 3000, and grain-oriented silicon steel tens of thousands. A core
 therefore gives thousands of times more inductance (more <!--m:L_m-->![L_m](transformer.assets/eq-inline/48ef75732e.svg)<!--/m-->, less magnetising current) and keeps
 the flux confined to a path through both windings (higher <!--m:k-->![k](transformer.assets/eq-inline/13fbd79c3d.svg)<!--/m-->, less leakage). Without one, a
 transformer is two loosely coupled air coils.
 
-The catch is that <!--m:\mu-->![](transformer.assets/eq-inline/3a4e56595d.svg)<!--/m--> is not constant. Plot <!--m:B-->![B](transformer.assets/eq-inline/ae4f281df5.svg)<!--/m--> against <!--m:H-->![H](transformer.assets/eq-inline/7cf184f4c6.svg)<!--/m--> and the curve is steep near the
+The catch is that <!--m:\mu-->![mu](transformer.assets/eq-inline/3a4e56595d.svg)<!--/m--> is not constant. Plot <!--m:B-->![B](transformer.assets/eq-inline/ae4f281df5.svg)<!--/m--> against <!--m:H-->![H](transformer.assets/eq-inline/7cf184f4c6.svg)<!--/m--> and the curve is steep near the
 origin, then flattens:
 
-![B versus H hysteresis loops for silicon steel and ferrite, each flattening at its saturation flux density](transformer.assets/fig-32.svg)
+![B versus H hysteresis loops for silicon steel and ferrite, each flattening at its saturation flux density](transformer.assets/fig-03.svg)
 
 _The slope <!--m:dB/dH-->![dB/dH](transformer.assets/eq-inline/626c58e14a.svg)<!--/m--> is the permeability. Once the material saturates, the slope collapses towards that
 of air, the inductance falls with it, and the current is no longer limited. The loop area is the
@@ -502,11 +502,11 @@ energy lost as heat on every cycle._
 Three things to read from the curve:
 
 - **Saturation.** Past <!--m:B_{sat}-->![B_sat](transformer.assets/eq-inline/099fa25d1c.svg)<!--/m-->, every magnetic domain in the material is already aligned and
-  there is nothing left to add. Further <!--m:H-->![H](transformer.assets/eq-inline/7cf184f4c6.svg)<!--/m--> adds only the <!--m:\mu_0 H-->![_0 H](transformer.assets/eq-inline/7619f6e3a4.svg)<!--/m--> of empty space, so the effective
+  there is nothing left to add. Further <!--m:H-->![H](transformer.assets/eq-inline/7cf184f4c6.svg)<!--/m--> adds only the <!--m:\mu_0 H-->![mu_0 H](transformer.assets/eq-inline/7619f6e3a4.svg)<!--/m--> of empty space, so the effective
   permeability drops by a factor of thousands. Then <!--m:L_m-->![L_m](transformer.assets/eq-inline/48ef75732e.svg)<!--/m--> drops by the same factor, <!--m:di_m/dt = v_p/L_m-->![di_m/dt = v_p/L_m](transformer.assets/eq-inline/17e9c963d4.svg)<!--/m-->
   shoots up, and the current spikes (Figure 33). Saturation is a cliff edge, not a gentle limit.
 - **Hysteresis.** The curve going up is not the curve coming down; the material "remembers"
-  its previous magnetisation. The enclosed area <!--m:\oint H\,dB-->![H dB](transformer.assets/eq-inline/9177d108e4.svg)<!--/m--> is energy per cubic metre turned into
+  its previous magnetisation. The enclosed area <!--m:\oint H\,dB-->![loop integral H dB](transformer.assets/eq-inline/9177d108e4.svg)<!--/m--> is energy per cubic metre turned into
   heat **on every cycle**, so this loss grows in proportion to frequency (section 15).
 - **Remanence.** At <!--m:H = 0-->![H = 0](transformer.assets/eq-inline/74866e3218.svg)<!--/m--> the descending branch still holds some flux. That is why a transformer
   switched on at the wrong point of the mains cycle can draw a huge inrush current: it starts with
@@ -531,7 +531,7 @@ roughly 1 to 2 MHz, MnZn losses rise steeply and NiZn ferrite or powdered cores 
 Section 3 showed that the voltage ratio holds at every instant. So the transformer does not
 "convert" the square wave into anything; it passes it through scaled:
 
-![A plus or minus 12 volt square primary voltage produces a plus or minus 325 volt square secondary voltage, and the primary current is a reflected square plus a magnetising triangle](transformer.assets/fig-34.svg)
+![A plus or minus 12 volt square primary voltage produces a plus or minus 325 volt square secondary voltage, and the primary current is a reflected square plus a magnetising triangle](transformer.assets/fig-05.svg)
 
 _The secondary is the primary's square wave multiplied by the turns ratio. Its only blemishes are
 brief ringing at each edge from leakage inductance. The primary current is the load current
@@ -554,7 +554,7 @@ Three consequences:
 
 Every departure from the ideal can be drawn as a component around an ideal transformer:
 
-![Equivalent circuit of a real transformer: winding resistance and leakage inductance in series, magnetising inductance and core-loss resistance in shunt, then an ideal transformer](transformer.assets/fig-35.svg)
+![Equivalent circuit of a real transformer: winding resistance and leakage inductance in series, magnetising inductance and core-loss resistance in shunt, then an ideal transformer](transformer.assets/fig-06.svg)
 
 _Series elements carry load current, so they cost voltage and copper loss. Shunt elements see the
 full winding voltage, so they draw current even at no load. The ideal transformer in the middle
@@ -563,7 +563,7 @@ only scales._
 | Element | Physical origin | What it does |
 |---|---|---|
 | <!--m:R_p-->![R_p](transformer.assets/eq-inline/d95f5c3577.svg)<!--/m-->, <!--m:R_s-->![R_s](transformer.assets/eq-inline/7207cfa4f9.svg)<!--/m--> | resistance of the copper windings | <!--m:I^2 R-->![I^2 R](transformer.assets/eq-inline/a29bc7be60.svg)<!--/m--> heat; voltage drop under load |
-| <!--m:L_{\ell p}-->![L_ p](transformer.assets/eq-inline/6398f008be.svg)<!--/m-->, <!--m:L_{\ell s}-->![L_ s](transformer.assets/eq-inline/4c1ed7b5f4.svg)<!--/m--> | flux that links one winding but not the other | voltage spikes at switching edges; duty-cycle loss (section 14) |
+| <!--m:L_{\ell p}-->![L_ l p](transformer.assets/eq-inline/6398f008be.svg)<!--/m-->, <!--m:L_{\ell s}-->![L_ l s](transformer.assets/eq-inline/4c1ed7b5f4.svg)<!--/m--> | flux that links one winding but not the other | voltage spikes at switching edges; duty-cycle loss (section 14) |
 | <!--m:L_m-->![L_m](transformer.assets/eq-inline/48ef75732e.svg)<!--/m--> | finite core permeability | magnetising current (section 7) |
 | <!--m:R_c-->![R_c](transformer.assets/eq-inline/73d3c61c64.svg)<!--/m--> | hysteresis and eddy currents in the core | core-loss heat, present even at no load (section 15) |
 
@@ -575,13 +575,13 @@ At 50 kHz, though, the resistance that matters is not the DC resistance. Two eff
 resistance by a factor <!--m:F_R-->![F_R](transformer.assets/eq-inline/b14a489ca7.svg)<!--/m-->:
 
 - **Skin effect.** A high-frequency current crowds towards the surface of a conductor, within a
-  depth <!--m:\delta-->![](transformer.assets/eq-inline/3a6a16552e.svg)<!--/m-->, because the conductor's own changing internal field opposes current in its centre:
+  depth <!--m:\delta-->![delta](transformer.assets/eq-inline/3a6a16552e.svg)<!--/m-->, because the conductor's own changing internal field opposes current in its centre:
 
   ![delta equals root of rho over pi f mu_0, 9.3 mm at 50 Hz and 0.30 mm at 50 kHz](transformer.assets/eq-skin.svg)
 
   The 83 A primary needs about 24 mm² of copper at a typical 3.5 A/mm². As one round wire that is
   5.5 mm across, but at 50 kHz only the outer 0.3 mm of it would carry current. The fix is to
-  divide the copper into conductors no thicker than about <!--m:2\delta-->![2](transformer.assets/eq-inline/1a812beae2.svg)<!--/m-->: copper **foil** about 0.2 to
+  divide the copper into conductors no thicker than about <!--m:2\delta-->![2 delta](transformer.assets/eq-inline/1a812beae2.svg)<!--/m-->: copper **foil** about 0.2 to
   0.3 mm thick and as wide as the winding window, or **Litz wire** made of hundreds of insulated
   strands.
 - **Proximity effect.** In a multi-layer winding, each layer sits in the field of the layers
@@ -594,19 +594,19 @@ resistance by a factor <!--m:F_R-->![F_R](transformer.assets/eq-inline/b14a489ca
 ## 14 Leakage inductance and the hard-switching spike
 
 The leakage flux in Figure 30 links only one winding, so it transfers nothing. It behaves as a
-small inductor <!--m:L_\ell-->![L_](transformer.assets/eq-inline/4eb22dbba5.svg)<!--/m--> in series with the ideal transformer (Figure 35), and since it carries the
-full load current, it stores energy <!--m:\tfrac12 L_\ell I^2-->![12 L_ I^2](transformer.assets/eq-inline/0c74872a81.svg)<!--/m-->. The trouble is that an H-bridge
+small inductor <!--m:L_\ell-->![L_ l](transformer.assets/eq-inline/4eb22dbba5.svg)<!--/m--> in series with the ideal transformer (Figure 35), and since it carries the
+full load current, it stores energy <!--m:\tfrac12 L_\ell I^2-->![12 L_ l I^2](transformer.assets/eq-inline/0c74872a81.svg)<!--/m-->. The trouble is that an H-bridge
 **hard-switches**: it tries to reverse the primary current in nanoseconds, and an inductor resists
 a fast change of current with a voltage <!--m:L\,di/dt-->![L di/dt](transformer.assets/eq-inline/f24cc20a0b.svg)<!--/m--> — the inductive kick of
 [../inductor/inductor.md §6](../inductor/inductor.md#6-the-inductive-kick-and-why-the-diode-is-there).
-Take an illustrative <!--m:L_\ell = 50\,\mathrm{nH}-->![L_ = 50 nH](transformer.assets/eq-inline/76585c2f17.svg)<!--/m--> referred to the primary (realistic for a well-interleaved
+Take an illustrative <!--m:L_\ell = 50\,\mathrm{nH}-->![L_ l = 50 nH](transformer.assets/eq-inline/76585c2f17.svg)<!--/m--> referred to the primary (realistic for a well-interleaved
 2-turn foil primary) and an 83 A current switched off in 50 ns:
 
 ![v_spike equals L_l di by dt equals 50 nH times 83 A over 50 ns, about 83 V](transformer.assets/eq-leakage.svg)
 
 That is 83 V of potential overshoot on a 12 V bridge built from 40 to 60 V MOSFETs.
 
-![MOSFET drain voltage at turn-off overshoots far above the 12 volt rail and rings without a snubber, and stays close to the rail with one](transformer.assets/fig-36.svg)
+![MOSFET drain voltage at turn-off overshoots far above the 12 volt rail and rings without a snubber, and stays close to the rail with one](transformer.assets/fig-07.svg)
 
 _Interrupting current in any inductance makes the voltage jump until something gives the current a
 path. Without a snubber, the drain rings with the MOSFET's capacitance and the first peak can
@@ -626,7 +626,7 @@ Where the energy goes depends on the topology:
   snubbed.
 
 Even when clamped, leakage costs you twice. First, every edge has to reverse the current in
-<!--m:L_\ell-->![L_](transformer.assets/eq-inline/4eb22dbba5.svg)<!--/m-->, and during that **commutation time** the secondary voltage is not available to the load:
+<!--m:L_\ell-->![L_ l](transformer.assets/eq-inline/4eb22dbba5.svg)<!--/m-->, and during that **commutation time** the secondary voltage is not available to the load:
 
 ![t_c equals 2 I L_l over V_in, 0.69 microseconds, 6.9 percent of a half-period](transformer.assets/eq-commutation.svg)
 
@@ -685,13 +685,13 @@ Manufacturers characterise ferrite with an empirical **Steinmetz** fit to measur
 
 ![P_v equals k f to the alpha B peak to the beta, alpha 1.1 to 1.6, beta 2.3 to 3](transformer.assets/eq-steinmetz.svg)
 
-![Specific core loss versus frequency on log axes: steel hysteresis grows as f, steel eddy loss as f squared, ferrite far lower at high frequency](transformer.assets/fig-38.svg)
+![Specific core loss versus frequency on log axes: steel hysteresis grows as f, steel eddy loss as f squared, ferrite far lower at high frequency](transformer.assets/fig-09.svg)
 
 _At 50 Hz steel's loss is tiny and its high saturation is what counts. By 50 kHz the eddy term has
 grown a millionfold and ferrite is hundreds of times better. The model is illustrative, but the
 slopes are the physics._
 
-Notice the steep <!--m:\beta-->![](transformer.assets/eq-inline/6499d503bf.svg)<!--/m--> in the Steinmetz fit: loss rises as roughly the cube of <!--m:\hat B-->![B](transformer.assets/eq-inline/b07fbb1b3a.svg)<!--/m-->. That is
+Notice the steep <!--m:\beta-->![beta](transformer.assets/eq-inline/6499d503bf.svg)<!--/m--> in the Steinmetz fit: loss rises as roughly the cube of <!--m:\hat B-->![B](transformer.assets/eq-inline/b07fbb1b3a.svg)<!--/m-->. That is
 why, at 50 kHz, the ferrite design flux density is set by **loss rather than saturation** — about
 0.1 to 0.15 T, against a saturation of about 0.35 T. Pushing the frequency up lets you lower
 <!--m:\hat B-->![B](transformer.assets/eq-inline/b07fbb1b3a.svg)<!--/m--> further, but each step costs more in loss at the same <!--m:\hat B-->![B](transformer.assets/eq-inline/b07fbb1b3a.svg)<!--/m-->. For the ETD49 at 50 kHz and
@@ -699,7 +699,7 @@ why, at 50 kHz, the ferrite design flux density is set by **loss rather than sat
 
 The rest of the circuit also pays for frequency:
 
-- **Copper** — the skin depth shrinks as <!--m:1/\sqrt{f}-->![1/ f](transformer.assets/eq-inline/b2d099c212.svg)<!--/m--> and proximity losses grow, so <!--m:F_R-->![F_R](transformer.assets/eq-inline/b14a489ca7.svg)<!--/m--> climbs
+- **Copper** — the skin depth shrinks as <!--m:1/\sqrt{f}-->![1/sqrt f](transformer.assets/eq-inline/b2d099c212.svg)<!--/m--> and proximity losses grow, so <!--m:F_R-->![F_R](transformer.assets/eq-inline/b14a489ca7.svg)<!--/m--> climbs
   (section 13).
 - **Switching** — each MOSFET dissipates energy on every edge while it is half-on, carrying current
   and blocking voltage at the same time. That loss is proportional to frequency:
@@ -751,7 +751,7 @@ power, while volume and mass grow as length cubed:
 
 ![A_p proportional to length to the fourth, mass proportional to A_p to the three quarters, 107 to the three quarters about 33](transformer.assets/eq-ap-scaling.svg)
 
-![To-scale outlines of a 1 kilowatt 50 hertz silicon-steel EI core and a 1 kilowatt 50 kilohertz ferrite ETD49 core](transformer.assets/fig-37.svg)
+![To-scale outlines of a 1 kilowatt 50 hertz silicon-steel EI core and a 1 kilowatt 50 kilohertz ferrite ETD49 core](transformer.assets/fig-08.svg)
 
 _Real parts agree with the scaling argument. An EI150 steel stack with windings weighs about 8 kg;
 an ETD49 ferrite set with its 2:60 windings, about 0.3 kg — roughly 27 times lighter, close to
