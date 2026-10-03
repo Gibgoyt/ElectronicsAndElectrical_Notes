@@ -1,0 +1,104 @@
+# Equation sources for h-bridge.md — rendered into h-bridge.assets/eq-*.svg
+
+name: vab-def
+tex: V_{AB} = V_A - V_B = \begin{cases} +V_{dc} & Q_1,\,Q_4\ \text{on} \\ \;\;\,0 & Q_1,\,Q_2\ \text{on, or } Q_3,\,Q_4\ \text{on} \\ -V_{dc} & Q_2,\,Q_3\ \text{on} \end{cases}
+---
+name: shoot-through
+tex: I_{shoot} \approx \frac{V_{dc}}{2R_{DS(on)} + R_{wiring}} \;\le\; \frac{12\,\mathrm{V}}{2 \times 2\,\mathrm{m\Omega}} = 3000\,\mathrm{A}
+---
+name: rms
+tex: V_{rms} = \sqrt{\frac{1}{T}\int_0^T v^2\,dt} = \sqrt{\frac{1}{T}\left[(+V_{dc})^2\,\frac{T}{2} + (-V_{dc})^2\,\frac{T}{2}\right]} = V_{dc}
+---
+name: lamp-power
+tex: P_{lamp} = \frac{V_{rms}^2}{R} = \frac{(12\,\mathrm{V})^2}{2.4\,\Omega} = 60\,\mathrm{W} \quad(\text{identical to DC})
+---
+name: fourier
+tex: v_{AB}(t) = \frac{4V_{dc}}{\pi}\left(\sin\omega t + \frac{\sin 3\omega t}{3} + \frac{\sin 5\omega t}{5} + \cdots\right) = \frac{4V_{dc}}{\pi}\sum_{n\ \text{odd}}\frac{\sin n\omega t}{n}
+---
+name: b1
+tex: b_1 = \frac{1}{\pi}\int_0^{2\pi} v_{AB}(\theta)\sin\theta\,d\theta = \frac{1}{\pi}\left[\int_0^{\pi} V_{dc}\sin\theta\,d\theta + \int_{\pi}^{2\pi} (-V_{dc})\sin\theta\,d\theta\right] = \frac{1}{\pi}\,(2V_{dc} + 2V_{dc}) = \frac{4V_{dc}}{\pi}
+---
+name: fund-worked
+tex: V_{1,pk} = \frac{4}{\pi}\times 12 = 15.28\,\mathrm{V}, \qquad V_{1,rms} = \frac{15.28}{\sqrt2} = 10.80\,\mathrm{V} = 0.90\,V_{dc}
+---
+name: thd
+tex: \mathrm{THD} = \frac{\sqrt{V_{rms}^2 - V_{1,rms}^2}}{V_{1,rms}} = \frac{\sqrt{12^2 - 10.80^2}}{10.80} = 48.3\,\%
+---
+name: cond
+tex: P_{cond} = I_{rms}^2\,R_{DS(on)}
+---
+name: cond-worked
+tex: I = \frac{1000\,\mathrm{W}}{12\,\mathrm{V}} = 83.3\,\mathrm{A} \;\Longrightarrow\; P_{cond} = I^2\,(2R_{DS(on)}) = 83.3^2 \times 4\,\mathrm{m\Omega} = 27.8\,\mathrm{W}
+---
+name: gate-current
+tex: I_G \approx \frac{Q_{gs} + Q_{gd}}{t_{sw}} = \frac{100\,\mathrm{nC}}{50\,\mathrm{ns}} = 2\,\mathrm{A}
+---
+name: gate-power
+tex: P_{G} = Q_g\,V_{GS}\,f_{sw} = 300\,\mathrm{nC} \times 12\,\mathrm{V} \times 50\,\mathrm{kHz} = 0.18\,\mathrm{W}\ \text{per MOSFET}
+---
+name: overlap-energy
+tex: E_{on} = \int_0^{t_r} v_{DS}\,i_D\,dt \approx \tfrac12\,V\,I\,t_r, \qquad E_{off} \approx \tfrac12\,V\,I\,t_f
+---
+name: psw
+tex: P_{sw} \approx \tfrac12\,V\,I\,(t_r + t_f)\,f_{sw}
+---
+name: psw-12
+tex: P_{sw} \approx \tfrac12 \times 12\,\mathrm{V} \times 83.3\,\mathrm{A} \times 100\,\mathrm{ns} \times 50\,\mathrm{kHz} = 2.5\,\mathrm{W}\ \text{per MOSFET} \;\Rightarrow\; 10\,\mathrm{W}\ \text{for four}
+---
+name: psw-325
+tex: P_{sw} \approx \tfrac12 \times 325\,\mathrm{V} \times \underbrace{3.92\,\mathrm{A}}_{\text{avg of }|i|} \times 100\,\mathrm{ns} \times 20\,\mathrm{kHz} = 1.27\,\mathrm{W}\ \text{per MOSFET} \;\Rightarrow\; 5.1\,\mathrm{W}
+---
+name: resistive-overlap
+tex: E_{\text{resistive}} = \int_0^{t} V\Big(1-\frac{\tau}{t}\Big)\,I\,\frac{\tau}{t}\,d\tau = \tfrac16\,V\,I\,t \qquad\text{vs.}\qquad E_{\text{inductive}} = \tfrac12\,V\,I\,t
+---
+name: dvdt
+tex: \frac{dV}{dt} = \frac{12\,\mathrm{V}}{20\,\mathrm{ns}} = 0.6\,\mathrm{V/ns}\ (\text{12 V leg}), \qquad \frac{325\,\mathrm{V}}{50\,\mathrm{ns}} = 6.5\,\mathrm{V/ns}\ (\text{325 V leg})
+---
+name: miller
+tex: i_{gd} = C_{rss}\,\frac{dV}{dt} = 30\,\mathrm{pF} \times 6.5\,\mathrm{V/ns} = 0.195\,\mathrm{A} \;\Rightarrow\; 0.195\,\mathrm{A} \times 10\,\Omega = 1.95\,\mathrm{V}\ \text{on a gate that should be off}
+---
+name: spike
+tex: V_{spike} = L_{stray}\,\frac{di}{dt} = 20\,\mathrm{nH} \times \frac{83.3\,\mathrm{A}}{50\,\mathrm{ns}} = 33\,\mathrm{V} \quad(\text{on top of a } 12\,\mathrm{V}\ \text{bus})
+---
+name: boot-gate
+tex: V_B = V_S + (V_{CC} - V_F) \;\Longrightarrow\; V_{GS,H} = V_B - V_S = V_{CC} - V_F \approx 11.3\,\mathrm{V}\ \text{at every } V_S
+---
+name: boot-cap
+tex: C_{bs} \ge \frac{Q_g + I_{QBS}\,t_{on,max} + Q_{ls}}{\Delta V_{bs}} = \frac{60 + 11.5 + 5\ \mathrm{nC}}{0.5\,\mathrm{V}} \approx 150\,\mathrm{nF} \;\rightarrow\; \text{use } 1\,\mu\mathrm{F}
+---
+name: boot-droop
+tex: \Delta V_{bs} = \frac{I_{QBS}\,t_{on}}{C_{bs}} = \frac{230\,\mu\mathrm{A} \times 10\,\mathrm{ms}}{1\,\mu\mathrm{F}} = 2.3\,\mathrm{V}
+---
+name: deadtime-choice
+tex: t_{d} > \big(t_{d(off)} + t_f\big)_{max} - \big(t_{d(on)}\big)_{min} + \text{margin} \approx 150 - 50 + 100 = 200\,\mathrm{ns}
+---
+name: deadtime-error
+tex: \Delta \overline{V}_{leg} = -\,\mathrm{sign}(i)\;V_{dc}\,t_d\,f_{sw}
+---
+name: deadtime-worked
+tex: 325\,\mathrm{V} \times 520\,\mathrm{ns} \times 20\,\mathrm{kHz} = 3.4\,\mathrm{V}\ \text{per leg} \;\Rightarrow\; \approx 6.8\,\mathrm{V}\ \text{across the bridge}
+---
+name: freewheel
+tex: V_{AB} = -(V_{dc} + 2V_F), \qquad \frac{di_L}{dt} = -\frac{V_{dc} + 2V_F}{L}
+---
+name: snubber
+tex: R_s \approx \sqrt{\frac{L_{stray}}{C_{oss}}}, \qquad C_s \approx 3\text{ to }4\,C_{oss}, \qquad P_{R_s} \approx C_s\,V^2\,f_{sw}
+---
+name: snubber-worked
+tex: 10\,\mathrm{nF} \times 12^2 \times 50\,\mathrm{kHz} = 72\,\mathrm{mW}, \qquad 1\,\mathrm{nF} \times 325^2 \times 20\,\mathrm{kHz} = 2.1\,\mathrm{W}
+---
+name: bipolar-avg
+tex: \overline{V}_{AB} = D\,V_{dc} + (1-D)(-V_{dc}) = (2D - 1)\,V_{dc}
+---
+name: unipolar-avg
+tex: \overline{V}_{AB} = \overline{V}_A - \overline{V}_B = (D_A - D_B)\,V_{dc}, \qquad D_B = 1 - D_A \;\Rightarrow\; \overline{V}_{AB} = (2D_A - 1)\,V_{dc}
+---
+name: eff-12
+tex: \eta_1 \approx \frac{1000}{1000 + 27.8 + 10 + 0.7} = 96.3\,\%
+---
+name: cond-325
+tex: I_{rms} = \frac{1000\,\mathrm{W}}{230\,\mathrm{V}} = 4.35\,\mathrm{A} \;\Longrightarrow\; P_{cond} = 4.35^2 \times (2 \times 0.15\,\Omega) = 5.7\,\mathrm{W}
+---
+name: eff-325
+tex: \eta_2 \approx \frac{1000}{1000 + 5.7 + 5.1 + 2 + 0.1} = 98.7\,\%
+---
