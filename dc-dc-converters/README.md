@@ -8,7 +8,7 @@ switch on and off tens of thousands of times a second.
 > **The thesis in one line**
 >
 > In steady state the average voltage across the inductor over one full cycle must be exactly
-> zero (*volt-second balance*). That single fact derives both step ratios — <!--m:V_{out} = D \cdot V_{in}-->![V_out = D V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> for
+> zero (*volt-second balance*). That single fact derives both step ratios — <!--m:V_{out} = D \cdot V_{in}-->![V_out = D times V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> for
 > the buck and <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--/m--> for the boost.
 
 ![Side by side comparison of buck and boost showing the same four parts reordered](dc-dc-converters.assets/fig-01.svg)
@@ -21,8 +21,9 @@ a consequence of the derivations, not a coincidence._
 
 | Subtopic | Result | What it covers |
 |---|---|---|
-| [buck/](buck/) | <!--m:V_{out} = D \cdot V_{in}-->![V_out = D V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> | ON/OFF vocabulary, the two switching intervals, volt-second balance derived, inductor sizing, output-capacitor sizing from the triangle-charge argument, worked numbers |
+| [buck/](buck/) | <!--m:V_{out} = D \cdot V_{in}-->![V_out = D times V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m--> | ON/OFF vocabulary, the two switching intervals, volt-second balance derived, inductor sizing, output-capacitor sizing from the triangle-charge argument, worked numbers |
 | [boost/](boost/) | <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--/m--> | the same method with the intervals swapped, and the genuinely-different output-capacitor sizing (the cap feeds the load alone while the switch is on) |
+| [buck/startup.md](buck/startup.md), [boost/startup.md](boost/startup.md) | from 0 V to steady state | how each converter starts up: the cycle-by-cycle climb, the averaged LC step and its settling time, buck overshoot and boost inrush, the no-load boost runaway, soft-start, the real gain limit, and efficiency versus step ratio |
 
 ## Reading order
 
@@ -31,6 +32,11 @@ that a constant voltage across an inductor makes a straight current ramp. Then:
 
 1. [buck/buck.md](buck/buck.md) — the step-down, derived from scratch.
 2. [boost/boost.md](boost/boost.md) — the step-up, same method, mirror intervals.
+3. [buck/startup.md](buck/startup.md) and [boost/startup.md](boost/startup.md) — what happens
+   before steady state: how the output climbs from zero, and what soft-start is for.
+
+The output LC of the buck is treated as a filter in its own right in
+[../filters/lc-filter/](../filters/lc-filter/).
 
 ## Conventions
 

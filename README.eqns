@@ -7,3 +7,7 @@ tex: V_L = L\,\dfrac{dI_L}{dt}
 name: capacitor-law
 display: false
 tex: I_C = C\,\dfrac{dV_C}{dt}
+---
+name: faraday-law
+display: false
+tex: v = N\,\dfrac{d\Phi}{dt}
