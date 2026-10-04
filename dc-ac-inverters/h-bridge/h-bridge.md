@@ -521,7 +521,9 @@ load, out of B and up through the diode of Q2 into the + rail. The load now sees
 
 ![V_AB equals minus V_dc plus 2 V_F, and di_L by dt equals minus V_dc plus 2 V_F over L](h-bridge.assets/eq-freewheel.svg)
 
-The energy <!--m:\tfrac12 L i_L^2-->![12 L i_L^2](h-bridge.assets/eq-inline/a453ae7e3a.svg)<!--/m--> goes back into the supply. A battery can absorb it; but in the inverter the
+The energy <!--m:\tfrac12 L i_L^2-->![12 L i_L^2](h-bridge.assets/eq-inline/a453ae7e3a.svg)<!--/m--> stored in the inductor
+([../../fundamentals/electromagnetism/electromagnetism.md §10](../../fundamentals/electromagnetism/electromagnetism.md#10-energy-stored-in-the-magnetic-field))
+goes back into the supply. A battery can absorb it; but in the inverter the
 second bridge's supply is a capacitor fed by a rectifier that cannot accept reverse current
 ([../../rectifiers/](../../rectifiers/)), so returned energy pumps the bus capacitor's voltage up. This
 is why bus capacitors are sized for more than ripple, and why motor drives have "brake choppers".
@@ -568,7 +570,9 @@ The cures, in order of importance:
 - **Slower edges** (larger gate resistor) reduce <!--m:di/dt-->![di/dt](h-bridge.assets/eq-inline/47bacb536a.svg)<!--/m-->, at the cost of switching loss.
 - **Snubbers.** An RC snubber across each switch (or across each leg) gives the ringing energy a
   resistor to burn in, damping the oscillation of <!--m:L_{stray}-->![L_stray](h-bridge.assets/eq-inline/8baa0053e1.svg)<!--/m--> with the MOSFET's output capacitance
-  <!--m:C_{oss}-->![C_oss](h-bridge.assets/eq-inline/076d485f98.svg)<!--/m-->. The usual starting point matches the resistor to the ringing tank's impedance:
+  <!--m:C_{oss}-->![C_oss](h-bridge.assets/eq-inline/076d485f98.svg)<!--/m-->. The usual starting point matches the resistor to the ringing tank's characteristic impedance
+  <!--m:\sqrt{L/C}-->![sqrt L/C](h-bridge.assets/eq-inline/03508d8f6f.svg)<!--/m-->, the ratio of peak voltage to peak current in the ring
+  ([../../fundamentals/transformer/transformer.md §14](../../fundamentals/transformer/transformer.md#14-leakage-inductance-and-the-hard-switching-spike)):
 
 ![R_s about root of L_stray over C_oss, C_s about 3 to 4 C_oss, resistor dissipation about C_s V squared f_sw](h-bridge.assets/eq-snubber.svg)
 

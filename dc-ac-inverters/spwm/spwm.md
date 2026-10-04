@@ -248,7 +248,10 @@ For bipolar SPWM, harmonics appear only at orders:
 ![n equals j m_f plus or minus k with j plus k odd: for j 1, k is 0, 2, 4 and so on; for j 2, k is 1, 3 and so on](spwm.assets/eq-orders.svg)
 
 and their amplitudes have a closed form in Bessel functions (Black's double-Fourier analysis; see
-Holmes and Lipo in §14):
+Holmes and Lipo in §14). <!--m:J_k-->![J_k](spwm.assets/eq-inline/6a2b242208.svg)<!--/m--> is the Bessel function of the first kind of order <!--m:k-->![k](spwm.assets/eq-inline/13fbd79c3d.svg)<!--/m-->, a standard
+tabulated function, <!--m:J_k(x) = \tfrac1\pi\int_0^\pi \cos(k\tau - x\sin\tau)\,d\tau-->![J_k(x) = 1 pi integral_0^ pi cos (k tau - x sin tau ) d tau](spwm.assets/eq-inline/b22ff240e0.svg)<!--/m-->; it appears because
+the pulse edges move sinusoidally, and the Fourier coefficients of a sinusoidally shifted edge are
+exactly these integrals:
 
 ![V at j m_f plus or minus k equals 4 V_dc over j pi times J_k of j m_a pi over 2 times the absolute value of sine j plus k pi over 2](spwm.assets/eq-bessel.svg)
 
@@ -406,7 +409,10 @@ is:
 ![bipolar: 0.818 times 400 V over 316, about 1.0 V; unipolar: 0.314 times 400 V over 1264, about 0.10 V, peak, largest carrier harmonic](spwm.assets/eq-ripple.svg)
 
 About 1 V of 20 kHz ripple on 325 V peak with bipolar switching; about 0.1 V with unipolar — the
-same parts, ten times cleaner. The filter has its own running costs: the capacitor draws
+same parts, ten times cleaner. The filter has its own running costs. A capacitor's current amplitude is <!--m:\omega C-->![omega C](spwm.assets/eq-inline/368bb3750b.svg)<!--/m--> times its
+voltage amplitude, and an inductor's voltage amplitude is <!--m:\omega L-->![omega L](spwm.assets/eq-inline/b3beb438d7.svg)<!--/m--> times its current amplitude
+(the impedances of [../../filters/lc-filter/lc-filter.md §2](../../filters/lc-filter/lc-filter.md#2-two-laws-read-as-smoothing-rules)),
+so in RMS terms the capacitor draws
 <!--m:230 \times 2\pi \cdot 50 \times 10\,\mu\mathrm{F} \approx 0.72\,\mathrm{A}-->![230 times 2 pi times 50 times 10 mu F approx 0.72 A](spwm.assets/eq-inline/5266203bc2.svg)<!--/m--> of reactive current
 even with no load, and at 1 kW (4.35 A) the inductor drops
 <!--m:2\pi \cdot 50 \times 2\,\mathrm{mH} \times 4.35\,\mathrm{A} \approx 2.7\,\mathrm{V}-->![2 pi times 50 times 2 mH times 4.35 A approx 2.7 V](spwm.assets/eq-inline/71d226ab95.svg)<!--/m-->.
