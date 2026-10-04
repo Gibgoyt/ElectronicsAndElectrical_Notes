@@ -49,9 +49,9 @@ The treatment covers:
 Read [../coulombs-law/](../coulombs-law/) and [../amperes-law/](../amperes-law/) first: this
 document leans on the electric field, voltage as work per charge, and the magnetic field of a
 current. Then read [faradays-law.md](faradays-law.md) top to bottom. Afterwards,
-[../electromagnetism/](../electromagnetism/) puts all three laws to work on windings and cores, and
-[../inductor/](../inductor/) and [../transformer/](../transformer/) are this law applied to one coil
-and to two.
+[../inductor/](../inductor/) is this law applied to one coil, [../capacitor/](../capacitor/) is its
+mirror, [../electromagnetism/](../electromagnetism/) is the overview that puts all three laws to
+work on windings and cores, and [../transformer/](../transformer/) is this law applied to two coils.
 
 ## Links
 

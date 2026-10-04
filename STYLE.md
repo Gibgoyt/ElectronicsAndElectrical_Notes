@@ -136,16 +136,20 @@ Figures are **generated** by `toolchain/figures/*.js` using the `Fig` builder in
 - **Caption band.** Every figure ends with `f.caption("Y vs. X — descriptive name")`, which renders
   a rule line and a bold `Figure N:` prefix. Figure numbers are global and stable across the tree;
   each topic owns a block, and new topics take the next free block:
-  - fundamentals: inductor 1–3 and 90 (the Faraday derivation, file `fig-04.svg`), capacitor 4–6,
-    electromagnetism 13–19, signals 20–29 (edges and Fourier 20–26, AC and RMS 27–29),
-    transformer 30–39;
+  - fundamentals: inductor 1–3, 90 (the Faraday derivation, file `fig-04.svg`) and 135–136
+    (animated: the right-hand rule `fig-05-anim.svg`, the step-by-step derivation `fig-06-anim.svg`),
+    capacitor 4–6, electromagnetism 13–19, signals 20–29 (edges and Fourier 20–26, AC and RMS
+    27–29), transformer 30–39, Coulomb's law 91–99, Ampère's law 100–113, Faraday's law 115–134;
   - dc-dc-converters: buck 7–9, boost 10–11, buck/boost comparison 12, start-up 50–55;
   - filters: LC filter 56–65;
   - pwm: 66–70;
   - rectifiers: 80–89;
   - dc-ac-inverters: H-bridge 40–49, SPWM 71–79;
   - later additions to an existing topic whose block is full take the next free number after 89
-    (90 onward): inductor 90.
+    (90 onward): inductor 90, then 135–136.
+  - **unused numbers** (allocated, never drawn; free for the topic that owns them): 114 (Ampère),
+    137–139 (inductor additions), 140–144 (electromagnetism additions). The next new topic starts
+    at 145.
 
   The *file* names are local to each document — `fig-01.svg`, `fig-02.svg`, … inside its
   `<doc>.assets/` — while the caption carries the global number.
@@ -156,6 +160,20 @@ Figures are **generated** by `toolchain/figures/*.js` using the `Fig` builder in
 - **Animation rule:** never animate a graph — motion on a plotted quantity is misleading. Animation
   is allowed *only* on component diagrams (charge moving through a coil, charge on a plate), where
   it depicts a physical flow, not a measured value.
+- **How to animate: prefer CSS `@keyframes`.** Both SMIL (`<animate>`, `<animateMotion>`,
+  `<animateTransform>`) and CSS animations run inside an SVG embedded as an image, but only CSS
+  animations can be stopped by `@media (prefers-reduced-motion: reduce)` — CSS cannot pause SMIL.
+  CSS animation also leaves each element's own attributes as the static frame that `rsvg-convert`,
+  print and reduced-motion viewers show, so draw a meaningful first frame in plain markup and let a
+  class animate it. Use the clock and helpers in `toolchain/parts/animation.js` (`animator`,
+  `dotStream`, `circulation`, `bead`), which emit the reduced-motion rule for you, and check single
+  frames with `FIG_FREEZE_AT=<seconds>` (see [../toolchain/README.md](../toolchain/README.md)). Name
+  an animated file `fig-NN-anim.svg`, make the loop seamless and the timing deterministic.
+  - CSS keyframes (reduced-motion safe): Figures 100, 101, 104, 106 (Ampère), 135, 136 (inductor).
+  - SMIL with a reduced-motion fallback (the animated group is hidden and a static copy shown):
+    Figures 118, 121, 123, 125, 130, 132 (Faraday).
+  - SMIL that keeps moving under reduced motion (older or pre-dates this rule; convert to CSS when
+    next touched): Figures 91, 92, 96 (Coulomb), 2 (inductor, current dots), 5 (capacitor).
 
 ## 6. The figure colour system
 

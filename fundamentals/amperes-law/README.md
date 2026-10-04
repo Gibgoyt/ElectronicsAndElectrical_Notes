@@ -43,9 +43,10 @@ figures (Figures 100–113), four of them animated.
 
 Read [../coulombs-law/](../coulombs-law/) first for charge and the electric field. Then read
 [amperes-law.md](amperes-law.md), then [../faradays-law/](../faradays-law/), the partner law in
-which a changing field makes a voltage. [../electromagnetism/](../electromagnetism/) then puts both
-together into inductance and transformers, and [../inductor/](../inductor/) applies them to the
-component.
+which a changing field makes a voltage. After that, [../inductor/](../inductor/) and
+[../capacitor/](../capacitor/) apply the laws to the two components, and
+[../electromagnetism/](../electromagnetism/), the overview, puts them together into inductance,
+cores and transformers.
 
 ## Links
 

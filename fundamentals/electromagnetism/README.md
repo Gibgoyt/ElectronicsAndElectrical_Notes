@@ -2,8 +2,12 @@
 
 The field laws underneath both component laws: charge and current, the magnetic field and flux,
 Ampère's law, Faraday's law ![v = N d Phi/dt](README.assets/eq-inline/bc981422f7.svg)<!--m:v = N\,d\Phi/dt-->, Lenz's law, self- and mutual inductance, and
-magnetic materials. The full argument is in [electromagnetism.md](electromagnetism.md), in seventeen
-sections with seven figures.
+magnetic materials. It is the **overview** of the field laws: Coulomb's, Ampère's and Faraday's laws
+each have their own document for the full treatment
+([../coulombs-law/](../coulombs-law/), [../amperes-law/](../amperes-law/),
+[../faradays-law/](../faradays-law/)), and this one puts them side by side and to work on windings
+and cores. The full argument is in [electromagnetism.md](electromagnetism.md), in eighteen sections
+with seven figures (Figures 13–19).
 
 > **The thesis in one line**
 >
@@ -35,18 +39,23 @@ The treatment covers:
 15. The whole set — Maxwell's four equations.
 16. What this costs you.
 17. Sources and cross-links.
+18. Symbol and unit reference — every symbol with its unit and the section that defines it.
 
 ## Reading order
 
-Read [../inductor/inductor.md](../inductor/inductor.md) and
-[../capacitor/capacitor.md](../capacitor/capacitor.md) first for the circuit view, then
-[electromagnetism.md](electromagnetism.md) for where those laws come from. Continue to
+Read the three field laws first — [../coulombs-law/](../coulombs-law/),
+[../amperes-law/](../amperes-law/) and [../faradays-law/](../faradays-law/) — then
+[../inductor/inductor.md](../inductor/inductor.md) and
+[../capacitor/capacitor.md](../capacitor/capacitor.md) for the circuit view, then
+[electromagnetism.md](electromagnetism.md), which ties them together. Continue to
 [../transformer/](../transformer/), which builds directly on sections 11–13.
 
 ## Links
 
 - Parent index: [../README.md](../README.md)
 - Style guide: [../../STYLE.md](../../STYLE.md)
+- The field laws in full: [../coulombs-law/](../coulombs-law/), [../amperes-law/](../amperes-law/),
+  [../faradays-law/](../faradays-law/)
 - The law derived in section 9: [../inductor/inductor.md](../inductor/inductor.md)
 - The law explained in section 14: [../capacitor/capacitor.md](../capacitor/capacitor.md)
 - Where it leads: [../transformer/](../transformer/)
