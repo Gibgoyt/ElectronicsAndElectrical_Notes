@@ -7,19 +7,19 @@ name: charge-quantum
 tex: e = 1.602\,176\,634\times10^{-19}\ \mathrm{C} \qquad\Longrightarrow\qquad 1\ \mathrm{C} \approx 6.24\times10^{18}\ \text{elementary charges}
 ---
 name: current-def
-tex: I = \frac{dQ}{dt} \qquad 1\ \mathrm{A} = 1\ \mathrm{C/s}
+tex: I = \frac{dQ}{dt} \qquad 1\ \mathrm{A} = 1\ \mathrm{C\cdot s^{-1}}
 ---
 name: coulomb
-tex: F = \frac{1}{4\pi\varepsilon_0}\,\frac{q_1\,q_2}{r^2} \qquad \varepsilon_0 \approx 8.854\times10^{-12}\ \mathrm{F/m}
+tex: F = \frac{1}{4\pi\varepsilon_0}\,\frac{q_1\,q_2}{r^2} \qquad \varepsilon_0 \approx 8.854\times10^{-12}\ \mathrm{F\cdot m^{-1}}
 ---
 name: efield
-tex: \vec{E} = \frac{\vec{F}}{q} \qquad [E] = \frac{\mathrm{N}}{\mathrm{C}} = \frac{\mathrm{V}}{\mathrm{m}}
+tex: \vec{E} = \frac{\vec{F}}{q} \qquad [E] = \mathrm{N\cdot C^{-1}} = \mathrm{V\cdot m^{-1}}
 ---
 name: lorentz
 tex: \vec{F} = q\left(\vec{E} + \vec{v}\times\vec{B}\right)
 ---
 name: tesla-units
-tex: 1\ \mathrm{T} = 1\ \frac{\mathrm{N}}{\mathrm{A}\cdot\mathrm{m}} = 1\ \frac{\mathrm{V}\cdot\mathrm{s}}{\mathrm{m}^2} = 1\ \frac{\mathrm{Wb}}{\mathrm{m}^2}
+tex: 1\ \mathrm{T} = 1\ \mathrm{N\cdot A^{-1}\cdot m^{-1}} = 1\ \mathrm{V\cdot s\cdot m^{-2}} = 1\ \mathrm{Wb\cdot m^{-2}}
 ---
 name: flux-def
 tex: \Phi = \int_S \vec{B}\cdot d\vec{A} \qquad\xrightarrow{\ \text{uniform } B\ }\qquad \Phi = B\,A\cos\theta
@@ -34,7 +34,7 @@ name: biot-savart
 tex: d\vec{B} = \frac{\mu_0}{4\pi}\,\frac{I\,d\vec{l}\times\hat{r}}{r^2}
 ---
 name: mu0
-tex: \mu_0 \approx 4\pi\times10^{-7}\ \mathrm{H/m} \approx 1.2566\times10^{-6}\ \mathrm{H/m}
+tex: \mu_0 \approx 4\pi\times10^{-7}\ \mathrm{H\cdot m^{-1}} \approx 1.2566\times10^{-6}\ \mathrm{H\cdot m^{-1}}
 ---
 name: ampere
 tex: \oint_C \vec{B}\cdot d\vec{l} = \mu_0\, I_{enc}
@@ -64,10 +64,10 @@ name: faraday-integral
 tex: \int_0^t \frac{d\Phi}{dt'}\,dt' = \frac{1}{N}\int_0^t v\,dt' \quad\Longrightarrow\quad \Phi(t) = \Phi(0) + \frac{1}{N}\int_0^t v\,dt'
 ---
 name: wrong-law
-tex: B \;\neq\; \frac{dV}{dt} \qquad \left[\frac{dV}{dt}\right] = \frac{\mathrm{V}}{\mathrm{s}} \quad\text{but}\quad [B] = \frac{\mathrm{V}\cdot\mathrm{s}}{\mathrm{m}^2}
+tex: B \;\neq\; \frac{dV}{dt} \qquad \left[\frac{dV}{dt}\right] = \mathrm{V\cdot s^{-1}} \quad\text{but}\quad [B] = \mathrm{V\cdot s\cdot m^{-2}}
 ---
 name: right-law-b
-tex: v = N A\,\frac{dB}{dt} \quad\Longleftrightarrow\quad B(t) = B(0) + \frac{1}{N A}\int_0^t v\,dt'
+tex: v = N A_e\,\frac{dB}{dt} \quad\Longleftrightarrow\quad B(t) = B(0) + \frac{1}{N A_e}\int_0^t v\,dt'
 ---
 name: square-step
 tex: \Delta\Phi = \frac{1}{N}\int_0^{T/2} V\,dt = \frac{V\,(T/2)}{N}
@@ -79,7 +79,7 @@ name: sine-flux
 tex: v = V_{pk}\sin\omega t \quad\Longrightarrow\quad \Phi(t) = -\frac{V_{pk}}{N\omega}\cos\omega t
 ---
 name: self-l-def
-tex: L = \frac{N\,\Phi}{I} = \frac{\lambda}{I} \qquad 1\ \mathrm{H} = 1\ \frac{\mathrm{Wb}}{\mathrm{A}} = 1\ \frac{\mathrm{V}\cdot\mathrm{s}}{\mathrm{A}}
+tex: L = \frac{N\,\Phi}{I} = \frac{\lambda}{I} \qquad 1\ \mathrm{H} = 1\ \mathrm{Wb\cdot A^{-1}} = 1\ \mathrm{V\cdot s\cdot A^{-1}}
 ---
 name: derive-law
 tex: \lambda(t) = L\,I(t) \quad\Longrightarrow\quad \frac{d\lambda}{dt} = L\,\frac{dI}{dt} \quad\Longrightarrow\quad v_L(t) = L\,\frac{dI_L}{dt}
@@ -97,7 +97,7 @@ name: energy-derive
 tex: p = v\,i = L\,i\,\frac{di}{dt} \quad\Longrightarrow\quad E = \int_0^{t} p\,dt' = \int_0^{I} L\,i\,di = \tfrac{1}{2}\,L\,I^2
 ---
 name: energy-density
-tex: w = \frac{B^2}{2\mu} \qquad (\mathrm{J/m^3})
+tex: w = \frac{B^2}{2\mu} \qquad (\mathrm{J\cdot m^{-3}})
 ---
 name: energy-check
 tex: E = w\,(A\,l) = \frac{1}{2\mu}\left(\frac{\mu N I}{l}\right)^{2} A\,l = \frac{1}{2}\,\frac{\mu N^2 A}{l}\,I^2 = \tfrac{1}{2}\,L\,I^2
@@ -106,7 +106,7 @@ name: energy-worked
 tex: E = \tfrac{1}{2}\,(112.5\ \mu\mathrm{H})\,(1.1\ \mathrm{A})^2 \approx 68\ \mu\mathrm{J}
 ---
 name: gap-energy
-tex: w_{gap} = \frac{(0.2)^2}{2\,(4\pi\times10^{-7})} \approx 16\ \mathrm{mJ/cm^3} \qquad w_{ferrite} = \frac{w_{gap}}{\mu_r} \approx 8\ \mu\mathrm{J/cm^3}
+tex: w_{gap} = \frac{(0.2)^2}{2\,(4\pi\times10^{-7})} \approx 16\ \mathrm{mJ\cdot cm^{-3}} \qquad w_{ferrite} = \frac{w_{gap}}{\mu_r} \approx 8\ \mu\mathrm{J\cdot cm^{-3}}
 ---
 name: mutual-def
 tex: M = \frac{N_2\,\Phi_{21}}{I_1} \quad\Longrightarrow\quad v_2 = M\,\frac{dI_1}{dt}
