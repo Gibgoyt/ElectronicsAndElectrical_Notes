@@ -1,0 +1,276 @@
+# Equation sources for amperes-law.md — rendered by toolchain/math_to_svg.js into
+# amperes-law.assets/eq-*.svg
+# Edit here, then run:
+#   node toolchain/build_all.js docs/fundamentals/amperes-law --figures toolchain/figures/amperes_law.js
+
+name: ampere
+tex: \oint_C \vec{B}\cdot d\vec{l} \;=\; \mu_0\, I_{enc}
+---
+# ---- section 1 -------------------------------------------------------------------------------
+name: current
+tex: I = \frac{dQ}{dt} \qquad 1\ \mathrm{A} = 1\ \mathrm{C\cdot s^{-1}}
+---
+name: force-moving-charge
+tex: \vec{F} = q\,\vec{v}\times\vec{B}
+---
+name: cross
+tex: |\vec{a}\times\vec{b}| = a\,b\,\sin\theta \qquad \vec{b}\times\vec{a} = -\,\vec{a}\times\vec{b}
+---
+name: force-magnitude
+tex: F = q\,v\,B\,\sin\theta \qquad\xrightarrow{\ \vec{v}\,\perp\,\vec{B}\ }\qquad F = q\,v\,B
+---
+name: no-work
+tex: P = \vec{F}\cdot\vec{v} = q\,(\vec{v}\times\vec{B})\cdot\vec{v} = 0
+---
+name: lorentz
+tex: \vec{F} = q\left(\vec{E} + \vec{v}\times\vec{B}\right)
+---
+name: tesla-1
+tex: B = \frac{F}{q\,v} \quad\Longrightarrow\quad [B] = \frac{\mathrm{N}}{\mathrm{C}\cdot\mathrm{m\cdot s^{-1}}} = \mathrm{N\cdot (C\cdot s^{-1})^{-1}\cdot m^{-1}}
+---
+name: tesla-2
+tex: \mathrm{C\cdot s^{-1}} = \mathrm{A} \quad\Longrightarrow\quad 1\ \mathrm{T} = 1\ \mathrm{N\cdot A^{-1}\cdot m^{-1}}
+---
+name: tesla-3
+tex: 1\ \mathrm{N} = 1\ \mathrm{J\cdot m^{-1}} = 1\ \mathrm{V\cdot C\cdot m^{-1}}
+---
+name: tesla-4
+tex: 1\ \mathrm{T} = 1\ \mathrm{V\cdot C\cdot m^{-1}\cdot A^{-1}\cdot m^{-1}} = 1\ \mathrm{V\cdot (C\cdot A^{-1})\cdot m^{-2}} = 1\ \mathrm{V\cdot s\cdot m^{-2}}
+---
+name: wire-force-1
+tex: dq\,\vec{v} = dq\,\frac{d\vec{l}}{dt} = \frac{dq}{dt}\,d\vec{l} = I\,d\vec{l}
+---
+name: wire-force-2
+tex: d\vec{F} = dq\,\vec{v}\times\vec{B} = I\,d\vec{l}\times\vec{B} \qquad\xrightarrow{\ \text{straight, } \perp \text{, uniform}\ }\qquad F = B\,I\,L
+---
+name: wire-force-worked
+tex: F = (0.5\ \mathrm{T})(10\ \mathrm{A})(0.05\ \mathrm{m}) = 0.25\ \mathrm{N}
+---
+# ---- section 4 -------------------------------------------------------------------------------
+name: biot-savart
+tex: d\vec{B} = \frac{\mu_0}{4\pi}\,\frac{I\,d\vec{l}\times\hat{r}}{r^2} \qquad \hat{r} = \frac{\vec{r}}{r}
+---
+name: biot-savart-mag
+tex: dB = \frac{\mu_0}{4\pi}\,\frac{I\,dl\,\sin\theta}{r^2}
+---
+name: biot-savart-total
+tex: \vec{B} = \frac{\mu_0}{4\pi}\oint \frac{I\,d\vec{l}\times\hat{r}}{r^2}
+---
+name: mu0
+tex: \mu_0 = 4\pi\times10^{-7}\ \mathrm{H\cdot m^{-1}} \approx 1.2566\times10^{-6}\ \mathrm{T\cdot m\cdot A^{-1}}
+---
+name: mu0-units-1
+tex: \mu_0 = \frac{4\pi\,r^2\,dB}{I\,dl} \quad\Longrightarrow\quad [\mu_0] = \frac{\mathrm{m^2\cdot T}}{\mathrm{A\cdot m}} = \mathrm{T\cdot m\cdot A^{-1}}
+---
+name: mu0-units-2
+tex: 1\ \mathrm{H} = 1\ \mathrm{Wb\cdot A^{-1}} = 1\ \mathrm{T\cdot m^2\cdot A^{-1}} \quad\Longrightarrow\quad 1\ \mathrm{H\cdot m^{-1}} = 1\ \mathrm{T\cdot m\cdot A^{-1}} = 1\ \mathrm{N\cdot A^{-2}}
+---
+# ---- section 5 -------------------------------------------------------------------------------
+name: bsw-1
+tex: dB = \frac{\mu_0}{4\pi}\,\frac{I\,dz\,\sin\theta}{s^2} \qquad s = \sqrt{r^2 + z^2}
+---
+name: bsw-2
+tex: \sin\theta = \frac{r}{s} \quad\Longrightarrow\quad dB = \frac{\mu_0 I}{4\pi}\,\frac{r\,dz}{s^3} = \frac{\mu_0 I}{4\pi}\,\frac{r\,dz}{(r^2 + z^2)^{3/2}}
+---
+name: bsw-3
+tex: B = \frac{\mu_0 I\,r}{4\pi}\int_{-\infty}^{+\infty}\frac{dz}{(r^2 + z^2)^{3/2}}
+---
+name: bsw-4
+tex: z = r\tan\varphi \qquad dz = r\sec^2\!\varphi\,d\varphi \qquad r^2 + z^2 = r^2(1 + \tan^2\!\varphi) = r^2\sec^2\!\varphi
+---
+name: bsw-identity
+tex: \sin^2\!\varphi + \cos^2\!\varphi = 1 \quad\xrightarrow{\ \div\,\cos^2\varphi\ }\quad \tan^2\!\varphi + 1 = \sec^2\!\varphi
+---
+name: bsw-5
+tex: \frac{dz}{(r^2 + z^2)^{3/2}} = \frac{r\sec^2\!\varphi\,d\varphi}{r^3\sec^3\!\varphi} = \frac{\cos\varphi\,d\varphi}{r^2}
+---
+name: bsw-6
+tex: \int_{-\pi/2}^{+\pi/2}\cos\varphi\,d\varphi = \Big[\sin\varphi\Big]_{-\pi/2}^{+\pi/2} = 1 - (-1) = 2
+---
+name: bsw-7
+tex: B = \frac{\mu_0 I\,r}{4\pi}\cdot\frac{2}{r^2} = \frac{\mu_0 I}{2\pi r}
+---
+name: bsw-finite
+tex: B = \frac{\mu_0 I}{4\pi r}\Big(\sin\varphi_2 - \sin\varphi_1\Big)
+---
+name: bsw-near
+tex: \frac{B_{|z| < r}}{B} = \frac{\sin(\pi/4) - \sin(-\pi/4)}{2} = \frac{\sqrt{2}}{2} \approx 0.71
+---
+name: wire-worked
+tex: B = \frac{\mu_0 I}{2\pi r} = \frac{(4\pi\times10^{-7})(10)}{2\pi\,(0.01)} = 2\times10^{-4}\ \mathrm{T} = 200\ \mu\mathrm{T}
+---
+name: wire-shortcut
+tex: \frac{\mu_0}{2\pi} = 2\times10^{-7}\ \mathrm{T\cdot m\cdot A^{-1}} \qquad\Longrightarrow\qquad B = 2\times10^{-7}\,\frac{I}{r}
+---
+# ---- section 6 -------------------------------------------------------------------------------
+name: dot
+tex: \vec{B}\cdot\Delta\vec{l} = B\,\Delta l\,\cos\alpha
+---
+name: line-sum
+tex: \sum_{k=1}^{K} \vec{B}_k\cdot\Delta\vec{l}_k = \vec{B}_1\cdot\Delta\vec{l}_1 + \vec{B}_2\cdot\Delta\vec{l}_2 + \dots + \vec{B}_K\cdot\Delta\vec{l}_K
+---
+name: line-int
+tex: \oint_C \vec{B}\cdot d\vec{l} = \lim_{K\to\infty}\ \sum_{k=1}^{K} \vec{B}_k\cdot\Delta\vec{l}_k
+---
+name: uniform-square
+tex: \oint = B_0 a\,(+1) + 0 + B_0 a\,(-1) + 0 = 0
+---
+name: enc-example
+tex: I_{enc} = (+5\ \mathrm{A}) + (-3\ \mathrm{A}) = +2\ \mathrm{A} \quad\Longrightarrow\quad \oint_C \vec{B}\cdot d\vec{l} = \mu_0\,(2\ \mathrm{A}) \approx 2.51\ \mu\mathrm{T\cdot m}
+---
+name: shape-proof-1
+tex: \vec{B}\cdot d\vec{l} = B\,(r\,d\varphi) = \frac{\mu_0 I}{2\pi r}\,r\,d\varphi = \frac{\mu_0 I}{2\pi}\,d\varphi
+---
+name: shape-proof-2
+tex: \oint_C \vec{B}\cdot d\vec{l} = \frac{\mu_0 I}{2\pi}\oint_C d\varphi = \begin{cases} \dfrac{\mu_0 I}{2\pi}\,(2\pi) = \mu_0 I & \text{loop encircles the wire} \\[1ex] \dfrac{\mu_0 I}{2\pi}\,(0) = 0 & \text{loop does not} \end{cases}
+---
+# ---- section 7 -------------------------------------------------------------------------------
+name: amp-wire-1
+tex: \oint_C \vec{B}\cdot d\vec{l} = \oint_C B\,dl \qquad (\vec{B}\parallel d\vec{l}\ \text{everywhere on the circle})
+---
+name: amp-wire-2
+tex: \oint_C B\,dl = B\oint_C dl \qquad (B\ \text{is the same at every point of the circle})
+---
+name: amp-wire-3
+tex: B\oint_C dl = B\,(2\pi r) = \mu_0 I \quad\Longrightarrow\quad B = \frac{\mu_0 I}{2\pi r}
+---
+name: compass-worked
+tex: B_{wire} = \frac{(2\times10^{-7})(2)}{0.03} = 13.3\ \mu\mathrm{T} \qquad \tan\theta = \frac{13.3}{20} \quad\Longrightarrow\quad \theta = 33.7^\circ
+---
+# ---- section 8 -------------------------------------------------------------------------------
+name: current-density
+tex: J = \frac{I}{\pi R^2}\qquad (\mathrm{A\cdot m^{-2}})
+---
+name: inside-enc
+tex: I_{enc} = J\,\pi r^2 = \frac{I}{\pi R^2}\,\pi r^2 = I\,\frac{r^2}{R^2}
+---
+name: inside-B
+tex: B\,(2\pi r) = \mu_0 I\,\frac{r^2}{R^2} \quad\Longrightarrow\quad B = \frac{\mu_0 I\,r}{2\pi R^2} \qquad (r \le R)
+---
+name: inside-worked
+tex: B(R) = \frac{(2\times10^{-7})(10)}{0.001} = 2\ \mathrm{mT} \qquad B(R/2) = B(2R) = 1\ \mathrm{mT}
+---
+name: skin-depth
+tex: \delta = \sqrt{\frac{\rho}{\pi f \mu_0}} = \sqrt{\frac{1.68\times10^{-8}}{\pi\,(5\times10^{4})(4\pi\times10^{-7})}} \approx 0.29\ \mathrm{mm}
+---
+# ---- section 9 -------------------------------------------------------------------------------
+name: turns-density
+tex: n = \frac{N}{l}\qquad (\text{turns per metre},\ \mathrm{m^{-1}})
+---
+name: sol-1
+tex: \oint_{abcd}\vec{B}\cdot d\vec{l} = \int_a^b + \int_b^c + \int_c^d + \int_d^a
+---
+name: sol-2
+tex: \int_a^b = B\,h \qquad \int_b^c = \int_d^a = 0\ \ (\vec{B}\perp d\vec{l}\ \text{or}\ B = 0) \qquad \int_c^d = 0\ \ (B = 0)
+---
+name: sol-3
+tex: I_{enc} = (n\,h)\,I
+---
+name: sol-4
+tex: B\,h = \mu_0\,n\,h\,I \quad\Longrightarrow\quad B = \mu_0\,n\,I = \frac{\mu_0 N I}{l}
+---
+name: sol-worked
+tex: n = \frac{100}{0.05\ \mathrm{m}} = 2000\ \mathrm{m^{-1}} \qquad B = (4\pi\times10^{-7})(2000)(1\ \mathrm{A}) \approx 2.51\ \mathrm{mT}
+---
+name: ring-1
+tex: dB_{axial} = \frac{\mu_0}{4\pi}\,\frac{I\,dl}{s^2}\cdot\frac{a}{s} \qquad s = \sqrt{a^2 + x^2}
+---
+name: ring-2
+tex: B_{ring} = \frac{\mu_0 I\,a}{4\pi s^3}\oint dl = \frac{\mu_0 I\,a}{4\pi s^3}\,(2\pi a) = \frac{\mu_0 I\,a^2}{2\,(a^2 + x^2)^{3/2}}
+---
+name: fin-1
+tex: B_{centre} = \int_{-l/2}^{+l/2}\frac{\mu_0\,(n\,dx)\,I\,a^2}{2\,(a^2 + x^2)^{3/2}} = \frac{\mu_0 n I a^2}{2}\left[\frac{x}{a^2\sqrt{a^2 + x^2}}\right]_{-l/2}^{+l/2}
+---
+name: fin-2
+tex: B_{centre} = \mu_0 n I\,\frac{l/2}{\sqrt{(l/2)^2 + a^2}} \qquad B_{end} = \frac{\mu_0 n I}{2}\,\frac{l}{\sqrt{l^2 + a^2}}
+---
+name: fin-worked
+tex: B_{centre} = 2.51\ \mathrm{mT}\times\frac{2.5}{\sqrt{2.5^2 + 1^2}} \approx 2.33\ \mathrm{mT} \qquad B_{end} = \frac{2.51\ \mathrm{mT}}{2}\times\frac{5}{\sqrt{5^2 + 1^2}} \approx 1.23\ \mathrm{mT}
+---
+# ---- section 10 ------------------------------------------------------------------------------
+name: tor-1
+tex: r < a:\quad B\,(2\pi r) = \mu_0\,(0) \quad\Longrightarrow\quad B = 0
+---
+name: tor-2
+tex: a < r < b:\quad B\,(2\pi r) = \mu_0\,N I \quad\Longrightarrow\quad B = \frac{\mu_0 N I}{2\pi r}
+---
+name: tor-3
+tex: r > b:\quad B\,(2\pi r) = \mu_0\,(N I - N I) = 0 \quad\Longrightarrow\quad B = 0
+---
+name: tor-worked
+tex: B(a) = \frac{(2\times10^{-7})(100)(1)}{0.010} = 2.00\ \mathrm{mT} \qquad B(b) = \frac{(2\times10^{-7})(100)(1)}{0.015} = 1.33\ \mathrm{mT}
+---
+# ---- section 11 ------------------------------------------------------------------------------
+name: coax-1
+tex: r < a:\quad B = \frac{\mu_0 I\,r}{2\pi a^2}
+---
+name: coax-2
+tex: a < r < b:\quad B = \frac{\mu_0 I}{2\pi r}
+---
+name: coax-3a
+tex: b < r < c:\quad I_{enc} = I - I\,\frac{\pi (r^2 - b^2)}{\pi (c^2 - b^2)} = I\,\frac{c^2 - r^2}{c^2 - b^2}
+---
+name: coax-3b
+tex: B = \frac{\mu_0 I}{2\pi r}\cdot\frac{c^2 - r^2}{c^2 - b^2}
+---
+name: coax-4
+tex: r > c:\quad I_{enc} = I - I = 0 \quad\Longrightarrow\quad B = 0
+---
+name: coax-flux
+tex: \Phi' = \int_a^b B\,dr = \frac{\mu_0 I}{2\pi}\int_a^b\frac{dr}{r} = \frac{\mu_0 I}{2\pi}\,\ln\frac{b}{a}
+---
+name: coax-L
+tex: L' = \frac{\Phi'}{I} = \frac{\mu_0}{2\pi}\,\ln\frac{b}{a} = (2\times10^{-7})\,\ln 3 \approx 220\ \mathrm{nH\cdot m^{-1}}
+---
+# ---- section 12 ------------------------------------------------------------------------------
+name: b-h-m
+tex: \vec{B} = \mu_0\left(\vec{H} + \vec{M}\right)
+---
+name: h-ampere
+tex: \oint_C \vec{H}\cdot d\vec{l} = I_{free,\,enc}
+---
+name: b-mu-h
+tex: \vec{M} = \chi_m\vec{H} \quad\Longrightarrow\quad \vec{B} = \mu_0(1 + \chi_m)\,\vec{H} = \mu_0\mu_r\,\vec{H} = \mu\,\vec{H} \qquad H = \frac{B}{\mu}
+---
+name: core-h
+tex: H\,l = N I \quad\Longrightarrow\quad H = \frac{N I}{l} = \frac{(100)(1\ \mathrm{A})}{0.05\ \mathrm{m}} = 2000\ \mathrm{A\cdot m^{-1}}
+---
+name: core-b
+tex: B_{air} = \mu_0 H \approx 2.51\ \mathrm{mT} \qquad B_{ferrite} = \mu_0\mu_r H = (2000)(2.51\ \mathrm{mT}) \approx 5.0\ \mathrm{T}\ \ \text{(asked for)}
+---
+name: core-sat
+tex: I_{0.3\,\mathrm{T}} = \frac{B\,l}{\mu_0\mu_r N} = \frac{(0.3)(0.05)}{(4\pi\times10^{-7})(2000)(100)} \approx 60\ \mathrm{mA}
+---
+# ---- section 13 ------------------------------------------------------------------------------
+name: par-1
+tex: B_1 = \frac{\mu_0 I_1}{2\pi d} \qquad F_2 = I_2\,L\,B_1
+---
+name: par-2
+tex: \frac{F}{L} = \frac{\mu_0\,I_1 I_2}{2\pi d}
+---
+name: par-worked
+tex: \frac{F}{L} = \frac{(4\pi\times10^{-7})(1)(1)}{2\pi\,(1)} = 2\times10^{-7}\ \mathrm{N\cdot m^{-1}}
+---
+name: par-fault
+tex: \frac{F}{L} = \frac{(2\times10^{-7})(2\times10^{4})^2}{0.05} = 1600\ \mathrm{N\cdot m^{-1}}
+---
+# ---- section 14 ------------------------------------------------------------------------------
+name: ampere-maxwell
+tex: \oint_C \vec{B}\cdot d\vec{l} = \mu_0\left(I_{enc} + \varepsilon_0\,\frac{d\Phi_E}{dt}\right) \qquad \Phi_E = \int_S \vec{E}\cdot d\vec{A}
+---
+name: disp-units
+tex: [\varepsilon_0\,\tfrac{d\Phi_E}{dt}] = \mathrm{F\cdot m^{-1}}\cdot\mathrm{V\cdot m}\cdot\mathrm{s^{-1}} = \mathrm{(F\cdot V)\cdot s^{-1}} = \mathrm{C\cdot s^{-1}} = \mathrm{A}
+---
+name: disp-plate
+tex: E = \frac{Q}{\varepsilon_0 A} \quad\Longrightarrow\quad \Phi_E = E\,A = \frac{Q}{\varepsilon_0} \quad\Longrightarrow\quad \varepsilon_0\,\frac{d\Phi_E}{dt} = \frac{dQ}{dt} = I
+---
+name: light
+tex: c = \frac{1}{\sqrt{\mu_0\,\varepsilon_0}} = \frac{1}{\sqrt{(1.2566\times10^{-6})(8.854\times10^{-12})}} \approx 2.998\times10^{8}\ \mathrm{m\cdot s^{-1}}
+---
+# ---- section 15 ------------------------------------------------------------------------------
+name: pair-far
+tex: B = \frac{\mu_0 I}{2\pi}\left(\frac{1}{r - d/2} - \frac{1}{r + d/2}\right) = \frac{\mu_0 I}{2\pi}\,\frac{d}{r^2 - d^2/4} \approx \frac{\mu_0 I\,d}{2\pi r^2}
+---
+name: pair-worked
+tex: B_{pair} \approx \frac{(2\times10^{-7})(10)(0.002)}{(0.1)^2} = 0.4\ \mu\mathrm{T} \qquad B_{single} = \frac{(2\times10^{-7})(10)}{0.1} = 20\ \mu\mathrm{T}
+---
