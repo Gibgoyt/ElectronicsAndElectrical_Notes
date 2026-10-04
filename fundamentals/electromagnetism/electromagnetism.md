@@ -68,7 +68,26 @@ or — more usefully for circuits — as volts per metre:
 
 Volts per metre is the key reading. A voltage is just the electric field added up along a path; a
 capacitor with <!--m:12\ \mathrm{V}-->![12 V](electromagnetism.assets/eq-inline/fe6e8c66b0.svg)<!--/m--> across a <!--m:10\ \mu\mathrm{m}-->![10 mu m](electromagnetism.assets/eq-inline/e1f41c0de9.svg)<!--/m--> dielectric holds a field of <!--m:1.2\ \mathrm{MV/m}-->![1.2 MV/m](electromagnetism.assets/eq-inline/8a432b8507.svg)<!--/m--> inside it.
+Since the field is force per charge, adding it up along a path (force times distance) gives the
+*work done per unit charge* carried along that path. So a voltage is energy per charge: one volt is
+one joule per coulomb, <!--m:1\ \mathrm{V} = 1\ \mathrm{J/C}-->![1 V = 1 J/C](electromagnetism.assets/eq-inline/edea7b765a.svg)<!--/m-->.
 **Static** charge makes an electric field and nothing else. The next field needs the charge to move.
+
+**Kirchhoff's two circuit laws** follow straight from these definitions, and every circuit analysis
+in this tree leans on them:
+
+- **The current law (KCL).** Charge is neither created nor destroyed, and it cannot pile up in a
+  junction of wires. So at any node, the currents flowing in add up to the currents flowing out.
+- **The voltage law (KVL).** For the static field of charges, the work done carrying a charge
+  between two points does not depend on the route taken. Walk once around any closed loop of a
+  circuit, adding every voltage rise and subtracting every drop, and you arrive back where you
+  started with exactly zero.
+
+![sum of currents into a node equals sum of currents out; sum of voltages around a closed loop equals 0](electromagnetism.assets/eq-kirchhoff.svg)
+
+(Once a *changing* magnetic flux threads the loop, §6 shows that the sum around it is no longer
+zero. Circuit work handles this by booking the induced voltage as the terminal voltage of the coil
+that encloses the flux, §8, and KVL then holds again with that term counted.)
 
 ## 2 The magnetic field B and the tesla
 
@@ -90,7 +109,7 @@ part of the force come out right. Three things about it matter later:
 - **B is called the magnetic flux density**, and the name is literal: §3 shows it is flux per
   square metre.
 
-The SI unit of <!--m:B-->![B](electromagnetism.assets/eq-inline/ae4f281df5.svg)<!--/m--> is the **tesla**. Reading it off the force law and then off Faraday's law gives three
+The SI unit of <!--m:B-->![B](electromagnetism.assets/eq-inline/ae4f281df5.svg)<!--/m--> is the **tesla**. Reading it off the force law and then off Faraday's law (§6, below) gives three
 equivalent forms, all of which you will meet:
 
 ![one tesla equals one newton per ampere metre equals one volt second per square metre equals one weber per square metre](electromagnetism.assets/eq-tesla-units.svg)
@@ -222,6 +241,10 @@ resistance):
 
 ![reluctance equals l over mu A; Phi equals N I over reluctance; L equals N squared over reluctance](electromagnetism.assets/eq-reluctance.svg)
 
+The last form looks ahead to §9, which defines inductance properly as flux linkage per ampere,
+<!--m:L = N\Phi/I-->![L = N Phi/I](electromagnetism.assets/eq-inline/2f88ce88e0.svg)<!--/m-->. Substitute <!--m:\Phi = NI/\mathcal{R}-->![Phi = NI/R](electromagnetism.assets/eq-inline/135458e5c0.svg)<!--/m--> from the middle form and the current cancels,
+leaving <!--m:L = N^2/\mathcal{R}-->![L = N^2/R](electromagnetism.assets/eq-inline/4b6802bafd.svg)<!--/m-->.
+
 A long, thin, low-permeability path has high reluctance. An **air gap** is a tiny length of
 <!--m:\mu_r = 1-->![mu_r = 1](electromagnetism.assets/eq-inline/a9dcb15318.svg)<!--/m--> material in series with the core, and because its permeability is thousands of times lower, a gap
 a fraction of a millimetre long can dominate the total reluctance. That is how inductors are made
@@ -253,7 +276,9 @@ changing — even if it stays at <!--m:30\ \mu\mathrm{Wb}-->![30 mu Wb](electrom
 invisible to the terminals; only its *slope* shows.
 
 Now run the law the other way, which is how a power converter actually uses it. The converter does
-not choose the flux; it chooses the **voltage** (an H-bridge slams <!--m:\pm 12\ \mathrm{V}-->![plus-minus 12 V](electromagnetism.assets/eq-inline/e82385197a.svg)<!--/m--> onto a winding), and the
+not choose the flux; it chooses the **voltage** (an H-bridge — four switches that connect the winding across the supply one way round, then the
+other, see [../../dc-ac-inverters/h-bridge/](../../dc-ac-inverters/h-bridge/) — slams
+<!--m:\pm 12\ \mathrm{V}-->![plus-minus 12 V](electromagnetism.assets/eq-inline/e82385197a.svg)<!--/m--> onto a winding), and the
 flux has to follow. Rearranged, <!--m:d\Phi/dt = v/N-->![d Phi/dt = v/N](electromagnetism.assets/eq-inline/64a5cbdd71.svg)<!--/m-->: the voltage dictates the *slope* of the flux. Integrate
 both sides from the moment you start the clock, exactly as in the inductor ramp proof
 ([../inductor/inductor.md §4](../inductor/inductor.md#4-from-the-law-to-the-ramp--the-integral-done-slowly)):
@@ -272,7 +297,9 @@ of Calculus, and <!--m:\Phi(0)-->![Phi (0)](electromagnetism.assets/eq-inline/bb
 > [boost](../../dc-dc-converters/boost/boost.md) ratios — seen from the magnetic side.
 
 **Worked example — a square voltage.** An H-bridge drives a <!--m:N = 4-->![N = 4](electromagnetism.assets/eq-inline/ecd1148d02.svg)<!--/m-->-turn primary with <!--m:\pm 12\ \mathrm{V}-->![plus-minus 12 V](electromagnetism.assets/eq-inline/e82385197a.svg)<!--/m--> at
-<!--m:f = 50\ \mathrm{kHz}-->![f = 50 kHz](electromagnetism.assets/eq-inline/0846b94031.svg)<!--/m-->, the arrangement in the source video. The period is <!--m:T = 20\ \mu\mathrm{s}-->![T = 20 mu s](electromagnetism.assets/eq-inline/4687915625.svg)<!--/m-->, so each half cycle
+<!--m:f = 50\ \mathrm{kHz}-->![f = 50 kHz](electromagnetism.assets/eq-inline/0846b94031.svg)<!--/m-->, the arrangement in the source video, wound on a ferrite core of cross-section <!--m:A_e = 76\ \mathrm{mm}^2-->![A_e = 76 mm^2](electromagnetism.assets/eq-inline/749c923b8f.svg)<!--/m-->
+(an ETD29-size core). The frequency <!--m:f-->![f](electromagnetism.assets/eq-inline/4a0a19218e.svg)<!--/m--> counts cycles per second, so one full cycle lasts the
+*period* <!--m:T = 1/f = 1/(50\ \mathrm{kHz}) = 20\ \mu\mathrm{s}-->![T = 1/f = 1/(50 kHz) = 20 mu s](electromagnetism.assets/eq-inline/8d19900a4d.svg)<!--/m-->, and each half cycle
 holds a constant <!--m:+12\ \mathrm{V}-->![+12 V](electromagnetism.assets/eq-inline/dc4536cf99.svg)<!--/m--> (or <!--m:-12\ \mathrm{V}-->![-12 V](electromagnetism.assets/eq-inline/791d4a0f4b.svg)<!--/m-->) for <!--m:10\ \mu\mathrm{s}-->![10 mu s](electromagnetism.assets/eq-inline/3b02ac376d.svg)<!--/m-->. A constant voltage integrates to a straight
 line, so during each half cycle the flux ramps linearly, by:
 
@@ -281,8 +308,8 @@ line, so during each half cycle the flux ramps linearly, by:
 ![delta Phi equals 12 volts times 10 microseconds over 4 equals 30 microwebers; Phi peak equals 15 microwebers; B peak equals 15 microwebers over 76 square millimetres, about 0.20 tesla](electromagnetism.assets/eq-square-worked.svg)
 
 In steady state the bridge applies equal positive and negative volt-seconds, so the flux swings
-symmetrically between <!--m:-15-->![-15](electromagnetism.assets/eq-inline/07420cd320.svg)<!--/m--> and <!--m:+15\ \mu\mathrm{Wb}-->![+15 mu Wb](electromagnetism.assets/eq-inline/20b591c642.svg)<!--/m-->. On a core with <!--m:A_e = 76\ \mathrm{mm}^2-->![A_e = 76 mm^2](electromagnetism.assets/eq-inline/749c923b8f.svg)<!--/m--> (an ETD29-size
-ferrite) that is a peak flux density of 0.20 T — comfortably below saturation. A square voltage gives
+symmetrically between <!--m:-15-->![-15](electromagnetism.assets/eq-inline/07420cd320.svg)<!--/m--> and <!--m:+15\ \mu\mathrm{Wb}-->![+15 mu Wb](electromagnetism.assets/eq-inline/20b591c642.svg)<!--/m-->. Dividing by the core area <!--m:A_e = 76\ \mathrm{mm}^2-->![A_e = 76 mm^2](electromagnetism.assets/eq-inline/749c923b8f.svg)<!--/m-->
+gives a peak flux density of 0.20 T — comfortably below saturation. A square voltage gives
 a **triangular flux**: up-ramp while the voltage is positive, down-ramp while it is negative, a sharp
 corner at each switching edge (Figure 15, panels a and b).
 
@@ -325,8 +352,10 @@ is what "field = derivative of voltage" would predict — nothing on the flats, 
 and it is not what any real core does._
 
 > **Note —** Why does the inversion survive so long? Because with a **sine wave** both readings
-> give a sinusoid. Integrate <!--m:\sin\omega t-->![sin omega t](electromagnetism.assets/eq-inline/22c43934a5.svg)<!--/m--> and you get <!--m:-\cos\omega t-->![- cos omega t](electromagnetism.assets/eq-inline/8225284683.svg)<!--/m--> — the same shape shifted a
-> quarter cycle:
+> give a sinusoid. (Here <!--m:\omega = 2\pi f-->![omega = 2 pi f](electromagnetism.assets/eq-inline/10f7ad86c0.svg)<!--/m--> is the *angular frequency*, in radians per second: one
+> full cycle of a sine is <!--m:2\pi-->![2 pi](electromagnetism.assets/eq-inline/0833718ca4.svg)<!--/m--> radians, so a wave making <!--m:f-->![f](electromagnetism.assets/eq-inline/4a0a19218e.svg)<!--/m--> cycles per second advances <!--m:2\pi f-->![2 pi f](electromagnetism.assets/eq-inline/a21484d805.svg)<!--/m-->
+> radians per second.) Integrate <!--m:\sin\omega t-->![sin omega t](electromagnetism.assets/eq-inline/22c43934a5.svg)<!--/m--> and you get <!--m:-\cos(\omega t)/\omega-->![- cos ( omega t)/omega](electromagnetism.assets/eq-inline/99d55a5c97.svg)<!--/m--> — the same
+> shape shifted a quarter cycle, that is <!--m:90^\circ-->![90^ deg](electromagnetism.assets/eq-inline/362ac8c7a7.svg)<!--/m--> of the <!--m:360^\circ-->![360^ deg](electromagnetism.assets/eq-inline/59ce64504a.svg)<!--/m--> in a full cycle:
 >
 > ![v equals V peak sin omega t gives Phi of t equals minus V peak over N omega cos omega t](electromagnetism.assets/eq-sine-flux.svg)
 >
@@ -336,7 +365,9 @@ and it is not what any real core does._
 
 ## 8 Lenz's law — the sign, and back-EMF
 
-Faraday's law in physics textbooks carries a minus sign:
+Faraday's law in physics textbooks is written for the **electromotive force (EMF)** <!--m:\mathcal{E}-->![E](electromagnetism.assets/eq-inline/2ac770400e.svg)<!--/m--> —
+the voltage the changing flux induces around the winding, in volts ("force" is a historical
+misnomer) — and it carries a minus sign:
 
 ![EMF equals minus N d Phi by dt](electromagnetism.assets/eq-faraday-emf.svg)
 
@@ -423,7 +454,8 @@ saturation, the subject of §12.)
 ## 10 Energy stored in the magnetic field
 
 To build up current in an inductor the source must push against the back-EMF, and the work it does is
-stored. Power is voltage times current; substitute the inductor law and integrate from zero current
+stored. Power is voltage times current (volts are joules per coulomb, §1, and amperes are coulombs per
+second, so their product is joules per second — watts); substitute the inductor law and integrate from zero current
 to <!--m:I-->![I](electromagnetism.assets/eq-inline/ca73ab6556.svg)<!--/m-->:
 
 ![p equals v i equals L i di by dt, so E equals the integral of p dt equals the integral from 0 to I of L i di equals one half L I squared](electromagnetism.assets/eq-energy-derive.svg)
@@ -490,7 +522,10 @@ flux <!--m:\Phi-->![Phi](electromagnetism.assets/eq-inline/b51f9a1a7f.svg)<!--/m
 
 The <!--m:d\Phi/dt-->![d Phi/dt](electromagnetism.assets/eq-inline/6e8f210cea.svg)<!--/m--> cancels completely: the voltage ratio is the **turns ratio**, independent of frequency,
 core and current. For the inverter in the source video, stepping a <!--m:\pm 12\ \mathrm{V}-->![plus-minus 12 V](electromagnetism.assets/eq-inline/e82385197a.svg)<!--/m--> square wave up to the
-<!--m:\pm 325\ \mathrm{V}-->![plus-minus 325 V](electromagnetism.assets/eq-inline/e39fa88c89.svg)<!--/m--> needed for 230 V RMS mains:
+<!--m:\pm 325\ \mathrm{V}-->![plus-minus 325 V](electromagnetism.assets/eq-inline/e39fa88c89.svg)<!--/m--> needed for 230 V RMS mains. (Mains is quoted as an RMS, "root mean square",
+value: the steady DC voltage that would heat a resistor equally. For a sine the peak is <!--m:\sqrt2-->![sqrt 2](electromagnetism.assets/eq-inline/6d0fdf0909.svg)<!--/m-->
+times the RMS, so 230 V RMS peaks at <!--m:230\sqrt2 \approx 325\ \mathrm{V}-->![230 sqrt 2 approx 325 V](electromagnetism.assets/eq-inline/3541c23807.svg)<!--/m--> — derived in
+[../signals/ac-and-rms.md](../signals/ac-and-rms.md).)
 
 ![N_2 over N_1 equals 325 volts over 12 volts, about 27; N_1 equals 4 gives N_2 about 108](electromagnetism.assets/eq-turns-worked.svg)
 
@@ -532,7 +567,8 @@ Four features of that curve drive every magnetics decision:
 
 > **Watch out —** Saturation is not gentle. A core run 10 % past its knee does not lose 10 % of its
 > inductance; it can lose most of it, and the current in a switching converter then rises at
-> <!--m:V/L_{saturated}-->![V/L_saturated](electromagnetism.assets/eq-inline/295b03c265.svg)<!--/m--> instead of <!--m:V/L-->![V/L](electromagnetism.assets/eq-inline/ba588ede6d.svg)<!--/m--> — fast enough to destroy a MOSFET within one switching period.
+> <!--m:V/L_{saturated}-->![V/L_saturated](electromagnetism.assets/eq-inline/295b03c265.svg)<!--/m--> instead of <!--m:V/L-->![V/L](electromagnetism.assets/eq-inline/ba588ede6d.svg)<!--/m--> — fast enough to destroy a MOSFET (the transistor used as the electronic switch throughout this
+tree) within one switching period.
 
 ## 13 Frequency and core size — why switching faster shrinks the transformer
 
@@ -551,8 +587,15 @@ to its positive peak — a total swing of <!--m:2\Phi_{pk}-->![2 Phi_pk](electro
 The frequency is in the **denominator**. The slope of the flux, <!--m:V/N-->![V/N](electromagnetism.assets/eq-inline/f37dc399ac.svg)<!--/m-->, is fixed by the voltage and does
 not care about frequency at all; frequency only decides **how long** each ramp runs before the
 bridge reverses it. A shorter ramp at the same slope reaches a lower peak. Doubling the frequency
-halves the volt-seconds per half cycle and halves the peak flux. (For sine-wave drive the same
-argument gives the classic transformer equation, with <!--m:2\pi/\sqrt{2} \approx 4.44-->![2 pi/sqrt 2 approx 4.44](electromagnetism.assets/eq-inline/816202c4ff.svg)<!--/m--> in place of 4:)
+halves the volt-seconds per half cycle and halves the peak flux. For sine-wave drive, the note in §7 has
+already found the flux amplitude, <!--m:\Phi_{pk} = V_{pk}/(N\omega)-->![Phi_pk = V_pk/(N omega )](electromagnetism.assets/eq-inline/83408f37a7.svg)<!--/m--> with <!--m:\omega = 2\pi f-->![omega = 2 pi f](electromagnetism.assets/eq-inline/10f7ad86c0.svg)<!--/m-->. Divide by
+<!--m:A_e-->![A_e](electromagnetism.assets/eq-inline/67c3ce8c21.svg)<!--/m--> to get the flux density, write the peak voltage as <!--m:\sqrt2-->![sqrt 2](electromagnetism.assets/eq-inline/6d0fdf0909.svg)<!--/m--> times its RMS value (§11), and
+solve for the RMS voltage:
+
+![B peak equals V peak over N omega A_e; V peak equals root 2 V rms; so root 2 V rms equals 2 pi f N A_e B peak](electromagnetism.assets/eq-flux-peak-sine-step.svg)
+
+That is the classic transformer equation, with <!--m:2\pi/\sqrt{2} \approx 4.44-->![2 pi/sqrt 2 approx 4.44](electromagnetism.assets/eq-inline/816202c4ff.svg)<!--/m--> in place of the
+square wave's 4:
 
 ![V rms equals 2 pi over root 2 times f N A_e B peak, about 4.44 f N A_e B peak](electromagnetism.assets/eq-flux-peak-sine.svg)
 
@@ -615,10 +658,21 @@ piles onto the plates. He added a term to Ampère's law that counts a changing e
 ![closed line integral of B dot dl equals mu_0 times I enclosed plus epsilon_0 d Phi_E by dt](electromagnetism.assets/eq-ampere-maxwell.svg)
 
 Between parallel plates of area <!--m:A-->![A](electromagnetism.assets/eq-inline/6dcd4ce23d.svg)<!--/m--> and spacing <!--m:d-->![d](electromagnetism.assets/eq-inline/3c363836cf.svg)<!--/m-->, the field is <!--m:E = V/d-->![E = V/d](electromagnetism.assets/eq-inline/14bd374217.svg)<!--/m--> and the electric flux <!--m:\Phi_E = EA-->![Phi_E = EA](electromagnetism.assets/eq-inline/a2dbd944a1.svg)<!--/m-->.
-Work out the displacement current and watch the capacitance appear:
+(The field is uniform across the gap, so adding it up from one plate to the other, §1, gives
+simply <!--m:V = Ed-->![V = Ed](electromagnetism.assets/eq-inline/478c7f00e0.svg)<!--/m-->.) Work out the displacement current and watch the capacitance appear:
 
 ![i_d equals epsilon_0 d Phi_E by dt equals epsilon_0 d by dt of V over d times A equals epsilon_0 A over d dV by dt equals C dV by dt](electromagnetism.assets/eq-displacement.svg)
 
+The last step needs <!--m:C = \varepsilon_0 A/d-->![C = epsilon_0 A/d](electromagnetism.assets/eq-inline/f699fc1a96.svg)<!--/m-->, which comes from **Gauss's law** — the first of the
+four equations collected in §15: the electric flux out of any closed surface equals the charge
+inside it divided by <!--m:\varepsilon_0-->![epsilon_0](electromagnetism.assets/eq-inline/961a0cda39.svg)<!--/m-->. Wrap a thin box around one plate. The field exists only in the
+gap, so the only flux leaving the box is <!--m:EA-->![EA](electromagnetism.assets/eq-inline/07cdb47207.svg)<!--/m--> through its inner face, and the charge inside is the
+plate's <!--m:Q-->![Q](electromagnetism.assets/eq-inline/c3156e00d3.svg)<!--/m-->:
+
+![E A equals Q over epsilon_0, and E equals V over d, so Q equals epsilon_0 A over d times V, so C equals Q over V equals epsilon_0 A over d](electromagnetism.assets/eq-gauss-plates.svg)
+
+The final step is just <!--m:C = Q/V-->![C = Q/V](electromagnetism.assets/eq-inline/b2d282d2ef.svg)<!--/m-->, the defining relation <!--m:Q = CV-->![Q = CV](electromagnetism.assets/eq-inline/4d85416dd9.svg)<!--/m--> of
+[../capacitor/capacitor.md §1](../capacitor/capacitor.md#1-what-a-capacitor-actually-is).
 Because <!--m:C = \varepsilon_0 A/d-->![C = epsilon_0 A/d](electromagnetism.assets/eq-inline/f699fc1a96.svg)<!--/m--> for a vacuum-gap capacitor, the displacement current in the gap is
 **exactly** <!--m:C\,dV/dt-->![C dV/dt](electromagnetism.assets/eq-inline/b40eb60abe.svg)<!--/m--> — the same value as the conduction current in the wire, which the
 [capacitor law](../capacitor/capacitor.md) says is <!--m:I_C = C\,dV/dt-->![I_C = C dV/dt](electromagnetism.assets/eq-inline/4987b21a9a.svg)<!--/m-->. Current is continuous after all:
@@ -671,7 +725,8 @@ displacement term (§14).
   square wave). Exceed it — a lower frequency, a higher voltage, a stuck PWM, a DC offset in an
   "AC" drive — and the inductance collapses, the current spikes, and switches fail.
 - **Higher frequency is not free.** It shrinks the core (§13), but core loss per cycle (the hysteresis
-  area) is paid more often, eddy currents grow roughly with <!--m:f^2-->![f^2](electromagnetism.assets/eq-inline/e4314fcd3b.svg)<!--/m-->, the skin effect pushes current
+  area) is paid more often, eddy currents (currents that the changing flux induces, by Faraday's law, in the conducting core
+material itself) grow roughly with <!--m:f^2-->![f^2](electromagnetism.assets/eq-inline/e4314fcd3b.svg)<!--/m-->, the skin effect pushes current
   into the surface of the copper, and every switching edge costs energy in the transistors. In
   practice ferrite designs at 100 kHz are run at 0.1–0.2 T, well below <!--m:B_{sat}-->![B_sat](electromagnetism.assets/eq-inline/099fa25d1c.svg)<!--/m-->, purely to keep
   core loss down — so the "1000 times smaller" of the worked example is a ceiling, not a promise.

@@ -198,10 +198,21 @@ meters in §8:
 | Square (±V) | 0 | <!--m:V-->![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--/m--> | <!--m:V-->![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--/m--> | 1 | 1 |
 | Triangle (±V) | 0 | <!--m:0.5\,V-->![0.5 V](ac-and-rms.assets/eq-inline/9b513f33c3.svg)<!--/m--> | <!--m:0.577\,V-->![0.577 V](ac-and-rms.assets/eq-inline/648be11c92.svg)<!--/m--> | <!--m:\sqrt3 \approx 1.732-->![sqrt 3 approx 1.732](ac-and-rms.assets/eq-inline/f53450a275.svg)<!--/m--> | 1.155 |
 
-**RMS of a waveform with harmonics.** For a waveform with harmonics, Parseval's theorem
-([edges-and-fourier.md §7](edges-and-fourier.md#7-reading-a-spectrum--gibbs-parseval-and-thd)) says
-the total mean square is the sum of each harmonic's mean square. The RMS values therefore add like
-the sides of a right-angled triangle:
+**RMS of a waveform with harmonics.** A distorted but still repeating waveform can be written as
+a sum of sines at whole-number multiples of its frequency: the *fundamental* at <!--m:f-->![f](ac-and-rms.assets/eq-inline/4a0a19218e.svg)<!--/m--> itself, plus
+*harmonics* at <!--m:2f-->![2f](ac-and-rms.assets/eq-inline/88346ae6e0.svg)<!--/m-->, <!--m:3f-->![3f](ac-and-rms.assets/eq-inline/6e149673a9.svg)<!--/m-->, <!--m:5f-->![5f](ac-and-rms.assets/eq-inline/1a849aded6.svg)<!--/m--> and so on, each with its own amplitude. (This is the Fourier series;
+the companion document [edges-and-fourier.md](edges-and-fourier.md) derives it from scratch.) To get
+the RMS, square that sum and average it. Squaring produces each harmonic squared, plus cross
+products of two *different* harmonics. Each cross product is a sine at one frequency times a sine
+at another, and by the same product-to-sum identity that gave <!--m:\sin^2\theta = (1 - \cos 2\theta)/2-->![sin^2 theta = (1 - cos 2 theta )/2](ac-and-rms.assets/eq-inline/80bb5f9ba4.svg)<!--/m-->
+in §3, it turns into pure cosines at the difference and sum frequencies, which average to zero over
+a full cycle. Only the squares survive, each averaging to (its RMS)<!--m:^2-->![^2](ac-and-rms.assets/eq-inline/6180bbc91e.svg)<!--/m-->. So the total mean square is
+the sum of each harmonic's mean square — *Parseval's theorem*
+([edges-and-fourier.md §7](edges-and-fourier.md#7-reading-a-spectrum--gibbs-parseval-and-thd)) — and
+the RMS values add like the sides of a right-angled triangle. The usual measure of distortion,
+**total harmonic distortion (THD)**, is the RMS of all the harmonics together divided by the RMS of
+the fundamental, <!--m:\text{THD} = \sqrt{V_{2,rms}^2 + V_{3,rms}^2 + \cdots}\,/\,V_{1,rms}-->![THD = sqrt V_2,rms^2 + V_3,rms^2 +/V_1,rms](ac-and-rms.assets/eq-inline/4b54f0fb07.svg)<!--/m-->, which
+gives the second form:
 
 ![V_rms equals the square root of V_1 rms squared plus V_3 rms squared plus V_5 rms squared and so on, which equals V_1 rms times the square root of 1 plus THD squared](ac-and-rms.assets/eq-rms-harmonics.svg)
 
@@ -250,7 +261,8 @@ capacitor (see [../../rectifiers/](../../rectifiers/)). The capacitor sits near 
 the diodes conduct only in a short window around each peak, when the mains voltage climbs above the
 capacitor's. The current arrives as tall, narrow pulses.
 
-Those pulses flow through the network's impedance (transformers, lines, cables) and drop voltage
+Those pulses flow through the network's impedance (the resistance and inductance of transformers,
+lines and cables) and drop voltage
 across it, *but only at the peaks*. Millions of such loads, all pulling at the same instant of every
 half-cycle, shave the tops off the voltage wave. Real mains is **flat-topped**. The distortion is
 mostly 3rd, 5th and 7th harmonic, with the 5th usually dominant on the public network.
@@ -287,7 +299,9 @@ Equipment is designed for exactly this envelope.
 > **Note —** An inverter that drives appliances (the subject of
 > [../../dc-ac-inverters/spwm/](../../dc-ac-inverters/spwm/)) is held to the same standard in
 > spirit. Its output should be within the voltage tolerance and well under 8 % THD. A plain square
-> wave (48 % THD) or a "modified sine" (also 48 %) is far outside it. A properly filtered SPWM
+> wave (48 % THD) or a "modified sine" (also 48 %; both worked out in
+> [edges-and-fourier.md §7–§8](edges-and-fourier.md#8-the-h-bridge-output-as-a-fourier-series)) is
+> far outside it. A properly filtered SPWM
 > output can be cleaner than the grid itself.
 
 ## 8 Measuring it — true-RMS and average-responding meters
@@ -302,7 +316,13 @@ display reads RMS **for a sine**:
 ![the average-responding reading equals 1.111 times the mean of absolute v](ac-and-rms.assets/eq-meter.svg)
 
 That factor of 1.111 is only right for a pure sine. Point the same meter at anything else and it is
-wrong:
+wrong. Two examples: a ±V square wave, and a cheap inverter's "modified sine" — a waveform that sits
+at zero for <!--m:\alpha = 45^\circ-->![alpha = 45^ deg](ac-and-rms.assets/eq-inline/d888911a73.svg)<!--/m--> either side of every zero crossing and at <!--m:\pm 325\ \mathrm{V}-->![plus-minus 325 V](ac-and-rms.assets/eq-inline/e39fa88c89.svg)<!--/m--> in
+between, chosen so that its RMS is 230 V. Its rectified average is the peak times the fraction of
+time spent at the peak, <!--m:(\pi - 2\alpha)/\pi-->![( pi - 2 alpha )/pi](ac-and-rms.assets/eq-inline/14c93c4ed9.svg)<!--/m-->, and since <!--m:v^2-->![v^2](ac-and-rms.assets/eq-inline/d96f95b7a2.svg)<!--/m--> is <!--m:V_{pk}^2-->![V_pk^2](ac-and-rms.assets/eq-inline/3d959a6832.svg)<!--/m--> for that fraction of
+the time and zero otherwise, its RMS is the peak times the square root of the fraction:
+<!--m:325 \times \sqrt{1/2} \approx 230\ \mathrm{V}-->![325 times sqrt 1/2 approx 230 V](ac-and-rms.assets/eq-inline/2bfb62eb97.svg)<!--/m--> at <!--m:\alpha = 45^\circ-->![alpha = 45^ deg](ac-and-rms.assets/eq-inline/d888911a73.svg)<!--/m--> (its spectrum is in
+[edges-and-fourier.md §8](edges-and-fourier.md#8-the-h-bridge-output-as-a-fourier-series)):
 
 ![for a square wave the mean of absolute v is V, so the reading is 1.111 V, 11 percent high against a true RMS of V](ac-and-rms.assets/eq-meter-square.svg)
 

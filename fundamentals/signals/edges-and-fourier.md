@@ -56,7 +56,19 @@ is measured from the moment the signal crosses **10 %** of its swing to the mome
 The fall time is measured from 90 % down to 10 %. Oscilloscopes measure it this way automatically.
 
 The cleanest worked case is a step driven through a resistance <!--m:R-->![R](edges-and-fourier.assets/eq-inline/06576556d1.svg)<!--/m--> into a capacitance <!--m:C-->![C](edges-and-fourier.assets/eq-inline/32096c2e0e.svg)<!--/m--> (an "RC
-edge"). This is roughly what a gate driver charging a MOSFET gate looks like:
+edge"). This is roughly what a gate driver charging a MOSFET gate looks like. Where the exponential
+comes from: when the capacitor has reached <!--m:v-->![v](edges-and-fourier.assets/eq-inline/7a38d8cbd2.svg)<!--/m-->, the resistor has the rest, <!--m:V - v-->![V - v](edges-and-fourier.assets/eq-inline/4033043807.svg)<!--/m-->, across it
+(Kirchhoff's voltage law,
+[../electromagnetism/electromagnetism.md §1](../electromagnetism/electromagnetism.md#1-charge-current-and-the-electric-field)),
+so it passes <!--m:i = (V - v)/R-->![i = (V - v)/R](edges-and-fourier.assets/eq-inline/13e4e1ae10.svg)<!--/m--> by Ohm's law. All of that current flows on into the capacitor
+(Kirchhoff's current law), and the capacitor law turns it into a rate of rise:
+<!--m:C\,dv/dt = (V - v)/R-->![C dv/dt = (V - v)/R](edges-and-fourier.assets/eq-inline/d7815fb502.svg)<!--/m-->. Write <!--m:\tau = RC-->![tau = RC](edges-and-fourier.assets/eq-inline/3f3c99c08b.svg)<!--/m-->, put everything with <!--m:v-->![v](edges-and-fourier.assets/eq-inline/7a38d8cbd2.svg)<!--/m--> on one side, and integrate from
+the empty capacitor (<!--m:v = 0-->![v = 0](edges-and-fourier.assets/eq-inline/c7c64bf3d5.svg)<!--/m--> at <!--m:t = 0-->![t = 0](edges-and-fourier.assets/eq-inline/fee440f68f.svg)<!--/m-->):
+
+![C dv by dt equals V minus v over R, so dv over V minus v equals dt over tau, so minus the natural log of V minus v over V equals t over tau](edges-and-fourier.assets/eq-rc-ode.svg)
+
+Undo the logarithm and solve for <!--m:v-->![v](edges-and-fourier.assets/eq-inline/7a38d8cbd2.svg)<!--/m-->. The **time constant** <!--m:\tau = RC-->![tau = RC](edges-and-fourier.assets/eq-inline/3f3c99c08b.svg)<!--/m--> is in seconds (ohms times
+farads is <!--m:(\mathrm{V/A})(\mathrm{A\cdot s/V}) = \mathrm{s}-->![( V/A)( A times s/V) = s](edges-and-fourier.assets/eq-inline/b7c1fd31c5.svg)<!--/m-->):
 
 ![v of t equals V times 1 minus e to the minus t over tau, with tau equal to R C](edges-and-fourier.assets/eq-rc-edge.svg)
 
@@ -149,7 +161,16 @@ and why a fast edge can falsely trigger a logic input nearby.
 That 20 V adds on top of the supply across the turning-off MOSFET. It is a small cousin of the
 inductive kick in [../inductor/inductor.md §7](../inductor/inductor.md#7-the-inductive-kick-and-why-the-diode-is-there).
 The loop inductance and the node capacitance then form an LC tank. Kicked by the edge, it **rings**
-at its natural frequency:
+at its natural frequency. Where that frequency comes from: in the tank the same current <!--m:i-->![i](edges-and-fourier.assets/eq-inline/042dc4512f.svg)<!--/m--> flows
+through both parts, and the inductor's voltage is the capacitor's voltage reversed, so
+<!--m:L\,di/dt = -v-->![L di/dt = -v](edges-and-fourier.assets/eq-inline/7b385bf2b9.svg)<!--/m--> and <!--m:C\,dv/dt = i-->![C dv/dt = i](edges-and-fourier.assets/eq-inline/528d051b56.svg)<!--/m-->. Differentiate the second and substitute the first:
+
+![C d squared v by dt squared equals di by dt equals minus v over L, so d squared v by dt squared equals minus v over L C, solved by v equals V peak sin omega_0 t with omega_0 equal 1 over root L C](edges-and-fourier.assets/eq-ring-ode.svg)
+
+A sine is the function whose second derivative is minus itself times a constant (differentiating
+<!--m:\sin\omega_0 t-->![sin omega_0 t](edges-and-fourier.assets/eq-inline/544719e1ec.svg)<!--/m--> twice brings out <!--m:-\omega_0^2-->![- omega_0^2](edges-and-fourier.assets/eq-inline/d4f745b759.svg)<!--/m-->), so the voltage oscillates at the angular frequency
+<!--m:\omega_0 = 1/\sqrt{LC}-->![omega_0 = 1/sqrt LC](edges-and-fourier.assets/eq-inline/f11b5cd8a1.svg)<!--/m--> radians per second. Dividing by the <!--m:2\pi-->![2 pi](edges-and-fourier.assets/eq-inline/0833718ca4.svg)<!--/m--> radians in one cycle (§4) gives
+the ringing frequency in hertz:
 
 ![f_ring equals 1 over 2 pi root L_loop C_oss, about 35.6 MHz](edges-and-fourier.assets/eq-ring.svg)
 
@@ -160,8 +181,21 @@ flows into a capacitance only while the voltage is moving. A flat top draws noth
 edge draws a tall pulse._
 
 **The bandwidth of an edge.** An edge also contains high frequencies, and the rise time tells you
-how high. An RC network passes frequencies up to its −3 dB corner <!--m:f_{3\mathrm{dB}} = 1/(2\pi\tau)-->![f_3 dB = 1/(2 pi tau )](edges-and-fourier.assets/eq-inline/7f8aa3ccc5.svg)<!--/m-->.
-Combine that with <!--m:t_r = \tau \ln 9-->![t_r = tau ln 9](edges-and-fourier.assets/eq-inline/4fa73506c0.svg)<!--/m--> and you get one of the most used rules of thumb in electronics:
+how high. An RC network passes slow sine waves and attenuates fast ones. To see by how much, suppose
+the capacitor voltage is a sine, <!--m:v_C = A\sin\omega t-->![v_C = A sin omega t](edges-and-fourier.assets/eq-inline/aa94dc2123.svg)<!--/m-->, where <!--m:\omega = 2\pi f-->![omega = 2 pi f](edges-and-fourier.assets/eq-inline/10f7ad86c0.svg)<!--/m--> is the angular
+frequency in radians per second (§4 below). The capacitor law gives its current,
+<!--m:i = C\,dv_C/dt = \omega C A\cos\omega t-->![i = C dv_C/dt = omega C A cos omega t](edges-and-fourier.assets/eq-inline/7b61febc24.svg)<!--/m-->; the resistor drops <!--m:iR = \omega\tau A\cos\omega t-->![iR = omega tau A cos omega t](edges-and-fourier.assets/eq-inline/18fae3f5c4.svg)<!--/m-->; and by
+Kirchhoff's voltage law the input is the sum of the two. A sine plus a cosine is a single sine whose
+amplitude is the Pythagorean sum (<!--m:a\sin x + b\cos x = \sqrt{a^2 + b^2}\,\sin(x + \varphi)-->![a sin x + b cos x = sqrt a^2 + b^2 sin (x + phi )](edges-and-fourier.assets/eq-inline/21622640c8.svg)<!--/m-->, the
+angle-sum formula read backwards), so:
+
+![v_in equals A times sin omega t plus omega tau cos omega t, so the amplitude ratio of v_C to v_in is 1 over the square root of 1 plus omega tau squared](edges-and-fourier.assets/eq-rc-gain.svg)
+
+At <!--m:\omega\tau = 1-->![omega tau = 1](edges-and-fourier.assets/eq-inline/c4d1fa2d7c.svg)<!--/m--> the output amplitude is <!--m:1/\sqrt2-->![1/sqrt 2](edges-and-fourier.assets/eq-inline/a70612754f.svg)<!--/m--> of the input, which is half the power.
+Ratios like this are quoted in **decibels**: <!--m:20\log_{10}-->![20 log_10](edges-and-fourier.assets/eq-inline/fc732c015f.svg)<!--/m--> of the amplitude ratio, so
+<!--m:20\log_{10}(1/\sqrt2) \approx -3\ \mathrm{dB}-->![20 log_10(1/sqrt 2) approx -3 dB](edges-and-fourier.assets/eq-inline/347ad47d7f.svg)<!--/m-->, and a factor of 10 in amplitude is 20 dB. The
+frequency where it happens is the network's **−3 dB corner**, <!--m:f_{3\mathrm{dB}} = 1/(2\pi\tau)-->![f_3 dB = 1/(2 pi tau )](edges-and-fourier.assets/eq-inline/7f8aa3ccc5.svg)<!--/m-->: it
+passes frequencies below it and increasingly attenuates those above. Combine that with <!--m:t_r = \tau \ln 9-->![t_r = tau ln 9](edges-and-fourier.assets/eq-inline/4fa73506c0.svg)<!--/m--> and you get one of the most used rules of thumb in electronics:
 
 ![f_3dB equals 1 over 2 pi tau and t_r equals tau ln 9, so t_r times f_3dB equals ln 9 over 2 pi, about 0.35](edges-and-fourier.assets/eq-bandwidth.svg)
 
@@ -369,7 +403,8 @@ overshoot is a real effect, not a maths curiosity. Any time a sharp edge passes 
 cuts off sharply above some frequency (a brick-wall filter, a band-limited amplifier), the edge
 comes out with this ringing overshoot.
 
-**Parseval — where the power goes.** Power in a resistor goes as voltage squared. Square the series,
+**Parseval — where the power goes.** Power in a resistor goes as voltage squared (<!--m:p = vi = v^2/R-->![p = vi = v^2/R](edges-and-fourier.assets/eq-inline/1a045a7637.svg)<!--/m-->
+by Ohm's law). Square the series,
 average over a period, and orthogonality kills every cross term between different harmonics. What
 survives is the sum of each harmonic's own mean square:
 
@@ -378,7 +413,9 @@ survives is the sum of each harmonic's own mean square:
 This is **Parseval's theorem**. In words: *the total power is the sum of the powers in each
 harmonic*, and harmonics never interfere in their power contribution. For the square wave the mean
 square is obviously <!--m:V^2-->![V^2](edges-and-fourier.assets/eq-inline/13bbb9f936.svg)<!--/m-->, because <!--m:v^2 = V^2-->![v^2 = V^2](edges-and-fourier.assets/eq-inline/1421d0c4d4.svg)<!--/m--> at every instant. Parseval agrees, which needs the sum
-of <!--m:1/n^2-->![1/n^2](edges-and-fourier.assets/eq-inline/dc31304943.svg)<!--/m--> over odd <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m-->, <!--m:\pi^2/8-->![pi^2/8](edges-and-fourier.assets/eq-inline/504a023cae.svg)<!--/m-->:
+of <!--m:1/n^2-->![1/n^2](edges-and-fourier.assets/eq-inline/dc31304943.svg)<!--/m--> over odd <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m-->. That sum is <!--m:\pi^2/8-->![pi^2/8](edges-and-fourier.assets/eq-inline/504a023cae.svg)<!--/m-->: Euler's classic result is that <!--m:1/n^2-->![1/n^2](edges-and-fourier.assets/eq-inline/dc31304943.svg)<!--/m--> summed over
+*all* <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> gives <!--m:\pi^2/6-->![pi^2/6](edges-and-fourier.assets/eq-inline/b26d2e8713.svg)<!--/m-->; the even terms, <!--m:1/(2m)^2 = \tfrac14 \cdot 1/m^2-->![1/(2m)^2 = 14 times 1/m^2](edges-and-fourier.assets/eq-inline/a695d85ecf.svg)<!--/m-->, add up to a quarter of
+that; so the odd terms are the remaining three quarters, <!--m:\tfrac34 \cdot \pi^2/6 = \pi^2/8-->![34 times pi^2/6 = pi^2/8](edges-and-fourier.assets/eq-inline/95336d2a4d.svg)<!--/m-->:
 
 ![V squared equals one half the sum of 16 V squared over n squared pi squared, which is 8 V squared over pi squared times pi squared over 8, equals V squared](edges-and-fourier.assets/eq-parseval-square.svg)
 
@@ -545,7 +582,14 @@ and starts reshaping the harmonics, so it matters there.
 
 **Layer 5 — finite edges.** The last idealisation is the vertical edge. A trapezoidal wave with rise
 time <!--m:t_r-->![t_r](edges-and-fourier.assets/eq-inline/a6684eb7a2.svg)<!--/m--> is a square wave smoothed by a moving average of width <!--m:t_r-->![t_r](edges-and-fourier.assets/eq-inline/a6684eb7a2.svg)<!--/m-->. A moving average multiplies
-each harmonic by a <!--m:\sin x / x-->![sin x/x](edges-and-fourier.assets/eq-inline/6dcfc84d85.svg)<!--/m--> factor. Below the corner <!--m:f_c = 1/(\pi t_r)-->![f_c = 1/( pi t_r)](edges-and-fourier.assets/eq-inline/913d3b6838.svg)<!--/m--> the factor is about 1.
+each harmonic by a <!--m:\sin x / x-->![sin x/x](edges-and-fourier.assets/eq-inline/6dcfc84d85.svg)<!--/m--> factor. To see it, average harmonic <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> over a window of width <!--m:t_r-->![t_r](edges-and-fourier.assets/eq-inline/a6684eb7a2.svg)<!--/m-->
+centred on <!--m:t-->![t](edges-and-fourier.assets/eq-inline/8efd86fb78.svg)<!--/m--> (the antiderivative of <!--m:\sin-->![sin](edges-and-fourier.assets/eq-inline/f5356d1e92.svg)<!--/m--> is <!--m:-\cos-->![- cos](edges-and-fourier.assets/eq-inline/6a630a5d56.svg)<!--/m-->, and the difference of the two cosines is
+turned into a product by the identity <!--m:\cos(A-B) - \cos(A+B) = 2\sin A\sin B-->![cos (A-B) - cos (A+B) = 2 sin A sin B](edges-and-fourier.assets/eq-inline/2e2ceb5931.svg)<!--/m--> of §5):
+
+![one over t_r times the integral from t minus t_r over 2 to t plus t_r over 2 of sin n omega_1 s ds equals sin n omega_1 t times sin x over x, with x equal to n omega_1 t_r over 2, which is n pi t_r over T](edges-and-fourier.assets/eq-moving-average.svg)
+
+The harmonic comes out unchanged in shape, only scaled by <!--m:\sin x/x-->![sin x/x](edges-and-fourier.assets/eq-inline/8b360c5537.svg)<!--/m-->. While <!--m:x < 1-->![x < 1](edges-and-fourier.assets/eq-inline/d2241f4b17.svg)<!--/m--> that factor is
+close to 1; beyond it the factor falls as <!--m:1/x-->![1/x](edges-and-fourier.assets/eq-inline/df95313afc.svg)<!--/m-->. Below the corner <!--m:f_c = 1/(\pi t_r)-->![f_c = 1/( pi t_r)](edges-and-fourier.assets/eq-inline/913d3b6838.svg)<!--/m--> the factor is about 1.
 Above it, the harmonics fall as <!--m:1/n^2-->![1/n^2](edges-and-fourier.assets/eq-inline/dc31304943.svg)<!--/m--> instead of <!--m:1/n-->![1/n](edges-and-fourier.assets/eq-inline/5f556983ad.svg)<!--/m-->:
 
 ![b_n trapezoid is approximately 4 V over n pi times sin of n pi t_r over T, over n pi t_r over T, with a corner at f_c equal to 1 over pi t_r](edges-and-fourier.assets/eq-trapezoid.svg)
@@ -573,13 +617,17 @@ inverter chain responds to frequency, so the harmonics of §8 become real costs.
   <!--m:C\,dv/dt-->![C dv/dt](edges-and-fourier.assets/eq-inline/b96b608a56.svg)<!--/m--> current through the interwinding capacitance (§3), straight into the secondary. And a
   transformer cannot pass the DC offset an asymmetric bridge might produce. See
   [../transformer/](../transformer/) and [../electromagnetism/](../electromagnetism/).
-- **Inductive loads (motors, fans).** An inductor's impedance is <!--m:\omega L-->![omega L](edges-and-fourier.assets/eq-inline/b3beb438d7.svg)<!--/m-->. Harmonic <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> has <!--m:1/n-->![1/n](edges-and-fourier.assets/eq-inline/5f556983ad.svg)<!--/m--> of
+- **Inductive loads (motors, fans).** An inductor's impedance is <!--m:\omega L-->![omega L](edges-and-fourier.assets/eq-inline/b3beb438d7.svg)<!--/m-->: drive a sine
+  current of amplitude <!--m:\hat I-->![I](edges-and-fourier.assets/eq-inline/48786abc01.svg)<!--/m--> through it and <!--m:v = L\,di/dt-->![v = L di/dt](edges-and-fourier.assets/eq-inline/169359fd71.svg)<!--/m--> has amplitude <!--m:\omega L\hat I-->![omega L I](edges-and-fourier.assets/eq-inline/90fb26c529.svg)<!--/m-->, so the
+  ratio of voltage amplitude to current amplitude (its AC "resistance", the *impedance* magnitude)
+  is <!--m:\omega L-->![omega L](edges-and-fourier.assets/eq-inline/b3beb438d7.svg)<!--/m-->; by the mirror argument a capacitor's is <!--m:1/(\omega C)-->![1/( omega C)](edges-and-fourier.assets/eq-inline/a157b00b7e.svg)<!--/m-->. Harmonic <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> has <!--m:1/n-->![1/n](edges-and-fourier.assets/eq-inline/5f556983ad.svg)<!--/m--> of
   the fundamental's voltage and meets <!--m:n-->![n](edges-and-fourier.assets/eq-inline/d1854cae89.svg)<!--/m--> times the impedance, so it draws <!--m:1/n^2-->![1/n^2](edges-and-fourier.assets/eq-inline/dc31304943.svg)<!--/m--> of the
   fundamental's current. The harmonic currents are small, but they make torque ripple, buzzing and
   extra copper heating.
 - **Filters.** To turn a square wave into a sine you must remove the 3rd harmonic at 150 Hz while
   keeping the fundamental at 50 Hz. Those are only a factor of 3 apart. An LC low-pass filter
-  attenuates 40 dB per decade above its corner (see [../../filters/lc-filter/](../../filters/lc-filter/)),
+  attenuates 40 dB per decade above its corner (a decade is a factor of 10 in frequency, and 40 dB
+  is a factor of 100 in amplitude, §3; see [../../filters/lc-filter/](../../filters/lc-filter/)),
   so separating 50 Hz from 150 Hz needs a corner squeezed between them and enormous L and C.
 
 That last point is the motivation for everything after the H-bridge in this tree. **Pulse-width
@@ -603,7 +651,9 @@ it easily. The Fourier series is the tool that both predicts this and proves it 
   partial sum overshoots by about 9 % no matter how many terms you keep (§7). Don't mistake that
   overshoot for a real voltage spike, and do expect it from any sharply band-limited system.
 - **Ideal zero intervals assume a resistive load.** With an inductive load the current keeps flowing
-  through the body diodes during dead time, and the voltage is <!--m:\pm V_{dc}-->![plus-minus V_dc](edges-and-fourier.assets/eq-inline/38ec47d61b.svg)<!--/m--> (depending on current
+  through the body diodes (the diode built into every MOSFET, from source to drain — see
+  [../../dc-ac-inverters/h-bridge/h-bridge.md §5](../../dc-ac-inverters/h-bridge/h-bridge.md#5-the-mosfet-as-a-switch))
+  during dead time, and the voltage is <!--m:\pm V_{dc}-->![plus-minus V_dc](edges-and-fourier.assets/eq-inline/38ec47d61b.svg)<!--/m--> (depending on current
   direction), not zero. The clean <!--m:\cos(n\alpha)-->![cos (n alpha )](edges-and-fourier.assets/eq-inline/770e27da25.svg)<!--/m--> result then no longer holds exactly.
 - **Harmonic elimination costs fundamental.** Choosing <!--m:\alpha-->![alpha](edges-and-fourier.assets/eq-inline/f7c665b459.svg)<!--/m--> to kill a harmonic also shrinks
   the fundamental by <!--m:\cos\alpha-->![cos alpha](edges-and-fourier.assets/eq-inline/9f1f363b16.svg)<!--/m-->. At <!--m:\alpha = 30^\circ-->![alpha = 30^ deg](edges-and-fourier.assets/eq-inline/63580e7f38.svg)<!--/m--> you lose 13.4 % of the useful output to

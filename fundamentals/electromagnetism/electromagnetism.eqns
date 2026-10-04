@@ -153,3 +153,12 @@ tex: \oint_S \vec{B}\cdot d\vec{A} = 0
 name: maxwell-faraday
 tex: \oint_C \vec{E}\cdot d\vec{l} = -\frac{d\Phi_B}{dt}
 ---
+name: kirchhoff
+tex: \text{KCL: } \sum_{\text{node}} i_{in} = \sum_{\text{node}} i_{out}, \qquad \text{KVL: } \sum_{\text{closed loop}} v = 0
+---
+name: flux-peak-sine-step
+tex: B_{pk} = \frac{V_{pk}}{N\omega A_e}, \quad V_{pk} = \sqrt{2}\,V_{rms} \quad\Longrightarrow\quad \sqrt{2}\,V_{rms} = 2\pi f\,N A_e B_{pk}
+---
+name: gauss-plates
+tex: E A = \frac{Q}{\varepsilon_0}, \quad E = \frac{V}{d} \quad\Longrightarrow\quad Q = \frac{\varepsilon_0 A}{d}\,V \quad\Longrightarrow\quad C = \frac{Q}{V} = \frac{\varepsilon_0 A}{d}
+---

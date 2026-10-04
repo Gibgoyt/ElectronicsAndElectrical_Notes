@@ -43,8 +43,8 @@ Suggested order:
    Faraday's law <!--m:v = N\,d\Phi/dt-->![v = N d Phi/dt](README.assets/eq-inline/bc981422f7.svg)<!--/m-->, and why flux is the running integral of voltage.
 4. [fundamentals/transformer/](fundamentals/transformer/) — two windings, one flux; the turns
    ratio, and why a higher frequency means *less* peak flux and a smaller core.
-5. [fundamentals/signals/](fundamentals/signals/) — edges and Fourier series, then AC and RMS
-   (why 230 V means a 325 V peak).
+5. [fundamentals/signals/](fundamentals/signals/) — AC and RMS first (why 230 V means a 325 V
+   peak), then edges and Fourier series, which uses the RMS result.
 6. [dc-dc-converters/buck/](dc-dc-converters/buck/) — <!--m:V_{out} = D \cdot V_{in}-->![V_out = D times V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m-->, derived,
    then [its start-up](dc-dc-converters/buck/startup.md).
 7. [dc-dc-converters/boost/](dc-dc-converters/boost/) — <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--/m-->, same

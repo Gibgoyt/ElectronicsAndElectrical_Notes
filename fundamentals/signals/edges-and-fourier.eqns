@@ -182,3 +182,15 @@ tex: 2\alpha = 360^\circ\cdot\frac{t_d}{T} \;\Longrightarrow\; \alpha = 180^\cir
 name: modified-sine
 tex: \frac{V_{rms}}{V_{pk}} = \sqrt{\frac{\pi - 2\alpha}{\pi}} = \frac{230}{325} = \frac{1}{\sqrt 2} \;\Longrightarrow\; \frac{\pi - 2\alpha}{\pi} = \frac12 \;\Longrightarrow\; \alpha = 45^\circ
 ---
+name: rc-ode
+tex: C\,\frac{dv}{dt} = \frac{V - v}{R} \quad\Longrightarrow\quad \int_0^{v}\frac{dv'}{V - v'} = \int_0^{t}\frac{dt'}{\tau} \quad\Longrightarrow\quad -\ln\frac{V - v}{V} = \frac{t}{\tau}
+---
+name: ring-ode
+tex: C\,\frac{d^2v}{dt^2} = \frac{di}{dt} = -\frac{v}{L} \quad\Longrightarrow\quad \frac{d^2v}{dt^2} = -\frac{1}{LC}\,v \quad\Longrightarrow\quad v = \hat V\sin\omega_0 t, \quad \omega_0 = \frac{1}{\sqrt{LC}}
+---
+name: rc-gain
+tex: v_{in} = v_C + iR = A\left(\sin\omega t + \omega\tau\cos\omega t\right) \quad\Longrightarrow\quad \frac{\hat v_C}{\hat v_{in}} = \frac{1}{\sqrt{1 + (\omega\tau)^2}}
+---
+name: moving-average
+tex: \frac{1}{t_r}\int_{t - t_r/2}^{t + t_r/2}\sin(n\omega_1 s)\,ds = \sin(n\omega_1 t)\,\frac{\sin x}{x}, \qquad x = \frac{n\omega_1 t_r}{2} = \frac{n\pi t_r}{T}
+---

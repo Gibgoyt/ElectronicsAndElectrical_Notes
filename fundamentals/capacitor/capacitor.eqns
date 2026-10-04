@@ -1,7 +1,7 @@
 # Equation sources for capacitor.md — rendered into capacitor.assets/eq-*.svg
 
 name: energy
-tex: E = \tfrac{1}{2}\,C\,V_C^2
+tex: E = \int_0^{Q}\frac{q}{C}\,dq = \frac{Q^2}{2C} = \tfrac{1}{2}\,C\,V_C^2
 ---
 name: charge
 tex: Q = C\,V_C

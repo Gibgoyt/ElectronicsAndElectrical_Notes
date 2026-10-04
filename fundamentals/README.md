@@ -34,9 +34,9 @@ all derived.
    inductor law comes from, and Faraday's law in full.
 4. [transformer/transformer.md](transformer/transformer.md) — Faraday's law applied to two
    windings on one core.
-5. [signals/edges-and-fourier.md](signals/edges-and-fourier.md), then
-   [signals/ac-and-rms.md](signals/ac-and-rms.md) — the waveform language for the inverter
-   documents.
+5. [signals/ac-and-rms.md](signals/ac-and-rms.md), then
+   [signals/edges-and-fourier.md](signals/edges-and-fourier.md) (which uses the RMS result) — the
+   waveform language for the inverter documents.
 
 ## Conventions
 

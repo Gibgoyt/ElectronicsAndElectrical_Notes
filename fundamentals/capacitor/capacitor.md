@@ -29,9 +29,8 @@ document slows all the way down and proves, properly, **why you are allowed to d
 A capacitor is **two conducting plates separated by a gap** (an insulator, the dielectric). Push
 charge onto one plate and it repels an equal charge off the facing plate, so one plate ends up
 <!--m:+Q-->![+Q](capacitor.assets/eq-inline/de10a3e4cf.svg)<!--/m--> and the other <!--m:-Q-->![-Q](capacitor.assets/eq-inline/6422eedc12.svg)<!--/m-->. That separated charge sets up an electric field across the gap, and *that
-field* is the stored energy:
-
-![E equals one half C V_C squared](capacitor.assets/eq-energy.svg)
+field* is where the capacitor keeps its energy. How much energy is worked out at the end of this
+section, once the charge–voltage law it rests on is on the table.
 
 The defining relationship is simply that the stored charge is proportional to the voltage across
 the plates, with the capacitance <!--m:C-->![C](capacitor.assets/eq-inline/32096c2e0e.svg)<!--/m--> as the constant of proportionality:
@@ -41,6 +40,21 @@ the plates, with the capacitance <!--m:C-->![C](capacitor.assets/eq-inline/32096
 - **<!--m:Q-->![Q](capacitor.assets/eq-inline/c3156e00d3.svg)<!--/m-->** — the charge separated onto the plates, in coulombs (C).
 - **<!--m:V_C-->![V_C](capacitor.assets/eq-inline/b1fec46ec0.svg)<!--/m-->** — the voltage across the plates, in volts (V).
 - **<!--m:C-->![C](capacitor.assets/eq-inline/32096c2e0e.svg)<!--/m-->** — the capacitance, in farads (F): how much charge it stores per volt.
+
+**The stored energy, derived.** A voltage is energy per unit charge: one volt means one joule of
+work to carry one coulomb from the <!--m:--->![-](capacitor.assets/eq-inline/3bc15c8aae.svg)<!--/m--> plate to the <!--m:+-->![+](capacitor.assets/eq-inline/a979ef10cc.svg)<!--/m--> plate (<!--m:1\,\mathrm{V} = 1\,\mathrm{J/C}-->![1 V = 1 J/C](capacitor.assets/eq-inline/9ad7202dce.svg)<!--/m-->).
+So charge the capacitor a little at a time and add up the work. When it already holds a charge <!--m:q-->![q](capacitor.assets/eq-inline/22ea1c649c.svg)<!--/m-->,
+its voltage is <!--m:v = q/C-->![v = q/C](capacitor.assets/eq-inline/86b089ff35.svg)<!--/m-->, and carrying the next small charge <!--m:dq-->![dq](capacitor.assets/eq-inline/3bf4ab708f.svg)<!--/m--> across costs <!--m:dW = v\,dq = (q/C)\,dq-->![dW = v dq = (q/C) dq](capacitor.assets/eq-inline/e896fd3aec.svg)<!--/m-->.
+Sum every such step from empty (<!--m:q = 0-->![q = 0](capacitor.assets/eq-inline/3b2d28909c.svg)<!--/m-->) to full (<!--m:q = Q-->![q = Q](capacitor.assets/eq-inline/b2450387e2.svg)<!--/m-->), then use <!--m:Q = C\,V_C-->![Q = C V_C](capacitor.assets/eq-inline/bf31347312.svg)<!--/m-->:
+
+![E equals the integral from 0 to Q of q over C dq, which equals Q squared over 2 C, which equals one half C V_C squared](capacitor.assets/eq-energy.svg)
+
+- **<!--m:E-->![E](capacitor.assets/eq-inline/e0184adedf.svg)<!--/m-->** — the stored energy, in joules (J). Check the units: farads times volts squared is
+  <!--m:(\mathrm{C/V})\cdot\mathrm{V}^2 = \mathrm{C}\cdot\mathrm{V} = \mathrm{J}-->![( C/V) times V^2 = C times V = J](capacitor.assets/eq-inline/d8ac14abe9.svg)<!--/m-->.
+
+The factor of one half is not decoration. The first charge was carried across almost no voltage
+and only the last charge across the full <!--m:V_C-->![V_C](capacitor.assets/eq-inline/b1fec46ec0.svg)<!--/m-->, so on average each coulomb was carried across
+<!--m:V_C/2-->![V_C/2](capacitor.assets/eq-inline/e4e51aaed1.svg)<!--/m-->.
 
 ## 2 The rule you need — when you may differentiate an equation
 
@@ -129,8 +143,8 @@ Contrast the inductor, where current flows straight through the wire the whole t
 ([../inductor/inductor.md §6](../inductor/inductor.md#6-at-the-poles))._
 
 > **Note —** "Blocks DC, passes AC" is just this law restated. At DC the voltage is steady, so
-> <!--m:dV/dt = 0-->![dV/dt = 0](capacitor.assets/eq-inline/9ba4f1161e.svg)<!--/m--> and <!--m:I_C = 0-->![I_C = 0](capacitor.assets/eq-inline/93293972a2.svg)<!--/m--> — an open circuit. The faster the voltage changes (higher frequency),
-> the more current flows for the same capacitance.
+> <!--m:dV/dt = 0-->![dV/dt = 0](capacitor.assets/eq-inline/9ba4f1161e.svg)<!--/m--> and <!--m:I_C = 0-->![I_C = 0](capacitor.assets/eq-inline/93293972a2.svg)<!--/m--> — an open circuit. The faster the voltage changes (for a repeating waveform: the more
+> cycles per second it makes, that is, the higher its frequency), the more current flows for the same capacitance.
 
 ## 6 The duality — one table, read both ways
 

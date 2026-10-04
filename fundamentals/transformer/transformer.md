@@ -41,8 +41,9 @@ does switching the H-bridge at 50 kHz let the step-up transformer be so small?*
 ## 1 Where the transformer sits in the inverter
 
 The inverter in the video turns a 12 V battery into 230 V AC mains. Mains of 230 V RMS has a peak
-of <!--m:230\sqrt{2} \approx 325\,\mathrm{V}-->![230 sqrt 2 approx 325 V](transformer.assets/eq-inline/fd5fcca52e.svg)<!--/m--> (the RMS derivation is in [../signals/](../signals/)),
-so somewhere in the chain the voltage has to be multiplied by about 27. The video does it in the
+of <!--m:230\sqrt{2} \approx 325\,\mathrm{V}-->![230 sqrt 2 approx 325 V](transformer.assets/eq-inline/fd5fcca52e.svg)<!--/m-->. (RMS, "root mean square", is the steady DC voltage that
+would heat a resistor equally; for a sine the peak is <!--m:\sqrt2-->![sqrt 2](transformer.assets/eq-inline/6d0fdf0909.svg)<!--/m--> times the RMS. The derivation is in
+[../signals/ac-and-rms.md](../signals/ac-and-rms.md).) So somewhere in the chain the voltage has to be multiplied by about 27. The video does it in the
 front end, like this:
 
 ![Inverter chain: 12 volt battery, 50 kilohertz H-bridge, step-up transformer, bridge rectifier and capacitor forming the 325 volt DC bus, followed by the second H-bridge and LC filter](transformer.assets/fig-10.svg)
@@ -63,7 +64,9 @@ square back into DC and then into a 50 Hz sine._
    sine out of that bus.
 
 Why not simply boost 12 V to 325 V with a [boost converter](../../dc-dc-converters/boost/boost.md)?
-From <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](transformer.assets/eq-inline/ff557ad27a.svg)<!--/m-->, a ratio of 27 needs <!--m:D = 1 - 12/325 = 0.963-->![D = 1 - 12/325 = 0.963](transformer.assets/eq-inline/cd184a151c.svg)<!--/m-->. The switch would be
+A boost's switch is ON for a fraction <!--m:D-->![D](transformer.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> of each switching period (the *duty cycle*), and its
+[step-up ratio](../../dc-dc-converters/boost/boost.md#3-volt-second-balance--the-step-up-ratio)
+is <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](transformer.assets/eq-inline/ff557ad27a.svg)<!--/m-->; so a ratio of 27 needs <!--m:D = 1 - 12/325 = 0.963-->![D = 1 - 12/325 = 0.963](transformer.assets/eq-inline/cd184a151c.svg)<!--/m-->. The switch would be
 off for only 3.7 % of each period, the peak currents would be enormous, and every parasitic
 resistance in the circuit would eat into the output (see
 [../../dc-dc-converters/boost/startup.md](../../dc-dc-converters/boost/startup.md) on extreme duty
@@ -90,8 +93,12 @@ cross-section <!--m:A_e-->![A_e](transformer.assets/eq-inline/67c3ce8c21.svg)<!-
 
 Now wind a **second** coil on the same core. Current in coil 1 makes flux; some or all of that flux
 also threads coil 2, so changing <!--m:i_1-->![i_1](transformer.assets/eq-inline/d516b3037a.svg)<!--/m--> induces a voltage in coil 2 even though no wire connects
-them. That cross-coupling is **mutual inductance** <!--m:M-->![M](transformer.assets/eq-inline/c63ae6dd4f.svg)<!--/m-->, and the two coils obey a pair of coupled
-equations:
+them. That cross-coupling is **mutual inductance** <!--m:M-->![M](transformer.assets/eq-inline/c63ae6dd4f.svg)<!--/m-->: the flux linkage in one coil per ampere in
+the other, so a changing <!--m:i_1-->![i_1](transformer.assets/eq-inline/d516b3037a.svg)<!--/m--> induces <!--m:M\,di_1/dt-->![M di_1/dt](transformer.assets/eq-inline/1c5a6cabc7.svg)<!--/m--> in coil 2
+([../electromagnetism/electromagnetism.md §11](../electromagnetism/electromagnetism.md#11-mutual-inductance-and-coupling)).
+Each coil's voltage is then the sum of two terms: its own self-induced voltage, <!--m:L\,di/dt-->![L di/dt](transformer.assets/eq-inline/f24cc20a0b.svg)<!--/m--> from
+its own current, plus the mutually induced voltage from the other coil's current. That gives a pair
+of coupled equations:
 
 ![v_1 equals L_1 di_1 by dt plus M di_2 by dt, and v_2 equals M di_1 by dt plus L_2 di_2 by dt](transformer.assets/eq-coupled.svg)
 
@@ -112,8 +119,10 @@ both windings. A little (red, dashed) closes through the air around one winding 
 leakage flux is what turns into voltage spikes later._
 
 **A useful check.** Set <!--m:k = 1-->![k = 1](transformer.assets/eq-inline/8f0dfd2fea.svg)<!--/m--> in the coupled equations. Both self-inductances and the mutual
-inductance come from the same reluctance, so substituting them makes the current-dependent bracket
-cancel, leaving a ratio of turns:
+inductance come from the same reluctance. The self-inductances are <!--m:N^2/\mathcal{R}-->![N^2/R](transformer.assets/eq-inline/04c10872ed.svg)<!--/m--> from above;
+the mutual inductance follows the same way, because coil 1's flux <!--m:N_1 i_1/\mathcal{R}-->![N_1 i_1/R](transformer.assets/eq-inline/34d283a268.svg)<!--/m--> all
+threads coil 2's <!--m:N_2-->![N_2](transformer.assets/eq-inline/ce43cfb006.svg)<!--/m--> turns, giving <!--m:M = N_2 (N_1 i_1/\mathcal{R})/i_1 = N_1 N_2/\mathcal{R}-->![M = N_2 (N_1 i_1/R)/i_1 = N_1 N_2/R](transformer.assets/eq-inline/4b664a8009.svg)<!--/m-->.
+Substituting all three makes the current-dependent bracket cancel, leaving a ratio of turns:
 
 ![with k equal 1, v_2 over v_1 equals N_2 over N_1](transformer.assets/eq-coupled-ideal.svg)
 
@@ -152,8 +161,9 @@ That is the turns-ratio law. Two points about it are easy to miss.
 
 The current ratio can be derived two ways. Each one is worth seeing.
 
-**From the magnetic circuit.** Ampère's law around the closed core path says that the total
-ampere-turns enclosed equals the reluctance times the flux. With the secondary current defined
+**From the magnetic circuit.** Ampère's law around the closed core path, written for <!--m:H-->![H](transformer.assets/eq-inline/7cf184f4c6.svg)<!--/m-->, says
+that the total ampere-turns enclosed equals the reluctance times the flux (the "magnetic Ohm's
+law" of [../electromagnetism/electromagnetism.md §5](../electromagnetism/electromagnetism.md#5-h-permeability-and-why-the-core-matters)). With the secondary current defined
 flowing *out* of its winding into the load, it opposes the primary's ampere-turns:
 
 ![closed integral of H dl equals N_p i_p minus N_s i_s equals R Phi](transformer.assets/eq-mmf.svg)
@@ -180,26 +190,35 @@ This is why the 12 V side of an inverter needs thick copper and the 325 V side d
 
 ## 5 Impedance reflection
 
-Put a load <!--m:Z_L-->![Z_L](transformer.assets/eq-inline/0be6560028.svg)<!--/m--> on the secondary. What does the primary source "see"? Divide the primary voltage
-by the primary current, then substitute both ratios:
+Put a load <!--m:Z_L-->![Z_L](transformer.assets/eq-inline/0be6560028.svg)<!--/m--> on the secondary. Its **impedance** <!--m:Z_L-->![Z_L](transformer.assets/eq-inline/0be6560028.svg)<!--/m--> is the ratio of the voltage across it to
+the current through it, <!--m:Z = v/i-->![Z = v/i](transformer.assets/eq-inline/e956689fa9.svg)<!--/m--> — the generalisation of resistance to parts whose voltage and
+current need not be in step (for a plain resistor it is just <!--m:R-->![R](transformer.assets/eq-inline/06576556d1.svg)<!--/m-->, in ohms; inductors and capacitors
+get theirs in [../../filters/lc-filter/lc-filter.md §2](../../filters/lc-filter/lc-filter.md#2-two-laws-read-as-smoothing-rules)).
+What does the primary source "see"? Divide the primary voltage by the primary current, then
+substitute both ratios:
 
 ![Z_p prime equals v_p over i_p equals N_p over N_s squared times Z_L](transformer.assets/eq-impedance.svg)
 
 The load is **reflected** through the transformer scaled by the *square* of the turns ratio:
 once for the voltage ratio and once more for the current ratio. For the inverter, a 1 kW load on
-the 325 V bus looks like 105.6 Ω on the secondary. Seen from the 12 V primary it is a fraction of
+the 325 V bus looks like 105.6 Ω on the secondary (a resistor <!--m:R-->![R](transformer.assets/eq-inline/06576556d1.svg)<!--/m--> with voltage <!--m:V-->![V](transformer.assets/eq-inline/c9ee5681d3.svg)<!--/m--> across it draws
+<!--m:I = V/R-->![I = V/R](transformer.assets/eq-inline/2e0a80d6b3.svg)<!--/m--> and so dissipates <!--m:P = VI = V^2/R-->![P = VI = V^2/R](transformer.assets/eq-inline/9e8459a474.svg)<!--/m-->; solve for <!--m:R = V^2/P-->![R = V^2/P](transformer.assets/eq-inline/968daf8c2c.svg)<!--/m-->). Seen from the 12 V primary it is a fraction of
 an ohm:
 
 ![Z_L equals 105.6 ohm reflects to Z_p prime equals 0.144 ohm, and 12 squared over 0.144 equals 1000 W](transformer.assets/eq-impedance-numbers.svg)
 
 That 0.144 Ω is the brutal fact of low-voltage power electronics. Every milliohm in the primary
-loop — MOSFET on-resistance, PCB traces, battery cables, the primary winding — sits in series with
+loop — MOSFET on-resistance (the small resistance of a switched-on MOSFET, the transistor switch of
+the H-bridge), PCB traces, battery cables, the primary winding — sits in series with
 an effective load of only 144 mΩ. Two MOSFETs of 2 mΩ each already add 4 mΩ, 2.8 % of the load,
 before anything else is counted.
 
 > **Tip —** Impedance reflection is a two-way street. A short circuit on the 325 V side reflects
 > as a short on the 12 V side, and a stray capacitance on the secondary reflects to the primary
-> multiplied by <!--m:(N_s/N_p)^2 \approx 730-->![(N_s/N_p)^2 approx 730](transformer.assets/eq-inline/07ef91367d.svg)<!--/m-->. A 100 pF winding capacitance on the secondary looks like
+> multiplied by <!--m:(N_s/N_p)^2 \approx 730-->![(N_s/N_p)^2 approx 730](transformer.assets/eq-inline/07ef91367d.svg)<!--/m-->. (Why multiplied: by <!--m:i = C\,dv/dt-->![i = C dv/dt](transformer.assets/eq-inline/7f5f5ec54b.svg)<!--/m-->, the same voltage
+> waveform drives a current proportional to <!--m:C-->![C](transformer.assets/eq-inline/32096c2e0e.svg)<!--/m-->, so a capacitor's impedance <!--m:v/i-->![v/i](transformer.assets/eq-inline/0e2de642fd.svg)<!--/m--> is inversely
+> proportional to <!--m:C-->![C](transformer.assets/eq-inline/32096c2e0e.svg)<!--/m-->. Dividing the impedance by <!--m:(N_s/N_p)^2-->![(N_s/N_p)^2](transformer.assets/eq-inline/854a3a301d.svg)<!--/m--> is therefore the same as multiplying
+> the capacitance by it.) A 100 pF winding capacitance on the secondary looks like
 > about 73 nF to the H-bridge, and the bridge must charge it on every edge.
 
 ## 6 The dot convention
@@ -240,7 +259,8 @@ often specified through the core's <!--m:A_L-->![A_L](transformer.assets/eq-inli
 
 With a ±V square wave on the primary, <!--m:i_m-->![i_m](transformer.assets/eq-inline/71acc08428.svg)<!--/m--> is a triangle, exactly like the inductor ramp in
 [../inductor/inductor.md §4](../inductor/inductor.md#4-from-the-law-to-the-ramp--the-integral-done-slowly).
-During each half-period <!--m:T/2-->![T/2](transformer.assets/eq-inline/12bfe0f94c.svg)<!--/m--> it ramps through <!--m:V (T/2)/L_m-->![V (T/2)/L_m](transformer.assets/eq-inline/b79907f73a.svg)<!--/m-->, from <!--m:-\hat\imath_m-->![-_m](transformer.assets/eq-inline/77f2551cb7.svg)<!--/m--> to <!--m:+\hat\imath_m-->![+_m](transformer.assets/eq-inline/84a601b1be.svg)<!--/m-->:
+During each half-period <!--m:T/2-->![T/2](transformer.assets/eq-inline/12bfe0f94c.svg)<!--/m--> (where <!--m:T = 1/f-->![T = 1/f](transformer.assets/eq-inline/75216c41f9.svg)<!--/m--> is the period) it ramps through <!--m:V (T/2)/L_m-->![V (T/2)/L_m](transformer.assets/eq-inline/b79907f73a.svg)<!--/m-->, from
+<!--m:-\hat\imath_m-->![-_m](transformer.assets/eq-inline/77f2551cb7.svg)<!--/m--> to <!--m:+\hat\imath_m-->![+_m](transformer.assets/eq-inline/84a601b1be.svg)<!--/m--> — a hat marks a peak value throughout this document:
 
 ![i_m peak equals V over 4 f L_m](transformer.assets/eq-im-peak.svg)
 
@@ -257,8 +277,9 @@ from section 4, plus this magnetising current, which flows whether or not there 
 Three facts follow.
 
 - **The magnetising current is reactive.** It stores energy in the core during one quarter of the
-  cycle and returns it during the next; through the H-bridge's body diodes it goes back to the
-  battery. It costs conduction loss in the MOSFETs and copper, but it is not "used up".
+  cycle and returns it during the next; through the H-bridge's body diodes (the diode built into
+  every power MOSFET, see [../../dc-ac-inverters/h-bridge/](../../dc-ac-inverters/h-bridge/)) it
+  goes back to the battery. It costs conduction loss in the MOSFETs and copper, but it is not "used up".
 - **It is the flux in disguise.** Since <!--m:i_m = N_p \Phi / L_m-->![i_m = N_p Phi/L_m](transformer.assets/eq-inline/3fcff99256.svg)<!--/m-->, the magnetising current is
   proportional to the core flux. When the flux heads towards saturation, <!--m:i_m-->![i_m](transformer.assets/eq-inline/71acc08428.svg)<!--/m--> is what you see
   blowing up on a current probe (Figure 33).
@@ -292,8 +313,8 @@ time-integral of the voltage:
 
 So during the long **flat tops** of the square wave, where <!--m:v_p-->![v_p](transformer.assets/eq-inline/60ec63eb4d.svg)<!--/m--> is constant at +12 V, the flux
 ramps up in a straight line at slope <!--m:V/N-->![V/N](transformer.assets/eq-inline/f37dc399ac.svg)<!--/m-->. During the flat bottoms it ramps down at the same
-slope. The **edges** do almost nothing: an edge lasts perhaps 50 ns out of a 10 μs half-period, and
-the area under it is negligible compared with the area under a flat top:
+slope. The **edges** do almost nothing: an edge lasts perhaps 50 ns (its *rise time* <!--m:t_r-->![t_r](transformer.assets/eq-inline/a6684eb7a2.svg)<!--/m-->) out of a 10 μs
+half-period, and the area under it is negligible compared with the area under a flat top:
 
 ![integral over an edge is at most 0.6 microvolt-seconds, much less than 120 microvolt-seconds for a flat top](transformer.assets/eq-edge-vs.svg)
 
@@ -335,16 +356,23 @@ field gets bigger; it is because the field gets **smaller**, so less iron is nee
 without saturating.
 
 **The sine-wave version.** The classic transformer equation found in textbooks is the same
-argument for a sine. Integrate a sine and the flux is a cosine:
+argument for a sine. Write the sine with its *angular frequency* <!--m:\omega = 2\pi f-->![omega = 2 pi f](transformer.assets/eq-inline/10f7ad86c0.svg)<!--/m--> (radians per
+second; one cycle is <!--m:2\pi-->![2 pi](transformer.assets/eq-inline/0833718ca4.svg)<!--/m--> radians). Integrate a sine and the flux is a cosine, with amplitude
+<!--m:\hat V/(N\omega) = \hat V/(2\pi f N)-->![V/(N omega ) = V/(2 pi f N)](transformer.assets/eq-inline/baa809ea29.svg)<!--/m-->:
 
 ![v equals V peak sin omega t gives Phi peak equals V peak over 2 pi f N](transformer.assets/eq-sine.svg)
 
-Convert the peak voltage to RMS and this becomes the famous "4.44 equation":
+Substitute <!--m:\hat\Phi = \hat B A_e-->![Phi = B A_e](transformer.assets/eq-inline/da357e549c.svg)<!--/m-->, solve for <!--m:\hat V = 2\pi f N A_e \hat B-->![V = 2 pi f N A_e B](transformer.assets/eq-inline/fb9d14ea4f.svg)<!--/m-->, and convert the peak
+voltage to RMS (<!--m:V_{rms} = \hat V/\sqrt2-->![V_rms = V/sqrt 2](transformer.assets/eq-inline/cda4f82f9c.svg)<!--/m--> for a sine, [../signals/ac-and-rms.md §3](../signals/ac-and-rms.md#3-rms--defined-by-equal-heating))
+and this becomes the famous "4.44 equation":
 
 ![V_rms equals 4.44 f N A_e B peak](transformer.assets/eq-emf-sine.svg)
 
 The square-wave equation has 4.00 where the sine has 4.44. The ratio <!--m:4.44/4.00 = 1.11-->![4.44/4.00 = 1.11](transformer.assets/eq-inline/caf069adeb.svg)<!--/m--> is the sine's
-*form factor* (RMS divided by rectified average): for the same RMS voltage, a sine reaches a
+*form factor* (RMS divided by rectified average). The rectified average of a sine is the area of
+one hump, <!--m:\hat V\int_0^\pi \sin\theta\,d\theta = 2\hat V-->![V integral_0^ pi sin theta d theta = 2 V](transformer.assets/eq-inline/f37dc6f65f.svg)<!--/m-->, spread over its length <!--m:\pi-->![pi](transformer.assets/eq-inline/6ac47b6d73.svg)<!--/m-->, so
+<!--m:2\hat V/\pi-->![2 V/pi](transformer.assets/eq-inline/60a7ca4333.svg)<!--/m-->; then <!--m:(\hat V/\sqrt2)/(2\hat V/\pi) = \pi/(2\sqrt2) \approx 1.11-->![( V/sqrt 2)/(2 V/pi ) = pi/(2 sqrt 2) approx 1.11](transformer.assets/eq-inline/4c64935ad5.svg)<!--/m-->. A square wave's
+form factor is exactly 1, which is why its constant is 4.00. For the same RMS voltage, a sine reaches a
 slightly higher peak flux than a square wave does.
 
 > **Note — the video's own argument.** The video explains the same point with energy: at 1 kW, a
@@ -412,8 +440,8 @@ So the practical ratio is about 1:30 rather than 1:27, wound as 2 turns to 60 tu
 > **Watch out —** A fixed turns ratio means the bus voltage *follows the battery*. A 12 V lead-acid
 > battery ranges from about 10.5 V (flat) to 14.4 V (charging), so a 1:30 transformer gives a bus of
 > roughly 300 V to 420 V. Something downstream must cope: either the SPWM stage adjusts its
-> modulation index (which needs at least 325 V at minimum battery, and bus capacitors and
-> MOSFETs rated for the maximum), or the front end is regulated itself (for example by
+> modulation index (the fraction of the bus voltage it uses as the output sine's peak) — which needs at least 325 V at
+> minimum battery, and bus capacitors and MOSFETs rated for the maximum — or the front end is regulated itself (for example by
 > phase-shifting the first H-bridge's legs). See
 > [../../dc-ac-inverters/spwm/](../../dc-ac-inverters/spwm/).
 
@@ -443,8 +471,9 @@ voltage averages to exactly zero:
 ![Phi of T minus Phi of 0 equals 1 over N_p times the integral of v_p over a period equals 0, if and only if the average of v_p is 0](transformer.assets/eq-vs-balance-core.svg)
 
 A symmetric ±12 V square wave satisfies this exactly. A *slightly* asymmetric one does not, and the
-difference accumulates. Suppose gate-drive mismatch makes <!--m:Q_1/Q_4-->![Q_1/Q_4](transformer.assets/eq-inline/b03ee6318d.svg)<!--/m--> conduct 50 ns longer than
-<!--m:Q_2/Q_3-->![Q_2/Q_3](transformer.assets/eq-inline/757c9d447f.svg)<!--/m--> each period. That is a tiny DC component — but the flux walks upward by a fixed amount
+difference accumulates. Suppose gate-drive mismatch makes one diagonal pair of the H-bridge, <!--m:Q_1/Q_4-->![Q_1/Q_4](transformer.assets/eq-inline/b03ee6318d.svg)<!--/m-->, conduct 50 ns
+longer than the other pair, <!--m:Q_2/Q_3-->![Q_2/Q_3](transformer.assets/eq-inline/757c9d447f.svg)<!--/m-->, each period (switch names as in
+[../../dc-ac-inverters/h-bridge/](../../dc-ac-inverters/h-bridge/) §2). That is a tiny DC component — but the flux walks upward by a fixed amount
 every period:
 
 ![Delta Phi per period equals 12 V times 50 ns over 2 equals 0.3 microweber](transformer.assets/eq-imbalance.svg)
@@ -469,10 +498,12 @@ timing mismatch — half a percent of the half-period — is enough to saturate 
 standard remedies:
 
 - **A DC-blocking capacitor** in series with the primary. It charges to whatever DC component
-  exists and cancels it. Easy at high voltage; at 83 A RMS it must be a large, low-ESR film part.
+  exists and cancels it. Easy at high voltage; at 83 A RMS it must be a large film part with a low ESR (equivalent series resistance, the
+  small resistance inside every real capacitor that the ripple current heats).
 - **Peak-current-mode control**, which ends each half-cycle on a current threshold rather than a
   timer. A drift in the magnetising current then shortens the next pulse automatically.
-- **Matched, symmetric gate drive** and dead-time, so that the two diagonals really do get
+- **Matched, symmetric gate drive** and dead-time (a short pause with both switches of a leg off,
+  so they never conduct together), so that the two diagonals really do get
   identical volt-seconds (see [../../dc-ac-inverters/h-bridge/](../../dc-ac-inverters/h-bridge/)).
 - **A small air gap**, which lowers <!--m:L_m-->![L_m](transformer.assets/eq-inline/48ef75732e.svg)<!--/m--> (so the same DC current makes less bias flux) at the
   cost of more magnetising current.
@@ -545,8 +576,10 @@ Three consequences:
   half-cycles up, and a square wave flipped is flat. The bus capacitor only has to bridge the short
   edge intervals. This is a major advantage of square-wave over sine-wave links
   ([../../rectifiers/](../../rectifiers/)).
-- **Every harmonic passes through too.** A square wave is a sum of odd harmonics, which decay only
-  as <!--m:1/n-->![1/n](transformer.assets/eq-inline/5f556983ad.svg)<!--/m--> ([../signals/](../signals/)). The transformer must handle them all — up to tens of
+- **Every harmonic passes through too.** A repeating waveform can be written as a sum of sines at
+  whole-number multiples <!--m:n-->![n](transformer.assets/eq-inline/d1854cae89.svg)<!--/m--> of its frequency, its *harmonics*. A square wave contains only the odd
+  ones, with amplitudes falling only as <!--m:1/n-->![1/n](transformer.assets/eq-inline/5f556983ad.svg)<!--/m--> (derived as a Fourier series in
+  [../signals/edges-and-fourier.md](../signals/edges-and-fourier.md#6-the-square-wave-derived)). The transformer must handle them all — up to tens of
   megahertz for fast edges. Its leakage inductance and winding capacitance shape those high
   harmonics into the ringing visible at each edge.
 
@@ -575,7 +608,10 @@ At 50 kHz, though, the resistance that matters is not the DC resistance. Two eff
 resistance by a factor <!--m:F_R-->![F_R](transformer.assets/eq-inline/b14a489ca7.svg)<!--/m-->:
 
 - **Skin effect.** A high-frequency current crowds towards the surface of a conductor, within a
-  depth <!--m:\delta-->![delta](transformer.assets/eq-inline/3a6a16552e.svg)<!--/m-->, because the conductor's own changing internal field opposes current in its centre:
+  depth <!--m:\delta-->![delta](transformer.assets/eq-inline/3a6a16552e.svg)<!--/m-->, because the conductor's own changing internal field opposes current in its centre.
+  Solving the field equations inside the conductor gives the standard skin-depth result, with <!--m:\rho-->![rho](transformer.assets/eq-inline/c77a25750c.svg)<!--/m-->
+  the copper's resistivity (<!--m:1.7\times10^{-8}\ \Omega\cdot\mathrm{m}-->![1.7 times 10^-8 Omega times m](transformer.assets/eq-inline/2710aa4bc8.svg)<!--/m-->) and <!--m:\mu_0-->![mu_0](transformer.assets/eq-inline/7cb4a998a7.svg)<!--/m--> the permeability of
+  free space:
 
   ![delta equals root of rho over pi f mu_0, 9.3 mm at 50 Hz and 0.30 mm at 50 kHz](transformer.assets/eq-skin.svg)
 
@@ -626,20 +662,31 @@ Where the energy goes depends on the topology:
   snubbed.
 
 Even when clamped, leakage costs you twice. First, every edge has to reverse the current in
-<!--m:L_\ell-->![L_ l](transformer.assets/eq-inline/4eb22dbba5.svg)<!--/m-->, and during that **commutation time** the secondary voltage is not available to the load:
+<!--m:L_\ell-->![L_ l](transformer.assets/eq-inline/4eb22dbba5.svg)<!--/m-->, from <!--m:+I-->![+I](transformer.assets/eq-inline/f895dd38a9.svg)<!--/m--> to <!--m:-I-->![-I](transformer.assets/eq-inline/f71e105f8a.svg)<!--/m-->, a change of <!--m:2I-->![2I](transformer.assets/eq-inline/e045b3e0cb.svg)<!--/m-->. With the input voltage across it the current changes
+at the rate <!--m:V_{in}/L_\ell-->![V_in/L_ l](transformer.assets/eq-inline/c268b5083d.svg)<!--/m--> (the inductor law), so the reversal takes <!--m:2I/(V_{in}/L_\ell)-->![2I/(V_in/L_ l )](transformer.assets/eq-inline/a0a5aa72d4.svg)<!--/m-->. During
+that **commutation time** the secondary voltage is not available to the load:
 
 ![t_c equals 2 I L_l over V_in, 0.69 microseconds, 6.9 percent of a half-period](transformer.assets/eq-commutation.svg)
 
-Second, if the leakage energy is dumped into a dissipative clamp instead of being recycled, it
-costs real power:
+Second, if the leakage energy (the inductor energy <!--m:\tfrac12 L I^2-->![12 L I^2](transformer.assets/eq-inline/0ad3ac82a0.svg)<!--/m--> of
+[../electromagnetism/electromagnetism.md §10](../electromagnetism/electromagnetism.md#10-energy-stored-in-the-magnetic-field))
+is dumped into a dissipative clamp instead of being recycled, it costs real power — two edges per
+period, <!--m:f-->![f](transformer.assets/eq-inline/4a0a19218e.svg)<!--/m--> periods per second:
 
 ![E_l equals one half L_l I squared equals 0.17 mJ, P_l equals 2 f E_l equals 17 W](transformer.assets/eq-leak-energy.svg)
 
 **Snubbers.** An RC snubber places a capacitor (to slow the voltage rise and lower the ring
 frequency) in series with a resistor (to damp the ringing) across the node that rings. A common
 starting point is a capacitor 3 to 4 times the parasitic capacitance, and a resistor equal to the
-ring's characteristic impedance. The snubber capacitor is fully charged and discharged through the
-resistor on every edge, so it dissipates power at a rate proportional to frequency:
+ring's *characteristic impedance* <!--m:\sqrt{L/C}-->![sqrt L/C](transformer.assets/eq-inline/03508d8f6f.svg)<!--/m-->. That is the ratio of peak voltage to peak current
+in an <!--m:L-->![L](transformer.assets/eq-inline/d160e0986a.svg)<!--/m-->–<!--m:C-->![C](transformer.assets/eq-inline/32096c2e0e.svg)<!--/m--> ring: the energy swings between <!--m:\tfrac12 L\hat I^2-->![12 L I^2](transformer.assets/eq-inline/eddcd718f9.svg)<!--/m--> and <!--m:\tfrac12 C\hat V^2-->![12 C V^2](transformer.assets/eq-inline/4d21b93a0b.svg)<!--/m-->, and
+setting the two equal gives <!--m:\hat V/\hat I = \sqrt{L/C}-->![V/I = sqrt L/C](transformer.assets/eq-inline/af69ba40ce.svg)<!--/m-->. The snubber capacitor is fully charged
+and discharged through the resistor every period. Charging a capacitor to <!--m:\Delta V-->![Delta V](transformer.assets/eq-inline/2c7f2582c1.svg)<!--/m--> from a fixed
+voltage <!--m:\Delta V-->![Delta V](transformer.assets/eq-inline/2c7f2582c1.svg)<!--/m--> through a resistor pushes a charge <!--m:Q = C\,\Delta V-->![Q = C Delta V](transformer.assets/eq-inline/99b62639b2.svg)<!--/m--> out of the source, which
+therefore supplies <!--m:Q\,\Delta V = C\,\Delta V^2-->![Q Delta V = C Delta V^2](transformer.assets/eq-inline/3643861bfb.svg)<!--/m-->; the capacitor keeps only
+<!--m:\tfrac12 C\,\Delta V^2-->![12 C Delta V^2](transformer.assets/eq-inline/a017b30999.svg)<!--/m--> ([../capacitor/capacitor.md §1](../capacitor/capacitor.md#1-what-a-capacitor-actually-is)),
+so the other half is burnt in the resistor, whatever its value. Discharging then burns the stored
+half too. Each period costs <!--m:C\,\Delta V^2-->![C Delta V^2](transformer.assets/eq-inline/1883cb4a8f.svg)<!--/m-->, and the power is proportional to frequency:
 
 ![R_sn about root L_l over C_par, and P_sn equals C_sn delta V squared f, about 4.6 W](transformer.assets/eq-snubber.svg)
 
@@ -702,7 +749,12 @@ The rest of the circuit also pays for frequency:
 - **Copper** — the skin depth shrinks as <!--m:1/\sqrt{f}-->![1/sqrt f](transformer.assets/eq-inline/b2d099c212.svg)<!--/m--> and proximity losses grow, so <!--m:F_R-->![F_R](transformer.assets/eq-inline/b14a489ca7.svg)<!--/m--> climbs
   (section 13).
 - **Switching** — each MOSFET dissipates energy on every edge while it is half-on, carrying current
-  and blocking voltage at the same time. That loss is proportional to frequency:
+  and blocking voltage at the same time. If the voltage <!--m:V-->![V](transformer.assets/eq-inline/c9ee5681d3.svg)<!--/m--> and current <!--m:I-->![I](transformer.assets/eq-inline/ca73ab6556.svg)<!--/m--> overlap for the edge's
+  rise time <!--m:t_r-->![t_r](transformer.assets/eq-inline/a6684eb7a2.svg)<!--/m--> (or fall time <!--m:t_f-->![t_f](transformer.assets/eq-inline/1f679eb63d.svg)<!--/m-->), the dissipated power ramps up to <!--m:VI-->![VI](transformer.assets/eq-inline/85ebe39d57.svg)<!--/m--> and back, a triangle
+  of area <!--m:\tfrac12 V I t_r-->![12 V I t_r](transformer.assets/eq-inline/cca0057a0f.svg)<!--/m--> per edge (the overlap is drawn and derived in
+  [../../dc-ac-inverters/h-bridge/h-bridge.md §6](../../dc-ac-inverters/h-bridge/h-bridge.md#6-switching-transitions-and-switching-loss)).
+  One turn-on and one turn-off per period, <!--m:f-->![f](transformer.assets/eq-inline/4a0a19218e.svg)<!--/m--> periods per second, so the loss is proportional to
+  frequency:
 
   ![P_sw about one half V I times t_r plus t_f times f, about 2.5 W per switch](transformer.assets/eq-switching.svg)
 
@@ -735,7 +787,7 @@ can actually be copper. In an ideal transformer the two windings carry equal amp
 
 ![K_u A_w J equals N_p I_p plus N_s I_s equals 2 N_p I_p](transformer.assets/eq-ap-window.svg)
 
-Multiply the two, and the turns cancel:
+Multiply the two, write the transformer's power as <!--m:P = V_p I_p-->![P = V_p I_p](transformer.assets/eq-inline/b9cf192baa.svg)<!--/m-->, and the turns cancel:
 
 ![A_p equals A_e A_w equals P over 2 K_u J f B peak](transformer.assets/eq-ap.svg)
 
