@@ -79,8 +79,10 @@ that a transformer only works on *changing* voltage — which is why the first H
 Start from the single inductor ([../inductor/inductor.md](../inductor/inductor.md)). A current
 ![i](transformer.assets/eq-inline/042dc4512f.svg)<!--m:i--> through ![N](transformer.assets/eq-inline/b51a60734d.svg)<!--m:N--> turns drives a flux ![Phi](transformer.assets/eq-inline/b51f9a1a7f.svg)<!--m:\Phi--> around the core, and Faraday's law says that a changing
 flux induces a voltage in every turn it passes through. The electromagnetism behind both halves of
-that sentence — Ampère for "current makes flux", Faraday for "changing flux makes voltage" — is in
-[../electromagnetism/](../electromagnetism/). Here we only need the result. For a winding of ![N](transformer.assets/eq-inline/b51a60734d.svg)<!--m:N-->
+that sentence — Ampère for "current makes flux", Faraday for "changing flux makes voltage" — is
+summarised in [../electromagnetism/](../electromagnetism/), and each law has its full treatment in
+[../amperes-law/](../amperes-law/) and [../faradays-law/](../faradays-law/). Here we only need the
+result. For a winding of ![N](transformer.assets/eq-inline/b51a60734d.svg)<!--m:N-->
 turns, all linked by the same flux:
 
 ![v equals N times d Phi by dt](transformer.assets/eq-faraday.svg)
@@ -843,7 +845,10 @@ every dimension. Most of the weight of an old-style inverter was its 50 Hz trans
   the constant-voltage ramp (§3) is the flux ramp and the magnetising-current ramp here; the
   inductive kick (§6) is the leakage spike.
 - **Faraday, Ampère, reluctance, mutual inductance in depth:**
-  [../electromagnetism/](../electromagnetism/).
+  [../electromagnetism/](../electromagnetism/); the laws in full:
+  [../amperes-law/amperes-law.md](../amperes-law/amperes-law.md) and
+  [../faradays-law/faradays-law.md](../faradays-law/faradays-law.md) (its §15.2 derives this
+  document's turns ratio from the flux rule).
 - **Square-wave harmonics, edges, RMS and the 325 V peak:** [../signals/](../signals/).
 - **Volt-second balance, first met on an inductor:**
   [../../dc-dc-converters/buck/buck.md](../../dc-dc-converters/buck/buck.md) and

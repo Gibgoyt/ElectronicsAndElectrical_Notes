@@ -30,7 +30,10 @@ A capacitor is **two conducting plates separated by a gap** (an insulator, the d
 charge onto one plate and it repels an equal charge off the facing plate, so one plate ends up
 ![+Q](capacitor.assets/eq-inline/de10a3e4cf.svg)<!--m:+Q--> and the other ![-Q](capacitor.assets/eq-inline/6422eedc12.svg)<!--m:-Q-->. That separated charge sets up an electric field across the gap, and *that
 field* is where the capacitor keeps its energy. How much energy is worked out at the end of this
-section, once the charge–voltage law it rests on is on the table.
+section, once the charge–voltage law it rests on is on the table. (Charge, the force between
+charges and the electric field have their full treatment in
+[../coulombs-law/coulombs-law.md](../coulombs-law/coulombs-law.md), whose §9 derives the
+capacitance of two parallel plates from Coulomb's law.)
 
 The defining relationship is simply that the stored charge is proportional to the voltage across
 the plates, with the capacitance ![C](capacitor.assets/eq-inline/32096c2e0e.svg)<!--m:C--> as the constant of proportionality:

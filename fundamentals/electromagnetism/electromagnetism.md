@@ -385,6 +385,11 @@ treatment, with Faraday's experiments, the moving-conductor form and the field f
 
 ![v of t equals N times d Phi by dt equals d lambda by dt](electromagnetism.assets/eq-faraday.svg)
 
+This is the **terminal-voltage** form, with no minus sign. The physics form, written for the
+electromotive force (EMF) ![E](electromagnetism.assets/eq-inline/2ac770400e.svg)<!--m:\mathcal{E}--> that the changing flux induces, in volts, is ![E = -N d Phi/dt](electromagnetism.assets/eq-inline/b72deec463.svg)<!--m:\mathcal{E} = -N\,d\Phi/dt--> (Lenz's minus sign); the two agree
+because the terminal voltage, measured in the passive sign convention, is ![v = - E](electromagnetism.assets/eq-inline/044f7bead6.svg)<!--m:v = -\mathcal{E}-->. §8
+derives that step; until then, read ![v](electromagnetism.assets/eq-inline/7a38d8cbd2.svg)<!--m:v--> as "the voltage you would measure across the winding".
+
 Read it symbol by symbol:
 
 - **![v(t)](electromagnetism.assets/eq-inline/1e6e107117.svg)<!--m:v(t)-->** — the voltage across the winding's two terminals at the instant ![t](electromagnetism.assets/eq-inline/8efd86fb78.svg)<!--m:t-->, in volts.
@@ -1001,7 +1006,7 @@ are written with negative powers: ![C times s^-1](electromagnetism.assets/eq-inl
 | ![Delta Phi](electromagnetism.assets/eq-inline/349e816fb2.svg)<!--m:\Delta\Phi--> | change of flux over an interval | ![Wb](electromagnetism.assets/eq-inline/ad708422a4.svg)<!--m:\mathrm{Wb}--> | §6 |
 | ![Phi_pk](electromagnetism.assets/eq-inline/edc0339acd.svg)<!--m:\Phi_{pk}-->, ![B_pk](electromagnetism.assets/eq-inline/4417db2e8a.svg)<!--m:B_{pk}-->, ![V_pk](electromagnetism.assets/eq-inline/a753175303.svg)<!--m:V_{pk}-->, ![I_pk](electromagnetism.assets/eq-inline/ed0fa9d58e.svg)<!--m:I_{pk}--> | peak values | as the quantity | §6, §7, §9 |
 | ![omega](electromagnetism.assets/eq-inline/73b077a63e.svg)<!--m:\omega--> | angular frequency, ![omega = 2 pi f](electromagnetism.assets/eq-inline/10f7ad86c0.svg)<!--m:\omega = 2\pi f--> | ![rad times s^-1](electromagnetism.assets/eq-inline/da19396712.svg)<!--m:\mathrm{rad\cdot s^{-1}}--> | §7 |
-| ![E](electromagnetism.assets/eq-inline/2ac770400e.svg)<!--m:\mathcal{E}--> | electromotive force (EMF) | ![V](electromagnetism.assets/eq-inline/f2b8115d2c.svg)<!--m:\mathrm{V}--> | §8 |
+| ![E](electromagnetism.assets/eq-inline/2ac770400e.svg)<!--m:\mathcal{E}--> | electromotive force (EMF) | ![V](electromagnetism.assets/eq-inline/f2b8115d2c.svg)<!--m:\mathrm{V}--> | §6, §8 |
 | ![L](electromagnetism.assets/eq-inline/d160e0986a.svg)<!--m:L-->, ![L_1](electromagnetism.assets/eq-inline/08750101cc.svg)<!--m:L_1-->, ![L_2](electromagnetism.assets/eq-inline/0d2398f589.svg)<!--m:L_2--> | self-inductance | henry, ![H = Wb times A^-1 = V times s times A^-1](electromagnetism.assets/eq-inline/23c74a32c7.svg)<!--m:\mathrm{H} = \mathrm{Wb\cdot A^{-1}} = \mathrm{V\cdot s\cdot A^{-1}}--> | §9 |
 | ![B_sat](electromagnetism.assets/eq-inline/099fa25d1c.svg)<!--m:B_{sat}--> | saturation flux density | ![T](electromagnetism.assets/eq-inline/6d7e0b8821.svg)<!--m:\mathrm{T}--> | §9 |
 | ![p](electromagnetism.assets/eq-inline/516b9783fc.svg)<!--m:p--> | instantaneous power | watt, ![W = J times s^-1](electromagnetism.assets/eq-inline/f9a0a642e2.svg)<!--m:\mathrm{W} = \mathrm{J\cdot s^{-1}}--> | §10 |

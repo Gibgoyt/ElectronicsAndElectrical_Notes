@@ -247,7 +247,8 @@ synchronous generators. In a two-pole machine one revolution produces one electr
 ![f equals p over 2 times N_rpm over 60, equals 2 over 2 times 3000 over 60, equals 50 Hz, for p equal to 2 poles](ac-and-rms.assets/eq-generator.svg)
 
 The voltage induced in a stator winding follows the shape of the magnetic field sweeping past it
-(Faraday's law, [../electromagnetism/](../electromagnetism/)). Machine designers shape that field
+(Faraday's law; full treatment, including the rotating-coil generator, in
+[../faradays-law/faradays-law.md](../faradays-law/faradays-law.md)). Machine designers shape that field
 and spread each winding over several slots, with the coil span slightly short of a full pole pitch
 ("distributed, short-pitched windings"). This cancels most of the field's harmonics, so the
 generated EMF is a sine to within a few percent. The 50 Hz itself is held by matching total

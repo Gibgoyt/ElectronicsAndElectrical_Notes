@@ -297,8 +297,9 @@ detailed analysis of conduction angle and peak current is in
 
 This is the reason a half-wave rectifier is never put on a transformer secondary in a power supply
 of any size. The secondary current flows one way only, so it has an average value — equal to the
-load current — that never reverses. Ampère's law around the core
-([../fundamentals/electromagnetism/electromagnetism.md §5](../fundamentals/electromagnetism/electromagnetism.md#5-h-permeability-and-why-the-core-matters))
+load current — that never reverses. Ampère's law around the core (full treatment in
+[../fundamentals/amperes-law/amperes-law.md](../fundamentals/amperes-law/amperes-law.md); cores in
+[../fundamentals/electromagnetism/electromagnetism.md §5](../fundamentals/electromagnetism/electromagnetism.md#5-h-permeability-and-why-the-core-matters))
 turns those DC ampere-turns into a steady flux density:
 
 ![I_s,avg equals I_load, not zero, so the DC flux density is mu_0 mu_r N_s I_s,avg over l_e](half-wave.assets/eq-dc-flux.svg)
