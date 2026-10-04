@@ -29,17 +29,40 @@ switching-converter waveform in this tree becomes readable at a glance.
 ## 1 What an inductor actually is
 
 An inductor is **a coil of wire**. That is the entire physical object — no plates, no gap,
-nothing separating anything. When current flows through a wire it wraps a circular magnetic
-field around itself (Ampère's law: point your right thumb along the current, your fingers curl
-the field). Coil the wire, and every loop's field lines add together inside the coil, building
-one strong, concentrated magnetic field through the core.
+nothing separating anything. What makes it useful is one fact about currents: **a current makes a
+magnetic field**. A wire carrying a current wraps a circular magnetic field <!--m:\vec{B}-->![B](inductor.assets/eq-inline/84dd0d2d09.svg)<!--/m--> (measured in
+tesla, T) around itself — point your right thumb along the current and your fingers curl the way
+the field goes.
 
-That magnetic field **is** the stored energy:
+**Ampère's law** makes that quantitative. Pick any closed loop <!--m:C-->![C](inductor.assets/eq-inline/32096c2e0e.svg)<!--/m--> in space and walk once around it,
+adding up the component of <!--m:\vec{B}-->![B](inductor.assets/eq-inline/84dd0d2d09.svg)<!--/m--> along your path at each step <!--m:d\vec{l}-->![d l](inductor.assets/eq-inline/8d7f60aa83.svg)<!--/m-->. The total equals a
+constant times the current <!--m:I_{enc}-->![I_enc](inductor.assets/eq-inline/7406b82902.svg)<!--/m--> that pierces the loop:
 
-![E equals one half L I squared](inductor.assets/eq-energy.svg)
+![the closed line integral of B dot dl around C equals mu_0 times I enclosed](inductor.assets/eq-ampere.svg)
 
-There is no charge sitting anywhere waiting to be released — the energy lives entirely in the
-field created by the moving charge (the current). This is the first thing to get straight,
+The constant <!--m:\mu_0 \approx 4\pi\times10^{-7}\ \mathrm{H/m}-->![mu_0 approx 4 pi times 10^-7 H/m](inductor.assets/eq-inline/b848ce8ec5.svg)<!--/m--> is the *permeability of free space*. The law is true for
+every loop, but it is only *useful* when symmetry tells you <!--m:B-->![B](inductor.assets/eq-inline/ae4f281df5.svg)<!--/m--> is constant along a well-chosen loop.
+The coil is such a case. Wind <!--m:N-->![N](inductor.assets/eq-inline/b51a60734d.svg)<!--/m--> turns evenly along a length <!--m:l-->![l](inductor.assets/eq-inline/07c342be6e.svg)<!--/m--> and the fields of neighbouring
+turns cancel between the wires and add inside, so (for a long coil) the field inside is strong,
+uniform and along the axis, while the field outside is weak and spread out. Take a rectangular loop
+with one side of length <!--m:l-->![l](inductor.assets/eq-inline/07c342be6e.svg)<!--/m--> running inside the coil and the opposite side far outside. Only the
+inside side contributes (<!--m:B-->![B](inductor.assets/eq-inline/ae4f281df5.svg)<!--/m--> times <!--m:l-->![l](inductor.assets/eq-inline/07c342be6e.svg)<!--/m-->): the two short sides cross the field at right angles and
+the outside side sits where <!--m:B-->![B](inductor.assets/eq-inline/ae4f281df5.svg)<!--/m--> is negligible. The loop is pierced by all <!--m:N-->![N](inductor.assets/eq-inline/b51a60734d.svg)<!--/m--> turns, each carrying
+<!--m:I-->![I](inductor.assets/eq-inline/ca73ab6556.svg)<!--/m-->, so <!--m:I_{enc} = NI-->![I_enc = NI](inductor.assets/eq-inline/a55b8fe0a1.svg)<!--/m-->:
+
+![B l equals mu_0 N I, so B equals mu_0 N I over l](inductor.assets/eq-solenoid.svg)
+
+Fill the coil with a magnetic core and the material's own atomic magnets line up with the field and
+add to it; this multiplies the result by the core's *relative permeability* <!--m:\mu_r-->![mu_r](inductor.assets/eq-inline/de4a3aca4d.svg)<!--/m--> (1 for air,
+thousands for ferrite), giving <!--m:B = \mu N I/l-->![B = mu N I/l](inductor.assets/eq-inline/a6e2aa7ad3.svg)<!--/m--> with <!--m:\mu = \mu_0\mu_r-->![mu = mu_0 mu_r](inductor.assets/eq-inline/62cb256de9.svg)<!--/m-->. So coiling the wire turns
+the thin field of one wire into one strong, concentrated field through the core, and that field is
+proportional to the current. (The full treatment, with the straight-wire case and worked numbers,
+is in [../electromagnetism/electromagnetism.md §4–§5](../electromagnetism/electromagnetism.md#4-where-b-comes-from--ampere-and-biot-savart).)
+
+That magnetic field is where an inductor keeps its energy. Its size,
+<!--m:E = \tfrac{1}{2}LI^2-->![E = 1 over 2 LI^2](inductor.assets/eq-inline/baa846ef13.svg)<!--/m-->, needs the inductance <!--m:L-->![L](inductor.assets/eq-inline/d160e0986a.svg)<!--/m-->, which is defined in §2 — the energy formula is
+derived at the end of §3. There is no charge sitting anywhere waiting to be released — the energy
+lives entirely in the field created by the moving charge (the current). This is the first thing to get straight,
 because it is the exact opposite of a capacitor:
 
 > **Note —** An inductor does **not** have two plates and does **not** separate charge. If you
@@ -119,11 +142,9 @@ terminals as a voltage drop in the direction of the current — positive where t
 
 ### Deriving the defining law, step by step
 
-**Step 1 — the current makes a flux proportional to itself.** By Ampère's law (§1), current in the
-wire makes the field. For a long coil (a solenoid) of <!--m:N-->![N](inductor.assets/eq-inline/b51a60734d.svg)<!--/m--> turns wound along a length <!--m:l-->![l](inductor.assets/eq-inline/07c342be6e.svg)<!--/m-->, carrying
-current <!--m:I-->![I](inductor.assets/eq-inline/ca73ab6556.svg)<!--/m-->, the field inside is uniform and is
-([../electromagnetism/electromagnetism.md §4–§5](../electromagnetism/electromagnetism.md#4-where-b-comes-from--ampere-and-biot-savart)
-derives it):
+**Step 1 — the current makes a flux proportional to itself.** As §1 showed from Ampère's law, a long
+coil (a solenoid) of <!--m:N-->![N](inductor.assets/eq-inline/b51a60734d.svg)<!--/m--> turns wound along a length <!--m:l-->![l](inductor.assets/eq-inline/07c342be6e.svg)<!--/m-->, carrying current <!--m:I-->![I](inductor.assets/eq-inline/ca73ab6556.svg)<!--/m-->, has a uniform field
+inside:
 
 ![B equals mu N I over l, where mu equals mu_0 mu_r](inductor.assets/eq-step-b.svg)
 
@@ -186,7 +207,11 @@ converting a rise into a drop. Both equations describe the same physics. When th
 <!--m:\mathcal{E} < 0-->![E < 0](inductor.assets/eq-inline/39422ffb87.svg)<!--/m--> (the coil pushes back, from B towards A), and equivalently <!--m:V_L > 0-->![V_L > 0](inductor.assets/eq-inline/665a90c162.svg)<!--/m--> (the entry terminal A
 sits higher, so the coil *drops* voltage like a resistor, absorbing energy into its field).
 
-**Check it with Kirchhoff.** Connect an ideal voltage source <!--m:V_s-->![V_s](inductor.assets/eq-inline/2fd8ef7403.svg)<!--/m--> straight across an ideal coil, <!--m:+-->![+](inductor.assets/eq-inline/a979ef10cc.svg)<!--/m-->
+**Check it with Kirchhoff.** Kirchhoff's voltage law (KVL) says that **the voltages around any
+closed loop of a circuit add up to zero**. The reason is energy conservation: a volt is a joule per
+coulomb, so the voltage between two points is the energy a coulomb of charge gains or loses going
+between them. A charge carried once around a closed loop ends where it started, at the same
+potential, so the gains (EMFs that push it along) must exactly cancel the losses (drops). Now connect an ideal voltage source <!--m:V_s-->![V_s](inductor.assets/eq-inline/2fd8ef7403.svg)<!--/m--> straight across an ideal coil, <!--m:+-->![+](inductor.assets/eq-inline/a979ef10cc.svg)<!--/m-->
 to terminal A. Walk once around the loop: the source's EMF <!--m:V_s-->![V_s](inductor.assets/eq-inline/2fd8ef7403.svg)<!--/m--> plus the coil's induced EMF
 <!--m:\mathcal{E}-->![E](inductor.assets/eq-inline/2ac770400e.svg)<!--/m--> must add to zero (there is no resistance to drop anything):
 
@@ -230,6 +255,29 @@ leaving volts:
 > cancel the units. If they don't reduce to what the left-hand side claims, you've mis-remembered
 > the formula.
 
+**Power, and the energy stored.** First, why voltage times current is power. A volt is a joule per
+coulomb (energy per unit charge) and an ampere is a coulomb per second (charge per unit time), so
+their product is joules per second — energy per unit time, which is the watt:
+
+![P equals V I; volts times amps equals joules per coulomb times coulombs per second equals joules per second equals watts](inductor.assets/eq-power.svg)
+
+With the passive sign convention, a positive <!--m:P = V_L I_L-->![P = V_L I_L](inductor.assets/eq-inline/902a3391e7.svg)<!--/m--> means energy flowing *into* the component,
+and a negative one means energy flowing *out*. For the inductor, substitute the defining law:
+
+![p equals V_L I_L equals L I_L dI_L by dt](inductor.assets/eq-power-inductor.svg)
+
+Energy is power added up over time. Start from zero current at <!--m:t = 0-->![t = 0](inductor.assets/eq-inline/fee440f68f.svg)<!--/m--> and let the current reach
+<!--m:I-->![I](inductor.assets/eq-inline/ca73ab6556.svg)<!--/m-->. Integrating <!--m:p-->![p](inductor.assets/eq-inline/516b9783fc.svg)<!--/m--> over time, the factor <!--m:\frac{dI_L}{dt}\,dt-->![dI_L over dt dt](inductor.assets/eq-inline/facda424cf.svg)<!--/m--> is just the small change of current
+<!--m:di-->![di](inductor.assets/eq-inline/f502e82c25.svg)<!--/m-->, so the time integral becomes an integral over the current itself, from 0 to <!--m:I-->![I](inductor.assets/eq-inline/ca73ab6556.svg)<!--/m-->:
+
+![E equals the integral from 0 to t of p dt prime, equals the integral from 0 to I of L i di, equals one half L I squared](inductor.assets/eq-energy.svg)
+
+That is the energy held in the magnetic field of §1. It depends only on the current *now*, not on
+how the current got there, and it is handed back as the current falls — which is exactly the
+"absorbing power" and "delivering power" of §5. (The same result from the field side, as an energy
+density in the core, is in
+[../electromagnetism/electromagnetism.md §10](../electromagnetism/electromagnetism.md#10-energy-stored-in-the-magnetic-field).)
+
 ## 4 From the law to the ramp — the integral, done slowly
 
 Here is the step that is genuinely easy to lose. We have <!--m:dI_L/dt = V_L/L-->![dI_L/dt = V_L/L](inductor.assets/eq-inline/64f54db2ce.svg)<!--/m-->. Suppose <!--m:V_L-->![V_L](inductor.assets/eq-inline/136d4e3fb2.svg)<!--/m--> is
@@ -270,10 +318,11 @@ Which terminal is positive? Use the passive-component convention (the same one y
 resistor): current flows from the <!--m:+-->![+](inductor.assets/eq-inline/a979ef10cc.svg)<!--/m--> terminal to the <!--m:--->![-](inductor.assets/eq-inline/3bc15c8aae.svg)<!--/m--> terminal *inside* the component.
 
 - **While the current is increasing** (<!--m:dI/dt > 0-->![dI/dt > 0](inductor.assets/eq-inline/3373e6b57b.svg)<!--/m-->, so <!--m:V_L > 0-->![V_L > 0](inductor.assets/eq-inline/665a90c162.svg)<!--/m-->): the entry terminal is <!--m:+-->![+](inductor.assets/eq-inline/a979ef10cc.svg)<!--/m--> and
-  the exit is <!--m:--->![-](inductor.assets/eq-inline/3bc15c8aae.svg)<!--/m--> — exactly like a resistor. The inductor is *absorbing* power, and by Lenz's law (§2)
+  the exit is <!--m:--->![-](inductor.assets/eq-inline/3bc15c8aae.svg)<!--/m--> — exactly like a resistor. The inductor is *absorbing* power
+  (<!--m:P = V_L I_L > 0-->![P = V_L I_L > 0](inductor.assets/eq-inline/5ab94fe49e.svg)<!--/m-->, §3), and by Lenz's law (§2)
   it generates a back-EMF that opposes the increase.
 - **While the current is decreasing** (<!--m:dI/dt < 0-->![dI/dt < 0](inductor.assets/eq-inline/e91f2e6ee4.svg)<!--/m-->, so <!--m:V_L < 0-->![V_L < 0](inductor.assets/eq-inline/948b9ac2a6.svg)<!--/m-->): the polarity **flips**. Now the
-  exit terminal is <!--m:+-->![+](inductor.assets/eq-inline/a979ef10cc.svg)<!--/m--> and the entry is <!--m:--->![-](inductor.assets/eq-inline/3bc15c8aae.svg)<!--/m-->. The inductor is *delivering* power, acting like a
+  exit terminal is <!--m:+-->![+](inductor.assets/eq-inline/a979ef10cc.svg)<!--/m--> and the entry is <!--m:--->![-](inductor.assets/eq-inline/3bc15c8aae.svg)<!--/m-->. The inductor is *delivering* power (<!--m:P < 0-->![P < 0](inductor.assets/eq-inline/3f229ff951.svg)<!--/m-->: energy comes back out of the field), acting like a
   battery that pushes current forward using its stored magnetic energy.
 
 ![Inductor terminal polarity reverses when the current changes from rising to falling](inductor.assets/fig-03.svg)
@@ -310,7 +359,12 @@ it is exactly how an old car ignition coil makes tens of thousands of volts from
 and exactly why every relay or motor driven by a transistor needs a *flyback diode* across it.
 
 > **Watch out —** In a buck or boost converter this is precisely what the **diode** (or the
-> second MOSFET in a synchronous design) prevents. The instant the switch opens, the diode gives
+> second MOSFET in a synchronous design) prevents. A *diode* is a one-way valve for current: it
+> conducts in one direction and blocks the other (see
+> [../../rectifiers/half-wave.md §1](../../rectifiers/half-wave.md#1-what-a-diode-is-and-its-iv-curve)).
+> A *MOSFET* is a transistor used as a voltage-controlled switch: a voltage on its gate turns the
+> path between its other two terminals fully on or fully off (see
+> [../../dc-ac-inverters/h-bridge/h-bridge.md §5](../../dc-ac-inverters/h-bridge/h-bridge.md#5-the-mosfet-as-a-switch)). The instant the switch opens, the diode gives
 > the inductor's current an alternate path within nanoseconds. The current itself never stops —
 > only its *slope* changes abruptly, from ramping up to ramping down, making a sharp kink in the
 > triangle wave. A kink is finite and fine; a *broken path* is what causes the dangerous spike.

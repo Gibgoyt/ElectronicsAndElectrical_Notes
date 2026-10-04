@@ -13,11 +13,13 @@ in [inductor.md](inductor.md), in nine short sections with four figures.
 
 The treatment covers:
 
-1. What an inductor actually is — a coil, storing energy in a magnetic field (no plates).
+1. What an inductor actually is — a coil, storing energy in a magnetic field (no plates);
+   Ampère's law and the solenoid field it makes.
 2. Faraday's law — magnetic flux and flux linkage, Faraday's law of induction, Lenz's minus sign,
    and the five-step derivation of the inductor law, including where the minus sign goes
    (fig-04, Figure 90).
-3. The defining law, symbol by symbol, and the units of the henry.
+3. The defining law, symbol by symbol, the units of the henry, and why power is VI; the
+   stored energy derived.
 4. From the law to the ramp — the definite-integral proof, done slowly (fig-01).
 5. Polarity, Lenz, and back-EMF — resistor-like while charging, battery-like while
    discharging; the sign flip that later powers the boost converter (fig-03).
