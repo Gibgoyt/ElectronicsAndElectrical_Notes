@@ -34,6 +34,12 @@ magnetic field**. A wire carrying a current wraps a circular magnetic field ![B]
 tesla, T) around itself — point your right thumb along the current and your fingers curl the way
 the field goes.
 
+![Magnetic field circles around a straight wire: anticlockwise for current out of the page, clockwise for current into the page, and a right hand gripping the wire with the thumb along the current and the fingers curling the way the field goes](inductor.assets/fig-05-anim.svg)
+
+_A dot is the tip of the current arrow coming at you, a cross is its tail going away; either way the field circles the wire in the sense your right-hand fingers curl when your thumb points along the current._
+
+Full treatment: [Ampère's law](../amperes-law/amperes-law.md)
+
 **Ampère's law** makes that quantitative. Pick any closed loop ![C](inductor.assets/eq-inline/32096c2e0e.svg)<!--m:C--> in space and walk once around it,
 adding up the component of ![B](inductor.assets/eq-inline/84dd0d2d09.svg)<!--m:\vec{B}--> along your path at each step ![d l](inductor.assets/eq-inline/8d7f60aa83.svg)<!--m:d\vec{l}-->. The total equals a
 constant times the current ![I_enc](inductor.assets/eq-inline/7406b82902.svg)<!--m:I_{enc}--> that pierces the loop:
@@ -139,6 +145,12 @@ _Everything in this section is in one picture: the current makes the flux (step 
 induces an EMF that pushes back against the current (Faraday and Lenz), and that push shows up at the
 terminals as a voltage drop in the direction of the current — positive where the current enters
 (step 5)._
+
+![Animated coil: as the current rises its flux grows and a back-EMF opposes the rise with the entry terminal positive; with the current held steady the flux is constant and the EMF is zero; as the current falls the EMF polarity flips](inductor.assets/fig-06-anim.svg)
+
+_The same coil as Figure 90, run through a whole cycle: the back-EMF exists only while the current, and so the flux, is changing; it vanishes when the current is held steady and reverses when the current falls._
+
+Full treatment: [Faraday's law](../faradays-law/faradays-law.md)
 
 ### Deriving the defining law, step by step
 
