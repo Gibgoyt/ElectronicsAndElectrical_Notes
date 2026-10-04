@@ -37,10 +37,26 @@ First, kill an ambiguity that trips everyone up:
 - **Switch ON = closed = conducting** (current is allowed through, like a closed gate).
 - **Switch OFF = open** (that path is blocked, like an open gate).
 
-The switch **S1** is driven by a PWM signal at a fixed period <!--m:T-->![T](buck.assets/eq-inline/c2c53d6694.svg)<!--/m-->. The fraction of each period it
+In practice **S1** is a MOSFET, a transistor used as an electronic switch: a voltage on its gate
+turns the path between its other two terminals ON or OFF. It is driven by a PWM (pulse-width
+modulation) signal — a square wave of fixed period <!--m:T-->![T](buck.assets/eq-inline/c2c53d6694.svg)<!--/m--> whose ON fraction can be set; the
+[PWM document](../../pwm/pwm.md) treats it in full. The fraction of each period it
 spends ON is the **duty cycle <!--m:D-->![D](buck.assets/eq-inline/50c9e8d5fc.svg)<!--/m-->** (so ON lasts <!--m:D \cdot T-->![D times T](buck.assets/eq-inline/94b24dfcfd.svg)<!--/m-->, OFF lasts <!--m:(1-D) \cdot T-->![(1-D) times T](buck.assets/eq-inline/9ee718adde.svg)<!--/m-->). The **switch node** is
 the point right after the switch, where the diode also connects — it is chopped between <!--m:V_{in}-->![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--/m-->
 (switch ON) and roughly 0 V (switch OFF, diode conducting).
+
+The **diode** is a one-way valve for current. Treat it as ideal here: it conducts (is
+*forward-biased*) when its anode, the triangle end of the symbol, is above its cathode, the
+barred end; and it blocks (is *reverse-biased*) when the cathode is the higher one. Its anode is on
+ground and its cathode on the switch node, so it can only ever carry current *up* from ground into
+the switch node. (The real diode, with its 0.3–1 V forward drop, is built up in
+[../../rectifiers/half-wave.md](../../rectifiers/half-wave.md).)
+
+Two bookkeeping rules from
+[../../fundamentals/electromagnetism/electromagnetism.md §1](../../fundamentals/electromagnetism/electromagnetism.md#1-charge-current-and-the-electric-field)
+do all the circuit work below. **Kirchhoff's voltage law:** the voltages around any closed loop add
+to zero, so a part's voltage is the difference between the voltages of the two nodes it joins.
+**Kirchhoff's current law:** the currents into any node add up to the currents out of it.
 
 > **Note —** If you literally probed the 12 V *supply's own terminals* you'd see a flat 12 V — an
 > ideal source doesn't care what's downstream. The square wave lives at the **switch node**, not at
@@ -52,9 +68,11 @@ Because the inductor obeys <!--m:V_L = L \cdot dI/dt-->![V_L = L times dI/dt](bu
 *straight ramp* (see [../../fundamentals/inductor/inductor.md §4](../../fundamentals/inductor/inductor.md#4-from-the-law-to-the-ramp--the-integral-done-slowly)).
 The buck gives the inductor two constant-voltage intervals per cycle.
 
-**Interval 1 — switch ON, lasting <!--m:D \cdot T-->![D times T](buck.assets/eq-inline/94b24dfcfd.svg)<!--/m-->.** Current flows V_in → switch → L → output. The diode is
-reverse-biased (off). The inductor sees the difference between what pushes on its left end (<!--m:V_{in}-->![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--/m-->)
-and what pushes back on its right (<!--m:V_{out}-->![V_out](buck.assets/eq-inline/05b247c888.svg)<!--/m-->):
+**Interval 1 — switch ON, lasting <!--m:D \cdot T-->![D times T](buck.assets/eq-inline/94b24dfcfd.svg)<!--/m-->.** Current flows V_in → switch → L → output. The closed
+switch holds the switch node, and so the diode's cathode, at <!--m:V_{in}-->![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--/m-->, above the diode's grounded
+anode: the diode is reverse-biased (off). By Kirchhoff's voltage law the inductor sees the
+difference between the node voltages at its two ends, <!--m:V_{in}-->![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--/m--> on the left and <!--m:V_{out}-->![V_out](buck.assets/eq-inline/05b247c888.svg)<!--/m--> on the
+right (the capacitor holds the output nearly constant across a cycle):
 
 ![V_L equals V_in minus V_out, constant and positive](buck.assets/eq-vl-on.svg)
 
@@ -62,8 +80,10 @@ so the current ramps **up** by:
 
 ![delta I_L rise equals V_in minus V_out times D T over L](buck.assets/eq-rise.svg)
 
-**Interval 2 — switch OFF, lasting <!--m:(1-D) \cdot T-->![(1-D) times T](buck.assets/eq-inline/9ee718adde.svg)<!--/m-->.** The switch path is gone, so the inductor forces the
-diode to conduct, pinning its left end near ground. Now:
+**Interval 2 — switch OFF, lasting <!--m:(1-D) \cdot T-->![(1-D) times T](buck.assets/eq-inline/9ee718adde.svg)<!--/m-->.** The switch path is gone, but the inductor's
+current cannot stop instantly. It pulls the switch node down until the node dips just below ground,
+the diode becomes forward-biased and carries the current, and the inductor's left end is pinned near
+ground. Now:
 
 ![V_L equals minus V_out, constant and negative](buck.assets/eq-vl-off.svg)
 
@@ -94,7 +114,11 @@ Expand and simplify — the <!--m:V_{out} \cdot D-->![V_out times D](buck.assets
 
 That is the entire origin of the buck's step-down ratio — *derived*, not assumed. Equivalently, the
 average inductor voltage over a cycle is zero (**volt-second balance**): the positive volt-seconds
-cancel the negative ones.
+cancel the negative ones. The two statements are one, because integrating the inductor law over a
+period turns the area under <!--m:V_L-->![V_L](buck.assets/eq-inline/136d4e3fb2.svg)<!--/m--> into the net change of current, which steady state makes zero:
+
+![the integral over one period of V_L dt equals L times I_L of T minus I_L of 0, which equals 0 in steady state](buck.assets/eq-vs-balance.svg)
+
 
 > **Tip —** Volt-second balance is the master key for *every* converter in this tree. Write <!--m:V_L-->![V_L](buck.assets/eq-inline/136d4e3fb2.svg)<!--/m-->
 > for each interval, set the average over one period to zero, and solve. The boost uses the
@@ -112,9 +136,14 @@ the trade-off <!--m:\Delta I_L-->![Delta I_L](buck.assets/eq-inline/c856ab20fc.s
 
 ## 5 Sizing the output capacitor
 
-The inductor current is a triangle averaging to the load current <!--m:I_{load}-->![I_load](buck.assets/eq-inline/7902e72f89.svg)<!--/m-->. The load takes that
-average; the *leftover* — <!--m:i_C = i_L - I_{load}-->![i_C = i_L - I_load](buck.assets/eq-inline/c804854714.svg)<!--/m--> — is what actually flows in and out of the capacitor.
-It is a triangle centred on zero, swinging <!--m:\pm \Delta I_L/2-->![plus-minus Delta I_L/2](buck.assets/eq-inline/975bfe81a9.svg)<!--/m-->.
+At the output node the inductor current splits between the capacitor and the load, so by
+Kirchhoff's current law <!--m:i_C = i_L - I_{load}-->![i_C = i_L - I_load](buck.assets/eq-inline/c804854714.svg)<!--/m-->. Why does the inductor triangle average exactly to the
+load current? By the capacitor's mirror of volt-second balance, **charge balance**: in steady state
+the capacitor voltage also ends each period where it began, so the net charge into it over a period,
+<!--m:\int_0^T i_C\,dt = C\,[V_C(T) - V_C(0)]-->![integral_0^T i_C dt = C V_C(T) - V_C(0)](buck.assets/eq-inline/461b9e2618.svg)<!--/m-->, is zero, and its average current is zero. Then the
+average of <!--m:i_L-->![i_L](buck.assets/eq-inline/0bd5fa35e8.svg)<!--/m--> must equal <!--m:I_{load}-->![I_load](buck.assets/eq-inline/7902e72f89.svg)<!--/m-->. The load takes that average; the *leftover* <!--m:i_C-->![i_C](buck.assets/eq-inline/7574097e07.svg)<!--/m--> is what
+actually flows in and out of the capacitor. It is a triangle centred on zero, swinging
+<!--m:\pm \Delta I_L/2-->![plus-minus Delta I_L/2](buck.assets/eq-inline/975bfe81a9.svg)<!--/m-->.
 
 ![Capacitor current as the difference between triangular inductor current and constant load current](buck.assets/fig-03.svg)
 
@@ -153,7 +182,8 @@ voltage ripple. With <!--m:V_{in} = 12 V-->![V_in = 12 V](buck.assets/eq-inline/
   slightly below <!--m:D \cdot V_{in}-->![D times V_in](buck.assets/eq-inline/a25bedb66e.svg)<!--/m--> and some power is lost as heat. A *synchronous* buck replaces the diode
   with a second MOSFET to cut that loss — at the cost of gate-drive complexity.
 - **Ideal-parts assumption.** These formulas assume a pure <!--m:L-->![L](buck.assets/eq-inline/d160e0986a.svg)<!--/m--> and pure <!--m:C-->![C](buck.assets/eq-inline/32096c2e0e.svg)<!--/m-->. Real parts have
-  resistance (the capacitor's ESR adds its own ripple term, often dominant) and frequency-dependent
+  resistance (the capacitor's ESR — equivalent series resistance, the small resistance in series inside every
+  real capacitor — adds its own ripple term, <!--m:\Delta I_L \cdot \text{ESR}-->![Delta I_L times ESR](buck.assets/eq-inline/ebeeac4123.svg)<!--/m-->, often dominant) and frequency-dependent
   losses. Treat the results as a starting point.
 
 ## 8 Sources and cross-links

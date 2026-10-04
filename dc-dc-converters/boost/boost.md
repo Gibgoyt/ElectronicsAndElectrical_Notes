@@ -38,7 +38,10 @@ forced to fall, <!--m:V_L-->![V_L](boost.assets/eq-inline/136d4e3fb2.svg)<!--/m-
 ## 2 The two intervals
 
 **Interval 1 — switch ON, lasting <!--m:D \cdot T-->![D times T](boost.assets/eq-inline/94b24dfcfd.svg)<!--/m-->.** S1 shorts the switch node to ground, so the inductor sits
-straight across the input and the diode is reverse-biased (off). The inductor sees the full input:
+straight across the input and the diode is reverse-biased (off): its anode, on the switch node, is
+at 0 V while its cathode sits at the output voltage the capacitor holds up (the ideal-diode rule of
+[../buck/buck.md §1](../buck/buck.md#1-the-circuit-and-what-onoff-means)). By Kirchhoff's voltage
+law the inductor sees the full input:
 
 ![V_L equals V_in, constant and positive](boost.assets/eq-vl-on.svg)
 
@@ -48,7 +51,8 @@ so its current ramps **up**, storing energy:
 
 **Interval 2 — switch OFF, lasting <!--m:(1-D) \cdot T-->![(1-D) times T](boost.assets/eq-inline/9ee718adde.svg)<!--/m-->.** The switch path vanishes; the inductor's current
 can't stop, so it forces the diode on and flows into the output. Its voltage flips so the switch-node
-end rises to <!--m:V_{out}-->![V_out](boost.assets/eq-inline/05b247c888.svg)<!--/m--> (above <!--m:V_{in}-->![V_in](boost.assets/eq-inline/29f560cdfe.svg)<!--/m-->). The inductor now sees:
+end rises to <!--m:V_{out}-->![V_out](boost.assets/eq-inline/05b247c888.svg)<!--/m--> (above <!--m:V_{in}-->![V_in](boost.assets/eq-inline/29f560cdfe.svg)<!--/m-->). Kirchhoff's voltage law again gives the inductor's voltage as the difference of its two end
+nodes, <!--m:V_{in}-->![V_in](boost.assets/eq-inline/29f560cdfe.svg)<!--/m--> and <!--m:V_{out}-->![V_out](boost.assets/eq-inline/05b247c888.svg)<!--/m-->:
 
 ![V_L equals V_in minus V_out, constant and negative since V_out exceeds V_in](boost.assets/eq-vl-off.svg)
 

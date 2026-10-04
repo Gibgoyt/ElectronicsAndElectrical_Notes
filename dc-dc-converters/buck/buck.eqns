@@ -35,3 +35,6 @@ tex: L = \frac{(12-3)\,(0.25)}{100{,}000 \times 0.2} = \frac{2.25}{20{,}000} = 1
 ---
 name: worked-C
 tex: C = \frac{0.2}{8 \times 100{,}000 \times 0.03} = \frac{0.2}{24{,}000} \approx 8.3\ \mu\text{F}
+name: vs-balance
+tex: \int_0^{T} V_L\,dt = L\int_0^{T}\frac{dI_L}{dt}\,dt = L\,\big[I_L(T) - I_L(0)\big] = 0 \quad (\text{steady state})
+---

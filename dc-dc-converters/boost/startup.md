@@ -43,7 +43,8 @@ and they need separating:
 
 - **The staircase.** At power-on the output is *not* in steady state. The volt-second balance of
   [boost.md §3](boost.md#3-volt-second-balance--the-step-up-ratio) assumes the inductor current
-  ends each cycle where it started. The matching *charge balance* on the capacitor assumes the
+  ends each cycle where it started. The matching *charge balance* on the capacitor
+  ([../buck/buck.md §5](../buck/buck.md#5-sizing-the-output-capacitor)) assumes the
   capacitor voltage does the same. During start-up neither is true. Each cycle leaves net charge
   on the capacitor, so <!--m:V_C-->![V_C](startup.assets/eq-inline/b1fec46ec0.svg)<!--/m--> ratchets upward:
 
@@ -66,7 +67,8 @@ Follow one cycle with the capacitor already charged to some <!--m:V_C-->![V_C](s
 **Switch ON, for <!--m:D\,T-->![D T](startup.assets/eq-inline/0a84f8a111.svg)<!--/m-->.** The switch shorts the inductor across the source. The diode is
 reverse-biased, because its anode is at 0 V and its cathode is at <!--m:V_C-->![V_C](startup.assets/eq-inline/b1fec46ec0.svg)<!--/m-->. The inductor current
 ramps up from zero to a peak set only by the source, the inductor and the on-time, and the
-inductor stores that energy in its field:
+inductor stores the energy <!--m:\tfrac12 L I^2-->![12 L I^2](startup.assets/eq-inline/0ad3ac82a0.svg)<!--/m--> in its field (derived in
+[../../fundamentals/electromagnetism/electromagnetism.md §10](../../fundamentals/electromagnetism/electromagnetism.md#10-energy-stored-in-the-magnetic-field)):
 
 ![I_pk equals V_in D T over L, and the stored energy is one half L I_pk squared](startup.assets/eq-ipk.svg)
 
@@ -114,7 +116,10 @@ Put the numbers in. Each riser is
 
 which is exactly the 6 mV per cycle the simulation shows in Figure 50. The step shrinks as <!--m:V_C-->![V_C](startup.assets/eq-inline/b1fec46ec0.svg)<!--/m-->
 rises, because each packet of charge is pushed against a larger voltage. But it **never reaches
-zero**. Treat the cycle count <!--m:n-->![n](startup.assets/eq-inline/d1854cae89.svg)<!--/m--> as continuous and integrate:
+zero**. Treat the cycle count <!--m:n-->![n](startup.assets/eq-inline/d1854cae89.svg)<!--/m--> as continuous, so the step per cycle becomes <!--m:dV_C/dn-->![dV_C/dn](startup.assets/eq-inline/171c61f1e2.svg)<!--/m-->. Move
+<!--m:(V_C - V_{in})-->![(V_C - V_in)](startup.assets/eq-inline/e66341847d.svg)<!--/m--> to the left, and both sides can be integrated directly:
+<!--m:\int (V_C - V_{in})\,dV_C = \tfrac12 (V_C - V_{in})^2-->![integral (V_C - V_in) dV_C = 12 (V_C - V_in)^2](startup.assets/eq-inline/db3d9e8748.svg)<!--/m--> on the left, a constant times <!--m:n-->![n](startup.assets/eq-inline/d1854cae89.svg)<!--/m--> on the
+right. Starting from <!--m:V_C = V_0-->![V_C = V_0](startup.assets/eq-inline/7f1e5bf0f9.svg)<!--/m--> at <!--m:n = 0-->![n = 0](startup.assets/eq-inline/4f7d813897.svg)<!--/m--> and solving for <!--m:V_C-->![V_C](startup.assets/eq-inline/b1fec46ec0.svg)<!--/m-->:
 
 ![V_C minus V_in times dV_C by dn equals L I_pk squared over 2 C, so V_C of n equals V_in plus the square root of V_0 minus V_in squared plus n L I_pk squared over C](startup.assets/eq-sqrt-law.svg)
 
@@ -161,15 +166,21 @@ viewed from two sides. The useful point is that **the energy view explains why i
 load's appetite, <!--m:V^2/R-->![V^2/R](startup.assets/eq-inline/7bd024b4f9.svg)<!--/m-->, grows with the square of the voltage, while the energy supplied per
 cycle does not grow as fast, so the two curves must cross.
 
-**Light load: DCM.** Use the per-cycle energy from §2 and set it equal to the load power:
+**Light load: DCM.** Use the per-cycle energy from §2, times <!--m:f_{sw}-->![f_sw](startup.assets/eq-inline/4ac287231a.svg)<!--/m--> cycles per second, and set it
+equal to the load power:
 
 ![One half L I_pk squared times V_out over V_out minus V_in, times f_sw, equals V_out squared over R](startup.assets/eq-dcm-balance.svg)
 
 ![V_out squared minus V_in V_out minus R V_in squared D squared T over 2 L equals zero, so V_out equals V_in over 2 times 1 plus the square root of 1 plus 2 D squared R T over L](startup.assets/eq-dcm-solve.svg)
 
-Now <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m--> appears in the answer. The lighter the load (larger <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m-->), the higher the output, and as
-<!--m:R \to \infty-->![R to infinity](startup.assets/eq-inline/8e1c9c7cab.svg)<!--/m--> the output goes to infinity, which is the runaway of §3. For the worked parts the
-converter leaves CCM when the load is lighter than
+(To get there, substitute <!--m:I_{pk} = V_{in} D T/L-->![I_pk = V_in D T/L](startup.assets/eq-inline/dddcb57615.svg)<!--/m--> and <!--m:f_{sw} = 1/T-->![f_sw = 1/T](startup.assets/eq-inline/cc2c6208db.svg)<!--/m-->, multiply both sides by
+<!--m:R\,(V_{out} - V_{in})/V_{out}-->![R (V_out - V_in)/V_out](startup.assets/eq-inline/ec625d6fcc.svg)<!--/m-->, and solve the resulting quadratic in <!--m:V_{out}-->![V_out](startup.assets/eq-inline/05b247c888.svg)<!--/m-->, keeping the positive
+root.) Now <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m--> appears in the answer. The lighter the load (larger <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m-->), the higher the output, and as
+<!--m:R \to \infty-->![R to infinity](startup.assets/eq-inline/8e1c9c7cab.svg)<!--/m--> the output goes to infinity, which is the runaway of §3. The boundary is where the bottom of the current
+triangle just touches zero: half the ripple equals the average. The average inductor current is the
+input current, <!--m:\bar I_L = V_{out}/(R(1-D)) = V_{in}/(R(1-D)^2)-->![I_L = V_out/(R(1-D)) = V_in/(R(1-D)^2)](startup.assets/eq-inline/24410fe225.svg)<!--/m--> (charge balance above, with
+<!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](startup.assets/eq-inline/ff557ad27a.svg)<!--/m-->), and half the ripple is <!--m:V_{in} D T/(2L)-->![V_in D T/(2L)](startup.assets/eq-inline/9443cc5b58.svg)<!--/m--> (§2). Setting them equal and
+solving for <!--m:R-->![R](startup.assets/eq-inline/06576556d1.svg)<!--/m-->, for the worked parts the converter leaves CCM when the load is lighter than
 
 ![DCM when R exceeds R_crit equals 2 L over T D times one minus D squared, which is 480 ohms](startup.assets/eq-dcm-boundary.svg)
 
@@ -184,7 +195,11 @@ whatever the load happens to want.
 One thing 3.png leaves out: in a real boost the output does **not** start at 0 V when switching
 begins. The moment the input is connected, there is a DC path from <!--m:V_{in}-->![V_in](startup.assets/eq-inline/29f560cdfe.svg)<!--/m--> through the inductor
 and the forward-biased diode straight into the capacitor, with the switch open. That is a series
-LC circuit hit by a voltage step, and it rings:
+LC circuit hit by a voltage step, and it rings. With no load this is the undamped (<!--m:\zeta = 0-->![zeta = 0](startup.assets/eq-inline/afe27cc6fd.svg)<!--/m-->)
+case of the step response derived in
+[../buck/startup.md §3](../buck/startup.md#3-the-averaged-model--a-second-order-lc-step): there
+<!--m:\sigma = 0-->![sigma = 0](startup.assets/eq-inline/afa7862373.svg)<!--/m-->, <!--m:\omega_d = \omega_0-->![omega_d = omega_0](startup.assets/eq-inline/bf8033c846.svg)<!--/m-->, and the response collapses to a pure cosine about <!--m:V_{in}-->![V_in](startup.assets/eq-inline/29f560cdfe.svg)<!--/m-->; the
+current is <!--m:C\,dv_C/dt-->![C dv_C/dt](startup.assets/eq-inline/ed028c54d4.svg)<!--/m-->:
 
 ![v_C of t equals V_in times 1 minus cos omega_r t; i_L of t equals V_in root C over L times sin omega_r t; omega_r equals 1 over root LC](startup.assets/eq-precharge.svg)
 
@@ -222,7 +237,9 @@ actually sees, <!--m:i' = (1-D)\bar i_L-->![i' = (1-D) i_L](startup.assets/eq-in
 Seen from the output, an averaged boost is **a buck-style LC filter driven by
 <!--m:V_{in}/(1-D)-->![V_in/(1-D)](startup.assets/eq-inline/e0d671b77b.svg)<!--/m-->, with an effective inductance <!--m:L/(1-D)^2-->![L/(1-D)^2](startup.assets/eq-inline/43dad1d3ab.svg)<!--/m-->**. (The buck version, with no
 rescaling needed, is in [../buck/startup.md §3](../buck/startup.md#3-the-averaged-model--a-second-order-lc-step).)
-Everything about its step response follows from the standard second-order parameters:
+Everything about its step response follows from the standard second-order parameters, defined
+there, with <!--m:L_e-->![L_e](startup.assets/eq-inline/c2eb7d5598.svg)<!--/m--> in place of <!--m:L-->![L](startup.assets/eq-inline/d160e0986a.svg)<!--/m-->; the overshoot fraction is the formula of
+[../buck/startup.md §4](../buck/startup.md#4-overshoot--up-to-twice-the-target):
 
 ![L_e equals L over one minus D squared; omega_0 equals one minus D over root LC; zeta equals one over 2 R times root of L_e over C; sigma equals zeta omega_0 equals one over 2 R C](startup.assets/eq-omega.svg)
 
@@ -243,7 +260,7 @@ by switching faster, because the LC filter, not the switch, sets the pace.
 
 ## 7 Does it depend on the step-up ratio?
 
-**Yes, for a boost.** The ratio enters through <!--m:(1-D)-->![(1-D)](startup.assets/eq-inline/453e510d03.svg)<!--/m-->, and it enters in several places at once.
+**Yes, for a boost.** Write the step-up ratio as <!--m:M = V_{out}/V_{in} = 1/(1-D)-->![M = V_out/V_in = 1/(1-D)](startup.assets/eq-inline/5616120e87.svg)<!--/m-->. The ratio enters through <!--m:(1-D)-->![(1-D)](startup.assets/eq-inline/453e510d03.svg)<!--/m-->, and it enters in several places at once.
 
 - **Slower ringing, later peak.** <!--m:\omega_0 = (1-D)/\sqrt{LC}-->![omega_0 = (1-D)/sqrt LC](startup.assets/eq-inline/8ad9aabec5.svg)<!--/m-->. A bigger step-up means a smaller
   <!--m:(1-D)-->![(1-D)](startup.assets/eq-inline/453e510d03.svg)<!--/m-->, so a larger effective inductance and a slower ring. With the same parts and the same
@@ -268,11 +285,16 @@ by switching faster, because the LC filter, not the switch, sets the pace.
   <!--m:I_{in} = I_{out}/(1-D)-->![I_in = I_out/(1-D)](startup.assets/eq-inline/7893e0a88d.svg)<!--/m-->. With a 24 Ω load the hard-start peak inductor current is 1.8 A at
   D = 0.25, 4.5 A at D = 0.5, and 13.3 A at D = 0.75 (simulated). At a fixed load resistor the
   current scales as <!--m:M^2-->![M^2](startup.assets/eq-inline/7d07210936.svg)<!--/m-->.
-- **The right-half-plane zero.** Raising <!--m:D-->![D](startup.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> to push the output *up* first makes it go *down*,
+- **The right-half-plane zero.** (The name comes from control theory, which describes a
+  converter's small-signal response by a transfer function in the Laplace variable <!--m:s-->![s](startup.assets/eq-inline/a0f1490a20.svg)<!--/m-->, see
+  [../../filters/lc-filter/lc-filter.md §6](../../filters/lc-filter/lc-filter.md#6-the-transfer-function-derived);
+  this effect shows up as a zero of that function at a positive real <!--m:s-->![s](startup.assets/eq-inline/a0f1490a20.svg)<!--/m-->, the right half of the
+  complex plane. Only its frequency matters here.) Raising <!--m:D-->![D](startup.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> to push the output *up* first makes
+  it go *down*,
   because a longer ON interval is a shorter diode interval, so less charge reaches the capacitor in
   that cycle. In the simulation, the step from 12 V to D = 0.5 first dips the output by 0.2 V
   before it rises. A feedback loop has to be slow compared with this wrong-way response, whose
-  frequency is
+  frequency is (the standard small-signal result; Erickson and Maksimović, ch. 8)
 
 ![omega_z equals R times one minus D squared over L, which is 2.0 times 10 to the 4 radians per second, 3.2 kHz](startup.assets/eq-rhp-zero.svg)
 
@@ -322,7 +344,9 @@ in the inductor resistance by the *input* current:
 
 Since the input current is <!--m:1/(1-D)-->![1/(1-D)](startup.assets/eq-inline/a84fc27741.svg)<!--/m--> times the output current, that fraction grows as <!--m:1/(1-D)^2-->![1/(1-D)^2](startup.assets/eq-inline/a924986f95.svg)<!--/m-->.
 At high duty cycle the denominator wins, and the gain **reaches a maximum and then collapses back
-toward zero**. Minimising the denominator gives the peak:
+toward zero**. Minimising the denominator gives the peak: its derivative with respect to <!--m:D-->![D](startup.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> is
+<!--m:-1 + (R_L/R)/(1-D)^2-->![-1 + (R_L/R)/(1-D)^2](startup.assets/eq-inline/6973886ebf.svg)<!--/m-->, which is zero when <!--m:(1-D)^2 = R_L/R-->![(1-D)^2 = R_L/R](startup.assets/eq-inline/f00a0e0f30.svg)<!--/m-->; putting that back into the gain
+formula gives <!--m:M_{max}-->![M_max](startup.assets/eq-inline/46a906a862.svg)<!--/m-->:
 
 ![Setting the derivative of one minus D plus R_L over R over one minus D to zero gives one minus D equals root of R_L over R, and M_max equals one half root of R over R_L](startup.assets/eq-rl-max.svg)
 

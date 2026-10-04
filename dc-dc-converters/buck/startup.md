@@ -47,8 +47,9 @@ net charge on the capacitor. But there are two big differences from the boost:
   less like a staircase and more like a smooth, ringing curve with a little ripple on it.
 - **A buck's climb is bounded.** Even with no load, a buck cannot exceed <!--m:V_{in}-->![V_in](startup.assets/eq-inline/29f560cdfe.svg)<!--/m-->: once
   <!--m:v_C = V_{in}-->![v_C = V_in](startup.assets/eq-inline/9066bdd86f.svg)<!--/m-->, the inductor has zero volts across it during ON and nothing more can be
-  pushed in. A non-synchronous (diode) buck with no load does climb past <!--m:D\,V_{in}-->![D V_in](startup.assets/eq-inline/6db2223680.svg)<!--/m-->, for the
-  same discontinuous-conduction reason as the boost (§4), but it stops at <!--m:V_{in}-->![V_in](startup.assets/eq-inline/29f560cdfe.svg)<!--/m-->, never "endlessly".
+  pushed in. A non-synchronous (diode) buck with no load does climb past <!--m:D\,V_{in}-->![D V_in](startup.assets/eq-inline/6db2223680.svg)<!--/m-->, because its diode
+  stops the inductor current from reversing (the *discontinuous conduction* explained in §4), but
+  it stops at <!--m:V_{in}-->![V_in](startup.assets/eq-inline/29f560cdfe.svg)<!--/m-->, never "endlessly".
 
 ## 2 The first cycles — the full input across the inductor
 
@@ -59,7 +60,10 @@ At power-on the capacitor is at 0 V. During the first ON intervals, the inductor
 
 During OFF it sees only <!--m:-v_C \approx 0-->![-v_C approx 0](startup.assets/eq-inline/ae225e3207.svg)<!--/m-->, so the current hardly falls. The current therefore
 **ratchets upward cycle after cycle**. This is the buck's version of the staircase, but in the
-*current*, not the voltage. Per cycle, the average current changes by
+*current*, not the voltage. Per cycle, the current rises by <!--m:(V_{in} - \bar v_C)\,DT/L-->![(V_in - v_C) DT/L](startup.assets/eq-inline/e58c79a84a.svg)<!--/m--> during ON
+and falls by <!--m:\bar v_C\,(1-D)\,T/L-->![v_C (1-D) T/L](startup.assets/eq-inline/efa6273a0b.svg)<!--/m--> during OFF (the two ramps of
+[buck.md §2](buck.md#2-the-two-intervals) with <!--m:v_C-->![v_C](startup.assets/eq-inline/61f9e6f731.svg)<!--/m--> in place of <!--m:V_{out}-->![V_out](startup.assets/eq-inline/05b247c888.svg)<!--/m-->). The difference is the
+net change; the <!--m:\bar v_C\,D-->![v_C D](startup.assets/eq-inline/0e8415e05f.svg)<!--/m--> terms cancel, exactly as they did in the steady-state balance:
 
 ![The average inductor current changes per cycle by T over L times D V_in minus the average v_C](startup.assets/eq-net-current.svg)
 
@@ -78,19 +82,37 @@ the **overshoot**, and §3 to §4 turn it into numbers.
 
 Average both intervals over one period, as in [buck.md §3](buck.md#3-volt-second-balance--the-step-down-ratio).
 The switch node averages to <!--m:D\,V_{in}-->![D V_in](startup.assets/eq-inline/6db2223680.svg)<!--/m-->, so the converter becomes a voltage source of value
-<!--m:D\,V_{in}-->![D V_in](startup.assets/eq-inline/6db2223680.svg)<!--/m--> feeding an LC filter with a resistive load:
+<!--m:D\,V_{in}-->![D V_in](startup.assets/eq-inline/6db2223680.svg)<!--/m--> feeding an LC filter with a resistive load. The inductor carries the difference between
+that source and the output (Kirchhoff's voltage law), and the capacitor receives the inductor
+current minus the load's <!--m:\bar v/R-->![v/R](startup.assets/eq-inline/d684bd726d.svg)<!--/m--> (Kirchhoff's current law):
 
 ![L times d average i_L by dt equals D V_in minus average v; C times d average v by dt equals average i_L minus average v over R](startup.assets/eq-avg-model.svg)
 
-Eliminating the current gives the textbook damped second-order equation:
+Eliminate the current. The second equation gives <!--m:\bar i_L = C\,d\bar v/dt + \bar v/R-->![i_L = C d v/dt + v/R](startup.assets/eq-inline/5289efab24.svg)<!--/m-->;
+differentiate it, <!--m:d\bar i_L/dt = C\,d^2\bar v/dt^2 + (1/R)\,d\bar v/dt-->![d i_L/dt = C d^2 v/dt^2 + (1/R) d v/dt](startup.assets/eq-inline/316cba5c2b.svg)<!--/m-->, multiply by <!--m:L-->![L](startup.assets/eq-inline/d160e0986a.svg)<!--/m--> and set it
+equal to the right side of the first equation. That gives the textbook damped second-order
+equation:
 
 ![L C times the second derivative of v plus L over R times dv by dt plus v equals D V_in](startup.assets/eq-second-order.svg)
 
-with the usual parameters:
+Divide through by <!--m:LC-->![LC](startup.assets/eq-inline/3b0e58d439.svg)<!--/m--> and compare with the standard form of a damped oscillator,
+<!--m:\ddot v + 2\zeta\omega_0\,\dot v + \omega_0^2\,v = \omega_0^2\,D V_{in}-->![v + 2 zeta omega_0 v + omega_0^2 v = omega_0^2 D V_in](startup.assets/eq-inline/16320ea2dd.svg)<!--/m--> (dots are time
+derivatives). Matching the coefficients, <!--m:\omega_0^2 = 1/(LC)-->![omega_0^2 = 1/(LC)](startup.assets/eq-inline/573aa85f05.svg)<!--/m--> and <!--m:2\zeta\omega_0 = 1/(RC)-->![2 zeta omega_0 = 1/(RC)](startup.assets/eq-inline/dd951e5216.svg)<!--/m-->, names
+the usual parameters: the **natural angular frequency** <!--m:\omega_0-->![omega_0](startup.assets/eq-inline/09a7be4d65.svg)<!--/m--> (radians per second) at which an
+undamped LC swaps energy back and forth; the **damping ratio** <!--m:\zeta-->![zeta](startup.assets/eq-inline/08fe2529d0.svg)<!--/m--> (dimensionless; below 1 the
+response rings, above 1 it creeps); the **decay rate** <!--m:\sigma-->![sigma](startup.assets/eq-inline/69c15416b6.svg)<!--/m--> (per second) of the ringing's
+envelope <!--m:e^{-\sigma t}-->![e^- sigma t](startup.assets/eq-inline/1546c9302d.svg)<!--/m-->; and the **characteristic impedance** <!--m:Z_0-->![Z_0](startup.assets/eq-inline/964f1c3f3e.svg)<!--/m--> (ohms), the ratio of peak
+voltage to peak current when energy swings between <!--m:\tfrac12 L i^2-->![12 L i^2](startup.assets/eq-inline/93d62230c7.svg)<!--/m--> and <!--m:\tfrac12 C v^2-->![12 C v^2](startup.assets/eq-inline/d5cdc55a6d.svg)<!--/m-->:
 
 ![omega_0 equals one over root L C; zeta equals one over 2 R times root L over C; sigma equals zeta omega_0 equals one over 2 R C; Z_0 equals root L over C](startup.assets/eq-params.svg)
 
-Starting from zero current and zero voltage, the underdamped step response is
+How the response is found: without the source, the equation is solved by
+<!--m:e^{-\sigma t}\cos\omega_d t-->![e^- sigma t cos omega_d t](startup.assets/eq-inline/d978912524.svg)<!--/m--> and <!--m:e^{-\sigma t}\sin\omega_d t-->![e^- sigma t sin omega_d t](startup.assets/eq-inline/7f5462f380.svg)<!--/m--> with
+<!--m:\omega_d = \sqrt{\omega_0^2 - \sigma^2}-->![omega_d = sqrt omega_0^2 - sigma^2](startup.assets/eq-inline/44988f2f3e.svg)<!--/m--> (substitute either and the terms cancel — try it);
+with the source, add the constant <!--m:D\,V_{in}-->![D V_in](startup.assets/eq-inline/6db2223680.svg)<!--/m-->, which satisfies the equation on its own. The two
+free constants are fixed by the start: <!--m:\bar v(0) = 0-->![v(0) = 0](startup.assets/eq-inline/d8eb084c47.svg)<!--/m-->, and <!--m:d\bar v/dt(0) = 0-->![d v/dt(0) = 0](startup.assets/eq-inline/ce4970512f.svg)<!--/m--> because the
+capacitor current starts at zero. Starting from zero current and zero voltage, the underdamped step
+response is therefore
 
 ![v of t equals D V_in times 1 minus e to the minus sigma t times cos omega_d t plus sigma over omega_d sin omega_d t, with omega_d equals omega_0 root 1 minus zeta squared](startup.assets/eq-step-response.svg)
 
@@ -101,7 +123,10 @@ start-up transient.
 
 ## 4 Overshoot — up to twice the target
 
-The peak of that response is
+Differentiate the step response and almost everything cancels:
+<!--m:d\bar v/dt = D\,V_{in}\,(\omega_0^2/\omega_d)\,e^{-\sigma t}\sin\omega_d t-->![d v/dt = D V_in ( omega_0^2/omega_d) e^- sigma t sin omega_d t](startup.assets/eq-inline/19c17fc2ae.svg)<!--/m-->. It is first zero again at
+<!--m:\omega_d t = \pi-->![omega_d t = pi](startup.assets/eq-inline/dd6190dce0.svg)<!--/m-->, the first peak. Put <!--m:t = \pi/\omega_d-->![t = pi/omega_d](startup.assets/eq-inline/13dc42c79f.svg)<!--/m--> into the response (<!--m:\cos\pi = -1-->![cos pi = -1](startup.assets/eq-inline/33bdff2357.svg)<!--/m-->,
+<!--m:\sin\pi = 0-->![sin pi = 0](startup.assets/eq-inline/ba55f9bd84.svg)<!--/m-->) and use <!--m:\sigma/\omega_d = \zeta/\sqrt{1-\zeta^2}-->![sigma/omega_d = zeta/sqrt 1- zeta^2](startup.assets/eq-inline/8ca2cb052e.svg)<!--/m-->. The peak of that response is
 
 ![The peak over D V_in equals 1 plus e to the minus pi zeta over root 1 minus zeta squared, which tends to 2 as zeta tends to zero](startup.assets/eq-peak.svg)
 
@@ -109,7 +134,10 @@ With light damping (a light load, so a large <!--m:R-->![R](startup.assets/eq-in
 to almost twice its target**. The LC stores the surplus current as magnetic energy and hands it to
 the capacitor, exactly as an undamped spring released from rest overshoots its equilibrium by its
 full displacement. The peak inductor current while it does so is set by the characteristic
-impedance:
+impedance. With no damping the response is <!--m:\bar v = D V_{in}(1 - \cos\omega_0 t)-->![v = D V_in(1 - cos omega_0 t)](startup.assets/eq-inline/f63105c139.svg)<!--/m-->, so the
+capacitor's current <!--m:C\,d\bar v/dt = D V_{in}\,\omega_0 C\sin\omega_0 t-->![C d v/dt = D V_in omega_0 C sin omega_0 t](startup.assets/eq-inline/6164d316c3.svg)<!--/m--> peaks at
+<!--m:D V_{in}\,\omega_0 C = D V_{in}\sqrt{C/L} = D V_{in}/Z_0-->![D V_in omega_0 C = D V_in sqrt C/L = D V_in/Z_0](startup.assets/eq-inline/cf094ca57e.svg)<!--/m-->; the inductor carries that plus the load
+current, plus half the switching ripple on top:
 
 ![The peak inductor current is about D V_in over Z_0 plus I_load plus delta I_L over 2, for light damping](startup.assets/eq-inrush.svg)
 
@@ -128,7 +156,11 @@ Two details in Figure 52 are worth noticing:
   reverse current, the inductor sits at zero (discontinuous conduction), and the capacitor can
   only discharge through the load. The overshoot is the same, but it decays much more slowly.
 - **With no load at all, a diode buck climbs to the input.** In DCM the output is set by the load,
-  not by <!--m:D-->![D](startup.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> alone, and it rises toward <!--m:V_{in}-->![V_in](startup.assets/eq-inline/29f560cdfe.svg)<!--/m--> as the load disappears:
+  not by <!--m:D-->![D](startup.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> alone, and it rises toward <!--m:V_{in}-->![V_in](startup.assets/eq-inline/29f560cdfe.svg)<!--/m--> as the load disappears. Balancing the charge
+  delivered per cycle against the load (the same energy-per-cycle argument as
+  [../boost/startup.md §4](../boost/startup.md#4-adding-a-load--where-the-climb-stops); the
+  standard DCM result, e.g. Erickson and Maksimović, *Fundamentals of Power Electronics*, ch. 5)
+  gives:
 
 ![V_out over V_in equals 2 over 1 plus root of 1 plus 8 L over D squared R T, which tends to 1 as R tends to infinity](startup.assets/eq-dcm-noload.svg)
 
@@ -143,8 +175,9 @@ Put in the parts of [buck.md §6](buck.md#6-worked-numbers--12-v-to-3-v):
 
 ![omega_0 equals 32,660 radians per second, 5.2 kHz; Z_0 equals 3.67 ohms](startup.assets/eq-worked.svg)
 
-The ringing envelope decays at <!--m:\sigma = 1/(2RC)-->![sigma = 1/(2RC)](startup.assets/eq-inline/6037dace2d.svg)<!--/m-->, so it settles to within about 2 % in roughly
-four time constants:
+The ringing envelope decays as <!--m:e^{-\sigma t}-->![e^- sigma t](startup.assets/eq-inline/1546c9302d.svg)<!--/m--> with <!--m:\sigma = 1/(2RC)-->![sigma = 1/(2RC)](startup.assets/eq-inline/6037dace2d.svg)<!--/m-->. After four of its time
+constants <!--m:1/\sigma-->![1/sigma](startup.assets/eq-inline/6246192dcb.svg)<!--/m--> it has shrunk to <!--m:e^{-4} \approx 1.8\,\%-->![e^-4 approx 1.8 %](startup.assets/eq-inline/8c7520e9cd.svg)<!--/m-->, so it settles to within about 2 % in
+roughly four time constants:
 
 ![t_s is about 4 over sigma, which equals 8 R C; the number of cycles is f_sw times t_s](startup.assets/eq-settle.svg)
 
@@ -183,7 +216,8 @@ What *does* scale with the ratio:
 ![C dv by dt equals i_L minus v over R, at most I_lim minus I_load, so t_min is about C V_target over I_lim minus I_load](startup.assets/eq-current-limit.svg)
 
   The time is proportional to <!--m:V_{target}-->![V_target](startup.assets/eq-inline/308583ec15.svg)<!--/m-->. Contrast the boost, where the input-side current limit
-  makes the minimum start-up time grow as <!--m:M^2-->![M^2](startup.assets/eq-inline/7d07210936.svg)<!--/m-->
+  makes the minimum start-up time grow as <!--m:M^2-->![M^2](startup.assets/eq-inline/7d07210936.svg)<!--/m-->, the square of its step ratio
+  <!--m:M = V_{out}/V_{in}-->![M = V_out/V_in](startup.assets/eq-inline/471042bbe2.svg)<!--/m-->
   ([../boost/startup.md §7](../boost/startup.md#7-does-it-depend-on-the-step-up-ratio)).
 - **In a real design, <!--m:L-->![L](startup.assets/eq-inline/d160e0986a.svg)<!--/m--> and <!--m:C-->![C](startup.assets/eq-inline/32096c2e0e.svg)<!--/m--> are sized for the ratio.** The ripple formulas of
   [buck.md §4–5](buck.md#4-sizing-the-inductor) contain <!--m:D-->![D](startup.assets/eq-inline/50c9e8d5fc.svg)<!--/m-->, so the parts you pick for 48 V to 1 V
@@ -212,6 +246,8 @@ everything else. So soft-start covers the whole inrush.
 
 A big step-down does not slow the start-up, but it costs you in four other ways:
 
+Below, <!--m:M = V_{in}/V_{out}-->![M = V_in/V_out](startup.assets/eq-inline/5a0675a153.svg)<!--/m--> is the buck's step-down ratio (so <!--m:M = 1/D-->![M = 1/D](startup.assets/eq-inline/dcad5758f1.svg)<!--/m--> for the ideal buck).
+
 **1. Minimum on-time.** The ON interval is <!--m:D\,T = V_{out}/(V_{in} f_{sw})-->![D T = V_out/(V_in f_sw)](startup.assets/eq-inline/ff63414fee.svg)<!--/m-->. Every controller
 has a minimum on-time, typically 50 to 150 ns, below which it cannot make a clean pulse (gate
 drive, current-sense blanking, propagation delay):
@@ -227,7 +263,8 @@ stages (48 V to 12 V, then 12 V to 1 V) or at a lower frequency.
 
 **2. The freewheel diode's drop becomes a large fraction of the output.** In a deep step-down the
 diode conducts for almost the whole cycle, <!--m:(1-D) \approx 1-->![(1-D) approx 1](startup.assets/eq-inline/ab1ffdd7c7.svg)<!--/m-->, carrying the full output current.
-Its drop alone caps the efficiency:
+With <!--m:V_F-->![V_F](startup.assets/eq-inline/5a0fd2cbf8.svg)<!--/m--> the diode's forward drop, its loss is <!--m:(1-D)\,V_F\,I_{out}-->![(1-D) V_F I_out](startup.assets/eq-inline/45b61d7eac.svg)<!--/m-->, and that alone caps the
+efficiency <!--m:\eta-->![eta](startup.assets/eq-inline/2899aeb886.svg)<!--/m-->, the output power as a fraction of the input power:
 
 ![eta is at most V_out over V_out plus one minus D times V_F](startup.assets/eq-diode-eta.svg)
 
