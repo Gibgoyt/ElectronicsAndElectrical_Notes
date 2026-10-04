@@ -7,7 +7,7 @@ name: law-C
 tex: i_C = C\,\frac{dv_C}{dt} \quad\Longrightarrow\quad \left|\frac{dv_C}{dt}\right| = \frac{|i_C|}{C}
 ---
 name: slope-L-num
-tex: \frac{V_{in}}{L} = \frac{12\ \mathrm{V}}{1\ \mathrm{mH}} = 12{,}000\ \mathrm{A/s} = 0.012\ \mathrm{A}/\mu\mathrm{s}
+tex: \frac{V_{in}}{L} = \frac{12\ \mathrm{V}}{1\ \mathrm{mH}} = 12{,}000\ \mathrm{A\cdot s^{-1}} = 0.012\ \mathrm{A}\cdot\mu\mathrm{s}^{-1}
 ---
 name: kick
 tex: v_L = L\,\frac{\Delta i_L}{\Delta t} = (1\ \mathrm{mH})\,\frac{-0.6\ \mathrm{A}}{10\ \mathrm{ns}} = -60{,}000\ \mathrm{V}

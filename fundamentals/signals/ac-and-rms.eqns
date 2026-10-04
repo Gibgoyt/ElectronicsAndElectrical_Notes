@@ -6,7 +6,7 @@ name: sine
 tex: v(t) = V_{pk}\,\sin(2\pi f t + \varphi) = V_{pk}\,\sin(\omega t + \varphi)
 ---
 name: period
-tex: T = \frac{1}{f} = \frac{1}{50\,\mathrm{Hz}} = 20\,\mathrm{ms}, \qquad \omega = 2\pi f = 2\pi \times 50 \approx 314.16\,\mathrm{rad/s}
+tex: T = \frac{1}{f} = \frac{1}{50\,\mathrm{Hz}} = 20\,\mathrm{ms}, \qquad \omega = 2\pi f = 2\pi \times 50 \approx 314.16\,\mathrm{rad\cdot s^{-1}}
 ---
 name: phase-shift
 tex: \sin(\omega t + \varphi) = \sin\!\big(\omega\,(t + t_\varphi)\big), \qquad t_\varphi = \frac{\varphi}{\omega} = \frac{\varphi}{360^\circ}\,T

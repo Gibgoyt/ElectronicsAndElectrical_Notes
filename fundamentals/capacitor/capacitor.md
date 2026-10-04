@@ -42,7 +42,7 @@ the plates, with the capacitance ![C](capacitor.assets/eq-inline/32096c2e0e.svg)
 - **![C](capacitor.assets/eq-inline/32096c2e0e.svg)<!--m:C-->** — the capacitance, in farads (F): how much charge it stores per volt.
 
 **The stored energy, derived.** A voltage is energy per unit charge: one volt means one joule of
-work to carry one coulomb from the ![-](capacitor.assets/eq-inline/3bc15c8aae.svg)<!--m:---> plate to the ![+](capacitor.assets/eq-inline/a979ef10cc.svg)<!--m:+--> plate (![1 V = 1 J/C](capacitor.assets/eq-inline/9ad7202dce.svg)<!--m:1\,\mathrm{V} = 1\,\mathrm{J/C}-->).
+work to carry one coulomb from the ![-](capacitor.assets/eq-inline/3bc15c8aae.svg)<!--m:---> plate to the ![+](capacitor.assets/eq-inline/a979ef10cc.svg)<!--m:+--> plate (![1 V = 1 J times C^-1](capacitor.assets/eq-inline/8b342be904.svg)<!--m:1\,\mathrm{V} = 1\,\mathrm{J\cdot C^{-1}}-->).
 So charge the capacitor a little at a time and add up the work. When it already holds a charge ![q](capacitor.assets/eq-inline/22ea1c649c.svg)<!--m:q-->,
 its voltage is ![v = q/C](capacitor.assets/eq-inline/86b089ff35.svg)<!--m:v = q/C-->, and carrying the next small charge ![dq](capacitor.assets/eq-inline/3bf4ab708f.svg)<!--m:dq--> across costs ![dW = v dq = (q/C) dq](capacitor.assets/eq-inline/e896fd3aec.svg)<!--m:dW = v\,dq = (q/C)\,dq-->.
 Sum every such step from empty (![q = 0](capacitor.assets/eq-inline/3b2d28909c.svg)<!--m:q = 0-->) to full (![q = Q](capacitor.assets/eq-inline/b2450387e2.svg)<!--m:q = Q-->), then use ![Q = C V_C](capacitor.assets/eq-inline/bf31347312.svg)<!--m:Q = C\,V_C-->:
@@ -50,7 +50,7 @@ Sum every such step from empty (![q = 0](capacitor.assets/eq-inline/3b2d28909c.s
 ![E equals the integral from 0 to Q of q over C dq, which equals Q squared over 2 C, which equals one half C V_C squared](capacitor.assets/eq-energy.svg)
 
 - **![E](capacitor.assets/eq-inline/e0184adedf.svg)<!--m:E-->** — the stored energy, in joules (J). Check the units: farads times volts squared is
-  ![( C/V) times V^2 = C times V = J](capacitor.assets/eq-inline/d8ac14abe9.svg)<!--m:(\mathrm{C/V})\cdot\mathrm{V}^2 = \mathrm{C}\cdot\mathrm{V} = \mathrm{J}-->.
+  ![( C times V^-1) times V^2 = C times V = J](capacitor.assets/eq-inline/acb4c842b6.svg)<!--m:(\mathrm{C\cdot V^{-1}})\cdot\mathrm{V}^2 = \mathrm{C}\cdot\mathrm{V} = \mathrm{J}-->.
 
 The factor of one half is not decoration. The first charge was carried across almost no voltage
 and only the last charge across the full ![V_C](capacitor.assets/eq-inline/b1fec46ec0.svg)<!--m:V_C-->, so on average each coulomb was carried across

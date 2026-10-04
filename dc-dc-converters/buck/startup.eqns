@@ -25,7 +25,7 @@ name: inrush
 tex: \hat i_L \approx \frac{D\,V_{in}}{Z_0} + I_{load} + \frac{\Delta I_L}{2} \qquad(\text{light damping})
 ---
 name: worked
-tex: \omega_0 = \frac{1}{\sqrt{112.5\,\mu\mathrm{H} \times 8.33\,\mu\mathrm{F}}} = 32\,660\,\mathrm{rad/s}\ (5.2\,\mathrm{kHz}), \qquad Z_0 = \sqrt{\frac{112.5\,\mu\mathrm{H}}{8.33\,\mu\mathrm{F}}} = 3.67\,\Omega
+tex: \omega_0 = \frac{1}{\sqrt{112.5\,\mu\mathrm{H} \times 8.33\,\mu\mathrm{F}}} = 32\,660\,\mathrm{rad\cdot s^{-1}}\ (5.2\,\mathrm{kHz}), \qquad Z_0 = \sqrt{\frac{112.5\,\mu\mathrm{H}}{8.33\,\mu\mathrm{F}}} = 3.67\,\Omega
 ---
 name: worked-loads
 tex: R = 3\,\Omega:\ \zeta = 0.61,\ t_s \approx 8RC = 200\,\mu\mathrm{s} \approx 20\ \text{cycles} \qquad R = 30\,\Omega:\ \zeta = 0.061,\ t_s \approx 2\,\mathrm{ms} \approx 200\ \text{cycles}

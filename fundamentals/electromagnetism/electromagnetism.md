@@ -79,7 +79,8 @@ grows:
 ![I equals dQ by dt; one ampere equals one coulomb per second](electromagnetism.assets/eq-current-def.svg)
 
 So an ampere *is* a coulomb per second, ![1 A = 1 C times s^-1](electromagnetism.assets/eq-inline/1ac70fbaf0.svg)<!--m:1\ \mathrm{A} = 1\ \mathrm{C\cdot s^{-1}}-->. (This tree
-writes a "per" unit with a negative power, ![s^-1 = 1/s](electromagnetism.assets/eq-inline/3610b98b58.svg)<!--m:\mathrm{s^{-1}} = 1/\mathrm{s}-->, joined by a centre dot.)
+writes "per" in a unit as a negative power joined by a centre dot: ![s^-1](electromagnetism.assets/eq-inline/5896553b55.svg)<!--m:\mathrm{s^{-1}}--> reads "per
+second", so ![C times s^-1](electromagnetism.assets/eq-inline/6463af96e6.svg)<!--m:\mathrm{C\cdot s^{-1}}--> is coulombs per second.)
 
 Two charges push or pull on each other even across empty space. **Coulomb's law** states how
 hard: two point charges ![q_1](electromagnetism.assets/eq-inline/63d628baf5.svg)<!--m:q_1--> and ![q_2](electromagnetism.assets/eq-inline/bc09c3b934.svg)<!--m:q_2--> (each in coulombs) a distance ![r](electromagnetism.assets/eq-inline/4dc7c9ec43.svg)<!--m:r--> apart (in metres,

@@ -4,7 +4,7 @@ name: shockley
 tex: I_F = I_S\left(e^{V_F/(n V_T)} - 1\right)
 ---
 name: thermal-voltage
-tex: V_T = \frac{kT}{q} = \frac{1.381\times10^{-23}\ \mathrm{J/K}\times 300\ \mathrm{K}}{1.602\times10^{-19}\ \mathrm{C}} \approx 25.9\ \mathrm{mV}
+tex: V_T = \frac{kT}{q} = \frac{1.381\times10^{-23}\ \mathrm{J\cdot K^{-1}}\times 300\ \mathrm{K}}{1.602\times10^{-19}\ \mathrm{C}} \approx 25.9\ \mathrm{mV}
 ---
 name: invert-shockley
 tex: V_F = n V_T \ln\!\left(1 + \frac{I_F}{I_S}\right) + I_F\,R_S

@@ -93,6 +93,15 @@ the maths. Rules for authoring inline maths:
 - Multi-letter subscripts get braces: write `V_{out}`, `f_{sw}`, `I_{load}` (not `V_out`).
 - English words inside maths use `\text{…}` (e.g. `\text{rise} = \text{fall}`).
 - Units use `\mathrm{…}` (e.g. `100\,\mathrm{kHz}`, `112.5\,\mu\mathrm{H}`).
+- **Compound units take negative exponents and a centre dot, never a slash.** Write
+  `1\,\mathrm{A} = 1\,\mathrm{C\cdot s^{-1}}`, not `C/s`; likewise `\mathrm{V\cdot s\cdot A^{-1}}`,
+  `\mathrm{A\cdot s^{-1}}`, `\mathrm{J\cdot C^{-1}}`, `\mathrm{N\cdot C^{-1}}`, `\mathrm{Wb\cdot A^{-1}}`,
+  `\mathrm{F\cdot m^{-1}}`, `\mathrm{H\cdot m^{-1}}`, `\mathrm{V\cdot m^{-1}}`, `\mathrm{W\cdot m^{-2}}`,
+  `\mathrm{rad\cdot s^{-1}}`. With a prefix that is a maths symbol, keep the exponent on the whole
+  unit: `\mathrm{V}\cdot\mu\mathrm{s}^{-1}`. In prose, a compound unit is always maths
+  (`$\mathrm{C\cdot s^{-1}}$`) — never a raw Unicode superscript or a slash in plain text. The rule
+  is for **units only**: a ratio of quantities such as `dI/dt` or `V/L` keeps its slash. Figure
+  labels follow the same rule (`H\;(\mathrm{A\cdot m^{-1}})`).
 - Never put maths in a heading — headings stay plain text.
 
 **c. Figures** — see §5. Maths inside a figure is typeset by the same engine via `mathText`.

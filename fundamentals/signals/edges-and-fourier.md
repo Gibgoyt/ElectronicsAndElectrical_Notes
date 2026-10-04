@@ -68,7 +68,7 @@ the empty capacitor (![v = 0](edges-and-fourier.assets/eq-inline/c7c64bf3d5.svg)
 ![C dv by dt equals V minus v over R, so dv over V minus v equals dt over tau, so minus the natural log of V minus v over V equals t over tau](edges-and-fourier.assets/eq-rc-ode.svg)
 
 Undo the logarithm and solve for ![v](edges-and-fourier.assets/eq-inline/7a38d8cbd2.svg)<!--m:v-->. The **time constant** ![tau = RC](edges-and-fourier.assets/eq-inline/3f3c99c08b.svg)<!--m:\tau = RC--> is in seconds (ohms times
-farads is ![( V/A)( A times s/V) = s](edges-and-fourier.assets/eq-inline/b7c1fd31c5.svg)<!--m:(\mathrm{V/A})(\mathrm{A\cdot s/V}) = \mathrm{s}-->):
+farads is ![( V times A^-1)( A times s times V^-1) = s](edges-and-fourier.assets/eq-inline/46b6b705ef.svg)<!--m:(\mathrm{V\cdot A^{-1}})(\mathrm{A\cdot s\cdot V^{-1}}) = \mathrm{s}-->):
 
 ![v of t equals V times 1 minus e to the minus t over tau, with tau equal to R C](edges-and-fourier.assets/eq-rc-edge.svg)
 
@@ -92,7 +92,7 @@ _The dashed ideal step has zero width. The real edge needs about 2.2 time consta
 middle 80 % of its swing, and the same again on the way down._
 
 **Slew rate.** The other way to describe an edge is by its steepness, the **slew rate** (SR), in volts
-per second (usually V/ns or V/µs). Over the 10–90 % portion the signal covers ![0.8 V](edges-and-fourier.assets/eq-inline/939fd1e31b.svg)<!--m:0.8\,V--> in ![t_r](edges-and-fourier.assets/eq-inline/a6684eb7a2.svg)<!--m:t_r-->:
+per second (usually ![V times ns^-1](edges-and-fourier.assets/eq-inline/5461795db8.svg)<!--m:\mathrm{V\cdot ns^{-1}}--> or ![V times mu s^-1](edges-and-fourier.assets/eq-inline/932be136de.svg)<!--m:\mathrm{V}\cdot\mu\mathrm{s}^{-1}-->). Over the 10–90 % portion the signal covers ![0.8 V](edges-and-fourier.assets/eq-inline/939fd1e31b.svg)<!--m:0.8\,V--> in ![t_r](edges-and-fourier.assets/eq-inline/a6684eb7a2.svg)<!--m:t_r-->:
 
 ![SR equals dv by dt approximately equal to 0.8 V over t_r](edges-and-fourier.assets/eq-slew.svg)
 
@@ -142,7 +142,7 @@ Fast edges are good for efficiency. While a MOSFET is half-on it carries current
 at the same time, and that overlap is pure heat (switching loss). So designers want short edges. But
 a steep edge drives the circuit's hidden capacitors and inductors hard, and both answer back.
 
-**Steep dv/dt pushes current through every capacitance.** Take the 5.2 V/ns edge from §1 and a mere
+**Steep dv/dt pushes current through every capacitance.** Take the ![5.2 V times ns^-1](edges-and-fourier.assets/eq-inline/f23cdd8854.svg)<!--m:5.2\,\mathrm{V\cdot ns^{-1}}--> edge from §1 and a mere
 100 pF of stray capacitance. That could be the capacitance between a transformer's primary and
 secondary, or from a MOSFET's drain tab to a grounded heatsink:
 

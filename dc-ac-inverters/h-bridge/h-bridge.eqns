@@ -52,10 +52,10 @@ name: resistive-overlap
 tex: E_{\text{resistive}} = \int_0^{t} V\Big(1-\frac{\tau}{t}\Big)\,I\,\frac{\tau}{t}\,d\tau = \tfrac16\,V\,I\,t \qquad\text{vs.}\qquad E_{\text{inductive}} = \tfrac12\,V\,I\,t
 ---
 name: dvdt
-tex: \frac{dV}{dt} = \frac{12\,\mathrm{V}}{20\,\mathrm{ns}} = 0.6\,\mathrm{V/ns}\ (\text{12 V leg}), \qquad \frac{325\,\mathrm{V}}{50\,\mathrm{ns}} = 6.5\,\mathrm{V/ns}\ (\text{325 V leg})
+tex: \frac{dV}{dt} = \frac{12\,\mathrm{V}}{20\,\mathrm{ns}} = 0.6\,\mathrm{V\cdot ns^{-1}}\ (\text{12 V leg}), \qquad \frac{325\,\mathrm{V}}{50\,\mathrm{ns}} = 6.5\,\mathrm{V\cdot ns^{-1}}\ (\text{325 V leg})
 ---
 name: miller
-tex: i_{gd} = C_{rss}\,\frac{dV}{dt} = 30\,\mathrm{pF} \times 6.5\,\mathrm{V/ns} = 0.195\,\mathrm{A} \;\Rightarrow\; 0.195\,\mathrm{A} \times 10\,\Omega = 1.95\,\mathrm{V}\ \text{on a gate that should be off}
+tex: i_{gd} = C_{rss}\,\frac{dV}{dt} = 30\,\mathrm{pF} \times 6.5\,\mathrm{V\cdot ns^{-1}} = 0.195\,\mathrm{A} \;\Rightarrow\; 0.195\,\mathrm{A} \times 10\,\Omega = 1.95\,\mathrm{V}\ \text{on a gate that should be off}
 ---
 name: spike
 tex: V_{spike} = L_{stray}\,\frac{di}{dt} = 20\,\mathrm{nH} \times \frac{83.3\,\mathrm{A}}{50\,\mathrm{ns}} = 33\,\mathrm{V} \quad(\text{on top of a } 12\,\mathrm{V}\ \text{bus})

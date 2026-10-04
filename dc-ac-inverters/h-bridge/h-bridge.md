@@ -357,7 +357,7 @@ Three numbers characterise an edge:
 Fast edges are not free. A high ![dV/dt](h-bridge.assets/eq-inline/25814345d6.svg)<!--m:dV/dt--> pushes current through every capacitance it meets
 (![i = C dV/dt](h-bridge.assets/eq-inline/481d17bfa3.svg)<!--m:i = C\,dV/dt--> — the capacitor law from [../../fundamentals/capacitor/](../../fundamentals/capacitor/capacitor.md)).
 The most dangerous one is the *other* MOSFET's gate-drain capacitance. When the high-side switch
-slams the midpoint up at 6.5 V/ns, the off low-side switch sees that edge on its drain, and its
+slams the midpoint up at ![6.5 V times ns^-1](h-bridge.assets/eq-inline/4f4e3b9cd7.svg)<!--m:6.5\,\mathrm{V\cdot ns^{-1}}-->, the off low-side switch sees that edge on its drain, and its
 ![C_rss](h-bridge.assets/eq-inline/123d4265d1.svg)<!--m:C_{rss}--> (= ![C_gd](h-bridge.assets/eq-inline/217c780259.svg)<!--m:C_{gd}-->) injects current into its own gate:
 
 ![i_gd equals C_rss times dV/dt equals 0.195 amps, times 10 ohms equals 1.95 volts on a gate that should be off](h-bridge.assets/eq-miller.svg)
@@ -411,7 +411,7 @@ Inside the IC, a **level shifter** carries the on/off command from the ground-re
 (HIN) up to the floating high-side section. It is a pair of high-voltage transistors that send short
 current pulses up to a latch sitting at VS — this is what the "500 V" or "600 V" rating of the
 driver refers to, and what limits how fast VS may slew before the latch is upset (the driver's
-dV/dt immunity, typically ±50 V/ns).
+dV/dt immunity, typically ![plus-minus 50 V times ns^-1](h-bridge.assets/eq-inline/792af57b67.svg)<!--m:\pm 50\,\mathrm{V\cdot ns^{-1}}-->).
 
 **Sizing the capacitor.** Each high-side turn-on takes ![Q_g](h-bridge.assets/eq-inline/2bc5712b85.svg)<!--m:Q_g--> out of ![C_bs](h-bridge.assets/eq-inline/3e85fd5f67.svg)<!--m:C_{bs}-->, and while it is on,
 the driver's floating section draws a quiescent current ![I_QBS](h-bridge.assets/eq-inline/cdf6a0fea7.svg)<!--m:I_{QBS}--> from it as well, plus a little

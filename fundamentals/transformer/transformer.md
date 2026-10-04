@@ -615,7 +615,7 @@ resistance by a factor ![F_R](transformer.assets/eq-inline/b14a489ca7.svg)<!--m:
 
   ![delta equals root of rho over pi f mu_0, 9.3 mm at 50 Hz and 0.30 mm at 50 kHz](transformer.assets/eq-skin.svg)
 
-  The 83 A primary needs about 24 mm² of copper at a typical 3.5 A/mm². As one round wire that is
+  The 83 A primary needs about 24 mm² of copper at a typical ![3.5 A times mm^-2](transformer.assets/eq-inline/8b75aa425f.svg)<!--m:3.5\,\mathrm{A\cdot mm^{-2}}-->. As one round wire that is
   5.5 mm across, but at 50 kHz only the outer 0.3 mm of it would carry current. The fix is to
   divide the copper into conductors no thicker than about ![2 delta](transformer.assets/eq-inline/1a812beae2.svg)<!--m:2\delta-->: copper **foil** about 0.2 to
   0.3 mm thick and as wide as the winding window, or **Litz wire** made of hundreds of insulated
@@ -792,7 +792,7 @@ Multiply the two, write the transformer's power as ![P = V_p I_p](transformer.as
 ![A_p equals A_e A_w equals P over 2 K_u J f B peak](transformer.assets/eq-ap.svg)
 
 The core needed is proportional to the power, and inversely proportional to frequency times flux
-density. For 1 kW with ![K_u = 0.4](transformer.assets/eq-inline/d967e0bec9.svg)<!--m:K_u = 0.4--> and ![J = 3.5 A/mm^2](transformer.assets/eq-inline/0fe6b33d3b.svg)<!--m:J = 3.5\,\mathrm{A/mm^2}-->:
+density. For 1 kW with ![K_u = 0.4](transformer.assets/eq-inline/d967e0bec9.svg)<!--m:K_u = 0.4--> and ![J = 3.5 A times mm^-2](transformer.assets/eq-inline/b887bfeca5.svg)<!--m:J = 3.5\,\mathrm{A\cdot mm^{-2}}-->:
 
 ![A_p at 50 Hz and 1.4 T about 510 cm to the fourth, at 50 kHz and 0.15 T about 4.8 cm to the fourth](transformer.assets/eq-ap-numbers.svg)
 

@@ -517,7 +517,7 @@ three ideas of this document: PWM average, LC filtering, and a duty cycle that m
 
   ![L equals Z_0 over omega_0 and C equals 1 over omega_0 Z_0, which with Z_0 of 10 ohms and omega_0 of 10 to the 4 gives 1 mH and 10 microfarads](lc-filter.assets/eq-sizing.svg)
 
-  This is how the running example was chosen: ![omega_0 = 10^4 rad/s](lc-filter.assets/eq-inline/76fc228490.svg)<!--m:\omega_0 = 10^4\,\mathrm{rad/s}--> (![f_0 approx 1.59 kHz](lc-filter.assets/eq-inline/71874cd5e1.svg)<!--m:f_0 \approx 1.59\,\mathrm{kHz}-->,
+  This is how the running example was chosen: ![omega_0 = 10^4 rad times s^-1](lc-filter.assets/eq-inline/d87e8509d2.svg)<!--m:\omega_0 = 10^4\,\mathrm{rad\cdot s^{-1}}--> (![f_0 approx 1.59 kHz](lc-filter.assets/eq-inline/71874cd5e1.svg)<!--m:f_0 \approx 1.59\,\mathrm{kHz}-->,
   the geometric mean of ![50 Hz](lc-filter.assets/eq-inline/01368b7b9b.svg)<!--m:50\,\mathrm{Hz}--> and ![50 kHz](lc-filter.assets/eq-inline/c61affb2d7.svg)<!--m:50\,\mathrm{kHz}-->) and ![Z_0 = R = 10 Omega](lc-filter.assets/eq-inline/3d9818d8a6.svg)<!--m:Z_0 = R = 10\,\Omega--> for ![Q = 1](lc-filter.assets/eq-inline/24fdb68929.svg)<!--m:Q = 1-->.
   A bigger ![L](lc-filter.assets/eq-inline/d160e0986a.svg)<!--m:L--> with a smaller ![C](lc-filter.assets/eq-inline/32096c2e0e.svg)<!--m:C--> lowers the ripple current but makes the filter softer (output sags more
   under sudden load steps); the reverse needs a capacitor that can carry more ripple current.

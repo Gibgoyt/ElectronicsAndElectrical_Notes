@@ -21,7 +21,7 @@ name: slew
 tex: \text{SR} = \frac{dv}{dt} \approx \frac{0.9V - 0.1V}{t_r} = \frac{0.8\,V}{t_r}
 ---
 name: slew-example
-tex: \text{SR} \approx \frac{0.8 \times 325\,\mathrm{V}}{50\,\mathrm{ns}} = 5.2\,\mathrm{V/ns} = 5200\,\mathrm{V/\mu s}
+tex: \text{SR} \approx \frac{0.8 \times 325\,\mathrm{V}}{50\,\mathrm{ns}} = 5.2\,\mathrm{V\cdot ns^{-1}} = 5200\,\mathrm{V}\cdot\mu\mathrm{s}^{-1}
 ---
 name: miller
 tex: t_{sw} \approx \frac{Q_{gd}}{I_g} = \frac{10\,\mathrm{nC}}{1\,\mathrm{A}} = 10\,\mathrm{ns}
@@ -30,7 +30,7 @@ name: cap-limit
 tex: \frac{dv}{dt} = \frac{i}{C_{node}} \quad\Longrightarrow\quad t_r \approx \frac{C_{node}\,V}{I}
 ---
 name: cap-current
-tex: i_C = C\,\frac{dv}{dt} = 100\,\mathrm{pF} \times 5.2\,\mathrm{V/ns} = 0.52\,\mathrm{A}
+tex: i_C = C\,\frac{dv}{dt} = 100\,\mathrm{pF} \times 5.2\,\mathrm{V\cdot ns^{-1}} = 0.52\,\mathrm{A}
 ---
 name: ind-voltage
 tex: v_L = L_{loop}\,\frac{di}{dt} = 20\,\mathrm{nH} \times \frac{10\,\mathrm{A}}{10\,\mathrm{ns}} = 20\,\mathrm{V}

@@ -173,7 +173,7 @@ name: eddy
 tex: P_e = \frac{\pi^2\,f^2\,\hat B^2\,t^2}{6\,\rho} \quad (\text{per unit volume, laminations of thickness } t)
 ---
 name: eddy-numbers
-tex: 50\,\text{Hz},\ 1.5\,\text{T}:\ P_e \approx 0.3\,\text{W/kg} \qquad\qquad 50\,\text{kHz},\ 0.15\,\text{T}:\ P_e \approx 3000\,\text{W/kg}
+tex: 50\,\text{Hz},\ 1.5\,\text{T}:\ P_e \approx 0.3\,\mathrm{W\cdot kg^{-1}} \qquad\qquad 50\,\text{kHz},\ 0.15\,\text{T}:\ P_e \approx 3000\,\mathrm{W\cdot kg^{-1}}
 ---
 name: resistivity
 tex: \rho_{\text{Si steel}} \approx 0.5\ \mu\Omega\cdot\text{m}, \qquad \rho_{\text{MnZn ferrite}} \approx 1\text{–}10\ \Omega\cdot\text{m} \quad (10^{6}\text{–}10^{7}\times \text{ higher})
