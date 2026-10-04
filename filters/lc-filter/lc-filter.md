@@ -131,7 +131,7 @@ open. The law then demands:
 
 Sixty thousand volts across the inductor, appearing at the switch node with a negative sign. In
 practice the switch breaks down and arcs long before that — this is the *inductive kick* described in
-the [inductor document §6](../../fundamentals/inductor/inductor.md#6-the-inductive-kick-and-why-the-diode-is-there),
+the [inductor document §7](../../fundamentals/inductor/inductor.md#7-the-inductive-kick-and-why-the-diode-is-there),
 and it destroys transistors.
 
 The freewheel diode removes the problem without being told to. As soon as the switch opens, the

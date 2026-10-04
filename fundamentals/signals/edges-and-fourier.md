@@ -147,7 +147,7 @@ and why a fast edge can falsely trigger a logic input nearby.
 ![v_L equals L_loop di by dt equals 20 nH times 10 A over 10 ns equals 20 V](edges-and-fourier.assets/eq-ind-voltage.svg)
 
 That 20 V adds on top of the supply across the turning-off MOSFET. It is a small cousin of the
-inductive kick in [../inductor/inductor.md §6](../inductor/inductor.md#6-the-inductive-kick-and-why-the-diode-is-there).
+inductive kick in [../inductor/inductor.md §7](../inductor/inductor.md#7-the-inductive-kick-and-why-the-diode-is-there).
 The loop inductance and the node capacitance then form an LC tank. Kicked by the edge, it **rings**
 at its natural frequency:
 

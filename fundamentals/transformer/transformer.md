@@ -239,7 +239,7 @@ often specified through the core's <!--m:A_L-->![A_L](transformer.assets/eq-inli
 ![L_m equals A_L N_p squared equals N_p squared over R, and di_m by dt equals v_p over L_m](transformer.assets/eq-magnetising.svg)
 
 With a ±V square wave on the primary, <!--m:i_m-->![i_m](transformer.assets/eq-inline/71acc08428.svg)<!--/m--> is a triangle, exactly like the inductor ramp in
-[../inductor/inductor.md §3](../inductor/inductor.md#3-from-the-law-to-the-ramp--the-integral-done-slowly).
+[../inductor/inductor.md §4](../inductor/inductor.md#4-from-the-law-to-the-ramp--the-integral-done-slowly).
 During each half-period <!--m:T/2-->![T/2](transformer.assets/eq-inline/12bfe0f94c.svg)<!--/m--> it ramps through <!--m:V (T/2)/L_m-->![V (T/2)/L_m](transformer.assets/eq-inline/b79907f73a.svg)<!--/m-->, from <!--m:-\hat\imath_m-->![-_m](transformer.assets/eq-inline/77f2551cb7.svg)<!--/m--> to <!--m:+\hat\imath_m-->![+_m](transformer.assets/eq-inline/84a601b1be.svg)<!--/m-->:
 
 ![i_m peak equals V over 4 f L_m](transformer.assets/eq-im-peak.svg)
@@ -598,7 +598,7 @@ small inductor <!--m:L_\ell-->![L_ l](transformer.assets/eq-inline/4eb22dbba5.sv
 full load current, it stores energy <!--m:\tfrac12 L_\ell I^2-->![12 L_ l I^2](transformer.assets/eq-inline/0c74872a81.svg)<!--/m-->. The trouble is that an H-bridge
 **hard-switches**: it tries to reverse the primary current in nanoseconds, and an inductor resists
 a fast change of current with a voltage <!--m:L\,di/dt-->![L di/dt](transformer.assets/eq-inline/f24cc20a0b.svg)<!--/m--> — the inductive kick of
-[../inductor/inductor.md §6](../inductor/inductor.md#6-the-inductive-kick-and-why-the-diode-is-there).
+[../inductor/inductor.md §7](../inductor/inductor.md#7-the-inductive-kick-and-why-the-diode-is-there).
 Take an illustrative <!--m:L_\ell = 50\,\mathrm{nH}-->![L_ l = 50 nH](transformer.assets/eq-inline/76585c2f17.svg)<!--/m--> referred to the primary (realistic for a well-interleaved
 2-turn foil primary) and an 83 A current switched off in 50 ns:
 

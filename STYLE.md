@@ -125,13 +125,16 @@ Figures are **generated** by `toolchain/figures/*.js` using the `Fig` builder in
 - **Caption band.** Every figure ends with `f.caption("Y vs. X — descriptive name")`, which renders
   a rule line and a bold `Figure N:` prefix. Figure numbers are global and stable across the tree;
   each topic owns a block, and new topics take the next free block:
-  - fundamentals: inductor 1–3, capacitor 4–6, electromagnetism 13–19, signals 20–29
-    (edges and Fourier 20–26, AC and RMS 27–29), transformer 30–39;
+  - fundamentals: inductor 1–3 and 90 (the Faraday derivation, file `fig-04.svg`), capacitor 4–6,
+    electromagnetism 13–19, signals 20–29 (edges and Fourier 20–26, AC and RMS 27–29),
+    transformer 30–39;
   - dc-dc-converters: buck 7–9, boost 10–11, buck/boost comparison 12, start-up 50–55;
   - filters: LC filter 56–65;
   - pwm: 66–70;
   - rectifiers: 80–89;
-  - dc-ac-inverters: H-bridge 40–49, SPWM 71–79.
+  - dc-ac-inverters: H-bridge 40–49, SPWM 71–79;
+  - later additions to an existing topic whose block is full take the next free number after 89
+    (90 onward): inductor 90.
 
   The *file* names are local to each document — `fig-01.svg`, `fig-02.svg`, … inside its
   `<doc>.assets/` — while the caption carries the global number.

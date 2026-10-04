@@ -49,7 +49,7 @@ the point right after the switch, where the diode also connects — it is choppe
 ## 2 The two intervals
 
 Because the inductor obeys <!--m:V_L = L \cdot dI/dt-->![V_L = L times dI/dt](buck.assets/eq-inline/4e5d46c427.svg)<!--/m-->, a *constant* voltage across it makes its current a
-*straight ramp* (see [../../fundamentals/inductor/inductor.md §3](../../fundamentals/inductor/inductor.md#3-from-the-law-to-the-ramp--the-integral-done-slowly)).
+*straight ramp* (see [../../fundamentals/inductor/inductor.md §4](../../fundamentals/inductor/inductor.md#4-from-the-law-to-the-ramp--the-integral-done-slowly)).
 The buck gives the inductor two constant-voltage intervals per cycle.
 
 **Interval 1 — switch ON, lasting <!--m:D \cdot T-->![D times T](buck.assets/eq-inline/94b24dfcfd.svg)<!--/m-->.** Current flows V_in → switch → L → output. The diode is
@@ -159,7 +159,7 @@ voltage ripple. With <!--m:V_{in} = 12 V-->![V_in = 12 V](buck.assets/eq-inline/
 ## 8 Sources and cross-links
 
 - The inductor ramp this is built on:
-  [../../fundamentals/inductor/inductor.md §3](../../fundamentals/inductor/inductor.md#3-from-the-law-to-the-ramp--the-integral-done-slowly).
+  [../../fundamentals/inductor/inductor.md §4](../../fundamentals/inductor/inductor.md#4-from-the-law-to-the-ramp--the-integral-done-slowly).
 - The capacitor-charge argument for §5:
   [../../fundamentals/capacitor/capacitor.md §4](../../fundamentals/capacitor/capacitor.md#4-from-the-law-to-the-ramp).
 - Mirror circuit, same method: [../boost/boost.md](../boost/boost.md).

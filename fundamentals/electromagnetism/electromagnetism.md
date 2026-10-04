@@ -256,7 +256,7 @@ Now run the law the other way, which is how a power converter actually uses it. 
 not choose the flux; it chooses the **voltage** (an H-bridge slams <!--m:\pm 12\ \mathrm{V}-->![plus-minus 12 V](electromagnetism.assets/eq-inline/e82385197a.svg)<!--/m--> onto a winding), and the
 flux has to follow. Rearranged, <!--m:d\Phi/dt = v/N-->![d Phi/dt = v/N](electromagnetism.assets/eq-inline/64a5cbdd71.svg)<!--/m-->: the voltage dictates the *slope* of the flux. Integrate
 both sides from the moment you start the clock, exactly as in the inductor ramp proof
-([../inductor/inductor.md §3](../inductor/inductor.md#3-from-the-law-to-the-ramp--the-integral-done-slowly)):
+([../inductor/inductor.md §4](../inductor/inductor.md#4-from-the-law-to-the-ramp--the-integral-done-slowly)):
 
 ![integral of d Phi over 0 to t equals one over N integral of v; so Phi of t equals Phi of 0 plus one over N times the integral of v from 0 to t](electromagnetism.assets/eq-faraday-integral.svg)
 
@@ -361,8 +361,8 @@ nothing.
 and the coil induces an EMF opposing that rise — a *back*-EMF pushing against the source. When the
 current falls, the induced EMF flips and tries to keep the current going. This is the inductor's
 "resistor-like while charging, battery-like while discharging" behaviour from
-[../inductor/inductor.md §4](../inductor/inductor.md#4-polarity-lenz-and-the-sign-flip), and the
-inductive kick of [../inductor/inductor.md §6](../inductor/inductor.md#6-the-inductive-kick-and-why-the-diode-is-there).
+[../inductor/inductor.md §5](../inductor/inductor.md#5-polarity-lenz-and-the-sign-flip), and the
+inductive kick of [../inductor/inductor.md §7](../inductor/inductor.md#7-the-inductive-kick-and-why-the-diode-is-there).
 
 **Where did the minus sign go?** Circuit work uses the *passive sign convention*: label the terminal
 where current enters as <!--m:+-->![+](electromagnetism.assets/eq-inline/a979ef10cc.svg)<!--/m-->, and call <!--m:v-->![v](electromagnetism.assets/eq-inline/7a38d8cbd2.svg)<!--/m--> the voltage *drop* from <!--m:+-->![+](electromagnetism.assets/eq-inline/a979ef10cc.svg)<!--/m--> to <!--m:--->![-](electromagnetism.assets/eq-inline/3bc15c8aae.svg)<!--/m-->. The induced EMF opposing a
@@ -384,7 +384,7 @@ current that causes it is the **self-inductance**:
 ![L equals N Phi over I equals lambda over I; one henry equals one weber per ampere equals one volt second per ampere](electromagnetism.assets/eq-self-l-def.svg)
 
 Notice the units come out as V·s/A — the same henry the inductor document found by cancelling units
-([../inductor/inductor.md §2](../inductor/inductor.md#2-the-defining-law)). Now the derivation. As
+([../inductor/inductor.md §3](../inductor/inductor.md#3-the-defining-law)). Now the derivation. As
 long as the core stays out of saturation, <!--m:L-->![L](electromagnetism.assets/eq-inline/d160e0986a.svg)<!--/m--> is a constant (it depends only on geometry and
 material, as the next equation shows), so <!--m:\lambda(t) = L\,I(t)-->![lambda (t) = L I(t)](electromagnetism.assets/eq-inline/f910b11b7a.svg)<!--/m--> holds at **every instant**. Two
 functions of time that are equal at every instant have equal derivatives — the exact licence proved in
@@ -394,7 +394,7 @@ Faraday's <!--m:v = d\lambda/dt-->![v = d lambda/dt](electromagnetism.assets/eq-
 
 ![lambda of t equals L I of t, so d lambda by dt equals L dI by dt, so v_L of t equals L dI_L by dt](electromagnetism.assets/eq-derive-law.svg)
 
-That is the [inductor law](../inductor/inductor.md#2-the-defining-law), **derived**. It is not a
+That is the [inductor law](../inductor/inductor.md#3-the-defining-law), **derived**. It is not a
 separate fact about inductors; it is Faraday's law applied to a coil whose flux is made by its own
 current. Every ramp, every volt-second balance and every inductive kick in this tree follows from
 these three lines.

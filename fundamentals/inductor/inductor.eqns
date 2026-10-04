@@ -21,3 +21,33 @@ tex: \int_{0}^{t}\frac{dI_L}{dt'}\,dt' \;=\; \int_{0}^{t}\frac{V_L}{L}\,dt' \qua
 ---
 name: ramp-result
 tex: I_L(t) = I_L(0) + \frac{V_L}{L}\,t
+---
+name: flux-def
+tex: \Phi_B = \int_S \vec{B}\cdot d\vec{A} \qquad\xrightarrow{\ \text{uniform } B\ }\qquad \Phi_B = B\,A\cos\theta \qquad\xrightarrow{\ \theta\,=\,0\ }\qquad \Phi_B = B\,A
+---
+name: weber
+tex: [\Phi_B] = 1\ \mathrm{Wb} = 1\ \mathrm{T}\cdot\mathrm{m}^2 = 1\ \mathrm{V}\cdot\mathrm{s}
+---
+name: linkage
+tex: \lambda = N\,\Phi_B \qquad (\text{flux linkage, in weber-turns})
+---
+name: faraday
+tex: \mathcal{E} = -N\,\frac{d\Phi_B}{dt}
+---
+name: step-b
+tex: B = \frac{\mu\,N\,I}{l} \qquad (\mu = \mu_0\,\mu_r)
+---
+name: step-flux
+tex: \Phi_B = B\,A = \frac{\mu\,N\,A}{l}\,I \quad\Longrightarrow\quad \Phi_B \propto I
+---
+name: step-define-l
+tex: N\,\Phi_B = \frac{\mu\,N^2 A}{l}\,I \;\equiv\; L\,I \quad\Longrightarrow\quad L = \frac{N\,\Phi_B}{I} = \frac{\mu\,N^2 A}{l}
+---
+name: step-substitute
+tex: \mathcal{E} = -N\,\frac{d\Phi_B}{dt} = -\frac{d\,(N\,\Phi_B)}{dt} = -\frac{d\,(L\,I)}{dt} = -L\,\frac{dI}{dt}
+---
+name: step-sign
+tex: V_L = -\mathcal{E} = -\left(-L\,\frac{dI_L}{dt}\right) \quad\Longrightarrow\quad V_L = L\,\frac{dI_L}{dt}
+---
+name: step-kvl
+tex: V_s + \mathcal{E} = 0 \quad\Longrightarrow\quad V_s - L\,\frac{dI_L}{dt} = 0 \quad\Longrightarrow\quad \frac{dI_L}{dt} = \frac{V_s}{L}

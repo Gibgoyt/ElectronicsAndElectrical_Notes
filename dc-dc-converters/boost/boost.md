@@ -33,7 +33,7 @@ carries current on to the output. Same four parts as the buck, wired in a differ
 Same vocabulary as the buck: **ON = closed**, <!--m:D-->![D](boost.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> is the fraction of each period <!--m:T-->![T](boost.assets/eq-inline/c2c53d6694.svg)<!--/m--> the switch is
 ON, <!--m:f_{sw} = 1/T-->![f_sw = 1/T](boost.assets/eq-inline/cc2c6208db.svg)<!--/m-->. The one new idea you need is the inductor's **polarity flip**: when its current is
 forced to fall, <!--m:V_L-->![V_L](boost.assets/eq-inline/136d4e3fb2.svg)<!--/m--> changes sign and the inductor behaves like a battery in series with the source
-(see [../../fundamentals/inductor/inductor.md §4](../../fundamentals/inductor/inductor.md#4-polarity-lenz-and-the-sign-flip)).
+(see [../../fundamentals/inductor/inductor.md §5](../../fundamentals/inductor/inductor.md#5-polarity-lenz-and-the-sign-flip)).
 
 ## 2 The two intervals
 
@@ -130,7 +130,7 @@ Compare with the buck (<!--m:L = 112.5 \mu H-->![L = 112.5 mu H](boost.assets/eq
 ## 8 Sources and cross-links
 
 - The polarity flip that makes step-up possible:
-  [../../fundamentals/inductor/inductor.md §4](../../fundamentals/inductor/inductor.md#4-polarity-lenz-and-the-sign-flip).
+  [../../fundamentals/inductor/inductor.md §5](../../fundamentals/inductor/inductor.md#5-polarity-lenz-and-the-sign-flip).
 - The buck derivation this mirrors: [../buck/buck.md §3](../buck/buck.md#3-volt-second-balance--the-step-down-ratio).
 - The capacitor law behind §5:
   [../../fundamentals/capacitor/capacitor.md §4](../../fundamentals/capacitor/capacitor.md#4-from-the-law-to-the-ramp).

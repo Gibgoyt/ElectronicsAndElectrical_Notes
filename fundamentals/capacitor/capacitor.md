@@ -87,7 +87,7 @@ first — replace <!--m:dQ/dt-->![dQ/dt](capacitor.assets/eq-inline/d399529a90.s
 > voltage ramp in §4.
 
 > **Note —** This is the same shape as the inductor, where we integrated the constant-voltage
-> law to get a current ramp ([../inductor/inductor.md §3](../inductor/inductor.md#3-from-the-law-to-the-ramp--the-integral-done-slowly)).
+> law to get a current ramp ([../inductor/inductor.md §4](../inductor/inductor.md#4-from-the-law-to-the-ramp--the-integral-done-slowly)).
 > Differentiation and integration are inverses, so "differentiate <!--m:Q = C \cdot V-->![Q = C times V](capacitor.assets/eq-inline/205c11f7c4.svg)<!--/m-->" and "integrate
 > <!--m:V_L = L \cdot dI/dt-->![V_L = L times dI/dt](capacitor.assets/eq-inline/4e5d46c427.svg)<!--/m-->" are the same manoeuvre run in opposite directions.
 
@@ -126,7 +126,7 @@ arrives on the near plate and an equal charge is pushed off the far plate at the
 _Charge piles up (<!--m:V_C-->![V_C](capacitor.assets/eq-inline/b1fec46ec0.svg)<!--/m--> grows) rather than passing through — which is why <!--m:I_C-->![I_C](capacitor.assets/eq-inline/d697a02e80.svg)<!--/m--> can flow while the
 voltage is changing, yet a fully-charged capacitor blocks DC entirely (once <!--m:dV/dt = 0-->![dV/dt = 0](capacitor.assets/eq-inline/9ba4f1161e.svg)<!--/m-->, <!--m:I_C = 0-->![I_C = 0](capacitor.assets/eq-inline/93293972a2.svg)<!--/m-->).
 Contrast the inductor, where current flows straight through the wire the whole time
-([../inductor/inductor.md §5](../inductor/inductor.md#5-at-the-poles))._
+([../inductor/inductor.md §6](../inductor/inductor.md#6-at-the-poles))._
 
 > **Note —** "Blocks DC, passes AC" is just this law restated. At DC the voltage is steady, so
 > <!--m:dV/dt = 0-->![dV/dt = 0](capacitor.assets/eq-inline/9ba4f1161e.svg)<!--/m--> and <!--m:I_C = 0-->![I_C = 0](capacitor.assets/eq-inline/93293972a2.svg)<!--/m--> — an open circuit. The faster the voltage changes (higher frequency),

@@ -75,7 +75,7 @@ draws from it, so **<!--m:V_C-->![V_C](startup.assets/eq-inline/b1fec46ec0.svg)<
 
 **Switch OFF.** The inductor current cannot stop, so it forces the diode on and flows into the
 capacitor (the polarity flip of
-[../../fundamentals/inductor/inductor.md §4](../../fundamentals/inductor/inductor.md#4-polarity-lenz-and-the-sign-flip)).
+[../../fundamentals/inductor/inductor.md §5](../../fundamentals/inductor/inductor.md#5-polarity-lenz-and-the-sign-flip)).
 The inductor now has <!--m:V_{in} - V_C-->![V_in - V_C](startup.assets/eq-inline/d5e7ea0179.svg)<!--/m--> across it, which is negative, so its current ramps back down
 to zero. It takes a time <!--m:t_d-->![t_d](startup.assets/eq-inline/6c703960eb.svg)<!--/m--> to get there and delivers a charge <!--m:Q-->![Q](startup.assets/eq-inline/c3156e00d3.svg)<!--/m-->, the area of that falling
 triangle:
@@ -436,7 +436,7 @@ high side (the blue curve). Beyond that, the options are:
 - The buck counterpart (overshoot, inrush, and why the buck's timing is ratio-free):
   [../buck/startup.md](../buck/startup.md).
 - The inductor's polarity flip behind the OFF interval:
-  [../../fundamentals/inductor/inductor.md §4](../../fundamentals/inductor/inductor.md#4-polarity-lenz-and-the-sign-flip).
+  [../../fundamentals/inductor/inductor.md §5](../../fundamentals/inductor/inductor.md#5-polarity-lenz-and-the-sign-flip).
 - The energy stored in an inductor, <!--m:\tfrac12 L I^2-->![12 L I^2](startup.assets/eq-inline/0ad3ac82a0.svg)<!--/m-->:
   [../../fundamentals/inductor/inductor.md §1](../../fundamentals/inductor/inductor.md#1-what-an-inductor-actually-is).
 - The averaged LC as a filter: [../../filters/lc-filter/](../../filters/lc-filter/).
