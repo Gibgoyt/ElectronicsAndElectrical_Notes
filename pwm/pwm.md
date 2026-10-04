@@ -187,12 +187,21 @@ sinusoids at whole-number multiples of its repetition frequency. For PWM:
 
 ![v of t equals the DC term D V_in plus the sum over n from 1 to infinity of a_n cosine of 2 pi n f_sw t minus phi_n](pwm.assets/eq-fourier-series.svg)
 
-The DC term is exactly the average from §2. The harmonic amplitudes come from one integral over the
-ON interval (the OFF interval contributes nothing because the signal is 0 there):
+The DC term is exactly the average from §2. The harmonic amplitudes are quickest to get in the
+*complex* form of the Fourier coefficients. Euler's formula, <!--m:e^{-jx} = \cos x - j\sin x-->![e^-jx = cos x - j sin x](pwm.assets/eq-inline/c4fbd4be3e.svg)<!--/m--> with
+<!--m:j = \sqrt{-1}-->![j = sqrt -1](pwm.assets/eq-inline/63717dd03d.svg)<!--/m-->, packs the cosine and sine coefficient integrals of
+[../fundamentals/signals/edges-and-fourier.md §5](../fundamentals/signals/edges-and-fourier.md#5-orthogonality--the-trick-that-makes-it-work)
+into one: <!--m:c_n = \tfrac{1}{T}\int_0^T v\,e^{-j2\pi nt/T}\,dt = (A_n - j B_n)/2-->![c_n = 1 over T integral_0^T v e^-j2 pi nt/T dt = (A_n - j B_n)/2](pwm.assets/eq-inline/d5e8ed821e.svg)<!--/m-->, where <!--m:A_n-->![A_n](pwm.assets/eq-inline/5aa3f2ac5e.svg)<!--/m--> and <!--m:B_n-->![B_n](pwm.assets/eq-inline/4d79d51257.svg)<!--/m-->
+are that section's cosine and sine coefficients (named <!--m:a_n-->![a_n](pwm.assets/eq-inline/278ab95d3a.svg)<!--/m-->, <!--m:b_n-->![b_n](pwm.assets/eq-inline/54d608cbef.svg)<!--/m--> there). So the peak amplitude
+of harmonic <!--m:n-->![n](pwm.assets/eq-inline/d1854cae89.svg)<!--/m-->, <!--m:\sqrt{A_n^2 + B_n^2}-->![sqrt A_n^2 + B_n^2](pwm.assets/eq-inline/c4acc11253.svg)<!--/m--> — the <!--m:a_n-->![a_n](pwm.assets/eq-inline/278ab95d3a.svg)<!--/m--> of the series above — is <!--m:2|c_n|-->![2|c_n|](pwm.assets/eq-inline/a0773cede0.svg)<!--/m-->. For PWM the integral runs over the ON interval
+only (the OFF interval contributes nothing because the signal is 0 there), and the exponential
+integrates like any exponential:
 
 ![c_n equals one over T times the integral from 0 to DT of V_in e to the minus j 2 pi n t over T dt, which equals V_in over j 2 pi n times one minus e to the minus j 2 pi n D](pwm.assets/eq-fourier-coeff.svg)
 
-The bracket has magnitude twice a sine, which gives the peak amplitude of the *n*th harmonic:
+The bracket has magnitude twice a sine: factor out <!--m:e^{-j\pi nD}-->![e^-j pi nD](pwm.assets/eq-inline/c6040f97a1.svg)<!--/m--> to get
+<!--m:e^{-j\pi nD}\,(e^{j\pi nD} - e^{-j\pi nD}) = e^{-j\pi nD} \cdot 2j\sin(\pi nD)-->![e^-j pi nD (e^j pi nD - e^-j pi nD) = e^-j pi nD times 2j sin ( pi nD)](pwm.assets/eq-inline/5c8b63179f.svg)<!--/m-->, by Euler's formula
+again, and the factor in front has size 1. That gives the peak amplitude of the *n*th harmonic:
 
 ![the magnitude of one minus e to the minus j 2 pi n D is 2 times the absolute value of sine pi n D, so a_n equals 2 times c_n equals 2 V_in over n pi times the absolute value of sine n pi D](pwm.assets/eq-fourier-mag.svg)
 
@@ -253,7 +262,8 @@ high means turning the top one ON and the bottom one OFF; driving it low is the 
 gates get **complementary** PWM signals, <!--m:G_H-->![G_H](pwm.assets/eq-inline/5f34e47483.svg)<!--/m--> and its inverse <!--m:G_L-->![G_L](pwm.assets/eq-inline/d87d1f52ba.svg)<!--/m-->.
 
 If you literally invert one signal to make the other, both switches change state at the same
-instant — and real MOSFETs and IGBTs turn OFF more slowly than they turn ON. For a few tens or
+instant — and real MOSFETs and IGBTs (insulated-gate bipolar transistors, the other common power switch)
+turn OFF more slowly than they turn ON. For a few tens or
 hundreds of nanoseconds both conduct at once, shorting the supply straight through the leg
 (**shoot-through**). The current is limited only by stray resistance; the parts heat up or fail.
 
@@ -263,7 +273,8 @@ OFF, both stay OFF for <!--m:t_d-->![t_d](pwm.assets/eq-inline/6c703960eb.svg)<!
 ![Complementary gate signals for the high-side and low-side switch of one leg with dead-time gaps where both are off](pwm.assets/fig-05.svg)
 
 _The command PWM, and the two gate signals derived from it. In the shaded windows both switches
-are OFF; the load current keeps flowing through one switch's body diode, so the output voltage
+are OFF; the load current keeps flowing through one switch's body diode (the diode built into every power
+MOSFET, see [../dc-ac-inverters/h-bridge/h-bridge.md §5](../dc-ac-inverters/h-bridge/h-bridge.md#5-the-mosfet-as-a-switch)), so the output voltage
 during those windows is set by the current's direction, not by the controller._
 
 Dead time costs accuracy. During each window the output follows the current, not the command, so
@@ -289,7 +300,10 @@ exactly the right <!--m:D(t)-->![D(t)](pwm.assets/eq-inline/a6f14a1480.svg)<!--/
 ## 11 What this costs you
 
 - **Switching losses grow with frequency.** Every edge dissipates roughly
-  <!--m:\tfrac12 V I (t_r + t_f)-->![12 V I (t_r + t_f)](pwm.assets/eq-inline/ee4a6e128d.svg)<!--/m--> in the switch, and there are two per period, so loss is
+  <!--m:\tfrac12 V I t_r-->![12 V I t_r](pwm.assets/eq-inline/cca0057a0f.svg)<!--/m--> (or <!--m:\tfrac12 V I t_f-->![12 V I t_f](pwm.assets/eq-inline/ad4d29f7e3.svg)<!--/m-->) in the switch, the triangle of overlapping voltage and
+  current derived in
+  [../fundamentals/transformer/transformer.md §15](../fundamentals/transformer/transformer.md#15-core-loss--the-ceiling-on-frequency),
+  and there are two per period, so loss is
   proportional to <!--m:f_{sw}-->![f_sw](pwm.assets/eq-inline/4ac287231a.svg)<!--/m-->. This is the counterweight to the smaller filter a high <!--m:f_{sw}-->![f_sw](pwm.assets/eq-inline/4ac287231a.svg)<!--/m--> allows.
 - **Resolution falls with frequency.** <!--m:N = f_{clk}/f_{sw}-->![N = f_clk/f_sw](pwm.assets/eq-inline/09492a4c75.svg)<!--/m-->: at 84 MHz you have 1680
   steps at 50 kHz but only 168 at 500 kHz (§3).

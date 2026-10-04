@@ -101,6 +101,15 @@ voltage slope**. That is "a capacitor smooths the voltage".
 
 Then notice *where* each part is placed, because placement is what makes each law useful:
 
+Both bullets below use **impedance**, the AC version of resistance: for a sine wave of angular
+frequency <!--m:\omega = 2\pi f-->![omega = 2 pi f](lc-filter.assets/eq-inline/10f7ad86c0.svg)<!--/m-->, the ratio of a part's voltage amplitude to its current amplitude. The
+two laws give it at once. A sine current of amplitude <!--m:\hat I-->![I](lc-filter.assets/eq-inline/48786abc01.svg)<!--/m--> through the inductor makes
+<!--m:v_L = L\,di_L/dt-->![v_L = L di_L/dt](lc-filter.assets/eq-inline/7e61c8ca55.svg)<!--/m--> of amplitude <!--m:\omega L\hat I-->![omega L I](lc-filter.assets/eq-inline/90fb26c529.svg)<!--/m-->, so <!--m:|Z_L| = \omega L-->![|Z_L| = omega L](lc-filter.assets/eq-inline/3a906b535f.svg)<!--/m-->; a sine voltage of amplitude
+<!--m:\hat V-->![V](lc-filter.assets/eq-inline/ec34d75919.svg)<!--/m--> on the capacitor makes <!--m:i_C = C\,dv_C/dt-->![i_C = C dv_C/dt](lc-filter.assets/eq-inline/4f14dbaf62.svg)<!--/m--> of amplitude <!--m:\omega C\hat V-->![omega C V](lc-filter.assets/eq-inline/2f8d11e727.svg)<!--/m-->, so
+<!--m:|Z_C| = 1/(\omega C)-->![|Z_C| = 1/( omega C)](lc-filter.assets/eq-inline/bafe731c11.svg)<!--/m--> (the same argument as
+[../../fundamentals/signals/edges-and-fourier.md §9](../../fundamentals/signals/edges-and-fourier.md#9-why-the-harmonics-matter-downstream);
+§6 adds the timing).
+
 - **The inductor is in series** — in the path of the current. A series element controls what
   *flows through* it, so a part that refuses fast changes of current, placed in series, makes the
   current delivered downstream smooth. At high frequency its impedance <!--m:|Z_L| = \omega L-->![|Z_L| = omega L](lc-filter.assets/eq-inline/3a906b535f.svg)<!--/m--> is large:
@@ -207,8 +216,24 @@ linear circuit driven by it. That is the door to §11.
 
 ## 6 The transfer function, derived
 
-Because the averaged circuit is linear, it has a transfer function from the switch-node voltage to
-the output. Treat it as a voltage divider in the Laplace domain: the inductor (impedance <!--m:sL-->![sL](lc-filter.assets/eq-inline/1b3b95adda.svg)<!--/m-->) on top,
+Because the averaged circuit is linear, it has a **transfer function** <!--m:H-->![H](lc-filter.assets/eq-inline/7cf184f4c6.svg)<!--/m-->: the ratio of output to
+input for each frequency. The tool that gets it in three lines is the *Laplace variable* <!--m:s-->![s](lc-filter.assets/eq-inline/a0f1490a20.svg)<!--/m-->. Here
+is all of it that this document needs.
+
+- **Derivatives become multiplication.** For a signal that varies as <!--m:e^{st}-->![e^st](lc-filter.assets/eq-inline/0e06863538.svg)<!--/m-->, <!--m:d/dt-->![d/dt](lc-filter.assets/eq-inline/9560a2e5f1.svg)<!--/m--> just multiplies
+  it by <!--m:s-->![s](lc-filter.assets/eq-inline/a0f1490a20.svg)<!--/m-->: <!--m:\tfrac{d}{dt}e^{st} = s\,e^{st}-->![d over dt e^st = s e^st](lc-filter.assets/eq-inline/715981fe6d.svg)<!--/m-->. A steady sine is the case <!--m:s = j\omega-->![s = j omega](lc-filter.assets/eq-inline/52dfb07b61.svg)<!--/m-->, where
+  <!--m:j = \sqrt{-1}-->![j = sqrt -1](lc-filter.assets/eq-inline/63717dd03d.svg)<!--/m-->, because Euler's formula <!--m:e^{j\omega t} = \cos\omega t + j\sin\omega t-->![e^j omega t = cos omega t + j sin omega t](lc-filter.assets/eq-inline/e86c4365c8.svg)<!--/m--> packs a
+  cosine and a sine into one exponential (the physical signal is the real part). The full Laplace
+  transform extends this to any signal, but the rule is the same.
+- **So every part has an impedance <!--m:Z = V/I-->![Z = V/I](lc-filter.assets/eq-inline/6c4b7b1bc9.svg)<!--/m-->, a plain algebraic factor.** The inductor law
+  <!--m:v = L\,di/dt-->![v = L di/dt](lc-filter.assets/eq-inline/169359fd71.svg)<!--/m--> becomes <!--m:V = sL\,I-->![V = sL I](lc-filter.assets/eq-inline/17bc31129d.svg)<!--/m-->, so <!--m:Z_L = sL-->![Z_L = sL](lc-filter.assets/eq-inline/d073d44e10.svg)<!--/m-->. The capacitor law <!--m:i = C\,dv/dt-->![i = C dv/dt](lc-filter.assets/eq-inline/7f5f5ec54b.svg)<!--/m--> becomes
+  <!--m:I = sC\,V-->![I = sC V](lc-filter.assets/eq-inline/4437b456c9.svg)<!--/m-->, so <!--m:Z_C = 1/(sC)-->![Z_C = 1/(sC)](lc-filter.assets/eq-inline/cecf0a6863.svg)<!--/m-->. A resistor is <!--m:Z_R = R-->![Z_R = R](lc-filter.assets/eq-inline/4ca3970103.svg)<!--/m-->. At <!--m:s = j\omega-->![s = j omega](lc-filter.assets/eq-inline/52dfb07b61.svg)<!--/m--> their sizes are the
+  <!--m:\omega L-->![omega L](lc-filter.assets/eq-inline/b3beb438d7.svg)<!--/m--> and <!--m:1/(\omega C)-->![1/( omega C)](lc-filter.assets/eq-inline/a157b00b7e.svg)<!--/m--> of §2, and the <!--m:j-->![j](lc-filter.assets/eq-inline/5c2dd944dd.svg)<!--/m--> records the quarter-cycle shift.
+- **Impedances combine exactly like resistances,** because Kirchhoff's laws are unchanged: in series
+  they add; in parallel, <!--m:Z_1 \parallel Z_2 = Z_1 Z_2/(Z_1 + Z_2)-->![Z_1 Z_2 = Z_1 Z_2/(Z_1 + Z_2)](lc-filter.assets/eq-inline/f78cf5be5c.svg)<!--/m-->; and a divider with <!--m:Z_{top}-->![Z_top](lc-filter.assets/eq-inline/7b96a5d593.svg)<!--/m-->
+  above <!--m:Z_{bottom}-->![Z_bottom](lc-filter.assets/eq-inline/9da657382e.svg)<!--/m--> passes the fraction <!--m:Z_{bottom}/(Z_{top} + Z_{bottom})-->![Z_bottom/(Z_top + Z_bottom)](lc-filter.assets/eq-inline/07d260a5f0.svg)<!--/m--> of its input.
+
+So treat the filter as a voltage divider: the inductor (impedance <!--m:sL-->![sL](lc-filter.assets/eq-inline/1b3b95adda.svg)<!--/m-->) on top,
 and the parallel combination of capacitor (impedance <!--m:1/(sC)-->![1/(sC)](lc-filter.assets/eq-inline/1d73a7e900.svg)<!--/m-->) and load <!--m:R-->![R](lc-filter.assets/eq-inline/06576556d1.svg)<!--/m--> on the bottom:
 
 ![H of s equals V_out over V_s equals Z_p over Z_p plus sL, where Z_p is R parallel 1 over sC equals R over 1 plus sRC](lc-filter.assets/eq-divider.svg)
@@ -230,7 +255,10 @@ its two parameters — the natural (corner) frequency <!--m:\omega_0-->![omega_0
 
 <!--m:Z_0 = \sqrt{L/C}-->![Z_0 = sqrt L/C](lc-filter.assets/eq-inline/2ac38c12fb.svg)<!--/m--> is the filter's *characteristic impedance*. <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m--> is simply the load resistance
 measured in units of <!--m:Z_0-->![Z_0](lc-filter.assets/eq-inline/964f1c3f3e.svg)<!--/m-->: a heavy load (small <!--m:R-->![R](lc-filter.assets/eq-inline/06576556d1.svg)<!--/m-->) gives a small <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m-->, a light load (large <!--m:R-->![R](lc-filter.assets/eq-inline/06576556d1.svg)<!--/m-->) a
-large one. Put <!--m:s = j\omega-->![s = j omega](lc-filter.assets/eq-inline/52dfb07b61.svg)<!--/m--> to get the magnitude response:
+large one. Put <!--m:s = j\omega-->![s = j omega](lc-filter.assets/eq-inline/52dfb07b61.svg)<!--/m--> to get the response to a sine. Then <!--m:s^2 = -\omega^2-->![s^2 = - omega^2](lc-filter.assets/eq-inline/801507d6f0.svg)<!--/m-->, so the
+denominator becomes a complex number <!--m:a + jb-->![a + jb](lc-filter.assets/eq-inline/7fc3046405.svg)<!--/m--> with <!--m:a = 1 - \omega^2/\omega_0^2-->![a = 1 - omega^2/omega_0^2](lc-filter.assets/eq-inline/bede88f4c7.svg)<!--/m--> and
+<!--m:b = \omega/(Q\omega_0)-->![b = omega/(Q omega_0)](lc-filter.assets/eq-inline/ba9a315a73.svg)<!--/m-->. Its size is <!--m:\sqrt{a^2 + b^2}-->![sqrt a^2 + b^2](lc-filter.assets/eq-inline/b0e03cf3d2.svg)<!--/m--> (Pythagoras on the real and imaginary
+parts), and the size of <!--m:1/(a + jb)-->![1/(a + jb)](lc-filter.assets/eq-inline/3f99023ba2.svg)<!--/m--> is <!--m:1/\sqrt{a^2 + b^2}-->![1/sqrt a^2 + b^2](lc-filter.assets/eq-inline/2cf16abbde.svg)<!--/m-->. That is the magnitude response:
 
 ![magnitude of H of j omega equals 1 over the square root of 1 minus omega squared over omega_0 squared, squared, plus omega over Q omega_0, squared](lc-filter.assets/eq-mag.svg)
 
@@ -242,7 +270,10 @@ Three regimes tell you everything:
   slowest thing there is (<!--m:H(0) = 1-->![H(0) = 1](lc-filter.assets/eq-inline/6d972adbf1.svg)<!--/m--> exactly).
 - **At <!--m:\omega_0-->![omega_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m-->** the gain is <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m-->. For <!--m:Q > 1-->![Q > 1](lc-filter.assets/eq-inline/2fa298f53d.svg)<!--/m--> the filter *amplifies* signals near its resonance —
   the peak in Fig. 60.
-- **Far above <!--m:\omega_0-->![omega_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m-->** the gain falls as the square of frequency. In decibels:
+- **Far above <!--m:\omega_0-->![omega_0](lc-filter.assets/eq-inline/09a7be4d65.svg)<!--/m-->** the gain falls as the square of frequency. In decibels (<!--m:20\log_{10}-->![20 log_10](lc-filter.assets/eq-inline/fc732c015f.svg)<!--/m--> of an
+  amplitude ratio, as defined in
+  [../../fundamentals/signals/edges-and-fourier.md §3](../../fundamentals/signals/edges-and-fourier.md#3-why-steep-edges-matter--c-dvdt-and-l-didt)),
+  per *decade* (a factor of 10 in frequency):
 
 ![20 log of omega_0 over omega squared equals minus 40 log of omega over omega_0 dB, so minus 40 dB per decade](lc-filter.assets/eq-slope.svg)
 
@@ -270,12 +301,13 @@ half decades) each way. The design used for every figure in this document does e
 ![f_0 equals 1 over 2 pi root of 10 to the minus 3 times 10 to the minus 5, about 1.59 kHz; Z_0 equals 10 ohms; Q equals 1](lc-filter.assets/eq-design-num.svg)
 
 with <!--m:V_{in} = 12\,\mathrm{V}-->![V_in = 12 V](lc-filter.assets/eq-inline/9a063a8f8e.svg)<!--/m-->, <!--m:L = 1\,\mathrm{mH}-->![L = 1 mH](lc-filter.assets/eq-inline/5367ea2324.svg)<!--/m-->, <!--m:C = 10\,\mu\mathrm{F}-->![C = 10 mu F](lc-filter.assets/eq-inline/a68d258fbb.svg)<!--/m-->, <!--m:R = 10\,\Omega-->![R = 10 Omega](lc-filter.assets/eq-inline/0b1b42866f.svg)<!--/m-->. Reading the
-Bode plot at the two frequencies that matter:
+Bode plot (Fig. 60: <!--m:|H|-->![|H|](lc-filter.assets/eq-inline/96ceb9b4d8.svg)<!--/m--> in decibels against frequency on a logarithmic axis) at the two
+frequencies that matter:
 
 ![H at 50 kHz is about 1.59 over 50 squared, about 1.0 times 10 to the minus 3, minus 60 dB; H at 50 Hz is about 1.001, 0 dB](lc-filter.assets/eq-atten-num.svg)
 
 The switching frequency is cut by a factor of a thousand; the <!--m:50\,\mathrm{Hz}-->![50 Hz](lc-filter.assets/eq-inline/01368b7b9b.svg)<!--/m--> signal passes at full
-size with only about <!--m:1.8°-->![1.8°](lc-filter.assets/eq-inline/0de2b0765a.svg)<!--/m--> of phase lag. How these particular values of <!--m:L-->![L](lc-filter.assets/eq-inline/d160e0986a.svg)<!--/m--> and <!--m:C-->![C](lc-filter.assets/eq-inline/32096c2e0e.svg)<!--/m--> were picked from
+size with only about <!--m:1.8°-->![1.8°](lc-filter.assets/eq-inline/0de2b0765a.svg)<!--/m--> of phase lag (the phase is worked out in §12). How these particular values of <!--m:L-->![L](lc-filter.assets/eq-inline/d160e0986a.svg)<!--/m--> and <!--m:C-->![C](lc-filter.assets/eq-inline/32096c2e0e.svg)<!--/m--> were picked from
 <!--m:f_0-->![f_0](lc-filter.assets/eq-inline/bdd0794289.svg)<!--/m--> and <!--m:Z_0-->![Z_0](lc-filter.assets/eq-inline/964f1c3f3e.svg)<!--/m--> is in §14.
 
 ## 8 Ripple — what the filter lets through
@@ -302,8 +334,9 @@ same triangle-area argument as the
 
 ![delta V_C equals 0.06 over 8 times 10 to the minus 5 times 50000, equals 0.06 over 4, equals 15 mV](lc-filter.assets/eq-ripple-V-num.svg)
 
-Fifteen millivolts on six volts — a quarter of a percent. Substituting <!--m:\Delta I_L-->![Delta I_L](lc-filter.assets/eq-inline/c856ab20fc.svg)<!--/m--> shows the ripple is
-the filter-attenuation story in disguise:
+Fifteen millivolts on six volts — a quarter of a percent. Substituting <!--m:\Delta I_L-->![Delta I_L](lc-filter.assets/eq-inline/c856ab20fc.svg)<!--/m-->, and writing
+<!--m:1/(LC) = \omega_0^2 = (2\pi f_0)^2-->![1/(LC) = omega_0^2 = (2 pi f_0)^2](lc-filter.assets/eq-inline/744c3c9e82.svg)<!--/m-->, shows the ripple is the filter-attenuation story in disguise
+(the last step uses <!--m:D(1-D) \le \tfrac14-->![D(1-D) leq 14](lc-filter.assets/eq-inline/605acfbba7.svg)<!--/m-->):
 
 ![delta V_C equals V_in D times 1 minus D over 8 LC f_sw squared, equals pi squared over 2 times D times 1 minus D times V_in times f_0 over f_sw squared, at most pi squared over 8 V_in f_0 over f_sw squared](lc-filter.assets/eq-ripple-unified.svg)
 
@@ -336,7 +369,11 @@ still just DC. The interesting question is what happens *between* the flat lines
 Jump <!--m:D-->![D](lc-filter.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> from <!--m:0.25-->![0.25](lc-filter.assets/eq-inline/bdedc3fe49.svg)<!--/m--> to <!--m:0.75-->![0.75](lc-filter.assets/eq-inline/0cf1aeac03.svg)<!--/m-->. The average of the switch node jumps from <!--m:3\,\mathrm{V}-->![3 V](lc-filter.assets/eq-inline/2c9b84f130.svg)<!--/m--> to <!--m:9\,\mathrm{V}-->![9 V](lc-filter.assets/eq-inline/fe37df33fd.svg)<!--/m-->
 instantly, but the output cannot: the capacitor's voltage can only rise as fast as the inductor's current
 lets it, and that current can only rise as fast as <!--m:V_{in}/L-->![V_in/L](lc-filter.assets/eq-inline/703b9e93b8.svg)<!--/m--> allows. The output follows the
-second-order step response of <!--m:H(s)-->![H(s)](lc-filter.assets/eq-inline/42687f71af.svg)<!--/m-->:
+second-order step response of <!--m:H(s)-->![H(s)](lc-filter.assets/eq-inline/42687f71af.svg)<!--/m-->. That response is derived in
+[../../dc-dc-converters/buck/startup.md §3–§4](../../dc-dc-converters/buck/startup.md#3-the-averaged-model--a-second-order-lc-step)
+in terms of the damping ratio <!--m:\zeta-->![zeta](lc-filter.assets/eq-inline/08fe2529d0.svg)<!--/m-->; comparing its standard form with §6 here gives
+<!--m:\zeta = 1/(2Q)-->![zeta = 1/(2Q)](lc-filter.assets/eq-inline/eab4007e81.svg)<!--/m-->, so the overshoot <!--m:e^{-\pi\zeta/\sqrt{1-\zeta^2}}-->![e^- pi zeta/sqrt 1- zeta^2](lc-filter.assets/eq-inline/a1c9e57084.svg)<!--/m--> and the envelope time constant
+<!--m:\tau = 1/(\zeta\omega_0)-->![tau = 1/( zeta omega_0)](lc-filter.assets/eq-inline/9271507b21.svg)<!--/m--> become, in terms of <!--m:Q-->![Q](lc-filter.assets/eq-inline/c3156e00d3.svg)<!--/m-->:
 
 ![overshoot equals e to the minus pi over root of 4 Q squared minus 1; decay envelope e to the minus t over tau, with tau equal to 2Q over omega_0 equal to 2RC](lc-filter.assets/eq-overshoot.svg)
 
@@ -385,7 +422,10 @@ This is the linearity of §5 paying off. The averaged circuit is linear and driv
 ![V_out bar of s equals H of s times V_in times D of s; so v_out bar of t is about D of t times V_in when D varies well below f_0](lc-filter.assets/eq-tracking.svg)
 
 For a ramp, the filter's finite speed shows up as a constant delay — the output runs parallel to the
-target, a fixed time behind it:
+target, a fixed time behind it. The reason: for slowly varying inputs <!--m:s-->![s](lc-filter.assets/eq-inline/a0f1490a20.svg)<!--/m--> is small, and
+<!--m:H(s) = 1/(1 + sL/R + s^2LC) \approx 1 - sL/R-->![H(s) = 1/(1 + sL/R + s^2LC) approx 1 - sL/R](lc-filter.assets/eq-inline/8d573bff13.svg)<!--/m--> (drop the tiny <!--m:s^2-->![s^2](lc-filter.assets/eq-inline/4b4d44903f.svg)<!--/m--> term and use
+<!--m:1/(1 + x) \approx 1 - x-->![1/(1 + x) approx 1 - x](lc-filter.assets/eq-inline/39ba6f1099.svg)<!--/m-->). Multiplying by <!--m:s-->![s](lc-filter.assets/eq-inline/a0f1490a20.svg)<!--/m--> means differentiating, so the output is the input minus
+<!--m:L/R-->![L/R](lc-filter.assets/eq-inline/744da8232a.svg)<!--/m--> times its slope — which for a straight line is the same line shifted <!--m:L/R-->![L/R](lc-filter.assets/eq-inline/744da8232a.svg)<!--/m--> later:
 
 ![D equals k t gives v_out bar tending to k V_in times t minus 1 over Q omega_0, equals k V_in times t minus L over R](lc-filter.assets/eq-ramp-lag.svg)
 
@@ -423,7 +463,9 @@ generate that pattern — comparing a sine against a triangle carrier — is
 
 The phrase "well below <!--m:f_0-->![f_0](lc-filter.assets/eq-inline/bdd0794289.svg)<!--/m-->" in §11 carries the whole caveat. The filter cannot tell the difference
 between a fast change of <!--m:D-->![D](lc-filter.assets/eq-inline/50c9e8d5fc.svg)<!--/m--> that you *wanted* and switching ripple that you didn't — both are just
-high-frequency content, and both are attenuated alike. The phase of <!--m:H-->![H](lc-filter.assets/eq-inline/7cf184f4c6.svg)<!--/m--> shows how the delay grows:
+high-frequency content, and both are attenuated alike. The phase of <!--m:H-->![H](lc-filter.assets/eq-inline/7cf184f4c6.svg)<!--/m--> shows how the delay grows. With the denominator
+<!--m:a + jb-->![a + jb](lc-filter.assets/eq-inline/7fc3046405.svg)<!--/m--> of §6, the phase of <!--m:1/(a + jb)-->![1/(a + jb)](lc-filter.assets/eq-inline/3f99023ba2.svg)<!--/m--> is <!--m:-\arctan(b/a)-->![- (b/a)](lc-filter.assets/eq-inline/a57726e40e.svg)<!--/m-->, the angle of the point <!--m:(a, b)-->![(a, b)](lc-filter.assets/eq-inline/6cea03da36.svg)<!--/m-->
+measured from the real axis and reversed in sign:
 
 ![phi of f equals minus arctan of f over f_0 over Q, over 1 minus f over f_0 squared; phi at 50 Hz is about minus 1.8 degrees, phi at f_0 is minus 90 degrees](lc-filter.assets/eq-phase.svg)
 
