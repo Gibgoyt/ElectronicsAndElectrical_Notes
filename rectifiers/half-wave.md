@@ -51,7 +51,8 @@ The exponential is the Shockley diode equation:
 - **<!--m:I_S-->![I_S](half-wave.assets/eq-inline/9f7a3241bf.svg)<!--/m-->** — the saturation current, a property of the junction area and material, typically
   <!--m:10^{-14}-->![10^-14](half-wave.assets/eq-inline/c5a0ca7250.svg)<!--/m--> to <!--m:10^{-8}\,\mathrm{A}-->![10^-8 A](half-wave.assets/eq-inline/b953458724.svg)<!--/m--> for silicon rectifiers.
 - **<!--m:n-->![n](half-wave.assets/eq-inline/d1854cae89.svg)<!--/m-->** — the ideality factor, between 1 and 2.
-- **<!--m:V_T-->![V_T](half-wave.assets/eq-inline/ea07f61e6f.svg)<!--/m-->** — the thermal voltage:
+- **<!--m:V_T-->![V_T](half-wave.assets/eq-inline/ea07f61e6f.svg)<!--/m-->** — the thermal voltage, set by Boltzmann's constant <!--m:k-->![k](half-wave.assets/eq-inline/13fbd79c3d.svg)<!--/m-->, the absolute temperature <!--m:T-->![T](half-wave.assets/eq-inline/c2c53d6694.svg)<!--/m--> in
+  kelvin and the electron charge <!--m:q-->![q](half-wave.assets/eq-inline/22ea1c649c.svg)<!--/m-->:
 
 ![V_T equals k T over q, about 25.9 millivolts at 300 kelvin](half-wave.assets/eq-thermal-voltage.svg)
 
@@ -241,8 +242,17 @@ A ripple factor above 1 means there is *more* AC than DC in the output.
 
 ![eta equals P_dc over P_total equals V_avg squared over V_rms squared equals 4 over pi squared, about 40.5 percent](half-wave.assets/eq-efficiency.svg)
 
-The other 59.5 % heats the load as AC. The Fourier series makes the content explicit — the DC term,
-a large component *at the source frequency itself*, and even harmonics:
+The other 59.5 % heats the load as AC. The Fourier series makes the content explicit. Its coefficients come from the formulas of
+[../fundamentals/signals/edges-and-fourier.md §5](../fundamentals/signals/edges-and-fourier.md#5-orthogonality--the-trick-that-makes-it-work),
+in angle form, with the integrand zero on the second half-cycle. The DC term <!--m:a_0-->![a_0](half-wave.assets/eq-inline/4a5997da73.svg)<!--/m--> is the average of
+§5, <!--m:V_{pk}/\pi-->![V_pk/pi](half-wave.assets/eq-inline/79c2b285b0.svg)<!--/m-->. The fundamental's sine coefficient is <!--m:b_1 = \tfrac{1}{\pi}\int_0^\pi V_{pk}\sin^2\theta\,d\theta = V_{pk}/2-->![b_1 = 1 over pi integral_0^ pi V_pk sin^2 theta d theta = V_pk/2](half-wave.assets/eq-inline/f5cf007db0.svg)<!--/m-->,
+using the <!--m:\pi/2-->![pi/2](half-wave.assets/eq-inline/9a0abc6cd5.svg)<!--/m--> of §6; every other <!--m:b_n-->![b_n](half-wave.assets/eq-inline/54d608cbef.svg)<!--/m--> is zero. The cosine coefficients need
+<!--m:\sin\theta\cos n\theta = \tfrac12[\sin(1-n)\theta + \sin(1+n)\theta]-->![sin theta cos n theta = 12 sin (1-n) theta + sin (1+n) theta ](half-wave.assets/eq-inline/0fdae6b83d.svg)<!--/m-->:
+
+![a_n equals V_pk over pi times the integral from 0 to pi of sin theta cos n theta d theta, which equals minus 2 V_pk over pi times n squared minus 1 for even n, and 0 for odd n](half-wave.assets/eq-hw-coeffs.svg)
+
+Put together — the DC term, a large component *at the source frequency itself*, and even harmonics
+(write <!--m:n = 2k-->![n = 2k](half-wave.assets/eq-inline/37ad9a988d.svg)<!--/m-->):
 
 ![v_o of t equals V_pk over pi plus V_pk over 2 sin omega t minus 2 V_pk over pi times the sum of cos 2 k omega t over 4 k squared minus 1](half-wave.assets/eq-hw-fourier.svg)
 
@@ -287,7 +297,9 @@ detailed analysis of conduction angle and peak current is in
 
 This is the reason a half-wave rectifier is never put on a transformer secondary in a power supply
 of any size. The secondary current flows one way only, so it has an average value — equal to the
-load current — that never reverses:
+load current — that never reverses. Ampère's law around the core
+([../fundamentals/electromagnetism/electromagnetism.md §5](../fundamentals/electromagnetism/electromagnetism.md#5-h-permeability-and-why-the-core-matters))
+turns those DC ampere-turns into a steady flux density:
 
 ![I_s,avg equals I_load, not zero, so the DC flux density is mu_0 mu_r N_s I_s,avg over l_e](half-wave.assets/eq-dc-flux.svg)
 

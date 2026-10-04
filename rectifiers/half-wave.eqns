@@ -74,3 +74,6 @@ tex: I_{s,avg} = I_{load} \ne 0 \quad\Longrightarrow\quad B_{dc} = \frac{\mu_0\,
 ---
 name: dc-flux-worked
 tex: B_{dc} = \frac{4\pi\times10^{-7}\times 2000\times 50\times 1\ \mathrm{A}}{0.1\ \mathrm{m}} \approx 1.26\ \mathrm{T} \;\gg\; B_{sat} \approx 0.35\ \mathrm{T}\ \ (\text{ferrite})
+name: hw-coeffs
+tex: a_n = \frac{V_{pk}}{\pi}\int_0^{\pi}\sin\theta\cos n\theta\,d\theta = \frac{V_{pk}}{2\pi}\left[\frac{1 - \cos(1-n)\pi}{1-n} + \frac{1 - \cos(1+n)\pi}{1+n}\right] = \begin{cases} -\dfrac{2V_{pk}}{\pi\,(n^2 - 1)}, & n \text{ even} \\ 0, & n \text{ odd} \end{cases}
+---

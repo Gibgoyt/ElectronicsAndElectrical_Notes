@@ -136,7 +136,11 @@ changed by rectification.
 ![form factor pi over 2 root 2, about 1.11; ripple factor root of pi squared over 8 minus 1, about 0.483; efficiency 8 over pi squared, about 81.1 percent](full-bridge.assets/eq-fb-ratios.svg)
 
 **The ripple frequency doubles.** The Fourier series of the rectified sine contains only the DC
-term and *even* harmonics of the source:
+term and *even* harmonics of the source. It follows from the half-wave series of
+[half-wave.md §7](half-wave.md#7-form-factor-ripple-factor-and-efficiency): <!--m:|\sin\theta|-->![| sin theta |](full-bridge.assets/eq-inline/52e825e34e.svg)<!--/m--> is the
+half-wave output plus a copy of it delayed by half a cycle, <!--m:\theta \to \theta + \pi-->![theta to theta + pi](full-bridge.assets/eq-inline/4f3355444c.svg)<!--/m-->. The delay
+flips the sign of <!--m:\sin\theta-->![sin theta](full-bridge.assets/eq-inline/1544b981c1.svg)<!--/m--> but leaves the DC term and every <!--m:\cos 2k\theta-->![cos 2k theta](full-bridge.assets/eq-inline/09135365b0.svg)<!--/m--> unchanged, so in
+the sum the fundamental cancels and the rest doubles:
 
 ![magnitude of sin omega t equals 2 over pi minus 4 over pi times the sum of cos 2 k omega t over 4 k squared minus 1, equals 2 over pi minus 4 over 3 pi cos 2 omega t minus 4 over 15 pi cos 4 omega t and so on](full-bridge.assets/eq-fb-fourier.svg)
 
@@ -266,7 +270,9 @@ makes the same point for the inductor through <!--m:f_{sw}-->![f_sw](full-bridge
 > **Watch out —** The 1 µF covers the *rectifier's* ripple. The bus also feeds H-bridge 2, which
 > draws power from it in two ways the rectifier knows nothing about: chopped current pulses at the
 > SPWM switching frequency, and a power flow that pulses at 100 Hz because single-phase AC power
-> <!--m:p(t) = P\,(1 - \cos 2\omega t)-->![p(t) = P (1 - cos 2 omega t)](full-bridge.assets/eq-inline/d77577eb1e.svg)<!--/m--> swings between zero and twice the average. The bus capacitor
+> <!--m:p(t) = P\,(1 - \cos 2\omega t)-->![p(t) = P (1 - cos 2 omega t)](full-bridge.assets/eq-inline/d77577eb1e.svg)<!--/m--> (the <!--m:\sin^2-->![sin^2](full-bridge.assets/eq-inline/9343065c8e.svg)<!--/m--> of
+> [../fundamentals/signals/ac-and-rms.md §4](../fundamentals/signals/ac-and-rms.md#4-why-230-v-peaks-at-325-v))
+> swings between zero and twice the average. The bus capacitor
 > must source the switching pulses locally (so it needs low ESR and short connections to H-bridge
 > 2), and the 100 Hz pulsation must come either from a large bus capacitor or, as in this
 > unregulated design, straight back through the transformer from the battery. Real inverters
@@ -278,7 +284,15 @@ makes the same point for the inductor through <!--m:f_{sw}-->![f_sw](full-bridge
 When the bridge is fed straight from the mains — as in every off-line power supply, PC, phone
 charger and LED driver — the tall, narrow pulses of §6 are drawn from the grid. The grid voltage is
 sinusoidal; the current is not. **Power factor** is the ratio of real power to the product of RMS
-voltage and RMS current, and it splits into two parts:
+voltage and RMS current. Why it splits into two parts: with a sine voltage, the real power
+<!--m:P = \tfrac1T\int v\,i\,dt-->![P = 1T integral v i dt](full-bridge.assets/eq-inline/c9477e34ba.svg)<!--/m--> comes only from the current's fundamental, because the product of the
+voltage with any *other* harmonic averages to zero (orthogonality,
+[../fundamentals/signals/edges-and-fourier.md §5](../fundamentals/signals/edges-and-fourier.md#5-orthogonality--the-trick-that-makes-it-work)).
+The fundamental itself contributes <!--m:V_{rms}\,I_{1,rms}\cos\varphi_1-->![V_rms I_1,rms cos phi_1](full-bridge.assets/eq-inline/8a74014ba6.svg)<!--/m-->, where <!--m:\varphi_1-->![phi_1](full-bridge.assets/eq-inline/447d1b956d.svg)<!--/m--> is its phase
+shift from the voltage (the mean of <!--m:\sin x\,\sin(x - \varphi)-->![sin x sin (x - phi )](full-bridge.assets/eq-inline/dfe6dbf9a5.svg)<!--/m--> is <!--m:\tfrac12\cos\varphi-->![12 cos phi](full-bridge.assets/eq-inline/24c7eb4a4f.svg)<!--/m-->). Meanwhile the
+total RMS current is <!--m:I_{1,rms}\sqrt{1 + \text{THD}_I^2}-->![I_1,rms sqrt 1 + THD_I^2](full-bridge.assets/eq-inline/8479bff4b6.svg)<!--/m-->
+([../fundamentals/signals/ac-and-rms.md §5](../fundamentals/signals/ac-and-rms.md#5-rms-of-other-waveforms)).
+Divide:
 
 ![PF equals P over V_rms I_rms, equals the displacement factor cos phi_1 times the distortion factor I_1,rms over I_rms, equals cos phi_1 over root of 1 plus THD squared](full-bridge.assets/eq-pf-def.svg)
 
@@ -360,7 +374,9 @@ output settles at the **average**, not the peak:
 
 The inductor must be large enough to keep the current from falling to zero. Using the Fourier
 series of §4, the dominant ripple at <!--m:2\omega-->![2 omega](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m--> drives a ripple current through the inductor's
-impedance <!--m:2\omega L-->![2 omega L](full-bridge.assets/eq-inline/ab56dfce6f.svg)<!--/m--> (the capacitor is nearly a short at <!--m:2\omega-->![2 omega](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m-->), while the load draws the DC
+impedance <!--m:2\omega L-->![2 omega L](full-bridge.assets/eq-inline/ab56dfce6f.svg)<!--/m--> (the capacitor, with impedance <!--m:1/(2\omega C)-->![1/(2 omega C)](full-bridge.assets/eq-inline/9dcbcfaa47.svg)<!--/m-->, is nearly a short at
+<!--m:2\omega-->![2 omega](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m-->; impedances are in
+[../filters/lc-filter/lc-filter.md §2](../filters/lc-filter/lc-filter.md#2-two-laws-read-as-smoothing-rules)), while the load draws the DC
 current:
 
 ![peak 2 omega ripple current approximately 4 V_pk over 3 pi over 2 omega L; DC current equals 2 V_pk over pi over R](full-bridge.assets/eq-lcrit-ripple.svg)
@@ -373,7 +389,9 @@ Continuous conduction needs the ripple's peak not to exceed the DC level:
 
 Below <!--m:L_{crit}-->![L_crit](full-bridge.assets/eq-inline/d10ddd8f9a.svg)<!--/m--> the current goes discontinuous and the output climbs back towards the peak in a
 load-dependent way — the worst of both behaviours. Above it, the output ripple is the
-second-harmonic amplitude divided by the LC attenuation at <!--m:2\omega-->![2 omega](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m-->:
+second-harmonic amplitude divided by the LC attenuation at <!--m:2\omega-->![2 omega](full-bridge.assets/eq-inline/31f8b00253.svg)<!--/m-->, which is about
+<!--m:(2\omega)^2 LC-->![(2 omega )^2 LC](full-bridge.assets/eq-inline/d67ea78936.svg)<!--/m--> far above the corner
+([../filters/lc-filter/lc-filter.md §6](../filters/lc-filter/lc-filter.md#6-the-transfer-function-derived)):
 
 ![delta V peak to peak approximately 2 times 4 V_pk over 3 pi over 2 omega squared L C, about 1.4 volts for 0.5 henry and 1000 microfarads](full-bridge.assets/eq-lc-ripple.svg)
 
@@ -460,7 +478,10 @@ switch contacts and stress the diodes' surge rating. A 10 Ω cold NTC thermistor
 heats up and falls below 1 Ω within seconds.)_
 
 There is a hidden cost even in a perfect charge-up. Charging a capacitor through *any* resistance
-from a fixed voltage dissipates exactly as much energy in the resistance as ends up stored:
+from a fixed voltage dissipates exactly as much energy in the resistance as ends up stored. The
+charging current is <!--m:i = C\,dv/dt = (V/R)\,e^{-t/RC}-->![i = C dv/dt = (V/R) e^-t/RC](full-bridge.assets/eq-inline/e0e7a7d4c4.svg)<!--/m--> (the RC edge of
+[../fundamentals/signals/edges-and-fourier.md §1](../fundamentals/signals/edges-and-fourier.md#1-what-an-edge-is)),
+so <!--m:i^2 R = (V^2/R)\,e^{-2t/RC}-->![i^2 R = (V^2/R) e^-2t/RC](full-bridge.assets/eq-inline/bdc3d70029.svg)<!--/m-->, whose integral from zero to infinity is <!--m:(V^2/R)(RC/2)-->![(V^2/R)(RC/2)](full-bridge.assets/eq-inline/ee4aa08408.svg)<!--/m-->:
 
 ![E_R equals the integral of i squared R dt, equals one half C V squared, independent of R](full-bridge.assets/eq-charge-loss.svg)
 
@@ -491,7 +512,9 @@ so 53 J lands in the diodes, wiring and NTC in a fraction of a second. The usual
   with the wrong diode (29 W per standard-recovery diode in the model of
   [half-wave.md §3](half-wave.md#3-reverse-recovery-and-why-it-decides-everything-at-50-khz)).
 - **Capacitor ripple current and heating.** The capacitor carries everything the diodes deliver
-  minus what the load takes:
+  minus what the load takes. The load's share is the DC part, so the capacitor carries the AC part,
+  and mean squares split as DC squared plus AC mean square
+  ([half-wave.md §7](half-wave.md#7-form-factor-ripple-factor-and-efficiency)):
 
   ![I_C,rms equals the root of I_rect,rms squared minus I_load squared: about 2.8 amps for the 50 hertz sine, about 0.34 amps for the square wave](full-bridge.assets/eq-cap-rms.svg)
 
