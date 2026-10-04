@@ -1,0 +1,385 @@
+# Equation sources for faradays-law.md — rendered by toolchain/math_to_svg.js into
+# faradays-law.assets/eq-*.svg
+# Edit here, then run:
+#   node toolchain/build_all.js docs/fundamentals/faradays-law --figures toolchain/figures/faradays_law.js
+
+name: thesis
+aria: EMF equals minus d Phi_B by dt; for N turns, EMF equals minus N d Phi_B by dt, which equals minus d lambda by dt
+tex: \mathcal{E} = -\frac{d\Phi_B}{dt} \qquad\qquad \mathcal{E} = -N\,\frac{d\Phi_B}{dt} = -\frac{d\lambda}{dt}
+---
+name: lorentz
+aria: F equals q times the quantity E plus v cross B
+tex: \vec{F} = q\left(\vec{E} + \vec{v}\times\vec{B}\right)
+---
+name: tesla
+aria: one tesla equals one newton per ampere per metre
+tex: 1\ \mathrm{T} = 1\ \mathrm{N\cdot A^{-1}\cdot m^{-1}}
+---
+name: area-vector
+aria: the area vector A equals the area A times the unit normal n-hat
+tex: \vec{A} = A\,\hat{n} \qquad |\hat{n}| = 1
+---
+name: dot-product
+aria: B dot A equals B times A times cos theta
+tex: \vec{B}\cdot\vec{A} = B\,A\cos\theta
+---
+name: flux-uniform
+aria: for a uniform field and a flat loop, Phi_B equals B dot A, which equals B A cos theta
+tex: \Phi_B = \vec{B}\cdot\vec{A} = B\,A\cos\theta
+---
+name: flux-sum
+aria: Phi_B is approximately the sum over patches of B_i dot delta A_i
+tex: \Phi_B \approx \sum_{i} \vec{B}_i\cdot\Delta\vec{A}_i
+---
+name: flux-integral
+aria: Phi_B equals the surface integral over sigma of B dot dA
+tex: \Phi_B = \iint_{\Sigma} \vec{B}\cdot d\vec{A}
+---
+name: flux-worked
+aria: Phi_B equals 0.2 tesla times 0.01 square metres times cos 60 degrees, which is 1 milliweber
+tex: \Phi_B = (0.2\ \mathrm{T})(0.01\ \mathrm{m^2})\cos 60^{\circ} = 1.0\times10^{-3}\ \mathrm{T\cdot m^2} = 1.0\ \mathrm{mWb}
+---
+name: weber-1
+aria: one weber equals one tesla square metre, equals one newton per ampere per metre times a square metre, equals one newton metre per ampere
+tex: 1\ \mathrm{Wb} = 1\ \mathrm{T\cdot m^2} = 1\ \left(\mathrm{N\cdot A^{-1}\cdot m^{-1}}\right)\mathrm{m^2} = 1\ \mathrm{N\cdot m\cdot A^{-1}}
+---
+name: weber-2
+aria: a newton metre is a joule, so one weber equals one joule per ampere
+tex: 1\ \mathrm{N\cdot m} = 1\ \mathrm{J} \quad\Longrightarrow\quad 1\ \mathrm{Wb} = 1\ \mathrm{J\cdot A^{-1}}
+---
+name: weber-3
+aria: a joule is a volt coulomb, which is a volt ampere second, so one weber equals one volt second
+tex: 1\ \mathrm{J} = 1\ \mathrm{V\cdot C} = 1\ \mathrm{V\cdot A\cdot s} \quad\Longrightarrow\quad 1\ \mathrm{Wb} = 1\ \mathrm{V\cdot A\cdot s\cdot A^{-1}} = 1\ \mathrm{V\cdot s}
+---
+name: gauss-b
+aria: the closed surface integral of B dot dA equals zero
+tex: \oint_{S} \vec{B}\cdot d\vec{A} = 0
+---
+name: linkage
+aria: lambda equals N times Phi_B, in weber-turns
+tex: \lambda = N\,\Phi_B \qquad [\lambda] = \mathrm{Wb\text{-}turns} = \mathrm{Wb}
+---
+name: linkage-general
+aria: in general lambda equals the sum over turns k of Phi_k
+tex: \lambda = \sum_{k=1}^{N} \Phi_k \qquad \xrightarrow{\ \text{every turn sees } \Phi_B\ } \qquad \lambda = N\,\Phi_B
+---
+name: linkage-worked
+aria: lambda equals 200 turns times 1 milliweber, which is 0.2 weber-turns
+tex: \lambda = 200 \times 1.0\ \mathrm{mWb} = 0.20\ \mathrm{Wb\text{-}turns}
+---
+name: work-per-charge
+aria: EMF equals W over q; one volt equals one joule per coulomb
+tex: \mathcal{E} = \frac{W_{\text{loop}}}{q} \qquad 1\ \mathrm{V} = 1\ \mathrm{J\cdot C^{-1}}
+---
+name: emf-def
+aria: EMF equals the closed line integral of F over q dot dl, which equals the closed line integral of E plus v cross B, dot dl
+tex: \mathcal{E} = \oint_{C} \frac{\vec{F}}{q}\cdot d\vec{l} = \oint_{C}\left(\vec{E} + \vec{v}\times\vec{B}\right)\cdot d\vec{l}
+---
+name: conservative
+aria: for the electrostatic field of charges at rest, the closed line integral of E dot dl equals zero
+tex: \oint_{C} \vec{E}_{\text{static}}\cdot d\vec{l} = 0
+---
+name: ohm-loop
+aria: I equals EMF over R
+tex: I = \frac{\mathcal{E}}{R}
+---
+name: faraday
+aria: EMF equals minus d Phi_B by dt
+tex: \mathcal{E} = -\frac{d\Phi_B}{dt}
+---
+name: faraday-units
+aria: the units of d Phi by dt are webers per second, which are volt seconds per second, which are volts
+tex: \left[\frac{d\Phi_B}{dt}\right] = \mathrm{Wb\cdot s^{-1}} = \mathrm{V\cdot s\cdot s^{-1}} = \mathrm{V}
+---
+name: n-turns-1
+aria: the turns are in series, so the total EMF is the sum of the EMFs of each turn
+tex: \mathcal{E} = \sum_{k=1}^{N}\mathcal{E}_k = \sum_{k=1}^{N}\left(-\frac{d\Phi_k}{dt}\right)
+---
+name: n-turns-2
+aria: a sum of derivatives is the derivative of the sum, so EMF equals minus d by dt of the sum of Phi_k, which is minus d lambda by dt
+tex: \mathcal{E} = -\frac{d}{dt}\sum_{k=1}^{N}\Phi_k = -\frac{d\lambda}{dt}
+---
+name: n-turns-3
+aria: if every turn sees the same flux Phi_B, EMF equals minus N d Phi_B by dt
+tex: \mathcal{E} = -\frac{d\left(N\Phi_B\right)}{dt} = -N\,\frac{d\Phi_B}{dt}
+---
+name: average
+aria: the average EMF equals minus N delta Phi_B over delta t
+tex: \overline{\mathcal{E}} = -N\,\frac{\Delta\Phi_B}{\Delta t}
+---
+name: magnet-worked
+aria: average EMF magnitude equals 200 times 0.5 milliwebers over 0.1 seconds, which is 1 volt; the current is 1 volt over 10 ohms, which is 0.1 ampere
+tex: |\overline{\mathcal{E}}| = 200\times\frac{0.5\times10^{-3}\ \mathrm{Wb}}{0.10\ \mathrm{s}} = 1.0\ \mathrm{V} \qquad I = \frac{1.0\ \mathrm{V}}{10\ \Omega} = 0.10\ \mathrm{A}
+---
+name: charge-1
+aria: Q equals the integral of I dt, which equals the integral of EMF over R dt, which equals minus N over R times the integral of d Phi_B by dt dt
+tex: Q = \int I\,dt = \int \frac{\mathcal{E}}{R}\,dt = -\frac{N}{R}\int \frac{d\Phi_B}{dt}\,dt
+---
+name: charge-2
+aria: Q equals minus N over R times delta Phi_B, whatever the speed
+tex: Q = -\frac{N}{R}\,\Delta\Phi_B \qquad \text{(independent of how fast the flux changed)}
+---
+name: charge-worked
+aria: Q equals 200 over 10 ohms times 0.5 milliwebers, which is 10 millicoulombs, fast or slow
+tex: |Q| = \frac{200}{10\ \Omega}\times 0.5\times10^{-3}\ \mathrm{Wb} = 1.0\times10^{-2}\ \mathrm{C}
+---
+name: lenz-power
+aria: the power delivered to the loop equals EMF times I, which equals I squared R, which is positive
+tex: P = \mathcal{E}\,I = I^2R > 0
+---
+name: product-1
+aria: Phi_B equals B A cos theta, and all three may change with time
+tex: \Phi_B(t) = B(t)\,A(t)\cos\theta(t)
+---
+name: product-2
+aria: by the product rule, d Phi_B by dt equals dB by dt A cos theta plus B dA by dt cos theta minus B A sin theta d theta by dt
+tex: \frac{d\Phi_B}{dt} = \underbrace{\frac{dB}{dt}\,A\cos\theta}_{\text{field changes}} + \underbrace{B\,\frac{dA}{dt}\cos\theta}_{\text{area changes}} - \underbrace{B\,A\sin\theta\,\frac{d\theta}{dt}}_{\text{tilt changes}}
+---
+name: rod-force
+aria: the magnetic force on a charge q in the rod is q v cross B
+tex: \vec{F}_{\text{mag}} = q\,\vec{v}\times\vec{B}
+---
+name: rod-mag
+aria: v is perpendicular to B, so the size of the force is q v B, and it points along the rod
+tex: |\vec{v}\times\vec{B}| = vB\sin 90^{\circ} = vB \quad\Longrightarrow\quad F_{\text{mag}} = q\,v\,B \ \ \text{(along the rod)}
+---
+name: rod-work
+aria: the work done on q over the length l of the rod is q v B l
+tex: W = F_{\text{mag}}\,l = q\,v\,B\,l
+---
+name: rod-emf
+aria: the EMF is the work per charge, B l v
+tex: \mathcal{E} = \frac{W}{q} = B\,l\,v
+---
+name: rod-balance
+aria: in equilibrium q E equals q v B, so E equals v B and the voltage between the ends is E l, which is B l v
+tex: qE = qvB \quad\Longrightarrow\quad E = vB \quad\Longrightarrow\quad V = E\,l = B\,l\,v
+---
+name: rod-worked
+aria: EMF equals 0.5 tesla times 0.2 metres times 10 metres per second, which is 1 volt
+tex: \mathcal{E} = (0.5\ \mathrm{T})(0.2\ \mathrm{m})(10\ \mathrm{m\cdot s^{-1}}) = 1.0\ \mathrm{V}
+---
+name: bar-flux
+aria: the flux through the circuit is B l x, so d Phi_B by dt equals B l dx by dt, which is B l v
+tex: \Phi_B = B\,l\,x(t) \quad\Longrightarrow\quad \frac{d\Phi_B}{dt} = B\,l\,\frac{dx}{dt} = B\,l\,v
+---
+name: bar-current
+aria: I equals EMF over R, which is B l v over R
+tex: I = \frac{\mathcal{E}}{R} = \frac{B\,l\,v}{R}
+---
+name: bar-force
+aria: the force on the current-carrying bar is I l cross B, of size I l B, which equals B squared l squared v over R
+tex: \vec{F}_B = I\,\vec{l}\times\vec{B} \qquad F_B = I\,l\,B = \frac{B^2l^2v}{R}
+---
+name: bar-power
+aria: the mechanical power F v equals B squared l squared v squared over R, which equals EMF squared over R, which equals EMF times I
+tex: P_{\text{mech}} = F_B\,v = \frac{B^2l^2v^2}{R} = \frac{\mathcal{E}^2}{R} = \mathcal{E}\,I
+---
+name: bar-worked
+aria: with B 0.5 tesla, l 0.2 metres, v 10 metres per second and R 0.5 ohm: EMF 1 volt, I 2 amperes, force 0.2 newtons, power 2 watts
+tex: \mathcal{E} = 1.0\ \mathrm{V},\quad I = \frac{1.0\ \mathrm{V}}{0.5\ \Omega} = 2.0\ \mathrm{A},\quad F_B = (2.0\ \mathrm{A})(0.2\ \mathrm{m})(0.5\ \mathrm{T}) = 0.20\ \mathrm{N},\quad P = 2.0\ \mathrm{W}
+---
+name: coast-1
+aria: if nobody pushes, m dv by dt equals minus B squared l squared v over R
+tex: m\,\frac{dv}{dt} = -\frac{B^2l^2}{R}\,v
+---
+name: coast-2
+aria: so v of t equals v_0 times e to the minus t over tau, with tau equal to m R over B squared l squared
+tex: v(t) = v_0\,e^{-t/\tau} \qquad \tau = \frac{m\,R}{B^2l^2}
+---
+name: coast-worked
+aria: for a 0.1 kilogram bar, tau equals 0.1 times 0.5 over 0.5 squared times 0.2 squared, which is 5 seconds
+tex: \tau = \frac{(0.10\ \mathrm{kg})(0.5\ \Omega)}{(0.5\ \mathrm{T})^2(0.2\ \mathrm{m})^2} = 5.0\ \mathrm{s}
+---
+name: ring-1
+aria: around a circle of radius r, E is the same size everywhere and along the path, so the closed line integral is E times 2 pi r
+tex: \oint_C \vec{E}\cdot d\vec{l} = E\,(2\pi r)
+---
+name: ring-2
+aria: inside the region the flux through the circle is B pi r squared
+tex: \Phi_B = B\,\pi r^2 \qquad (r < R)
+---
+name: ring-3
+aria: so E times 2 pi r equals minus pi r squared dB by dt, and E equals minus r over 2 dB by dt
+tex: E\,(2\pi r) = -\pi r^2\,\frac{dB}{dt} \quad\Longrightarrow\quad E = -\frac{r}{2}\,\frac{dB}{dt} \qquad (r < R)
+---
+name: ring-4
+aria: outside, all of the flux B pi R squared is enclosed, so E equals minus R squared over 2 r dB by dt
+tex: E\,(2\pi r) = -\pi R^2\,\frac{dB}{dt} \quad\Longrightarrow\quad E = -\frac{R^2}{2r}\,\frac{dB}{dt} \qquad (r > R)
+---
+name: ring-worked
+aria: with dB by dt 471 tesla per second at r 5 centimetres, E is 11.8 volts per metre and the EMF round the circle is 3.7 volts
+tex: E = \frac{0.05\ \mathrm{m}}{2}\times 471\ \mathrm{T\cdot s^{-1}} = 11.8\ \mathrm{V\cdot m^{-1}} \qquad \mathcal{E} = \pi(0.05\ \mathrm{m})^2\times 471\ \mathrm{T\cdot s^{-1}} = 3.7\ \mathrm{V}
+---
+name: dbdt-worked
+aria: for B equal to 1.5 tesla times sin of omega t at 50 hertz, the peak dB by dt is omega times 1.5 tesla, which is 471 tesla per second
+tex: B(t) = 1.5\ \mathrm{T}\,\sin\omega t \quad\Longrightarrow\quad \left|\frac{dB}{dt}\right|_{\max} = \omega\,(1.5\ \mathrm{T}) = (314\ \mathrm{s^{-1}})(1.5\ \mathrm{T}) = 471\ \mathrm{T\cdot s^{-1}}
+---
+name: two-meters
+aria: V_1 equals I R_1, V_2 equals minus I R_2, and V_1 minus V_2 equals I times R_1 plus R_2, which is the EMF
+tex: V_1 = I R_1 = +0.1\ \mathrm{V} \qquad V_2 = -I R_2 = -0.9\ \mathrm{V} \qquad V_1 - V_2 = I(R_1+R_2) = \mathcal{E} = 1\ \mathrm{V}
+---
+name: mf-integral
+aria: the closed line integral of E dot dl around the rim of sigma equals minus the surface integral of partial B by partial t dot dA
+tex: \oint_{\partial\Sigma} \vec{E}\cdot d\vec{l} = -\iint_{\Sigma}\frac{\partial\vec{B}}{\partial t}\cdot d\vec{A}
+---
+name: mf-fixed
+aria: for a surface that does not move, this equals minus d by dt of the surface integral of B dot dA, which is minus d Phi_B by dt
+tex: \oint_{\partial\Sigma} \vec{E}\cdot d\vec{l} = -\frac{d}{dt}\iint_{\Sigma}\vec{B}\cdot d\vec{A} = -\frac{d\Phi_B}{dt} \qquad (\Sigma \text{ fixed})
+---
+name: stokes
+aria: Kelvin-Stokes theorem: the closed line integral of E dot dl equals the surface integral of curl E dot dA
+tex: \oint_{\partial\Sigma}\vec{E}\cdot d\vec{l} = \iint_{\Sigma}\left(\nabla\times\vec{E}\right)\cdot d\vec{A}
+---
+name: mf-combine
+aria: so the surface integral of curl E plus partial B by partial t, dot dA, is zero for every surface sigma
+tex: \iint_{\Sigma}\left(\nabla\times\vec{E} + \frac{\partial\vec{B}}{\partial t}\right)\cdot d\vec{A} = 0 \qquad \text{for every } \Sigma
+---
+name: mf-diff
+aria: curl E equals minus partial B by partial t
+tex: \nabla\times\vec{E} = -\frac{\partial\vec{B}}{\partial t}
+---
+name: curl-loop-1
+aria: the bottom and top edges give E_x at y times dx minus E_x at y plus dy times dx, which is minus partial E_x by partial y dx dy
+tex: E_x(y)\,dx - E_x(y+dy)\,dx = -\frac{\partial E_x}{\partial y}\,dx\,dy
+---
+name: curl-loop-2
+aria: the right and left edges give E_y at x plus dx times dy minus E_y at x times dy, which is partial E_y by partial x dx dy
+tex: E_y(x+dx)\,dy - E_y(x)\,dy = +\frac{\partial E_y}{\partial x}\,dx\,dy
+---
+name: curl-loop-3
+aria: so the circulation per unit area is partial E_y by partial x minus partial E_x by partial y, the z component of curl E
+tex: \frac{\oint \vec{E}\cdot d\vec{l}}{dx\,dy} = \frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y} \equiv \left(\nabla\times\vec{E}\right)_z
+---
+name: curl-full
+aria: curl E has components partial E_z by partial y minus partial E_y by partial z, partial E_x by partial z minus partial E_z by partial x, and partial E_y by partial x minus partial E_x by partial y
+tex: \nabla\times\vec{E} = \left(\frac{\partial E_z}{\partial y} - \frac{\partial E_y}{\partial z},\ \ \frac{\partial E_x}{\partial z} - \frac{\partial E_z}{\partial x},\ \ \frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y}\right)
+---
+name: curl-check-1
+aria: the ring field written in x and y is E equals dB by dt over 2 times y, minus x
+tex: \vec{E} = \frac{1}{2}\frac{dB_z}{dt}\,\left(y,\ -x,\ 0\right)
+---
+name: curl-check-2
+aria: its curl z component is one half dB_z by dt times minus 1 minus 1, which is minus dB_z by dt
+tex: \left(\nabla\times\vec{E}\right)_z = \frac{1}{2}\frac{dB_z}{dt}\left[\frac{\partial(-x)}{\partial x} - \frac{\partial y}{\partial y}\right] = \frac{1}{2}\frac{dB_z}{dt}(-1-1) = -\frac{dB_z}{dt}
+---
+name: es-integral
+aria: the induced electric field at r is approximately minus one over 4 pi times the volume integral of partial B by partial t at r prime cross r minus r prime over the cube of the distance
+tex: \vec{E}_s(\vec{r},t) \approx -\frac{1}{4\pi}\iiint_V \frac{\left(\dfrac{\partial\vec{B}(\vec{r}\,',t)}{\partial t}\right)\times\left(\vec{r}-\vec{r}\,'\right)}{\left|\vec{r}-\vec{r}\,'\right|^3}\,d^3\vec{r}\,'
+---
+name: leibniz
+aria: d by dt of the flux through a moving surface equals the surface integral of partial B by partial t plus divergence of B times v_c, dot dA, minus the closed line integral of v_c cross B dot dl
+tex: \frac{d}{dt}\iint_{\Sigma(t)}\vec{B}\cdot d\vec{A} = \iint_{\Sigma(t)}\left(\frac{\partial\vec{B}}{\partial t} + (\nabla\cdot\vec{B})\,\vec{v}_c\right)\cdot d\vec{A} - \oint_{\partial\Sigma(t)}\left(\vec{v}_c\times\vec{B}\right)\cdot d\vec{l}
+---
+name: div-b
+aria: divergence of B equals zero
+tex: \nabla\cdot\vec{B} = 0
+---
+name: derive-1
+aria: so d Phi_B by dt equals the surface integral of partial B by partial t dot dA minus the closed line integral of v_c cross B dot dl
+tex: \frac{d\Phi_B}{dt} = \iint_{\Sigma(t)}\frac{\partial\vec{B}}{\partial t}\cdot d\vec{A} - \oint_{\partial\Sigma(t)}\left(\vec{v}_c\times\vec{B}\right)\cdot d\vec{l}
+---
+name: derive-2
+aria: replace the surface integral using Maxwell-Faraday: d Phi_B by dt equals minus the closed line integral of E plus v_c cross B, dot dl
+tex: \frac{d\Phi_B}{dt} = -\oint_{\partial\Sigma(t)}\vec{E}\cdot d\vec{l} - \oint_{\partial\Sigma(t)}\left(\vec{v}_c\times\vec{B}\right)\cdot d\vec{l} = -\oint_{\partial\Sigma(t)}\left(\vec{E} + \vec{v}_c\times\vec{B}\right)\cdot d\vec{l}
+---
+name: velocity-split
+aria: the velocity of a charge carrier equals the conductor velocity v_c plus the drift velocity v_d
+tex: \vec{v} = \vec{v}_c + \vec{v}_d
+---
+name: derive-3
+aria: the EMF equals the closed line integral of E plus v_c cross B, plus the closed line integral of v_d cross B, which is minus d Phi_B by dt plus the closed line integral of v_d cross B dot dl
+tex: \mathcal{E} = \oint\left(\vec{E} + \vec{v}_c\times\vec{B}\right)\cdot d\vec{l} + \oint\left(\vec{v}_d\times\vec{B}\right)\cdot d\vec{l} = -\frac{d\Phi_B}{dt} + \oint_{\partial\Sigma(t)}\left(\vec{v}_d\times\vec{B}\right)\cdot d\vec{l}
+---
+name: thin-wire
+aria: in a thin wire v_d is parallel to dl, so v_d cross B dot dl is zero, and EMF equals minus d Phi_B by dt
+tex: \vec{v}_d \parallel d\vec{l} \quad\Longrightarrow\quad \left(\vec{v}_d\times\vec{B}\right)\cdot d\vec{l} = 0 \quad\Longrightarrow\quad \mathcal{E} = -\frac{d\Phi_B}{dt}
+---
+name: two-terms
+aria: EMF equals minus the surface integral of partial B by partial t dot dA plus the closed line integral of v cross B dot dl
+tex: \mathcal{E} = \underbrace{-\iint_{\Sigma(t)}\frac{\partial\vec{B}}{\partial t}\cdot d\vec{A}}_{\text{transformer EMF}} + \underbrace{\oint_{\partial\Sigma(t)}\left(\vec{v}\times\vec{B}\right)\cdot d\vec{l}}_{\text{motional EMF}}
+---
+name: drift-worked
+aria: the drift speed for 1 ampere in 1 square millimetre of copper is 1 over 8.5 times 10 to the 28 times 1.6 times 10 to the minus 19 times 10 to the minus 6, about 7 times 10 to the minus 5 metres per second
+tex: v_d = \frac{I}{n\,e\,A} = \frac{1\ \mathrm{A}}{(8.5\times10^{28}\ \mathrm{m^{-3}})(1.6\times10^{-19}\ \mathrm{C})(10^{-6}\ \mathrm{m^2})} \approx 7\times10^{-5}\ \mathrm{m\cdot s^{-1}}
+---
+name: disk-1
+aria: a piece of the radius at distance r moves at speed omega r, so the force per charge along the radius is omega r B
+tex: v(r) = \omega r \quad\Longrightarrow\quad \frac{F}{q} = v(r)\,B = \omega r B \quad \text{(along the radius)}
+---
+name: disk-2
+aria: the EMF is the integral from 0 to R of omega r B dr, which is one half B omega R squared
+tex: \mathcal{E} = \int_0^R \omega r B\,dr = \omega B\left[\frac{r^2}{2}\right]_0^R = \frac{1}{2}B\,\omega R^2
+---
+name: disk-worked
+aria: with B 0.5 tesla, R 0.1 metre and omega 314 per second, EMF is about 0.79 volts
+tex: \mathcal{E} = \tfrac{1}{2}(0.5\ \mathrm{T})(314\ \mathrm{s^{-1}})(0.10\ \mathrm{m})^2 \approx 0.79\ \mathrm{V}
+---
+name: frame
+aria: in a frame moving with velocity v, the electric field is E prime equals E plus v cross B, for speeds much less than c
+tex: \vec{E}\,' \approx \vec{E} + \vec{v}\times\vec{B}, \qquad \vec{B}\,' \approx \vec{B} \qquad (v \ll c)
+---
+name: gen-1
+aria: the angle between n-hat and B grows steadily: theta equals omega t, so Phi_B equals B A cos omega t
+tex: \theta(t) = \omega t \quad\Longrightarrow\quad \Phi_B(t) = B\,A\cos\omega t
+---
+name: gen-2
+aria: EMF equals minus N d by dt of B A cos omega t, equals minus N B A d by dt of cos omega t
+tex: \mathcal{E} = -N\,\frac{d}{dt}\left(B\,A\cos\omega t\right) = -N\,B\,A\,\frac{d}{dt}\cos\omega t
+---
+name: gen-3
+aria: by the chain rule, d by dt of cos omega t equals minus sin omega t times omega
+tex: \frac{d}{dt}\cos(\omega t) = -\sin(\omega t)\cdot\frac{d(\omega t)}{dt} = -\omega\sin\omega t
+---
+name: gen-4
+aria: so EMF equals N B A omega sin omega t
+tex: \mathcal{E}(t) = N\,B\,A\,\omega\,\sin\omega t \qquad \mathcal{E}_{pk} = N\,B\,A\,\omega
+---
+name: gen-worked
+aria: with N 100, B 0.2 tesla, A 0.01 square metres, omega 2 pi times 50, the peak EMF is 62.8 volts and the RMS is 44.4 volts
+tex: \mathcal{E}_{pk} = (100)(0.2\ \mathrm{T})(0.01\ \mathrm{m^2})(2\pi\times 50\ \mathrm{s^{-1}}) = 62.8\ \mathrm{V} \qquad \mathcal{E}_{rms} = \frac{62.8\ \mathrm{V}}{\sqrt2} = 44.4\ \mathrm{V}
+---
+name: gen-check
+aria: each long side moves at omega w over 2 and cuts the field with the component sin omega t; two sides give 2 B l omega w over 2 sin omega t, which is B A omega sin omega t
+tex: \mathcal{E}_{\text{1 turn}} = 2\times B\,l\left(\frac{\omega w}{2}\right)\sin\omega t = B\,(l\,w)\,\omega\sin\omega t = B\,A\,\omega\sin\omega t
+---
+name: xfmr
+aria: v_p equals N_p d Phi_B by dt and v_s equals N_s d Phi_B by dt, so v_s over v_p equals N_s over N_p
+tex: v_p = N_p\,\frac{d\Phi_B}{dt}, \quad v_s = N_s\,\frac{d\Phi_B}{dt} \quad\Longrightarrow\quad \frac{v_s}{v_p} = \frac{N_s}{N_p}
+---
+name: inductor
+aria: with lambda equal to L I, EMF equals minus d lambda by dt, which equals minus L dI by dt
+tex: \lambda = L\,I \quad\Longrightarrow\quad \mathcal{E} = -\frac{d\lambda}{dt} = -L\,\frac{dI}{dt}
+---
+name: inductor-worked
+aria: with L 100 microhenries and dI by dt 1 ampere per microsecond, the EMF magnitude is 100 volts
+tex: |\mathcal{E}| = (100\times10^{-6}\ \mathrm{H})\times\frac{1\ \mathrm{A}}{10^{-6}\ \mathrm{s}} = 100\ \mathrm{V}
+---
+name: eddy
+aria: eddy loss per volume grows as f squared B peak squared t squared over rho
+tex: P_{\text{eddy}} \propto \frac{f^2\,\hat{B}^2\,t^2}{\rho}
+---
+name: skin
+aria: the skin depth delta equals the square root of 2 rho over omega mu
+tex: \delta = \sqrt{\frac{2\rho}{\omega\,\mu}} \qquad \mu = \mu_0\,\mu_r
+---
+name: skin-steel
+aria: for steel at 25 kilohertz, delta is about 0.12 millimetres
+tex: \delta_{\text{steel}} = \sqrt{\frac{2(1.5\times10^{-7}\ \Omega\cdot\mathrm{m})}{(2\pi\times 25\times10^{3}\ \mathrm{s^{-1}})(4\pi\times10^{-7}\ \mathrm{H\cdot m^{-1}})(100)}} \approx 0.12\ \mathrm{mm}
+---
+name: skin-copper
+aria: for copper at 25 kilohertz, delta is about 0.41 millimetres
+tex: \delta_{\text{copper}} = \sqrt{\frac{2(1.7\times10^{-8}\ \Omega\cdot\mathrm{m})}{(2\pi\times 25\times10^{3}\ \mathrm{s^{-1}})(4\pi\times10^{-7}\ \mathrm{H\cdot m^{-1}})(1)}} \approx 0.41\ \mathrm{mm}
+---
+name: skin-ratio
+aria: the skin resistance goes as rho over delta; for steel it is about 30 times that of copper
+tex: R_{\text{skin}} \propto \frac{\rho}{\delta}: \qquad \frac{(1.5\times10^{-7})/(0.12\times10^{-3})}{(1.7\times10^{-8})/(0.41\times10^{-3})} \approx 30
+---
+name: flowmeter
+aria: in an electromagnetic flowmeter the EMF across the pipe is B D v; with 0.05 tesla, 0.1 metre and 2 metres per second it is 10 millivolts
+tex: \mathcal{E} = B\,D\,v = (0.05\ \mathrm{T})(0.10\ \mathrm{m})(2\ \mathrm{m\cdot s^{-1}}) = 10\ \mathrm{mV}
+---
+name: pcb-loop
+aria: a 1 square centimetre loop in a field changing at 1000 tesla per second picks up 0.1 volts
+tex: |\mathcal{E}| = A\,\frac{dB}{dt} = (10^{-4}\ \mathrm{m^2})(10^{3}\ \mathrm{T\cdot s^{-1}}) = 0.1\ \mathrm{V}
+---
