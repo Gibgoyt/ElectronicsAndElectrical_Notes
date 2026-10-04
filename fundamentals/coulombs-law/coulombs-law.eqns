@@ -1,0 +1,378 @@
+# Equation sources for coulombs-law.md — rendered by toolchain/math_to_svg.js into
+# coulombs-law.assets/eq-*.svg
+# Edit here, then run:
+#   node toolchain/build_all.js docs/fundamentals/coulombs-law --figures toolchain/figures/coulombs_law.js
+
+# ---- 1 charge -------------------------------------------------------------------------------
+name: quantised
+aria: q equals n times e, where n is a whole number
+tex: q = n\,e, \qquad n = 0,\ \pm1,\ \pm2,\ \dots
+---
+name: e-value
+aria: e equals 1.602176634 times 10 to the minus 19 coulombs, exactly
+tex: e = 1.602\,176\,634\times10^{-19}\ \mathrm{C}\quad(\text{exact})
+---
+name: one-coulomb
+aria: one coulomb equals one over e elementary charges, about 6.24 times 10 to the 18
+tex: 1\ \mathrm{C} = \frac{1}{1.602\,176\,634\times10^{-19}}\,e \approx 6.241\,509\times10^{18}\,e
+---
+name: conservation
+aria: the sum of all charges in an isolated system is the same before and after any process
+tex: \sum_i q_i\Big|_{\text{before}} = \sum_i q_i\Big|_{\text{after}}
+---
+name: pair
+aria: a gamma photon becomes an electron and a positron; charge 0 equals minus e plus e
+tex: \gamma \;\longrightarrow\; e^- + e^+ \qquad\quad 0 = (-e) + (+e)
+---
+
+# ---- 2 current ------------------------------------------------------------------------------
+name: current-avg
+aria: average current I equals delta Q over delta t
+tex: I_{avg} = \frac{\Delta Q}{\Delta t}
+---
+name: current-def
+aria: I equals dQ by dt, the limit of delta Q over delta t as delta t goes to zero
+tex: I = \lim_{\Delta t\to 0}\frac{\Delta Q}{\Delta t} = \frac{dQ}{dt}
+---
+name: ampere
+aria: one ampere equals one coulomb per second, written 1 C s to the minus 1; so one coulomb equals one ampere second
+tex: 1\ \mathrm{A} = \frac{1\ \mathrm{C}}{1\ \mathrm{s}} = 1\ \mathrm{C\cdot s^{-1}} \qquad\Longleftrightarrow\qquad 1\ \mathrm{C} = 1\ \mathrm{A\cdot s}
+---
+name: electrons-per-second
+aria: at one ampere, electrons per second equals 1 over e, about 6.24 times 10 to the 18 per second
+tex: \frac{I}{e} = \frac{1\ \mathrm{C\cdot s^{-1}}}{1.602\times10^{-19}\ \mathrm{C}} \approx 6.24\times10^{18}\ \text{electrons}\cdot\mathrm{s^{-1}}
+---
+name: drift-volume
+aria: in time dt the carriers within a length v dt of the plane cross it; their number is n A v dt
+tex: dN = n\,(A\,v\,dt)
+---
+name: drift-charge
+aria: the charge crossing is dQ equals e times dN equals n e A v dt
+tex: dQ = e\,dN = n\,e\,A\,v\,dt
+---
+name: drift-current
+aria: dividing by dt, I equals n e A v
+tex: I = \frac{dQ}{dt} = n\,e\,A\,v
+---
+name: drift-worked
+aria: v equals I over n e A equals 1 over 8.5 times 10 to the 28 times 1.602 times 10 to the minus 19 times 10 to the minus 6, about 7.3 times 10 to the minus 5 metres per second
+tex: v = \frac{I}{n\,e\,A} = \frac{1\ \mathrm{A}}{(8.5\times10^{28}\ \mathrm{m^{-3}})(1.602\times10^{-19}\ \mathrm{C})(10^{-6}\ \mathrm{m^2})} \approx 7.3\times10^{-5}\ \mathrm{m\cdot s^{-1}}
+---
+
+# ---- 3 Coulomb's law ------------------------------------------------------------------------
+name: coulomb
+aria: F equals k times the magnitude of q1 q2 over r squared
+tex: F = k\,\frac{|q_1\,q_2|}{r^2}
+---
+name: k-def
+aria: k equals 1 over 4 pi epsilon_0, about 8.988 times 10 to the 9 newton square metres per square coulomb
+tex: k = \frac{1}{4\pi\varepsilon_0} \approx 8.988\times10^{9}\ \mathrm{N\cdot m^{2}\cdot C^{-2}}
+---
+name: coulomb-full
+aria: F equals 1 over 4 pi epsilon_0 times the magnitude of q1 q2 over r squared
+tex: F = \frac{1}{4\pi\varepsilon_0}\,\frac{|q_1\,q_2|}{r^2}
+---
+name: eps0
+aria: epsilon_0 equals 8.8541878188 times 10 to the minus 12 square coulombs per newton per square metre
+tex: \varepsilon_0 = 8.854\,187\,8188\times10^{-12}\ \mathrm{C^{2}\cdot N^{-1}\cdot m^{-2}}
+---
+name: k-units-1
+aria: solve Coulomb's law for k: k equals F r squared over q1 q2
+tex: k = \frac{F\,r^2}{q_1\,q_2}
+---
+name: k-units-2
+aria: so the unit of k is newton times square metre over square coulomb, N m squared C to the minus 2
+tex: [k] = \frac{\mathrm{N}\cdot\mathrm{m}^2}{\mathrm{C}^2} = \mathrm{N\cdot m^{2}\cdot C^{-2}}
+---
+name: k-units-3
+aria: and epsilon_0 equals 1 over 4 pi k, so its unit is the reciprocal, C squared N to the minus 1 m to the minus 2
+tex: \varepsilon_0 = \frac{1}{4\pi k} \quad\Longrightarrow\quad [\varepsilon_0] = \frac{1}{\mathrm{N\cdot m^{2}\cdot C^{-2}}} = \mathrm{C^{2}\cdot N^{-1}\cdot m^{-2}}
+---
+name: inverse-square
+aria: F at 2r equals F at r over 4; F at 10 r equals F at r over 100
+tex: F(2r) = \frac{F(r)}{4}, \qquad F(10r) = \frac{F(r)}{100}
+---
+
+# ---- 4 worked numbers -----------------------------------------------------------------------
+name: two-electrons
+aria: two electrons 1 nanometre apart: F equals 8.988 times 10 to the 9 times 1.602 times 10 to the minus 19 squared over 10 to the minus 9 squared, about 2.31 times 10 to the minus 10 newtons
+tex: F = \frac{(8.988\times10^{9})\,(1.602\times10^{-19})^2}{(1\times10^{-9})^2}\ \mathrm{N} \approx 2.31\times10^{-10}\ \mathrm{N}
+---
+name: electron-accel
+aria: acceleration a equals F over m_e equals 2.31 times 10 to the minus 10 over 9.109 times 10 to the minus 31, about 2.5 times 10 to the 20 metres per second squared
+tex: a = \frac{F}{m_e} = \frac{2.31\times10^{-10}\ \mathrm{N}}{9.109\times10^{-31}\ \mathrm{kg}} \approx 2.5\times10^{20}\ \mathrm{m\cdot s^{-2}}
+---
+name: gravity-ratio
+aria: ratio of electric to gravitational force between two electrons equals k e squared over G m_e squared, about 4.2 times 10 to the 42, independent of distance
+tex: \frac{F_{elec}}{F_{grav}} = \frac{k\,e^2/r^2}{G\,m_e^2/r^2} = \frac{k\,e^2}{G\,m_e^2} = \frac{(8.988\times10^{9})(1.602\times10^{-19})^2}{(6.674\times10^{-11})(9.109\times10^{-31})^2} \approx 4.2\times10^{42}
+---
+name: hydrogen
+aria: proton and electron 5.29 times 10 to the minus 11 metres apart: F about 8.2 times 10 to the minus 8 newtons
+tex: F = \frac{(8.988\times10^{9})\,(1.602\times10^{-19})^2}{(5.29\times10^{-11})^2}\ \mathrm{N} \approx 8.2\times10^{-8}\ \mathrm{N}
+---
+name: one-coulomb-force
+aria: two charges of 1 coulomb, 1 metre apart: F equals 8.988 times 10 to the 9 times 1 times 1 over 1 squared, about 9.0 times 10 to the 9 newtons
+tex: F = (8.988\times10^{9}\ \mathrm{N\cdot m^{2}\cdot C^{-2}})\,\frac{(1\ \mathrm{C})(1\ \mathrm{C})}{(1\ \mathrm{m})^2} \approx 9.0\times10^{9}\ \mathrm{N}
+---
+name: one-coulomb-mass
+aria: the mass whose weight equals that force: m equals F over g equals 8.988 times 10 to the 9 over 9.81, about 9.2 times 10 to the 8 kilograms
+tex: m = \frac{F}{g} = \frac{8.988\times10^{9}\ \mathrm{N}}{9.81\ \mathrm{m\cdot s^{-2}}} \approx 9.2\times10^{8}\ \mathrm{kg}
+---
+name: microcoulomb
+aria: two charges of 1 microcoulomb, 1 centimetre apart: F equals 8.988 times 10 to the 9 times 10 to the minus 6 squared over 0.01 squared, about 90 newtons
+tex: F = \frac{(8.988\times10^{9})\,(1\times10^{-6})^2}{(0.01)^2}\ \mathrm{N} \approx 89.9\ \mathrm{N}
+---
+
+# ---- 5 vector form, superposition ----------------------------------------------------------
+name: r-vec
+aria: the separation vector r_12 equals r_2 minus r_1, its length r, and the unit vector r-hat_12 equals r_12 over r
+tex: \vec r_{12} = \vec r_2 - \vec r_1, \qquad r = |\vec r_{12}|, \qquad \hat r_{12} = \frac{\vec r_{12}}{r}
+---
+name: coulomb-vector
+aria: the force on charge 2 due to charge 1, F_12, equals k q1 q2 over r squared times r-hat_12
+tex: \vec F_{12} = k\,\frac{q_1\,q_2}{r^2}\,\hat r_{12}
+---
+name: newton3
+aria: the force on charge 1 due to charge 2 is equal and opposite: F_21 equals minus F_12
+tex: \vec F_{21} = k\,\frac{q_1\,q_2}{r^2}\,\hat r_{21} = -\,\vec F_{12}
+---
+name: superposition
+aria: the total force on q equals the vector sum over i of k q_i q over r_i squared times r-hat_i
+tex: \vec F = \vec F_1 + \vec F_2 + \dots = \sum_i k\,\frac{q_i\,q}{r_i^2}\,\hat r_i
+---
+name: sup-f1
+aria: F_1 equals 8.988 times 10 to the 9 times 4 times 10 to the minus 6 times 1 times 10 to the minus 6 over 0.4 squared equals 0.225 newtons, straight up
+tex: |\vec F_1| = \frac{(8.988\times10^{9})(4\times10^{-6})(1\times10^{-6})}{(0.4)^2}\ \mathrm{N} = 0.225\ \mathrm{N}, \qquad \hat r_1 = (0,\ 1)
+---
+name: sup-f2
+aria: F_2 equals 8.988 times 10 to the 9 times 3 times 10 to the minus 6 times 1 times 10 to the minus 6 over 0.5 squared equals 0.108 newtons, directed toward q_2 along 0.6, minus 0.8
+tex: |\vec F_2| = \frac{(8.988\times10^{9})(3\times10^{-6})(1\times10^{-6})}{(0.5)^2}\ \mathrm{N} = 0.108\ \mathrm{N}, \qquad \text{toward } q_2:\ (0.6,\ -0.8)
+---
+name: sup-components
+aria: components: F_x equals 0 plus 0.108 times 0.6 equals 0.065 newtons; F_y equals 0.225 minus 0.108 times 0.8 equals 0.138 newtons
+tex: F_x = 0 + 0.108\times0.6 = 0.065\ \mathrm{N}, \qquad F_y = 0.225 - 0.108\times0.8 = 0.138\ \mathrm{N}
+---
+name: sup-result
+aria: magnitude F equals the square root of 0.065 squared plus 0.138 squared, about 0.153 newtons, at arctan of 0.138 over 0.065, about 65 degrees above the x axis
+tex: |\vec F| = \sqrt{0.065^2 + 0.138^2}\ \mathrm{N} \approx 0.153\ \mathrm{N}, \qquad \theta = \arctan\frac{0.138}{0.065} \approx 65^\circ
+---
+
+# ---- 6 the electric field --------------------------------------------------------------------
+name: efield-def
+aria: the electric field E equals the force F on a small test charge q_0, divided by q_0
+tex: \vec E = \frac{\vec F}{q_0}
+---
+name: efield-units
+aria: unit of E: newton per coulomb, N C to the minus 1
+tex: [E] = \frac{\mathrm{N}}{\mathrm{C}} = \mathrm{N\cdot C^{-1}}
+---
+name: force-from-field
+aria: the force on any charge q placed in a field E is F equals q E
+tex: \vec F = q\,\vec E
+---
+name: point-field-1
+aria: put a test charge q_0 at distance r from q: the force is k q q_0 over r squared times r-hat
+tex: \vec F = k\,\frac{q\,q_0}{r^2}\,\hat r
+---
+name: point-field-2
+aria: divide by q_0: the field of a point charge is E equals k q over r squared times r-hat
+tex: \vec E = \frac{\vec F}{q_0} = k\,\frac{q}{r^2}\,\hat r = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{r^2}\,\hat r
+---
+name: point-field-worked
+aria: 1 nanocoulomb at 10 centimetres: E equals 8.988 times 10 to the 9 times 10 to the minus 9 over 0.1 squared, about 899 newtons per coulomb
+tex: E = \frac{(8.988\times10^{9})(1\times10^{-9})}{(0.1)^2}\ \mathrm{N\cdot C^{-1}} \approx 899\ \mathrm{N\cdot C^{-1}}
+---
+name: field-superposition
+aria: the field of several charges is the vector sum of their separate fields
+tex: \vec E = \sum_i k\,\frac{q_i}{r_i^2}\,\hat r_i
+---
+
+# ---- 7 work, potential, voltage --------------------------------------------------------------
+name: work-def
+aria: work done by a constant force F over a straight displacement d equals F dot d equals F d cos theta; unit joule equals newton metre
+tex: W = \vec F\cdot\vec d = F\,d\cos\theta, \qquad 1\ \mathrm{J} = 1\ \mathrm{N\cdot m}
+---
+name: work-integral
+aria: along a curved path from A to B, W_AB equals the integral from A to B of F dot dl
+tex: W_{AB} = \int_A^B \vec F\cdot d\vec l
+---
+name: potential-def
+aria: the potential difference V_A minus V_B equals the work W_AB done by the field on q going from A to B, divided by q
+tex: V_A - V_B = \frac{W_{AB}}{q}
+---
+name: potential-integral
+aria: using F equals q E, V_A minus V_B equals the integral from A to B of E dot dl
+tex: V_A - V_B = \frac{1}{q}\int_A^B q\,\vec E\cdot d\vec l = \int_A^B \vec E\cdot d\vec l
+---
+name: volt
+aria: one volt equals one joule per coulomb, J C to the minus 1
+tex: 1\ \mathrm{V} = \frac{1\ \mathrm{J}}{1\ \mathrm{C}} = 1\ \mathrm{J\cdot C^{-1}}
+---
+name: field-units-volt
+aria: volt per metre equals joule per coulomb per metre equals newton metre per coulomb per metre equals newton per coulomb
+tex: \mathrm{V\cdot m^{-1}} = \mathrm{J\cdot C^{-1}\cdot m^{-1}} = \mathrm{(N\cdot m)\cdot C^{-1}\cdot m^{-1}} = \mathrm{N\cdot C^{-1}}
+---
+name: uniform-work
+aria: in a uniform field E, carrying q a distance d along the field: W equals q E d
+tex: W_{AB} = \vec F\cdot\vec d = (q\,E)\,d
+---
+name: uniform-v
+aria: so V equals W over q equals E d, and E equals V over d
+tex: V = V_A - V_B = \frac{q\,E\,d}{q} = E\,d \qquad\Longleftrightarrow\qquad E = \frac{V}{d}
+---
+name: uniform-worked
+aria: 12 volts across 1 millimetre: E equals 12 over 0.001 equals 1.2 times 10 to the 4 volts per metre
+tex: E = \frac{12\ \mathrm{V}}{1\times10^{-3}\ \mathrm{m}} = 1.2\times10^{4}\ \mathrm{V\cdot m^{-1}}
+---
+name: point-v-1
+aria: potential at distance r relative to infinity: V of r minus V of infinity equals the integral from r to infinity of E dr prime
+tex: V(r) - V(\infty) = \int_r^{\infty} E(r')\,dr'
+---
+name: point-v-2
+aria: substitute E equals k q over r prime squared
+tex: \phantom{V(r) - V(\infty)} = \int_r^{\infty} \frac{k\,q}{r'^2}\,dr'
+---
+name: point-v-3
+aria: the antiderivative of 1 over r prime squared is minus 1 over r prime
+tex: \phantom{V(r) - V(\infty)} = k\,q\left[-\frac{1}{r'}\right]_r^{\infty} = k\,q\left(0 - \left(-\frac{1}{r}\right)\right)
+---
+name: point-v-4
+aria: so with V at infinity set to zero, V of r equals k q over r
+tex: V(r) = \frac{k\,q}{r} = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{r} \qquad (V(\infty) = 0)
+---
+name: point-v-worked
+aria: 1 nanocoulomb at 10 centimetres: V equals 8.988 times 10 to the 9 times 10 to the minus 9 over 0.1, about 90 volts
+tex: V = \frac{(8.988\times10^{9})(1\times10^{-9})}{0.1}\ \mathrm{V} \approx 89.9\ \mathrm{V}
+---
+name: potential-energy
+aria: the potential energy of charge q at a point of potential V is U equals q V
+tex: U = q\,V
+---
+name: ev
+aria: one electron-volt equals e times one volt equals 1.602 times 10 to the minus 19 joules
+tex: 1\ \mathrm{eV} = (1.602\times10^{-19}\ \mathrm{C})(1\ \mathrm{V}) = 1.602\times10^{-19}\ \mathrm{J}
+---
+
+# ---- 8 Gauss's law ---------------------------------------------------------------------------
+name: flux-def
+aria: electric flux Phi_E equals the integral over S of E dot dA; for uniform E across a flat area, E A cos theta
+tex: \Phi_E = \int_S \vec E\cdot d\vec A \qquad\xrightarrow{\ \text{uniform } \vec E,\ \text{flat } A\ }\qquad \Phi_E = E\,A\cos\theta
+---
+name: flux-units
+aria: unit of flux: N C to the minus 1 times square metres equals N m squared C to the minus 1, which equals volt metres
+tex: [\Phi_E] = \mathrm{N\cdot C^{-1}}\cdot\mathrm{m^2} = \mathrm{N\cdot m^{2}\cdot C^{-1}} = \mathrm{V\cdot m}
+---
+name: gauss-sphere-1
+aria: on a sphere of radius r centred on q, E is radial and the same everywhere, so the flux is E of r times the area 4 pi r squared
+tex: \Phi_E = \oint_S \vec E\cdot d\vec A = E(r)\,\oint_S dA = E(r)\cdot 4\pi r^2
+---
+name: gauss-sphere-2
+aria: substitute E of r equals q over 4 pi epsilon_0 r squared
+tex: \phantom{\Phi_E} = \frac{q}{4\pi\varepsilon_0\,r^2}\cdot 4\pi r^2
+---
+name: gauss-sphere-3
+aria: the r squared and the 4 pi cancel, leaving q over epsilon_0, whatever the radius
+tex: \phantom{\Phi_E} = \frac{q}{\varepsilon_0} \qquad (\text{no } r \text{ left})
+---
+name: solid-angle
+aria: solid angle d Omega equals dA cos theta over r squared; the whole sphere is 4 pi steradians
+tex: d\Omega = \frac{dA\cos\theta}{r^2}, \qquad \oint d\Omega = 4\pi\ \mathrm{sr}
+---
+name: gauss-any-1
+aria: on any closed surface, E dot dA equals k q over r squared times dA cos theta
+tex: \vec E\cdot d\vec A = \frac{k\,q}{r^2}\,dA\cos\theta
+---
+name: gauss-any-2
+aria: which is k q d Omega
+tex: \phantom{\vec E\cdot d\vec A} = k\,q\,d\Omega
+---
+name: gauss-any-3
+aria: summing over the whole closed surface: 4 pi k q equals q over epsilon_0
+tex: \oint_S \vec E\cdot d\vec A = k\,q\oint d\Omega = 4\pi k\,q = \frac{q}{\varepsilon_0}
+---
+name: gauss-law
+aria: Gauss's law: the flux of E out of any closed surface S equals the enclosed charge Q_enc over epsilon_0
+tex: \boxed{\;\oint_S \vec E\cdot d\vec A = \frac{Q_{enc}}{\varepsilon_0}\;}
+---
+
+# ---- 9 plates and capacitance ---------------------------------------------------------------
+name: sigma
+aria: surface charge density sigma equals Q over A, in coulombs per square metre
+tex: \sigma = \frac{Q}{A} \qquad [\sigma] = \mathrm{C\cdot m^{-2}}
+---
+name: sheet-1
+aria: pillbox through one sheet: flux leaves through both faces, 2 E A_p, and the charge inside is sigma A_p
+tex: E\,A_p + E\,A_p = \frac{\sigma\,A_p}{\varepsilon_0}
+---
+name: sheet-2
+aria: so one sheet makes E equals sigma over 2 epsilon_0 on each side, independent of distance
+tex: E_{sheet} = \frac{\sigma}{2\varepsilon_0}
+---
+name: plates-add
+aria: between the plates both sheets' fields point from plus to minus and add: E equals sigma over 2 epsilon_0 plus sigma over 2 epsilon_0 equals sigma over epsilon_0 equals Q over epsilon_0 A
+tex: E = \frac{\sigma}{2\varepsilon_0} + \frac{\sigma}{2\varepsilon_0} = \frac{\sigma}{\varepsilon_0} = \frac{Q}{\varepsilon_0\,A}
+---
+name: plates-outside
+aria: outside the plates the two fields point opposite ways and cancel: E equals sigma over 2 epsilon_0 minus sigma over 2 epsilon_0 equals 0
+tex: E_{outside} = \frac{\sigma}{2\varepsilon_0} - \frac{\sigma}{2\varepsilon_0} = 0
+---
+name: plates-pillbox
+aria: check with one pillbox around the top plate: flux leaves only through the lower face, E A_p equals sigma A_p over epsilon_0, so E equals sigma over epsilon_0
+tex: E\,A_p = \frac{\sigma\,A_p}{\varepsilon_0} \quad\Longrightarrow\quad E = \frac{\sigma}{\varepsilon_0}
+---
+name: plates-v
+aria: the voltage is V equals E d equals Q d over epsilon_0 A
+tex: V = E\,d = \frac{Q\,d}{\varepsilon_0\,A}
+---
+name: capacitance
+aria: capacitance C equals Q over V equals epsilon_0 A over d
+tex: \boxed{\;C = \frac{Q}{V} = \frac{\varepsilon_0\,A}{d}\;}
+---
+name: farad
+aria: one farad equals one coulomb per volt, C V to the minus 1
+tex: 1\ \mathrm{F} = \frac{1\ \mathrm{C}}{1\ \mathrm{V}} = 1\ \mathrm{C\cdot V^{-1}}
+---
+name: eps0-farad
+aria: units of epsilon_0 A over d: C squared N to the minus 1 m to the minus 1, which is C squared per joule, which is coulombs per volt, the farad; so epsilon_0 is in farads per metre
+tex: \Big[\frac{\varepsilon_0 A}{d}\Big] = \mathrm{C^{2}\cdot N^{-1}\cdot m^{-2}}\cdot\mathrm{m^{2}\cdot m^{-1}} = \mathrm{C^{2}\cdot (N\cdot m)^{-1}} = \mathrm{C^{2}\cdot J^{-1}} = \mathrm{C^{2}\cdot (C\cdot V)^{-1}} = \mathrm{C\cdot V^{-1}} = \mathrm{F} \quad\Longrightarrow\quad [\varepsilon_0] = \mathrm{F\cdot m^{-1}}
+---
+name: cap-worked
+aria: 10 centimetre square plates, 1 millimetre apart: C equals 8.854 times 10 to the minus 12 times 0.01 over 0.001, about 88.5 picofarads
+tex: C = \frac{(8.854\times10^{-12}\ \mathrm{F\cdot m^{-1}})(0.01\ \mathrm{m^2})}{1\times10^{-3}\ \mathrm{m}} \approx 8.85\times10^{-11}\ \mathrm{F} = 88.5\ \mathrm{pF}
+---
+name: cap-worked-q
+aria: at 12 volts, Q equals C V, about 1.06 times 10 to the minus 9 coulombs, about 6.6 times 10 to the 9 electrons
+tex: Q = C\,V = (8.85\times10^{-11}\ \mathrm{F})(12\ \mathrm{V}) \approx 1.06\times10^{-9}\ \mathrm{C} \approx 6.6\times10^{9}\,e
+---
+name: one-farad
+aria: a 1 farad vacuum capacitor with a 1 millimetre gap needs A equals C d over epsilon_0, about 1.13 times 10 to the 8 square metres
+tex: A = \frac{C\,d}{\varepsilon_0} = \frac{(1\ \mathrm{F})(1\times10^{-3}\ \mathrm{m})}{8.854\times10^{-12}\ \mathrm{F\cdot m^{-1}}} \approx 1.13\times10^{8}\ \mathrm{m^2}
+---
+name: dielectric
+aria: with a dielectric of relative permittivity epsilon_r filling the gap, C equals epsilon_r epsilon_0 A over d
+tex: C = \frac{\varepsilon_r\,\varepsilon_0\,A}{d}
+---
+name: energy-density
+aria: stored energy one half C V squared equals one half times epsilon_0 A over d times E d squared equals one half epsilon_0 E squared times A d; so the energy per volume is u equals one half epsilon_0 E squared
+tex: U = \tfrac12 C V^2 = \tfrac12\,\frac{\varepsilon_0 A}{d}\,(E\,d)^2 = \tfrac12\,\varepsilon_0 E^2\,(A\,d) \quad\Longrightarrow\quad u = \tfrac12\,\varepsilon_0\,E^2
+---
+
+# ---- 10 magnetism -----------------------------------------------------------------------------
+name: lorentz-b
+aria: a charge q moving with velocity v in a magnetic field B feels F equals q v cross B
+tex: \vec F_{mag} = q\,\vec v\times\vec B
+---
+name: tesla
+aria: one tesla equals one newton second per coulomb per metre, which is one newton per ampere per metre
+tex: 1\ \mathrm{T} = 1\ \mathrm{N\cdot s\cdot C^{-1}\cdot m^{-1}} = 1\ \mathrm{N\cdot A^{-1}\cdot m^{-1}}
+---
+name: gauss-b
+aria: the magnetic flux out of any closed surface is zero
+tex: \oint_S \vec B\cdot d\vec A = 0
+---
+
+# ---- 11 limits ---------------------------------------------------------------------------------
+name: breakdown-sphere
+aria: to hold 1 coulomb on a sphere in air without exceeding 3 megavolts per metre at its surface: R at least the square root of k Q over E_bd, about 55 metres
+tex: \frac{k\,Q}{R^2} \le E_{bd} \quad\Longrightarrow\quad R \ge \sqrt{\frac{k\,Q}{E_{bd}}} = \sqrt{\frac{(8.988\times10^{9})(1)}{3\times10^{6}}}\ \mathrm{m} \approx 55\ \mathrm{m}
+---
