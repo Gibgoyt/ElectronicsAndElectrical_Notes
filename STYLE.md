@@ -83,10 +83,12 @@ The `inline_math.js` pass converts each `$…$` span to an SVG embed, rewriting 
 round-trippable marker form:
 
 ```
-Suppose <!--m:V_L-->![V_L](inductor.assets/eq-inline/HASH.svg)<!--/m--> is held constant, …
+Suppose ![V_L](inductor.assets/eq-inline/HASH.svg)<!--m:V_L--> is held constant, …
 ```
 
-The HTML comment preserves the LaTeX source so the pass is **idempotent** and you can keep editing
+The image comes **first** and the HTML comment trails it. A line must never *start* with `<!--`:
+CommonMark treats such a line as a raw HTML block, so an image later on the same line would show as
+literal `![…](…)` text (this broke the local viewer before the order was swapped). The comment preserves the LaTeX source so the pass is **idempotent** and you can keep editing
 the maths. Rules for authoring inline maths:
 - Multi-letter subscripts get braces: write `V_{out}`, `f_{sw}`, `I_{load}` (not `V_out`).
 - English words inside maths use `\text{…}` (e.g. `\text{rise} = \text{fall}`).

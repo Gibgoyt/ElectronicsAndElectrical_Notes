@@ -2,7 +2,7 @@
 
 A buck converter steps a DC voltage *down* — 12 V in, 3 V out — by switching a transistor on and
 off fast and letting an inductor and capacitor average the result. The famous formula
-<!--m:V_{out} = D \cdot V_{in}-->![V_out = D times V_in](buck.assets/eq-inline/645cc1e7b2.svg)<!--/m--> is not an assumption; it is forced by one steady-state fact about the inductor.
+![V_out = D times V_in](buck.assets/eq-inline/645cc1e7b2.svg)<!--m:V_{out} = D \cdot V_{in}--> is not an assumption; it is forced by one steady-state fact about the inductor.
 This document derives it, then sizes the parts.
 
 **Contents**
@@ -20,7 +20,7 @@ This document derives it, then sizes the parts.
 >
 > In steady state the inductor's average voltage over a full cycle is zero, so the volt-seconds it
 > gains while the switch is ON must exactly cancel those it loses while OFF — and that cancellation
-> *is* <!--m:V_{out} = D \cdot V_{in}-->![V_out = D times V_in](buck.assets/eq-inline/645cc1e7b2.svg)<!--/m-->.
+> *is* ![V_out = D times V_in](buck.assets/eq-inline/645cc1e7b2.svg)<!--m:V_{out} = D \cdot V_{in}-->.
 
 ---
 
@@ -39,10 +39,10 @@ First, kill an ambiguity that trips everyone up:
 
 In practice **S1** is a MOSFET, a transistor used as an electronic switch: a voltage on its gate
 turns the path between its other two terminals ON or OFF. It is driven by a PWM (pulse-width
-modulation) signal — a square wave of fixed period <!--m:T-->![T](buck.assets/eq-inline/c2c53d6694.svg)<!--/m--> whose ON fraction can be set; the
+modulation) signal — a square wave of fixed period ![T](buck.assets/eq-inline/c2c53d6694.svg)<!--m:T--> whose ON fraction can be set; the
 [PWM document](../../pwm/pwm.md) treats it in full. The fraction of each period it
-spends ON is the **duty cycle <!--m:D-->![D](buck.assets/eq-inline/50c9e8d5fc.svg)<!--/m-->** (so ON lasts <!--m:D \cdot T-->![D times T](buck.assets/eq-inline/94b24dfcfd.svg)<!--/m-->, OFF lasts <!--m:(1-D) \cdot T-->![(1-D) times T](buck.assets/eq-inline/9ee718adde.svg)<!--/m-->). The **switch node** is
-the point right after the switch, where the diode also connects — it is chopped between <!--m:V_{in}-->![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--/m-->
+spends ON is the **duty cycle ![D](buck.assets/eq-inline/50c9e8d5fc.svg)<!--m:D-->** (so ON lasts ![D times T](buck.assets/eq-inline/94b24dfcfd.svg)<!--m:D \cdot T-->, OFF lasts ![(1-D) times T](buck.assets/eq-inline/9ee718adde.svg)<!--m:(1-D) \cdot T-->). The **switch node** is
+the point right after the switch, where the diode also connects — it is chopped between ![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--m:V_{in}-->
 (switch ON) and roughly 0 V (switch OFF, diode conducting).
 
 The **diode** is a one-way valve for current. Treat it as ideal here: it conducts (is
@@ -64,14 +64,14 @@ to zero, so a part's voltage is the difference between the voltages of the two n
 
 ## 2 The two intervals
 
-Because the inductor obeys <!--m:V_L = L \cdot dI/dt-->![V_L = L times dI/dt](buck.assets/eq-inline/4e5d46c427.svg)<!--/m-->, a *constant* voltage across it makes its current a
+Because the inductor obeys ![V_L = L times dI/dt](buck.assets/eq-inline/4e5d46c427.svg)<!--m:V_L = L \cdot dI/dt-->, a *constant* voltage across it makes its current a
 *straight ramp* (see [../../fundamentals/inductor/inductor.md §4](../../fundamentals/inductor/inductor.md#4-from-the-law-to-the-ramp--the-integral-done-slowly)).
 The buck gives the inductor two constant-voltage intervals per cycle.
 
-**Interval 1 — switch ON, lasting <!--m:D \cdot T-->![D times T](buck.assets/eq-inline/94b24dfcfd.svg)<!--/m-->.** Current flows V_in → switch → L → output. The closed
-switch holds the switch node, and so the diode's cathode, at <!--m:V_{in}-->![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--/m-->, above the diode's grounded
+**Interval 1 — switch ON, lasting ![D times T](buck.assets/eq-inline/94b24dfcfd.svg)<!--m:D \cdot T-->.** Current flows V_in → switch → L → output. The closed
+switch holds the switch node, and so the diode's cathode, at ![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--m:V_{in}-->, above the diode's grounded
 anode: the diode is reverse-biased (off). By Kirchhoff's voltage law the inductor sees the
-difference between the node voltages at its two ends, <!--m:V_{in}-->![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--/m--> on the left and <!--m:V_{out}-->![V_out](buck.assets/eq-inline/05b247c888.svg)<!--/m--> on the
+difference between the node voltages at its two ends, ![V_in](buck.assets/eq-inline/29f560cdfe.svg)<!--m:V_{in}--> on the left and ![V_out](buck.assets/eq-inline/05b247c888.svg)<!--m:V_{out}--> on the
 right (the capacitor holds the output nearly constant across a cycle):
 
 ![V_L equals V_in minus V_out, constant and positive](buck.assets/eq-vl-on.svg)
@@ -80,7 +80,7 @@ so the current ramps **up** by:
 
 ![delta I_L rise equals V_in minus V_out times D T over L](buck.assets/eq-rise.svg)
 
-**Interval 2 — switch OFF, lasting <!--m:(1-D) \cdot T-->![(1-D) times T](buck.assets/eq-inline/9ee718adde.svg)<!--/m-->.** The switch path is gone, but the inductor's
+**Interval 2 — switch OFF, lasting ![(1-D) times T](buck.assets/eq-inline/9ee718adde.svg)<!--m:(1-D) \cdot T-->.** The switch path is gone, but the inductor's
 current cannot stop instantly. It pulls the switch node down until the node dips just below ground,
 the diode becomes forward-biased and carries the current, and the inductor's left end is pinned near
 ground. Now:
@@ -94,19 +94,19 @@ so the current ramps **down** by:
 ![Buck switch-node square wave above and the resulting triangular inductor current](buck.assets/fig-02.svg)
 
 _The flat-topped square voltage at the switch node makes the inductor current a straight-sided
-triangle: up while ON, down while OFF. Each side is one constant-<!--m:V_L-->![V_L](buck.assets/eq-inline/136d4e3fb2.svg)<!--/m--> ramp from the inductor law._
+triangle: up while ON, down while OFF. Each side is one constant-![V_L](buck.assets/eq-inline/136d4e3fb2.svg)<!--m:V_L--> ramp from the inductor law._
 
 ## 3 Volt-second balance — the step-down ratio
 
 Now the key idea. In **steady state** the current waveform repeats identically every cycle — the
 triangle starts each period exactly where it started the last one. For that to be true, whatever
 the current *rose* by in Interval 1 must be *exactly* undone by what it *fell* by in Interval 2. If
-it weren't, the current would creep up (or down) a little every cycle, forever. So <!--m:\text{rise} = \text{fall}-->![rise = fall](buck.assets/eq-inline/7fcffce6ac.svg)<!--/m-->;
-cancelling <!--m:T-->![T](buck.assets/eq-inline/c2c53d6694.svg)<!--/m--> and <!--m:L-->![L](buck.assets/eq-inline/d160e0986a.svg)<!--/m--> from both sides:
+it weren't, the current would creep up (or down) a little every cycle, forever. So ![rise = fall](buck.assets/eq-inline/7fcffce6ac.svg)<!--m:\text{rise} = \text{fall}-->;
+cancelling ![T](buck.assets/eq-inline/c2c53d6694.svg)<!--m:T--> and ![L](buck.assets/eq-inline/d160e0986a.svg)<!--m:L--> from both sides:
 
 ![V_in minus V_out times D equals V_out times one minus D](buck.assets/eq-balance.svg)
 
-Expand and simplify — the <!--m:V_{out} \cdot D-->![V_out times D](buck.assets/eq-inline/ee7ea248da.svg)<!--/m--> terms cancel:
+Expand and simplify — the ![V_out times D](buck.assets/eq-inline/ee7ea248da.svg)<!--m:V_{out} \cdot D--> terms cancel:
 
 ![V_in D minus V_out D equals V_out minus V_out D, so V_in D equals V_out](buck.assets/eq-balance-solve.svg)
 
@@ -115,75 +115,75 @@ Expand and simplify — the <!--m:V_{out} \cdot D-->![V_out times D](buck.assets
 That is the entire origin of the buck's step-down ratio — *derived*, not assumed. Equivalently, the
 average inductor voltage over a cycle is zero (**volt-second balance**): the positive volt-seconds
 cancel the negative ones. The two statements are one, because integrating the inductor law over a
-period turns the area under <!--m:V_L-->![V_L](buck.assets/eq-inline/136d4e3fb2.svg)<!--/m--> into the net change of current, which steady state makes zero:
+period turns the area under ![V_L](buck.assets/eq-inline/136d4e3fb2.svg)<!--m:V_L--> into the net change of current, which steady state makes zero:
 
 ![the integral over one period of V_L dt equals L times I_L of T minus I_L of 0, which equals 0 in steady state](buck.assets/eq-vs-balance.svg)
 
 
-> **Tip —** Volt-second balance is the master key for *every* converter in this tree. Write <!--m:V_L-->![V_L](buck.assets/eq-inline/136d4e3fb2.svg)<!--/m-->
+> **Tip —** Volt-second balance is the master key for *every* converter in this tree. Write ![V_L](buck.assets/eq-inline/136d4e3fb2.svg)<!--m:V_L-->
 > for each interval, set the average over one period to zero, and solve. The boost uses the
 > identical move — see [../boost/boost.md §3](../boost/boost.md#3-volt-second-balance--the-step-up-ratio).
 
 ## 4 Sizing the inductor
 
-The rise/fall equations already contain <!--m:L-->![L](buck.assets/eq-inline/d160e0986a.svg)<!--/m-->, so pick a target ripple <!--m:\Delta I_L-->![Delta I_L](buck.assets/eq-inline/c856ab20fc.svg)<!--/m--> and solve. A common
-rule of thumb is 20–40 % of the average (load) current. Using the ON-interval rise with <!--m:T = 1/f_{sw}-->![T = 1/f_sw](buck.assets/eq-inline/2a8cbfbb37.svg)<!--/m-->:
+The rise/fall equations already contain ![L](buck.assets/eq-inline/d160e0986a.svg)<!--m:L-->, so pick a target ripple ![Delta I_L](buck.assets/eq-inline/c856ab20fc.svg)<!--m:\Delta I_L--> and solve. A common
+rule of thumb is 20–40 % of the average (load) current. Using the ON-interval rise with ![T = 1/f_sw](buck.assets/eq-inline/2a8cbfbb37.svg)<!--m:T = 1/f_{sw}-->:
 
 ![L equals V_in minus V_out times D T over delta I_L equals V_in minus V_out times D over f_sw delta I_L](buck.assets/eq-inductor-sizing.svg)
 
-Bigger <!--m:L-->![L](buck.assets/eq-inline/d160e0986a.svg)<!--/m--> → smaller ripple, but a physically bigger, costlier part with more resistance. That is
-the trade-off <!--m:\Delta I_L-->![Delta I_L](buck.assets/eq-inline/c856ab20fc.svg)<!--/m--> sets.
+Bigger ![L](buck.assets/eq-inline/d160e0986a.svg)<!--m:L--> → smaller ripple, but a physically bigger, costlier part with more resistance. That is
+the trade-off ![Delta I_L](buck.assets/eq-inline/c856ab20fc.svg)<!--m:\Delta I_L--> sets.
 
 ## 5 Sizing the output capacitor
 
 At the output node the inductor current splits between the capacitor and the load, so by
-Kirchhoff's current law <!--m:i_C = i_L - I_{load}-->![i_C = i_L - I_load](buck.assets/eq-inline/c804854714.svg)<!--/m-->. Why does the inductor triangle average exactly to the
+Kirchhoff's current law ![i_C = i_L - I_load](buck.assets/eq-inline/c804854714.svg)<!--m:i_C = i_L - I_{load}-->. Why does the inductor triangle average exactly to the
 load current? By the capacitor's mirror of volt-second balance, **charge balance**: in steady state
 the capacitor voltage also ends each period where it began, so the net charge into it over a period,
-<!--m:\int_0^T i_C\,dt = C\,[V_C(T) - V_C(0)]-->![integral_0^T i_C dt = C V_C(T) - V_C(0)](buck.assets/eq-inline/461b9e2618.svg)<!--/m-->, is zero, and its average current is zero. Then the
-average of <!--m:i_L-->![i_L](buck.assets/eq-inline/0bd5fa35e8.svg)<!--/m--> must equal <!--m:I_{load}-->![I_load](buck.assets/eq-inline/7902e72f89.svg)<!--/m-->. The load takes that average; the *leftover* <!--m:i_C-->![i_C](buck.assets/eq-inline/7574097e07.svg)<!--/m--> is what
+![integral_0^T i_C dt = C V_C(T) - V_C(0)](buck.assets/eq-inline/461b9e2618.svg)<!--m:\int_0^T i_C\,dt = C\,[V_C(T) - V_C(0)]-->, is zero, and its average current is zero. Then the
+average of ![i_L](buck.assets/eq-inline/0bd5fa35e8.svg)<!--m:i_L--> must equal ![I_load](buck.assets/eq-inline/7902e72f89.svg)<!--m:I_{load}-->. The load takes that average; the *leftover* ![i_C](buck.assets/eq-inline/7574097e07.svg)<!--m:i_C--> is what
 actually flows in and out of the capacitor. It is a triangle centred on zero, swinging
-<!--m:\pm \Delta I_L/2-->![plus-minus Delta I_L/2](buck.assets/eq-inline/975bfe81a9.svg)<!--/m-->.
+![plus-minus Delta I_L/2](buck.assets/eq-inline/975bfe81a9.svg)<!--m:\pm \Delta I_L/2-->.
 
 ![Capacitor current as the difference between triangular inductor current and constant load current](buck.assets/fig-03.svg)
 
 _The capacitor current is the inductor triangle minus the flat load line: a triangle centred on
-zero. The shaded positive half is the charge <!--m:\Delta Q-->![Delta Q](buck.assets/eq-inline/9fd1467576.svg)<!--/m--> piled onto the cap; that charge over <!--m:C-->![C](buck.assets/eq-inline/32096c2e0e.svg)<!--/m--> is the
+zero. The shaded positive half is the charge ![Delta Q](buck.assets/eq-inline/9fd1467576.svg)<!--m:\Delta Q--> piled onto the cap; that charge over ![C](buck.assets/eq-inline/32096c2e0e.svg)<!--m:C--> is the
 output voltage ripple._
 
 The charge added during the positive (charging) half-cycle is the **area of that little triangle** —
-base <!--m:T/2-->![T/2](buck.assets/eq-inline/12bfe0f94c.svg)<!--/m-->, height <!--m:\Delta I_L/2-->![Delta I_L/2](buck.assets/eq-inline/d2ae25f58e.svg)<!--/m-->:
+base ![T/2](buck.assets/eq-inline/12bfe0f94c.svg)<!--m:T/2-->, height ![Delta I_L/2](buck.assets/eq-inline/d2ae25f58e.svg)<!--m:\Delta I_L/2-->:
 
 ![delta Q equals one half times T over 2 times delta I_L over 2 equals T delta I_L over 8](buck.assets/eq-charge-triangle.svg)
 
-That charge on a capacitance <!--m:C-->![C](buck.assets/eq-inline/32096c2e0e.svg)<!--/m--> is a voltage ripple <!--m:\Delta V_{out} = \Delta Q/C-->![Delta V_out = Delta Q/C](buck.assets/eq-inline/47c897d053.svg)<!--/m-->, so:
+That charge on a capacitance ![C](buck.assets/eq-inline/32096c2e0e.svg)<!--m:C--> is a voltage ripple ![Delta V_out = Delta Q/C](buck.assets/eq-inline/47c897d053.svg)<!--m:\Delta V_{out} = \Delta Q/C-->, so:
 
 ![delta V_out equals delta Q over C, so C equals delta I_L over 8 f_sw delta V_out](buck.assets/eq-cap-sizing.svg)
 
 ## 6 Worked numbers — 12 V to 3 V
 
-Take <!--m:f_{sw} = 100 \,\mathrm{kHz}-->![f_sw = 100 kHz](buck.assets/eq-inline/b2d8a51533.svg)<!--/m--> (so <!--m:T = 10 \mu s-->![T = 10 mu s](buck.assets/eq-inline/7872cc0fa0.svg)<!--/m-->), a 1 A load, a target 20 % current ripple and 1 % output
-voltage ripple. With <!--m:V_{in} = 12 V-->![V_in = 12 V](buck.assets/eq-inline/1c9e4d0896.svg)<!--/m-->, <!--m:V_{out} = 3 V-->![V_out = 3 V](buck.assets/eq-inline/eee2a17355.svg)<!--/m-->, the duty cycle is <!--m:D = V_{out}/V_{in} = 0.25-->![D = V_out/V_in = 0.25](buck.assets/eq-inline/2dd02985de.svg)<!--/m-->, and
-<!--m:\Delta I_L = 0.2 A-->![Delta I_L = 0.2 A](buck.assets/eq-inline/c1d7cfca6b.svg)<!--/m-->, <!--m:\Delta V_{out} = 0.03 V-->![Delta V_out = 0.03 V](buck.assets/eq-inline/73c6a248f6.svg)<!--/m-->:
+Take ![f_sw = 100 kHz](buck.assets/eq-inline/b2d8a51533.svg)<!--m:f_{sw} = 100 \,\mathrm{kHz}--> (so ![T = 10 mu s](buck.assets/eq-inline/7872cc0fa0.svg)<!--m:T = 10 \mu s-->), a 1 A load, a target 20 % current ripple and 1 % output
+voltage ripple. With ![V_in = 12 V](buck.assets/eq-inline/1c9e4d0896.svg)<!--m:V_{in} = 12 V-->, ![V_out = 3 V](buck.assets/eq-inline/eee2a17355.svg)<!--m:V_{out} = 3 V-->, the duty cycle is ![D = V_out/V_in = 0.25](buck.assets/eq-inline/2dd02985de.svg)<!--m:D = V_{out}/V_{in} = 0.25-->, and
+![Delta I_L = 0.2 A](buck.assets/eq-inline/c1d7cfca6b.svg)<!--m:\Delta I_L = 0.2 A-->, ![Delta V_out = 0.03 V](buck.assets/eq-inline/73c6a248f6.svg)<!--m:\Delta V_{out} = 0.03 V-->:
 
 ![L equals 12 minus 3 times 0.25 over 100000 times 0.2 equals 112.5 microhenry](buck.assets/eq-worked-L.svg)
 
 ![C equals 0.2 over 8 times 100000 times 0.03 equals about 8.3 microfarad](buck.assets/eq-worked-C.svg)
 
-> **Note —** Sanity-check the duty cycle against the result: <!--m:V_{out} = D \cdot V_{in} = 0.25 \times 12 = 3 V-->![V_out = D times V_in = 0.25 times 12 = 3 V](buck.assets/eq-inline/a9d7c5c64b.svg)<!--/m-->.
-> Correct. And the ripple assumptions are self-consistent — <!--m:\Delta I_L = 0.2 A-->![Delta I_L = 0.2 A](buck.assets/eq-inline/c1d7cfca6b.svg)<!--/m--> on a 1 A load is 20 %, exactly
+> **Note —** Sanity-check the duty cycle against the result: ![V_out = D times V_in = 0.25 times 12 = 3 V](buck.assets/eq-inline/a9d7c5c64b.svg)<!--m:V_{out} = D \cdot V_{in} = 0.25 \times 12 = 3 V-->.
+> Correct. And the ripple assumptions are self-consistent — ![Delta I_L = 0.2 A](buck.assets/eq-inline/c1d7cfca6b.svg)<!--m:\Delta I_L = 0.2 A--> on a 1 A load is 20 %, exactly
 > what we targeted.
 
 ## 7 What this costs you
 
-- **Ripple vs. size.** Smaller ripple means a bigger <!--m:L-->![L](buck.assets/eq-inline/d160e0986a.svg)<!--/m--> and bigger <!--m:C-->![C](buck.assets/eq-inline/32096c2e0e.svg)<!--/m--> — more board area and cost.
+- **Ripple vs. size.** Smaller ripple means a bigger ![L](buck.assets/eq-inline/d160e0986a.svg)<!--m:L--> and bigger ![C](buck.assets/eq-inline/32096c2e0e.svg)<!--m:C--> — more board area and cost.
   The 20–40 % rule is a compromise, not a law.
-- **The diode drop.** A real freewheel diode drops ~0.3–0.7 V while conducting, so <!--m:V_{out}-->![V_out](buck.assets/eq-inline/05b247c888.svg)<!--/m--> is
-  slightly below <!--m:D \cdot V_{in}-->![D times V_in](buck.assets/eq-inline/a25bedb66e.svg)<!--/m--> and some power is lost as heat. A *synchronous* buck replaces the diode
+- **The diode drop.** A real freewheel diode drops ~0.3–0.7 V while conducting, so ![V_out](buck.assets/eq-inline/05b247c888.svg)<!--m:V_{out}--> is
+  slightly below ![D times V_in](buck.assets/eq-inline/a25bedb66e.svg)<!--m:D \cdot V_{in}--> and some power is lost as heat. A *synchronous* buck replaces the diode
   with a second MOSFET to cut that loss — at the cost of gate-drive complexity.
-- **Ideal-parts assumption.** These formulas assume a pure <!--m:L-->![L](buck.assets/eq-inline/d160e0986a.svg)<!--/m--> and pure <!--m:C-->![C](buck.assets/eq-inline/32096c2e0e.svg)<!--/m-->. Real parts have
+- **Ideal-parts assumption.** These formulas assume a pure ![L](buck.assets/eq-inline/d160e0986a.svg)<!--m:L--> and pure ![C](buck.assets/eq-inline/32096c2e0e.svg)<!--m:C-->. Real parts have
   resistance (the capacitor's ESR — equivalent series resistance, the small resistance in series inside every
-  real capacitor — adds its own ripple term, <!--m:\Delta I_L \cdot \text{ESR}-->![Delta I_L times ESR](buck.assets/eq-inline/ebeeac4123.svg)<!--/m-->, often dominant) and frequency-dependent
+  real capacitor — adds its own ripple term, ![Delta I_L times ESR](buck.assets/eq-inline/ebeeac4123.svg)<!--m:\Delta I_L \cdot \text{ESR}-->, often dominant) and frequency-dependent
   losses. Treat the results as a starting point.
 
 ## 8 Sources and cross-links

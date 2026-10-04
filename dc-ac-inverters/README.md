@@ -6,7 +6,7 @@ that times those switches so the *average* output traces a sine.
 
 > **The thesis in one line**
 >
-> An H-bridge can only put <!--m:+V_{dc}-->![+V_dc](README.assets/eq-inline/0458144a16.svg)<!--/m-->, <!--m:0-->![0](README.assets/eq-inline/b6589fc6ab.svg)<!--/m--> or <!--m:-V_{dc}-->![-V_dc](README.assets/eq-inline/b2ceae7532.svg)<!--/m--> across its load; sinusoidal PWM chooses
+> An H-bridge can only put ![+V_dc](README.assets/eq-inline/0458144a16.svg)<!--m:+V_{dc}-->, ![0](README.assets/eq-inline/b6589fc6ab.svg)<!--m:0--> or ![-V_dc](README.assets/eq-inline/b2ceae7532.svg)<!--m:-V_{dc}--> across its load; sinusoidal PWM chooses
 > between them thousands of times a cycle so that, after a filter, the load sees a clean sine.
 
 ## Documents
@@ -29,4 +29,4 @@ Background that these assume: the [inductor](../fundamentals/inductor/) and
 ## Conventions
 
 Follows [../STYLE.md](../STYLE.md). Switches are named as in the source video: Q1 top-left, Q2
-top-right, Q3 bottom-left, Q4 bottom-right; the load voltage is <!--m:V_{AB} = V_A - V_B-->![V_AB = V_A - V_B](README.assets/eq-inline/2d7b40a3c8.svg)<!--/m-->.
+top-right, Q3 bottom-left, Q4 bottom-right; the load voltage is ![V_AB = V_A - V_B](README.assets/eq-inline/2d7b40a3c8.svg)<!--m:V_{AB} = V_A - V_B-->.

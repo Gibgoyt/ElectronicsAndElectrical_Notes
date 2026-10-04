@@ -27,27 +27,27 @@ laws, the waveform language (Fourier series, RMS), and the transformer derived t
 
 | Topic | What it covers | Status |
 |---|---|---|
-| [fundamentals/](fundamentals/) | The inductor and capacitor laws from first principles; electromagnetism (Ampère, Faraday <!--m:v = N\,d\Phi/dt-->![v = N d Phi/dt](README.assets/eq-inline/bc981422f7.svg)<!--/m-->, Lenz, self- and mutual inductance); the transformer (turns ratio, <!--m:\hat\Phi = V/(4Nf)-->![Phi = V/(4Nf)](README.assets/eq-inline/bbe0bb314f.svg)<!--/m-->, why high frequency means a small core); signals (edges, Fourier series, AC and RMS, mains quality) | **written** |
+| [fundamentals/](fundamentals/) | The inductor and capacitor laws from first principles; electromagnetism (Ampère, Faraday ![v = N d Phi/dt](README.assets/eq-inline/bc981422f7.svg)<!--m:v = N\,d\Phi/dt-->, Lenz, self- and mutual inductance); the transformer (turns ratio, ![Phi = V/(4Nf)](README.assets/eq-inline/bbe0bb314f.svg)<!--m:\hat\Phi = V/(4Nf)-->, why high frequency means a small core); signals (edges, Fourier series, AC and RMS, mains quality) | **written** |
 | [dc-dc-converters/](dc-dc-converters/) | Buck (step-down) and boost (step-up): the two switching intervals, volt-second balance, the derived step ratios, sizing L and C, and how each one starts up (the slow climb, overshoot, inrush, soft-start) | **written** |
-| [filters/](filters/) | The LC low-pass filter as a PWM averager: <!--m:\omega_0 = 1/\sqrt{LC}-->![omega_0 = 1/sqrt LC](README.assets/eq-inline/f11b5cd8a1.svg)<!--/m-->, Q, 40 dB per decade, ripple maths, and varying the duty cycle to shape the output | **written** |
-| [pwm/](pwm/) | Pulse-width modulation: duty cycle, the average <!--m:D\,V_{in}-->![D V_in](README.assets/eq-inline/6db2223680.svg)<!--/m-->, timer and comparator methods, the spectrum, dead time | **written** |
-| [rectifiers/](rectifiers/) | Half-wave and full-bridge rectifiers, average and RMS, the reservoir capacitor and its ripple <!--m:\Delta V \approx I/(2fC)-->![Delta V approx I/(2fC)](README.assets/eq-inline/5fe7f97b88.svg)<!--/m-->, conduction angle, capacitor-only vs choke-input, 50 Hz vs 50 kHz | **written** |
-| [dc-ac-inverters/](dc-ac-inverters/) | The H-bridge (switch states, shoot-through, dead time, gate drive, freewheeling) and sinusoidal PWM (carrier and reference, <!--m:m_a V_{dc}\sin\theta-->![m_a V_dc sin theta](README.assets/eq-inline/ea8a7d58a4.svg)<!--/m-->, spectrum, bipolar vs unipolar, overmodulation) | **written** |
+| [filters/](filters/) | The LC low-pass filter as a PWM averager: ![omega_0 = 1/sqrt LC](README.assets/eq-inline/f11b5cd8a1.svg)<!--m:\omega_0 = 1/\sqrt{LC}-->, Q, 40 dB per decade, ripple maths, and varying the duty cycle to shape the output | **written** |
+| [pwm/](pwm/) | Pulse-width modulation: duty cycle, the average ![D V_in](README.assets/eq-inline/6db2223680.svg)<!--m:D\,V_{in}-->, timer and comparator methods, the spectrum, dead time | **written** |
+| [rectifiers/](rectifiers/) | Half-wave and full-bridge rectifiers, average and RMS, the reservoir capacitor and its ripple ![Delta V approx I/(2fC)](README.assets/eq-inline/5fe7f97b88.svg)<!--m:\Delta V \approx I/(2fC)-->, conduction angle, capacitor-only vs choke-input, 50 Hz vs 50 kHz | **written** |
+| [dc-ac-inverters/](dc-ac-inverters/) | The H-bridge (switch states, shoot-through, dead time, gate drive, freewheeling) and sinusoidal PWM (carrier and reference, ![m_a V_dc sin theta](README.assets/eq-inline/ea8a7d58a4.svg)<!--m:m_a V_{dc}\sin\theta-->, spectrum, bipolar vs unipolar, overmodulation) | **written** |
 
 Suggested order:
 
 1. [fundamentals/inductor/](fundamentals/inductor/) — the law, the ramp, the polarity flip.
 2. [fundamentals/capacitor/](fundamentals/capacitor/) — the mirror law, and **the proper
-   proof of why you may differentiate <!--m:Q = C \cdot V-->![Q = C times V](README.assets/eq-inline/205c11f7c4.svg)<!--/m-->** (the step that trips everyone up).
+   proof of why you may differentiate ![Q = C times V](README.assets/eq-inline/205c11f7c4.svg)<!--m:Q = C \cdot V-->** (the step that trips everyone up).
 3. [fundamentals/electromagnetism/](fundamentals/electromagnetism/) — where both laws come from:
-   Faraday's law <!--m:v = N\,d\Phi/dt-->![v = N d Phi/dt](README.assets/eq-inline/bc981422f7.svg)<!--/m-->, and why flux is the running integral of voltage.
+   Faraday's law ![v = N d Phi/dt](README.assets/eq-inline/bc981422f7.svg)<!--m:v = N\,d\Phi/dt-->, and why flux is the running integral of voltage.
 4. [fundamentals/transformer/](fundamentals/transformer/) — two windings, one flux; the turns
    ratio, and why a higher frequency means *less* peak flux and a smaller core.
 5. [fundamentals/signals/](fundamentals/signals/) — AC and RMS first (why 230 V means a 325 V
    peak), then edges and Fourier series, which uses the RMS result.
-6. [dc-dc-converters/buck/](dc-dc-converters/buck/) — <!--m:V_{out} = D \cdot V_{in}-->![V_out = D times V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--/m-->, derived,
+6. [dc-dc-converters/buck/](dc-dc-converters/buck/) — ![V_out = D times V_in](README.assets/eq-inline/645cc1e7b2.svg)<!--m:V_{out} = D \cdot V_{in}-->, derived,
    then [its start-up](dc-dc-converters/buck/startup.md).
-7. [dc-dc-converters/boost/](dc-dc-converters/boost/) — <!--m:V_{out} = V_{in}/(1-D)-->![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--/m-->, same
+7. [dc-dc-converters/boost/](dc-dc-converters/boost/) — ![V_out = V_in/(1-D)](README.assets/eq-inline/ff557ad27a.svg)<!--m:V_{out} = V_{in}/(1-D)-->, same
    method, then [its start-up](dc-dc-converters/boost/startup.md).
 8. [filters/lc-filter/](filters/lc-filter/) — the buck's LC seen as a filter that keeps the PWM
    average and rejects the switching.
@@ -71,6 +71,6 @@ GitLab, and any offline viewer, with no dependency on a markdown math plugin.
 These notes grew out of a long worked conversation and twelve pages of handwritten study
 notes on buck/boost converters, then widened to the full 12 V DC to 230 V AC inverter shown in a
 build video (H-bridge, transformer, rectifier, SPWM, LC filter). The confusions flagged in those notes — *when* it is legal to
-apply <!--m:d/dt-->![d/dt](README.assets/eq-inline/9560a2e5f1.svg)<!--/m--> to both sides of an equation, why a constant voltage gives a straight-line
+apply ![d/dt](README.assets/eq-inline/9560a2e5f1.svg)<!--m:d/dt--> to both sides of an equation, why a constant voltage gives a straight-line
 current, what the ramp graphs actually look like — are addressed head-on in the relevant
 sections rather than glossed over.

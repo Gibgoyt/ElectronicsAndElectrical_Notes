@@ -1,7 +1,7 @@
 # Electromagnetism
 
 The field laws underneath both component laws: charge and current, the magnetic field and flux,
-Ampère's law, Faraday's law <!--m:v = N\,d\Phi/dt-->![v = N d Phi/dt](README.assets/eq-inline/bc981422f7.svg)<!--/m-->, Lenz's law, self- and mutual inductance, and
+Ampère's law, Faraday's law ![v = N d Phi/dt](README.assets/eq-inline/bc981422f7.svg)<!--m:v = N\,d\Phi/dt-->, Lenz's law, self- and mutual inductance, and
 magnetic materials. The full argument is in [electromagnetism.md](electromagnetism.md), in seventeen
 sections with seven figures.
 
@@ -16,17 +16,17 @@ sections with seven figures.
 The treatment covers:
 
 1. Charge, current, and the electric field.
-2. The magnetic field <!--m:B-->![B](README.assets/eq-inline/ae4f281df5.svg)<!--/m--> and the tesla (a volt-second per square metre).
-3. Magnetic flux, the weber, and flux linkage <!--m:\lambda = N\Phi-->![lambda = N Phi](README.assets/eq-inline/5bc4011dc2.svg)<!--/m-->.
-4. Where <!--m:B-->![B](README.assets/eq-inline/ae4f281df5.svg)<!--/m--> comes from — Ampère and Biot–Savart; the long wire and the solenoid,
-   <!--m:B = \mu_0 N I/l-->![B = mu_0 N I/l](README.assets/eq-inline/7b481a2a76.svg)<!--/m--> (fig-13, fig-14).
-5. <!--m:H-->![H](README.assets/eq-inline/7cf184f4c6.svg)<!--/m-->, permeability, reluctance, and why the core matters.
+2. The magnetic field ![B](README.assets/eq-inline/ae4f281df5.svg)<!--m:B--> and the tesla (a volt-second per square metre).
+3. Magnetic flux, the weber, and flux linkage ![lambda = N Phi](README.assets/eq-inline/5bc4011dc2.svg)<!--m:\lambda = N\Phi-->.
+4. Where ![B](README.assets/eq-inline/ae4f281df5.svg)<!--m:B--> comes from — Ampère and Biot–Savart; the long wire and the solenoid,
+   ![B = mu_0 N I/l](README.assets/eq-inline/7b481a2a76.svg)<!--m:B = \mu_0 N I/l--> (fig-13, fig-14).
+5. ![H](README.assets/eq-inline/7cf184f4c6.svg)<!--m:H-->, permeability, reluctance, and why the core matters.
 6. Faraday's law, done slowly — a square voltage makes a triangular flux.
 7. **The common inversion corrected:** the flux is the *integral* of the voltage, not its derivative —
    proved by units, by algebra and by waveforms (fig-15).
 8. Lenz's law — the minus sign, back-EMF, and where the sign goes in circuit work (fig-16).
-9. Self-inductance <!--m:L = N\Phi/I-->![L = N Phi/I](README.assets/eq-inline/2f88ce88e0.svg)<!--/m--> — **deriving** the inductor law from Faraday's law.
-10. Energy in the magnetic field, <!--m:\tfrac{1}{2}LI^2-->![1 over 2 LI^2](README.assets/eq-inline/85f9fbdfbc.svg)<!--/m-->, and why the energy lives in the air gap.
+9. Self-inductance ![L = N Phi/I](README.assets/eq-inline/2f88ce88e0.svg)<!--m:L = N\Phi/I--> — **deriving** the inductor law from Faraday's law.
+10. Energy in the magnetic field, ![1 over 2 LI^2](README.assets/eq-inline/85f9fbdfbc.svg)<!--m:\tfrac{1}{2}LI^2-->, and why the energy lives in the air gap.
 11. Mutual inductance, coupling, and the turns ratio (fig-17).
 12. Magnetic materials, saturation, hysteresis, and the B-H curve (fig-18).
 13. **Frequency and core size:** for a fixed voltage, a higher frequency gives a *smaller* peak flux,

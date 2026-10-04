@@ -7,15 +7,15 @@ speed matters, how any repeating waveform breaks down into sines (Fourier series
 > **The thesis in one line**
 >
 > A switched waveform is a sum of sines whose amplitudes the circuit sets. An H-bridge into a lamp
-> gives <!--m:(4V_{dc}/\pi)\sum_{n\ \text{odd}} \sin(n\omega t)/n-->![(4V_dc/pi ) sum_n odd sin (n omega t)/n](README.assets/eq-inline/c7cd52a986.svg)<!--/m-->. Mains is quoted by the RMS of its sine,
-> so 230 V means a peak of <!--m:230\sqrt2 = 325\,\mathrm{V}-->![230 sqrt 2 = 325 V](README.assets/eq-inline/bed7f4dde5.svg)<!--/m-->.
+> gives ![(4V_dc/pi ) sum_n odd sin (n omega t)/n](README.assets/eq-inline/c7cd52a986.svg)<!--m:(4V_{dc}/\pi)\sum_{n\ \text{odd}} \sin(n\omega t)/n-->. Mains is quoted by the RMS of its sine,
+> so 230 V means a peak of ![230 sqrt 2 = 325 V](README.assets/eq-inline/bed7f4dde5.svg)<!--m:230\sqrt2 = 325\,\mathrm{V}-->.
 
 ## Documents
 
 | Document | Result | What it covers |
 |---|---|---|
-| [edges-and-fourier.md](edges-and-fourier.md) | <!--m:\tfrac{4V}{\pi}\sum_{n\ \text{odd}}\tfrac{\sin n\omega t}{n}-->![4V over pi sum_n odd sin n omega t over n](README.assets/eq-inline/61022f1f8e.svg)<!--/m--> | rising and falling edges, 10–90 % rise time, slew rate, why real edges are finite (gate charge, parasitic C, loop L), the <!--m:C\,dv/dt-->![C dv/dt](README.assets/eq-inline/b96b608a56.svg)<!--/m--> and <!--m:L\,di/dt-->![L di/dt](README.assets/eq-inline/f24cc20a0b.svg)<!--/m--> consequences; Fourier series from scratch with orthogonality derived; the square wave derived, Gibbs, Parseval, THD of 48.3 %; **the H-bridge output as a Fourier series** with lamp resistance, <!--m:R_{ds(on)}-->![R_ds(on)](README.assets/eq-inline/6dace34914.svg)<!--/m-->, dead time / quasi-square angle <!--m:\alpha-->![alpha](README.assets/eq-inline/f7c665b459.svg)<!--/m--> and edge speed as variables (figs 20–26) |
-| [ac-and-rms.md](ac-and-rms.md) | <!--m:V_{rms} = V_{pk}/\sqrt2-->![V_rms = V_pk/sqrt 2](README.assets/eq-inline/2803e3393c.svg)<!--/m--> | sinusoid, period, phase; signed average 0, rectified average <!--m:0.637\,V_{pk}-->![0.637 V_pk](README.assets/eq-inline/445f8a5890.svg)<!--/m-->; RMS defined by equal heating and derived for a sine; why 230 V peaks at 325 V; square and triangle RMS; is SA mains really a sine (flat-topping, NRS 048-2, ±10 %, 8 % THD); true-RMS versus average-responding meters (figs 27–29) |
+| [edges-and-fourier.md](edges-and-fourier.md) | ![4V over pi sum_n odd sin n omega t over n](README.assets/eq-inline/61022f1f8e.svg)<!--m:\tfrac{4V}{\pi}\sum_{n\ \text{odd}}\tfrac{\sin n\omega t}{n}--> | rising and falling edges, 10–90 % rise time, slew rate, why real edges are finite (gate charge, parasitic C, loop L), the ![C dv/dt](README.assets/eq-inline/b96b608a56.svg)<!--m:C\,dv/dt--> and ![L di/dt](README.assets/eq-inline/f24cc20a0b.svg)<!--m:L\,di/dt--> consequences; Fourier series from scratch with orthogonality derived; the square wave derived, Gibbs, Parseval, THD of 48.3 %; **the H-bridge output as a Fourier series** with lamp resistance, ![R_ds(on)](README.assets/eq-inline/6dace34914.svg)<!--m:R_{ds(on)}-->, dead time / quasi-square angle ![alpha](README.assets/eq-inline/f7c665b459.svg)<!--m:\alpha--> and edge speed as variables (figs 20–26) |
+| [ac-and-rms.md](ac-and-rms.md) | ![V_rms = V_pk/sqrt 2](README.assets/eq-inline/2803e3393c.svg)<!--m:V_{rms} = V_{pk}/\sqrt2--> | sinusoid, period, phase; signed average 0, rectified average ![0.637 V_pk](README.assets/eq-inline/445f8a5890.svg)<!--m:0.637\,V_{pk}-->; RMS defined by equal heating and derived for a sine; why 230 V peaks at 325 V; square and triangle RMS; is SA mains really a sine (flat-topping, NRS 048-2, ±10 %, 8 % THD); true-RMS versus average-responding meters (figs 27–29) |
 
 ## Reading order
 

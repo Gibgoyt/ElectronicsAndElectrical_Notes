@@ -7,7 +7,7 @@ connect a load to the supply forwards or backwards. The full argument is in
 > **The thesis in one line**
 >
 > An H-bridge makes AC by reversing the load's connection to a DC rail — one diagonal pair of
-> switches gives <!--m:+V_{dc}-->![+V_dc](README.assets/eq-inline/0458144a16.svg)<!--/m-->, the other <!--m:-V_{dc}-->![-V_dc](README.assets/eq-inline/b2ceae7532.svg)<!--/m--> — and everything else (gate drivers, dead time,
+> switches gives ![+V_dc](README.assets/eq-inline/0458144a16.svg)<!--m:+V_{dc}-->, the other ![-V_dc](README.assets/eq-inline/b2ceae7532.svg)<!--m:-V_{dc}--> — and everything else (gate drivers, dead time,
 > body diodes, PWM) exists to make that reversal fast, safe and shaped.
 
 ## Contents
@@ -17,7 +17,7 @@ The treatment covers:
 1. Why DC to AC needs a reversible current path.
 2. Four switches, two legs, two diagonals (fig-01).
 3. The full state table: drive, zero, half-off, all-off and the forbidden shoot-through states.
-4. The ±V square wave across a lamp: RMS <!--m:= V_{dc}-->![= V_dc](README.assets/eq-inline/44272de761.svg)<!--/m-->, fundamental <!--m:4V_{dc}/\pi-->![4V_dc/pi](README.assets/eq-inline/f71d66739d.svg)<!--/m-->, THD 48 % (fig-02).
+4. The ±V square wave across a lamp: RMS ![= V_dc](README.assets/eq-inline/44272de761.svg)<!--m:= V_{dc}-->, fundamental ![4V_dc/pi](README.assets/eq-inline/f71d66739d.svg)<!--m:4V_{dc}/\pi-->, THD 48 % (fig-02).
 5. The MOSFET as a switch: threshold, on-resistance, gate charge, body diode (fig-03).
 6. Switching transitions and switching loss, with worked numbers at 12 V and 325 V (fig-04).
 7. "Steep curves": real edges, rise time, dV/dt, ringing and Miller turn-on (fig-05).

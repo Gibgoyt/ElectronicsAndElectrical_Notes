@@ -36,24 +36,24 @@ An AC voltage, in its ideal form, is a sine wave in time:
 
 There are three numbers in this formula, and each has a job:
 
-- **<!--m:V_{pk}-->![V_pk](ac-and-rms.assets/eq-inline/a753175303.svg)<!--/m-->, the peak (amplitude).** This is the highest voltage the wave reaches. The sine function
-  swings between <!--m:-1-->![-1](ac-and-rms.assets/eq-inline/7984b0a0e1.svg)<!--/m--> and <!--m:+1-->![+1](ac-and-rms.assets/eq-inline/acb72b9476.svg)<!--/m-->, so <!--m:v-->![v](ac-and-rms.assets/eq-inline/7a38d8cbd2.svg)<!--/m--> swings between <!--m:-V_{pk}-->![-V_pk](ac-and-rms.assets/eq-inline/f346e6f004.svg)<!--/m--> and <!--m:+V_{pk}-->![+V_pk](ac-and-rms.assets/eq-inline/718b7eb144.svg)<!--/m-->. The full swing from
-  bottom to top, <!--m:V_{pp} = 2V_{pk}-->![V_pp = 2V_pk](ac-and-rms.assets/eq-inline/329241c6b6.svg)<!--/m-->, is the **peak-to-peak** value.
-- **<!--m:f-->![f](ac-and-rms.assets/eq-inline/4a0a19218e.svg)<!--/m-->, the frequency, in hertz (cycles per second).** One full cycle takes the **period**
-  <!--m:T = 1/f-->![T = 1/f](ac-and-rms.assets/eq-inline/75216c41f9.svg)<!--/m-->. The **angular frequency** <!--m:\omega = 2\pi f-->![omega = 2 pi f](ac-and-rms.assets/eq-inline/10f7ad86c0.svg)<!--/m--> measures the same rate in radians per
-  second, because one cycle of a sine is <!--m:2\pi-->![2 pi](ac-and-rms.assets/eq-inline/0833718ca4.svg)<!--/m--> radians. For South Africa's 50 Hz mains:
+- **![V_pk](ac-and-rms.assets/eq-inline/a753175303.svg)<!--m:V_{pk}-->, the peak (amplitude).** This is the highest voltage the wave reaches. The sine function
+  swings between ![-1](ac-and-rms.assets/eq-inline/7984b0a0e1.svg)<!--m:-1--> and ![+1](ac-and-rms.assets/eq-inline/acb72b9476.svg)<!--m:+1-->, so ![v](ac-and-rms.assets/eq-inline/7a38d8cbd2.svg)<!--m:v--> swings between ![-V_pk](ac-and-rms.assets/eq-inline/f346e6f004.svg)<!--m:-V_{pk}--> and ![+V_pk](ac-and-rms.assets/eq-inline/718b7eb144.svg)<!--m:+V_{pk}-->. The full swing from
+  bottom to top, ![V_pp = 2V_pk](ac-and-rms.assets/eq-inline/329241c6b6.svg)<!--m:V_{pp} = 2V_{pk}-->, is the **peak-to-peak** value.
+- **![f](ac-and-rms.assets/eq-inline/4a0a19218e.svg)<!--m:f-->, the frequency, in hertz (cycles per second).** One full cycle takes the **period**
+  ![T = 1/f](ac-and-rms.assets/eq-inline/75216c41f9.svg)<!--m:T = 1/f-->. The **angular frequency** ![omega = 2 pi f](ac-and-rms.assets/eq-inline/10f7ad86c0.svg)<!--m:\omega = 2\pi f--> measures the same rate in radians per
+  second, because one cycle of a sine is ![2 pi](ac-and-rms.assets/eq-inline/0833718ca4.svg)<!--m:2\pi--> radians. For South Africa's 50 Hz mains:
 
 ![T equals 1 over f equals 1 over 50 Hz equals 20 ms; omega equals 2 pi f, about 314.16 rad per second](ac-and-rms.assets/eq-period.svg)
 
-- **<!--m:\varphi-->![phi](ac-and-rms.assets/eq-inline/44294dbd19.svg)<!--/m-->, the phase.** This slides the wave left or right in time. It does not change the
-  shape. A phase of <!--m:\varphi-->![phi](ac-and-rms.assets/eq-inline/44294dbd19.svg)<!--/m--> radians is the same as a time shift of a fraction <!--m:\varphi/2\pi-->![phi/2 pi](ac-and-rms.assets/eq-inline/19e1a0d845.svg)<!--/m--> of
+- **![phi](ac-and-rms.assets/eq-inline/44294dbd19.svg)<!--m:\varphi-->, the phase.** This slides the wave left or right in time. It does not change the
+  shape. A phase of ![phi](ac-and-rms.assets/eq-inline/44294dbd19.svg)<!--m:\varphi--> radians is the same as a time shift of a fraction ![phi/2 pi](ac-and-rms.assets/eq-inline/19e1a0d845.svg)<!--m:\varphi/2\pi--> of
   a period:
 
 ![sin of omega t plus phi equals sin of omega times t plus t_phi, where t_phi equals phi over omega, which is phi over 360 degrees times T](ac-and-rms.assets/eq-phase-shift.svg)
 
   Phase only matters when comparing *two* waveforms, for example a voltage and the current it
-  drives, or the three phases of a 400 V three-phase supply, which are <!--m:120^\circ-->![120^ deg](ac-and-rms.assets/eq-inline/54a57cdcf7.svg)<!--/m--> apart. For a
-  single waveform you can always choose <!--m:t = 0-->![t = 0](ac-and-rms.assets/eq-inline/fee440f68f.svg)<!--/m--> so that <!--m:\varphi = 0-->![phi = 0](ac-and-rms.assets/eq-inline/741c0a4f0f.svg)<!--/m-->.
+  drives, or the three phases of a 400 V three-phase supply, which are ![120^ deg](ac-and-rms.assets/eq-inline/54a57cdcf7.svg)<!--m:120^\circ--> apart. For a
+  single waveform you can always choose ![t = 0](ac-and-rms.assets/eq-inline/fee440f68f.svg)<!--m:t = 0--> so that ![phi = 0](ac-and-rms.assets/eq-inline/741c0a4f0f.svg)<!--m:\varphi = 0-->.
 
 ## 2 Averages — why "average height" gives the wrong number
 
@@ -74,9 +74,9 @@ So the "average height" of mains, counting below the axis as negative, is **0 V*
 what 230 V means. It is still a real and useful fact. It is why a DC voltmeter on mains reads zero,
 and why a transformer, which only passes *changing* flux, needs a waveform with zero average.
 
-**The rectified average is 0.637 of the peak.** Flip the negative half up (take <!--m:|v|-->![|v|](ac-and-rms.assets/eq-inline/05884f09ef.svg)<!--/m-->) and average
-that instead. A half-cycle is enough, because every half-cycle of <!--m:|v|-->![|v|](ac-and-rms.assets/eq-inline/05884f09ef.svg)<!--/m--> is identical. In angle
-(<!--m:\theta = \omega t-->![theta = omega t](ac-and-rms.assets/eq-inline/95cafb9df1.svg)<!--/m-->, half-cycle <!--m:0-->![0](ac-and-rms.assets/eq-inline/b6589fc6ab.svg)<!--/m--> to <!--m:\pi-->![pi](ac-and-rms.assets/eq-inline/6ac47b6d73.svg)<!--/m-->):
+**The rectified average is 0.637 of the peak.** Flip the negative half up (take ![|v|](ac-and-rms.assets/eq-inline/05884f09ef.svg)<!--m:|v|-->) and average
+that instead. A half-cycle is enough, because every half-cycle of ![|v|](ac-and-rms.assets/eq-inline/05884f09ef.svg)<!--m:|v|--> is identical. In angle
+(![theta = omega t](ac-and-rms.assets/eq-inline/95cafb9df1.svg)<!--m:\theta = \omega t-->, half-cycle ![0](ac-and-rms.assets/eq-inline/b6589fc6ab.svg)<!--m:0--> to ![pi](ac-and-rms.assets/eq-inline/6ac47b6d73.svg)<!--m:\pi-->):
 
 ![the mean of absolute v equals 1 over pi times the integral from 0 to pi of V_pk sin theta, equals V_pk over pi times 1 plus 1, equals 2 over pi V_pk, about 0.637 V_pk](ac-and-rms.assets/eq-mean-abs.svg)
 
@@ -94,8 +94,8 @@ average is zero._
 
 ## 3 RMS — defined by equal heating
 
-Here is the definition that actually matters. Connect a resistor <!--m:R-->![R](ac-and-rms.assets/eq-inline/06576556d1.svg)<!--/m--> (a kettle element, a lamp
-filament) to a voltage <!--m:v(t)-->![v(t)](ac-and-rms.assets/eq-inline/1e6e107117.svg)<!--/m-->. At each instant it dissipates power:
+Here is the definition that actually matters. Connect a resistor ![R](ac-and-rms.assets/eq-inline/06576556d1.svg)<!--m:R--> (a kettle element, a lamp
+filament) to a voltage ![v(t)](ac-and-rms.assets/eq-inline/1e6e107117.svg)<!--m:v(t)-->. At each instant it dissipates power:
 
 ![p of t equals v of t times i of t, equals v of t squared over R](ac-and-rms.assets/eq-power-inst.svg)
 
@@ -103,8 +103,8 @@ The element's temperature responds to the *average* of that power over many cycl
 
 ![P equals 1 over T times the integral of p of t, equals 1 over R times 1 over T times the integral of v of t squared](ac-and-rms.assets/eq-power-avg.svg)
 
-**Definition.** The **RMS value** of <!--m:v(t)-->![v(t)](ac-and-rms.assets/eq-inline/1e6e107117.svg)<!--/m--> is the steady DC voltage that would deliver the same
-average power to the same resistor. Set <!--m:V_{dc}^2/R-->![V_dc^2/R](ac-and-rms.assets/eq-inline/c5cd21d089.svg)<!--/m--> equal to the average power above. The <!--m:R-->![R](ac-and-rms.assets/eq-inline/06576556d1.svg)<!--/m-->
+**Definition.** The **RMS value** of ![v(t)](ac-and-rms.assets/eq-inline/1e6e107117.svg)<!--m:v(t)--> is the steady DC voltage that would deliver the same
+average power to the same resistor. Set ![V_dc^2/R](ac-and-rms.assets/eq-inline/c5cd21d089.svg)<!--m:V_{dc}^2/R--> equal to the average power above. The ![R](ac-and-rms.assets/eq-inline/06576556d1.svg)<!--m:R-->
 cancels, so the definition doesn't depend on which resistor you pick:
 
 ![V_dc squared over R equals 1 over R times the mean of v squared, therefore V_rms is defined as the square root of 1 over T times the integral of v squared](ac-and-rms.assets/eq-rms-def.svg)
@@ -112,24 +112,24 @@ cancels, so the definition doesn't depend on which resistor you pick:
 Read the name right to left and it is the recipe: **square** the voltage, take the **mean** of the
 square, then take the square **root**. Root-mean-square.
 
-> **Note —** Why square? Because heating goes as <!--m:v^2-->![v^2](ac-and-rms.assets/eq-inline/d96f95b7a2.svg)<!--/m-->. A negative voltage heats a resistor
+> **Note —** Why square? Because heating goes as ![v^2](ac-and-rms.assets/eq-inline/d96f95b7a2.svg)<!--m:v^2-->. A negative voltage heats a resistor
 > exactly as much as a positive one, since current flows the other way but the element gets just as
 > hot. Squaring makes both halves count as positive. It also weights large voltages more heavily
 > than small ones, exactly as heating does: twice the voltage gives four times the power. A plain
-> average of <!--m:|v|-->![|v|](ac-and-rms.assets/eq-inline/05884f09ef.svg)<!--/m--> misses this weighting, which is why it comes out low (207 V instead of 230 V).
+> average of ![|v|](ac-and-rms.assets/eq-inline/05884f09ef.svg)<!--m:|v|--> misses this weighting, which is why it comes out low (207 V instead of 230 V).
 
-**Deriving it for a sine.** We need the mean of <!--m:v^2 = V_{pk}^2 \sin^2\theta-->![v^2 = V_pk^2 sin^2 theta](ac-and-rms.assets/eq-inline/d108004a8d.svg)<!--/m-->, so the job is the
-mean of <!--m:\sin^2\theta-->![sin^2 theta](ac-and-rms.assets/eq-inline/40b85ecdd3.svg)<!--/m-->. The trick is the double-angle identity. Start from
-<!--m:\cos 2\theta = \cos^2\theta - \sin^2\theta-->![cos 2 theta = cos^2 theta - sin^2 theta](ac-and-rms.assets/eq-inline/0a6e843807.svg)<!--/m--> and replace <!--m:\cos^2\theta-->![cos^2 theta](ac-and-rms.assets/eq-inline/db6ab971c2.svg)<!--/m--> with <!--m:1 - \sin^2\theta-->![1 - sin^2 theta](ac-and-rms.assets/eq-inline/07c847e897.svg)<!--/m-->:
+**Deriving it for a sine.** We need the mean of ![v^2 = V_pk^2 sin^2 theta](ac-and-rms.assets/eq-inline/d108004a8d.svg)<!--m:v^2 = V_{pk}^2 \sin^2\theta-->, so the job is the
+mean of ![sin^2 theta](ac-and-rms.assets/eq-inline/40b85ecdd3.svg)<!--m:\sin^2\theta-->. The trick is the double-angle identity. Start from
+![cos 2 theta = cos^2 theta - sin^2 theta](ac-and-rms.assets/eq-inline/0a6e843807.svg)<!--m:\cos 2\theta = \cos^2\theta - \sin^2\theta--> and replace ![cos^2 theta](ac-and-rms.assets/eq-inline/db6ab971c2.svg)<!--m:\cos^2\theta--> with ![1 - sin^2 theta](ac-and-rms.assets/eq-inline/07c847e897.svg)<!--m:1 - \sin^2\theta-->:
 
 ![cos 2 theta equals cos squared theta minus sin squared theta equals 1 minus 2 sin squared theta, therefore sin squared theta equals 1 minus cos 2 theta over 2](ac-and-rms.assets/eq-sin2-identity.svg)
 
-This rewrites <!--m:\sin^2\theta-->![sin^2 theta](ac-and-rms.assets/eq-inline/40b85ecdd3.svg)<!--/m--> as a constant <!--m:\tfrac12-->![12](ac-and-rms.assets/eq-inline/8148d306bb.svg)<!--/m--> minus a cosine at *twice* the frequency. Over
+This rewrites ![sin^2 theta](ac-and-rms.assets/eq-inline/40b85ecdd3.svg)<!--m:\sin^2\theta--> as a constant ![12](ac-and-rms.assets/eq-inline/8148d306bb.svg)<!--m:\tfrac12--> minus a cosine at *twice* the frequency. Over
 a full cycle that cosine averages to zero (it is a pure oscillation), leaving only the constant:
 
 ![1 over 2 pi times the integral of sin squared theta equals 1 over 2 pi times the integral of 1 minus cos 2 theta over 2, equals 1 over 2 pi times 2 pi over 2 minus 0, equals one half](ac-and-rms.assets/eq-mean-sin2.svg)
 
-The mean of <!--m:\sin^2-->![sin^2](ac-and-rms.assets/eq-inline/9343065c8e.svg)<!--/m--> is **exactly one half**. Take the square root of <!--m:V_{pk}^2 \cdot \tfrac12-->![V_pk^2 times 12](ac-and-rms.assets/eq-inline/43ebd0d942.svg)<!--/m-->:
+The mean of ![sin^2](ac-and-rms.assets/eq-inline/9343065c8e.svg)<!--m:\sin^2--> is **exactly one half**. Take the square root of ![V_pk^2 times 12](ac-and-rms.assets/eq-inline/43ebd0d942.svg)<!--m:V_{pk}^2 \cdot \tfrac12-->:
 
 ![V_rms equals root of V_pk squared times one half, equals V_pk over root 2, about 0.707 V_pk](ac-and-rms.assets/eq-rms-sine.svg)
 
@@ -169,7 +169,7 @@ which is why incandescent bulbs on 50 Hz mains flicker faintly at 100 Hz.
 
 The definition works for any shape. Here are the two that matter most in power electronics.
 
-**Square wave, ±V.** Squaring removes the sign, so <!--m:v^2-->![v^2](ac-and-rms.assets/eq-inline/d96f95b7a2.svg)<!--/m--> is the same at every instant:
+**Square wave, ±V.** Squaring removes the sign, so ![v^2](ac-and-rms.assets/eq-inline/d96f95b7a2.svg)<!--m:v^2--> is the same at every instant:
 
 ![v squared equals plus or minus V squared equals V squared at every instant, therefore V_rms equals root V squared equals V](ac-and-rms.assets/eq-rms-square.svg)
 
@@ -177,12 +177,12 @@ A ±12 V square wave from an H-bridge has an RMS of exactly 12 V. Its peak and R
 lamp glows as brightly on it as on 12 V DC (see
 [edges-and-fourier.md §8](edges-and-fourier.md#8-the-h-bridge-output-as-a-fourier-series)).
 
-**Triangle wave, ±V.** By symmetry one quarter-period is enough, where <!--m:v-->![v](ac-and-rms.assets/eq-inline/7a38d8cbd2.svg)<!--/m--> rises linearly from 0 to
-<!--m:V-->![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--/m-->:
+**Triangle wave, ±V.** By symmetry one quarter-period is enough, where ![v](ac-and-rms.assets/eq-inline/7a38d8cbd2.svg)<!--m:v--> rises linearly from 0 to
+![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--m:V-->:
 
 ![over the first quarter period v equals V times 4 t over T; the mean of v squared is 64 V squared over T cubed times T over 4 cubed over 3, equals V squared over 3, so V_rms equals V over root 3](ac-and-rms.assets/eq-rms-triangle.svg)
 
-The triangle spends most of its time at small voltages, so its RMS, <!--m:V/\sqrt3 \approx 0.577\,V-->![V/sqrt 3 approx 0.577 V](ac-and-rms.assets/eq-inline/9791a73534.svg)<!--/m-->, is
+The triangle spends most of its time at small voltages, so its RMS, ![V/sqrt 3 approx 0.577 V](ac-and-rms.assets/eq-inline/9791a73534.svg)<!--m:V/\sqrt3 \approx 0.577\,V-->, is
 lower than a sine's.
 
 Two ratios summarise a waveform's shape. The **crest factor** (CF) is peak over RMS, telling you how
@@ -193,30 +193,30 @@ meters in §8:
 
 | Waveform (peak V) | Signed average | Rectified average | RMS | Crest factor | Form factor |
 |---|---|---|---|---|---|
-| DC | <!--m:V-->![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--/m--> | <!--m:V-->![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--/m--> | <!--m:V-->![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--/m--> | 1 | 1 |
-| Sine | 0 | <!--m:0.637\,V-->![0.637 V](ac-and-rms.assets/eq-inline/00ff079020.svg)<!--/m--> | <!--m:0.707\,V-->![0.707 V](ac-and-rms.assets/eq-inline/0fa7833f85.svg)<!--/m--> | <!--m:\sqrt2 \approx 1.414-->![sqrt 2 approx 1.414](ac-and-rms.assets/eq-inline/f6c311d192.svg)<!--/m--> | 1.111 |
-| Square (±V) | 0 | <!--m:V-->![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--/m--> | <!--m:V-->![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--/m--> | 1 | 1 |
-| Triangle (±V) | 0 | <!--m:0.5\,V-->![0.5 V](ac-and-rms.assets/eq-inline/9b513f33c3.svg)<!--/m--> | <!--m:0.577\,V-->![0.577 V](ac-and-rms.assets/eq-inline/648be11c92.svg)<!--/m--> | <!--m:\sqrt3 \approx 1.732-->![sqrt 3 approx 1.732](ac-and-rms.assets/eq-inline/f53450a275.svg)<!--/m--> | 1.155 |
+| DC | ![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--m:V--> | ![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--m:V--> | ![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--m:V--> | 1 | 1 |
+| Sine | 0 | ![0.637 V](ac-and-rms.assets/eq-inline/00ff079020.svg)<!--m:0.637\,V--> | ![0.707 V](ac-and-rms.assets/eq-inline/0fa7833f85.svg)<!--m:0.707\,V--> | ![sqrt 2 approx 1.414](ac-and-rms.assets/eq-inline/f6c311d192.svg)<!--m:\sqrt2 \approx 1.414--> | 1.111 |
+| Square (±V) | 0 | ![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--m:V--> | ![V](ac-and-rms.assets/eq-inline/c9ee5681d3.svg)<!--m:V--> | 1 | 1 |
+| Triangle (±V) | 0 | ![0.5 V](ac-and-rms.assets/eq-inline/9b513f33c3.svg)<!--m:0.5\,V--> | ![0.577 V](ac-and-rms.assets/eq-inline/648be11c92.svg)<!--m:0.577\,V--> | ![sqrt 3 approx 1.732](ac-and-rms.assets/eq-inline/f53450a275.svg)<!--m:\sqrt3 \approx 1.732--> | 1.155 |
 
 **RMS of a waveform with harmonics.** A distorted but still repeating waveform can be written as
-a sum of sines at whole-number multiples of its frequency: the *fundamental* at <!--m:f-->![f](ac-and-rms.assets/eq-inline/4a0a19218e.svg)<!--/m--> itself, plus
-*harmonics* at <!--m:2f-->![2f](ac-and-rms.assets/eq-inline/88346ae6e0.svg)<!--/m-->, <!--m:3f-->![3f](ac-and-rms.assets/eq-inline/6e149673a9.svg)<!--/m-->, <!--m:5f-->![5f](ac-and-rms.assets/eq-inline/1a849aded6.svg)<!--/m--> and so on, each with its own amplitude. (This is the Fourier series;
+a sum of sines at whole-number multiples of its frequency: the *fundamental* at ![f](ac-and-rms.assets/eq-inline/4a0a19218e.svg)<!--m:f--> itself, plus
+*harmonics* at ![2f](ac-and-rms.assets/eq-inline/88346ae6e0.svg)<!--m:2f-->, ![3f](ac-and-rms.assets/eq-inline/6e149673a9.svg)<!--m:3f-->, ![5f](ac-and-rms.assets/eq-inline/1a849aded6.svg)<!--m:5f--> and so on, each with its own amplitude. (This is the Fourier series;
 the companion document [edges-and-fourier.md](edges-and-fourier.md) derives it from scratch.) To get
 the RMS, square that sum and average it. Squaring produces each harmonic squared, plus cross
 products of two *different* harmonics. Each cross product is a sine at one frequency times a sine
-at another, and by the same product-to-sum identity that gave <!--m:\sin^2\theta = (1 - \cos 2\theta)/2-->![sin^2 theta = (1 - cos 2 theta )/2](ac-and-rms.assets/eq-inline/80bb5f9ba4.svg)<!--/m-->
+at another, and by the same product-to-sum identity that gave ![sin^2 theta = (1 - cos 2 theta )/2](ac-and-rms.assets/eq-inline/80bb5f9ba4.svg)<!--m:\sin^2\theta = (1 - \cos 2\theta)/2-->
 in §3, it turns into pure cosines at the difference and sum frequencies, which average to zero over
-a full cycle. Only the squares survive, each averaging to (its RMS)<!--m:^2-->![^2](ac-and-rms.assets/eq-inline/6180bbc91e.svg)<!--/m-->. So the total mean square is
+a full cycle. Only the squares survive, each averaging to (its RMS)![^2](ac-and-rms.assets/eq-inline/6180bbc91e.svg)<!--m:^2-->. So the total mean square is
 the sum of each harmonic's mean square — *Parseval's theorem*
 ([edges-and-fourier.md §7](edges-and-fourier.md#7-reading-a-spectrum--gibbs-parseval-and-thd)) — and
 the RMS values add like the sides of a right-angled triangle. The usual measure of distortion,
 **total harmonic distortion (THD)**, is the RMS of all the harmonics together divided by the RMS of
-the fundamental, <!--m:\text{THD} = \sqrt{V_{2,rms}^2 + V_{3,rms}^2 + \cdots}\,/\,V_{1,rms}-->![THD = sqrt V_2,rms^2 + V_3,rms^2 +/V_1,rms](ac-and-rms.assets/eq-inline/4b54f0fb07.svg)<!--/m-->, which
+the fundamental, ![THD = sqrt V_2,rms^2 + V_3,rms^2 +/V_1,rms](ac-and-rms.assets/eq-inline/4b54f0fb07.svg)<!--m:\text{THD} = \sqrt{V_{2,rms}^2 + V_{3,rms}^2 + \cdots}\,/\,V_{1,rms}-->, which
 gives the second form:
 
 ![V_rms equals the square root of V_1 rms squared plus V_3 rms squared plus V_5 rms squared and so on, which equals V_1 rms times the square root of 1 plus THD squared](ac-and-rms.assets/eq-rms-harmonics.svg)
 
-For real mains at 5 % THD, the RMS is only <!--m:\sqrt{1 + 0.05^2} = 1.00125-->![sqrt 1 + 0.05^2 = 1.00125](ac-and-rms.assets/eq-inline/b2e8ae3a91.svg)<!--/m--> times the fundamental's.
+For real mains at 5 % THD, the RMS is only ![sqrt 1 + 0.05^2 = 1.00125](ac-and-rms.assets/eq-inline/b2e8ae3a91.svg)<!--m:\sqrt{1 + 0.05^2} = 1.00125--> times the fundamental's.
 Distortion barely changes the RMS, but as §7 shows, it changes the *peak* noticeably.
 
 ## 6 Why everything is quoted in RMS
@@ -224,8 +224,8 @@ Distortion barely changes the RMS, but as §7 shows, it changes the *peak* notic
 Engineers quote AC voltages and currents in RMS, almost never as peaks, because RMS makes AC power
 calculations look exactly like DC ones:
 
-- **Power formulas carry over unchanged.** <!--m:P = V_{rms}^2/R = I_{rms}^2 R = V_{rms} I_{rms}-->![P = V_rms^2/R = I_rms^2 R = V_rms I_rms](ac-and-rms.assets/eq-inline/02f4fc9a13.svg)<!--/m--> for a
-  resistor, with no stray factors of <!--m:\tfrac12-->![12](ac-and-rms.assets/eq-inline/8148d306bb.svg)<!--/m-->. A "230 V, 2 kW" kettle and a "230 V, 60 W" lamp can
+- **Power formulas carry over unchanged.** ![P = V_rms^2/R = I_rms^2 R = V_rms I_rms](ac-and-rms.assets/eq-inline/02f4fc9a13.svg)<!--m:P = V_{rms}^2/R = I_{rms}^2 R = V_{rms} I_{rms}--> for a
+  resistor, with no stray factors of ![12](ac-and-rms.assets/eq-inline/8148d306bb.svg)<!--m:\tfrac12-->. A "230 V, 2 kW" kettle and a "230 V, 60 W" lamp can
   be compared directly.
 - **Heating is what limits most equipment.** Wire, fuses, transformer windings and resistors all
   fail by overheating, and heating follows RMS. A cable's current rating is an RMS rating.
@@ -233,7 +233,7 @@ calculations look exactly like DC ones:
   can be compared on one scale. A 12 V RMS square wave and 12 V DC deliver identical power to a lamp.
 
 The cost is that the peak is hidden. Anything that breaks down at a voltage rather than heating up
-(insulation, capacitors, semiconductor ratings) must be checked against the peak, <!--m:\sqrt2-->![sqrt 2](ac-and-rms.assets/eq-inline/6d0fdf0909.svg)<!--/m--> times
+(insulation, capacitors, semiconductor ratings) must be checked against the peak, ![sqrt 2](ac-and-rms.assets/eq-inline/6d0fdf0909.svg)<!--m:\sqrt2--> times
 higher for a sine.
 
 ## 7 Is mains really a sine wave?
@@ -310,18 +310,18 @@ A multimeter on its AC-volts range has to turn a moving waveform into one number
 ways to do it.
 
 **Average-responding meters** (most cheap ones) rectify the signal, measure the rectified average
-<!--m:\overline{|v|}-->![|v|](ac-and-rms.assets/eq-inline/d45b2e7f06.svg)<!--/m--> (easy with a diode and a capacitor), and multiply by the *sine* form factor so the
+![|v|](ac-and-rms.assets/eq-inline/d45b2e7f06.svg)<!--m:\overline{|v|}--> (easy with a diode and a capacitor), and multiply by the *sine* form factor so the
 display reads RMS **for a sine**:
 
 ![the average-responding reading equals 1.111 times the mean of absolute v](ac-and-rms.assets/eq-meter.svg)
 
 That factor of 1.111 is only right for a pure sine. Point the same meter at anything else and it is
 wrong. Two examples: a ±V square wave, and a cheap inverter's "modified sine" — a waveform that sits
-at zero for <!--m:\alpha = 45^\circ-->![alpha = 45^ deg](ac-and-rms.assets/eq-inline/d888911a73.svg)<!--/m--> either side of every zero crossing and at <!--m:\pm 325\ \mathrm{V}-->![plus-minus 325 V](ac-and-rms.assets/eq-inline/e39fa88c89.svg)<!--/m--> in
+at zero for ![alpha = 45^ deg](ac-and-rms.assets/eq-inline/d888911a73.svg)<!--m:\alpha = 45^\circ--> either side of every zero crossing and at ![plus-minus 325 V](ac-and-rms.assets/eq-inline/e39fa88c89.svg)<!--m:\pm 325\ \mathrm{V}--> in
 between, chosen so that its RMS is 230 V. Its rectified average is the peak times the fraction of
-time spent at the peak, <!--m:(\pi - 2\alpha)/\pi-->![( pi - 2 alpha )/pi](ac-and-rms.assets/eq-inline/14c93c4ed9.svg)<!--/m-->, and since <!--m:v^2-->![v^2](ac-and-rms.assets/eq-inline/d96f95b7a2.svg)<!--/m--> is <!--m:V_{pk}^2-->![V_pk^2](ac-and-rms.assets/eq-inline/3d959a6832.svg)<!--/m--> for that fraction of
+time spent at the peak, ![( pi - 2 alpha )/pi](ac-and-rms.assets/eq-inline/14c93c4ed9.svg)<!--m:(\pi - 2\alpha)/\pi-->, and since ![v^2](ac-and-rms.assets/eq-inline/d96f95b7a2.svg)<!--m:v^2--> is ![V_pk^2](ac-and-rms.assets/eq-inline/3d959a6832.svg)<!--m:V_{pk}^2--> for that fraction of
 the time and zero otherwise, its RMS is the peak times the square root of the fraction:
-<!--m:325 \times \sqrt{1/2} \approx 230\ \mathrm{V}-->![325 times sqrt 1/2 approx 230 V](ac-and-rms.assets/eq-inline/2bfb62eb97.svg)<!--/m--> at <!--m:\alpha = 45^\circ-->![alpha = 45^ deg](ac-and-rms.assets/eq-inline/d888911a73.svg)<!--/m--> (its spectrum is in
+![325 times sqrt 1/2 approx 230 V](ac-and-rms.assets/eq-inline/2bfb62eb97.svg)<!--m:325 \times \sqrt{1/2} \approx 230\ \mathrm{V}--> at ![alpha = 45^ deg](ac-and-rms.assets/eq-inline/d888911a73.svg)<!--m:\alpha = 45^\circ--> (its spectrum is in
 [edges-and-fourier.md §8](edges-and-fourier.md#8-the-h-bridge-output-as-a-fourier-series)):
 
 ![for a square wave the mean of absolute v is V, so the reading is 1.111 V, 11 percent high against a true RMS of V](ac-and-rms.assets/eq-meter-square.svg)
@@ -341,11 +341,11 @@ currents or anything switched, use true RMS.
 ## 9 What this costs you
 
 - **RMS hides the peak.** Quoting 230 V invites the mistake of choosing 250 V-rated parts for a
-  circuit that sees up to 358 V peaks. Every voltage-stress check must use <!--m:\sqrt2 \times V_{rms}-->![sqrt 2 times V_rms](ac-and-rms.assets/eq-inline/43dc15af84.svg)<!--/m-->,
+  circuit that sees up to 358 V peaks. Every voltage-stress check must use ![sqrt 2 times V_rms](ac-and-rms.assets/eq-inline/43dc15af84.svg)<!--m:\sqrt2 \times V_{rms}-->,
   plus the supply tolerance, plus any surges.
-- **The root-two factor is sine-only.** <!--m:V_{pk} = \sqrt2\,V_{rms}-->![V_pk = sqrt 2 V_rms](ac-and-rms.assets/eq-inline/550980a341.svg)<!--/m--> and the 1.111 form factor hold only for a
+- **The root-two factor is sine-only.** ![V_pk = sqrt 2 V_rms](ac-and-rms.assets/eq-inline/550980a341.svg)<!--m:V_{pk} = \sqrt2\,V_{rms}--> and the 1.111 form factor hold only for a
   pure sine. For a square wave peak equals RMS. For flat-topped mains the peak is a few percent
-  below <!--m:\sqrt2 \times V_{rms}-->![sqrt 2 times V_rms](ac-and-rms.assets/eq-inline/43dc15af84.svg)<!--/m-->. For a modified sine they hold for neither the meter nor the peak.
+  below ![sqrt 2 times V_rms](ac-and-rms.assets/eq-inline/43dc15af84.svg)<!--m:\sqrt2 \times V_{rms}-->. For a modified sine they hold for neither the meter nor the peak.
   Know your waveform before using the factors.
 - **Rectifier loads pay for the distortion they cause.** A capacitor-input rectifier on flat-topped
   mains charges to a lower peak, so the DC bus it feeds is a few percent lower than the 325 V ideal.
